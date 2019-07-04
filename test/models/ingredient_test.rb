@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class IngredientTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "ingredients_count" do
+    assert_equal 3, Ingredient.count
+  end
 end
