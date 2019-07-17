@@ -21,3 +21,6 @@ POSTS = [["post 1",2,3,1],
 for i in POSTS do
     Post.create(message: i[0], reshare: i[1], likes: i[2], user_id: i[3])
 end
+
+
+User.create(username: "BCT", password: "password")
