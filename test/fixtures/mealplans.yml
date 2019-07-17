@@ -7,7 +7,9 @@
 diet:
   name: "diet"
   description: "to lose some weight"
+  user_id: 1
 #
 keto: 
   name: "keto"
   description: "to lose some weight differently"
+  user_id: 1

@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2019_07_17_003307) do
 
   create_table "days", force: :cascade do |t|
     t.date "date"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -51,6 +52,7 @@ ActiveRecord::Schema.define(version: 2019_07_17_003307) do
   create_table "mealplans", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -58,6 +60,7 @@ ActiveRecord::Schema.define(version: 2019_07_17_003307) do
   create_table "meals", force: :cascade do |t|
     t.string "name"
     t.integer "party_size"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -70,6 +73,8 @@ ActiveRecord::Schema.define(version: 2019_07_17_003307) do
 
   create_table "posts", force: :cascade do |t|
     t.string "message"
+    t.integer "reshare"
+    t.integer "likes"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -81,6 +86,7 @@ ActiveRecord::Schema.define(version: 2019_07_17_003307) do
     t.integer "preparation_time"
     t.integer "cooking_time"
     t.integer "total_recipe_time"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

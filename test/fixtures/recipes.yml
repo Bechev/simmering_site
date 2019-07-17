@@ -11,6 +11,7 @@ egg_bacon:
   cooking_time: 5
   total_recipe_time: 15
   ingredients: egg, bacon
+  user_id: 1
 
 fried_apple: 
   name: "Fried apple"
@@ -19,3 +20,4 @@ fried_apple:
   cooking_time: 5
   total_recipe_time: 10
   ingredients: apple
+  user_id: 1
