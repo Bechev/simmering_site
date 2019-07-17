@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_03_013221) do
+ActiveRecord::Schema.define(version: 2019_07_17_003307) do
 
   create_table "days", force: :cascade do |t|
     t.date "date"
@@ -68,12 +68,26 @@ ActiveRecord::Schema.define(version: 2019_07_03_013221) do
     t.index ["meal_id", "recipe_id"], name: "index_meals_recipes_on_meal_id_and_recipe_id"
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.string "message"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "recipes", force: :cascade do |t|
     t.string "name"
     t.string "recipe_process"
     t.integer "preparation_time"
     t.integer "cooking_time"
     t.integer "total_recipe_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
