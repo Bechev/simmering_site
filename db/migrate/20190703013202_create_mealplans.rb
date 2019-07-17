@@ -3,6 +3,8 @@ class CreateMealplans < ActiveRecord::Migration[5.2]
     create_table :mealplans do |t|
       t.string :name
       t.string :description
+      t.integer :user_id
+
       t.timestamps
     end
   end
