@@ -3,7 +3,7 @@ module Api
         class PostsController < ApplicationController
 
             def index
-                @posts = Post.all
+                @posts = Post.all.last(10).reverse
                 render json: @posts
             end
 
