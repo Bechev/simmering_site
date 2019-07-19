@@ -10,6 +10,7 @@ module Api
                     @mealplans = Mealplan.all.last(10).reverse
                 end
                 render json: @mealplans
+                # render json: @mealplans.to_json(include: {days: {include: {meals: {include: {recipes: {include: :ingredients}}}}}})
             end
         
         end
