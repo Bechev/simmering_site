@@ -6,13 +6,15 @@ module Api
                 if params[:user_id] 
                     user = User.find(params[:user_id])
                     @meals = user.meals.last(10).reverse
+                    render json: @meals.to_json(include: {recipes: {include: :ingredients}})
                 elsif params[:day_id]
                     day = Day.find(params[:day_id])
                     @meal = day.meals
+                    render json: @meals
                 else
                     @meals = Meal.all.last(10).reverse
+                    render json: @meals
                 end
-                render json: @meals
             end
         
         end
