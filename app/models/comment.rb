@@ -1,6 +1,5 @@
-class Post < ApplicationRecord
+class Comment < ApplicationRecord
     belongs_to :user, required: false
-    has_many :comments
+    belongs_to :post
     validates :message, length: {maximum: 250}
-
 end
