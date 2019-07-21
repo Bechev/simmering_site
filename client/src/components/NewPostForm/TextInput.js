@@ -31,7 +31,7 @@ class TextInput extends Component {
                     <label className='post_input_field'>
                         <textarea className='post_input_field' type="text" name="post_value" value={this.state.post_value} onChange={this.handleChange} placeholder="Share you meal plans here"/>
                     </label><br></br>
-                    <input className='post_input_field_button' type="submit" value="Share" />
+                    <input className='post_input_field_button' type="submit" value="Post" />
                     <label className='char_counter'>Char remaining: {this.state.character_remaining}</label>
                 </form>
             </div>
