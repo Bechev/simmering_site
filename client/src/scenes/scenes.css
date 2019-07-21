@@ -1,0 +1,19 @@
+.navbar {
+    display: flex;
+    align-content: left;
+}
+
+.navbar-link {
+    margin: 1vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.aligned-right{
+    
+}
+
+.aligned-left{
+    
+}
