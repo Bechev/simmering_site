@@ -1,0 +1,30 @@
+.new_post_form{
+    display: flex;
+    width: 100%;
+}
+
+.post_input{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.post_input_field{
+    display: flex;
+    flex: 1;
+    height: 10vh;    
+    font-size: 2.5vh;
+}
+
+.post_input_field_button{
+    display: flex;
+    height: 4vh;
+    width: 100%;
+    font-size: 2.5vh;
+}
+
+.char_counter{
+    display: flex;
+    width: 70%;
+    height: 4vh;
+}
