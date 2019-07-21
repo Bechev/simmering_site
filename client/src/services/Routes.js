@@ -12,7 +12,7 @@ class Routes extends Component {
         return(
             <React.Fragment>
                 <Route exact path="/" component={Home} />
-                <Route exact path="/sign_up" component={Signup} />
+                <Route exact path="/signup" component={Signup} />
                 <Route exact path="/login" component={Login} />
             </React.Fragment>
         )

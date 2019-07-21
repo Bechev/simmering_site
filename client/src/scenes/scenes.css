@@ -1,19 +1,26 @@
 .navbar {
     display: flex;
-    align-content: left;
+    width: 100%;
+    justify-content: space-between;
+    margin: 4vh;
 }
 
 .navbar-link {
     margin: 1vh;
+    /* display: flex; */
+}
+
+.right-navbar{
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-direction: row;
 }
 
-.aligned-right{
-    
+.left-navbar{
+    display: flex;
+    flex-direction: row;
 }
 
-.aligned-left{
-    
+
+.home{
+    flex: 1;
 }

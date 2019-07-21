@@ -6,7 +6,7 @@ import './scenes.css';
 
 const link = {
     textDecoration: 'none',
-    color: 'grey',
+    color: 'darkgreen',
 } 
 
 class NavigationBar extends Component {
@@ -14,15 +14,17 @@ class NavigationBar extends Component {
 
    render() {
     return (
-        <div className='bars'>
-            <div className="navbar">
-
+        <div className='navbar'>
+            
+            <div className="right-navbar">
                 <NavLink className="navbar-link aligned-right"
                 to="/"
                 exact
                 style={link}
                 >Home</NavLink>
+            </div>
 
+            <div className="left-navbar">
                 <NavLink className="navbar-link aligned-left"
                 to="/signup"
                 exact
@@ -34,9 +36,9 @@ class NavigationBar extends Component {
                 exact
                 style={link}
                 >Log in</NavLink>
-
             </div>
-          </div>
+
+        </div>
     );
   }
 }
