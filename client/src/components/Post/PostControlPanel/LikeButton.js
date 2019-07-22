@@ -18,7 +18,7 @@ class LikeButton extends Component {
                 <img src={Like} 
                 alt='like_button'>
                 </img>
-                <div>{this.state.number_of_likes}</div>
+                <div className="post_social_counter">{this.state.number_of_likes}</div>
                 
             </div>
         )

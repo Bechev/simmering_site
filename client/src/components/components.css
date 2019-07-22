@@ -1,3 +1,19 @@
+/* Cross-app css */
+.input_field{
+    display: flex;
+    font-size: 2.5vh;
+    padding: 1vh;
+    border-radius: 7px;
+}
+
+.button{
+    display: flex;
+    font-size: 2.5vh;
+    padding: 1vh;
+    border-radius: 7px; 
+}
+
+/* Post Component */
 .new_post_form{
     display: flex;
     width: 100%;
@@ -24,6 +40,7 @@
     height: 4vh;
     width: 94%;
     font-size: 2.5vh;
+    border-radius: 5px; 
 }
 
 .char_counter{
@@ -63,5 +80,28 @@
     justify-content: space-evenly;
     width: 25%;
     font-size: 1.5vh;
+    font-weight: bold;
+    align-items: center;
+}
+
+.post_social_counter {
+}
+
+
+/* CSS for Login & Signup component */
+.login_signup_form {
+    display: flex;
+    flex-direction: column;
+    padding-top: 30vh;
+    padding-left: 10vh;
+    width: 50%;
+    height: 100vh;
+}
+
+.welcome_sentence{
+    display: flex;
+    margin-bottom: 5vh;
+    font-size: 2.5vh;
+    color: darkolivegreen; 
     font-weight: bold;
 }

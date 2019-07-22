@@ -18,7 +18,7 @@ class CommentButton extends Component {
                 <img src={Comment} 
                 alt='comment_button'>
                 </img>
-                <div>{this.state.number_of_comments}</div>
+                <div className="post_social_counter">{this.state.number_of_comments}</div>
                 
             </div>
         )

@@ -6,7 +6,7 @@ import './scenes.css';
 
 const link = {
     textDecoration: 'none',
-    color: 'darkgreen',
+    color: 'darkolivegreen',
 } 
 
 class NavigationBar extends Component {

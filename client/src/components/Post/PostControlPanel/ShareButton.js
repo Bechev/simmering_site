@@ -18,7 +18,7 @@ class ShareButton extends Component {
                 <img src={Share} 
                 alt='share_button'>
                 </img>
-                <div>{this.state.number_of_reshares}</div>
+                <div className="post_social_counter">{this.state.number_of_reshares}</div>
                 
             </div>
         )
