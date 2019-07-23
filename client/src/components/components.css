@@ -54,12 +54,17 @@
 }
 
 .post{
+    display: flex;
+    flex-direction: column;
     padding-left: 2vh;
     padding-right: 2vh;
+    align-items: center;
+    object-fit: contain;
 }
 
 .post_content{
     display: flex;
+    width: 90%;
     min-height: 4vh;
     justify-content: center;
     text-align: justify;
@@ -71,8 +76,8 @@
 }
 
 .post_control_panel{
-    padding: 2vh;
     display: flex;
+    padding: 2vh;
     flex-direction: row;
     justify-content: space-between;
 }
@@ -85,9 +90,23 @@
     font-size: 1.5vh;
     font-weight: bold;
     align-items: center;
+    padding-left: 4vh;
+    padding-right: 4vh;
 }
 
-.post_social_counter {
+.comment{
+    display: flex;
+    width: 73%;
+    margin-left: 4vh;
+    padding-left: 10vh;
+    border-width: 1px;
+    border-left-style: solid;
+    border-color: rgb(139, 139, 139);
+    border-top-style: none;
+    /* width: 90%;
+    padding: 2vh;
+    flex-direction: row;
+    justify-content: space-between; */
 }
 
 

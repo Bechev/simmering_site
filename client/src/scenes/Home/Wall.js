@@ -11,10 +11,11 @@ class Wall extends Component {
     return(
         <div className="wall">
             <NewPostForm/>
-            <Post/>
-            <Post/>
-            <Post/>
-            <Post/>
+            <Post isComment={false}/>
+            <Post isComment={true}/>
+            <Post isComment={true}/>
+            <Post isComment={false}/>
+            <Post isComment={true}/>
         </div>
         )
     }

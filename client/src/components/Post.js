@@ -9,6 +9,7 @@ class Post extends Component {
         super(props);
         this.state = {
             post_content: 'String of 255 characters and bigger than that. I dont know what to put in here to get the message long enough. I could just copy paste what I already typed but its not so fun or a lorem ipsum. I actually found some stuff to write and dont want to stop anymore now...',
+            isComment: this.props.isComment,
             number_of_likes: '',
             number_of_reshares: '',
         }
@@ -18,7 +19,7 @@ class Post extends Component {
 
         return(
             <div className="post">
-                <PostContent/>
+                <PostContent isComment={this.props.isComment}/>
                 <PostContentControlPanel/>
             </div>
             )

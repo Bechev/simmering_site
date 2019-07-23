@@ -7,17 +7,33 @@ class PostContent extends Component {
         super(props);
         this.state = {
             post_content: 'String of 255 characters and bigger than that. I dont know what to put in here to get the message long enough. I could just copy paste what I already typed but its not so fun or a lorem ipsum. I actually found some stuff to write and dont want to stop anymore now...',
-            number_of_likes: '',
-            number_of_reshares: '',
+            isComment: this.props.isComment,
         }
+        this.renderContent = this.renderContent.bind(this);
     }
 
+    renderContent(){
+        if(this.state.isComment===false){
+            return(
+                <div className="post_content">
+                    {this.state.post_content}
+                </div>
+            )
+        }else if (this.state.isComment ===true){
+            return(
+                <div className="post_content comment">
+                    {this.state.post_content}
+                </div>
+            )
+        }
+    }
+    
     render() {
-
+        
         return(
-            <div className="post_content">
-                {this.state.post_content}
-            </div>
+            <React.Fragment>
+                {this.renderContent()}
+            </React.Fragment>
             )
         }
 
