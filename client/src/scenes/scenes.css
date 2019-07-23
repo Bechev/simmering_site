@@ -53,5 +53,15 @@
     display: flex;
     width: 50%;
     height: 100vh;
-    background-color: darkolivegreen;
+    background-color: rgb(85, 105, 47);
+    flex-direction: column;
+    align-items: flex-end;
 }
+
+.welcome_decoration img {
+    max-height: 100%;
+    display: flex;
+    width: auto;
+    max-width: 100%;
+    /* align-self: flex-start; */
+ }

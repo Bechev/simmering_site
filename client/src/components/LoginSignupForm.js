@@ -27,11 +27,27 @@ class LoginSignupForm extends Component {
     renderWelcomeSentence(){
         if(this.props.submission === 'login'){
             return(    
-                <div className="welcome_sentence">Welcome back, glad to see you again.</div>
+                <div className="welcome_sentence">
+                    <span>
+                        Welcome back, glad to see you again.
+                    </span>
+                    <br></br>
+                    <span className="link_to_login_signup">
+                        New to Simmering? Click <a href="http://localhost:3000/signup">here</a> to create an account.
+                    </span>
+                </div>
             )
         }else if(this.props.submission === 'signup'){
             return(
-                <div className="welcome_sentence">New to Simmering? Welcome, let's start by creating an account.</div>
+                <div className="welcome_sentence">
+                    <span>
+                        New to Simmering? Welcome, let's start by creating an account.
+                    </span>
+                    <br></br>
+                    <span className="link_to_login_signup">
+                        Already part of the family? Log in <a href="http://localhost:3000/login">here</a>.
+                    </span>
+                </div>
             )
         }
     }

@@ -95,13 +95,19 @@
     padding-top: 30vh;
     padding-left: 10vh;
     width: 50%;
-    height: 100vh;
+    height: 100%;
 }
 
 .welcome_sentence{
-    display: flex;
+    /* display: flex; */
     margin-bottom: 5vh;
     font-size: 2.5vh;
-    color: darkolivegreen; 
+    color: rgb(85, 105, 47); 
     font-weight: bold;
+    text-align: left;
+}
+
+.link_to_login_signup{
+    color: black;
+    font-size: 2vh;
 }
