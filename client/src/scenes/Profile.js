@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 
-import Wall from './Home/Wall.js'
-
-class Home extends Component {
+class Profile extends Component {
 
   render() {
 
     return(
-        <div className="home">
-            <Wall/>
+        <div className="profile">
+            Profile
         </div>
         )
     }
 
 }
   
-export default withRouter(Home);
+export default withRouter(Profile);

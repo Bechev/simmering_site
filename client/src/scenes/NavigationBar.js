@@ -26,6 +26,23 @@ class NavigationBar extends Component {
 
             <div className="left-navbar">
                 <NavLink className="navbar-link aligned-left"
+                to="/browse"
+                exact
+                style={link}
+                >Browse</NavLink>
+
+                <NavLink className="navbar-link aligned-left"
+                to="/mycart"
+                exact
+                style={link}
+                >My Cart</NavLink>
+
+                <NavLink className="navbar-link aligned-left"
+                to="/profile"
+                exact
+                style={link}
+                >Profile</NavLink>
+                {/* <NavLink className="navbar-link aligned-left"
                 to="/signup"
                 exact
                 style={link}
@@ -35,7 +52,7 @@ class NavigationBar extends Component {
                 to="/login"
                 exact
                 style={link}
-                >Log in</NavLink>
+                >Log in</NavLink> */}
             </div>
 
         </div>

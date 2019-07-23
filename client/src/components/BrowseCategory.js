@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 
-import Wall from './Home/Wall.js'
 
-class Home extends Component {
+class BrowseCatgegory extends Component {
 
   render() {
 
     return(
-        <div className="home">
-            <Wall/>
+        <div className="browse_category">
+            Browse
         </div>
         )
     }
 
 }
   
-export default withRouter(Home);
+export default withRouter(BrowseCatgegory);

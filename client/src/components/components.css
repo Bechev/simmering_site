@@ -11,6 +11,8 @@
     font-size: 2.5vh;
     padding: 1vh;
     border-radius: 7px; 
+    background-color: rgb(85, 105, 47);
+    color: white;
 }
 
 /* Post Component */
@@ -37,7 +39,7 @@
 .post_input_field_button{
     display: table-cell;
     vertical-align: middle;
-    height: 4vh;
+    height: auto;
     width: 94%;
     font-size: 2.5vh;
     border-radius: 5px; 
@@ -65,6 +67,7 @@
     border-width: 1px;
     border-top-style: solid;
     border-color: rgb(139, 139, 139);
+    color: rgb(85, 105, 47);
 }
 
 .post_control_panel{

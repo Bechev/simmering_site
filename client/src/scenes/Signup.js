@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 
-import WelcomeDecoration from './Welcome/WelcomeDecoration.js'
+import WelcomeDecoration from './LoginSignup/WelcomeDecoration.js'
 import LoginSignupForm from '../components/LoginSignupForm.js'
 
 import './scenes.css';
