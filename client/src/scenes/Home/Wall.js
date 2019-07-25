@@ -12,6 +12,7 @@ class Wall extends Component {
         <div className="wall">
             <NewPostForm/>
             <Post isComment={false}/>
+            <Post isComment={false}/>
             <Post isComment={true}/>
             <Post isComment={true}/>
             <Post isComment={false}/>
