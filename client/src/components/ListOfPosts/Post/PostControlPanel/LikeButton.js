@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
-import Like from '../../../assets/control_panel_buttons/Like_button_30x30.png'
-import '../../components.css';
+import Like from '../../../../assets/control_panel_buttons/Like_button_30x30.png'
+import '../../../components.css';
 
 class LikeButton extends Component {
     constructor(props){

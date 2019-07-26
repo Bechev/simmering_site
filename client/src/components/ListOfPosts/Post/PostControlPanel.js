@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom';
 import LikeButton from './PostControlPanel/LikeButton.js'
 import ShareButton from './PostControlPanel/ShareButton.js'
 import CommentButton from './PostControlPanel/CommentButton.js'
-import '../components.css';
+import '../../components.css';
 
 class PostControlPanel extends Component {
 

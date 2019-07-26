@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
-import Share from '../../../assets/control_panel_buttons/Share_button_30x30.png'
-import '../../components.css';
+import Share from '../../../../assets/control_panel_buttons/Share_button_30x30.png'
+import '../../../components.css';
 
 class ShareButton extends Component {
     constructor(props){

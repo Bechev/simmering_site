@@ -1,5 +1,5 @@
 export default function postsReducer(state = {
-    isLoading: false,
+    isLoaded: false,
     errorMessage: '',
     lastPublicPosts: [],
     lastUserPosts: [],
@@ -10,18 +10,18 @@ export default function postsReducer(state = {
         case 'GET_LAST_PUBLIC_POSTS':
             return  {
                     ...state,
-                    isLoading: true}
+                    isLoaded: false}
             
         case 'LOAD_LAST_PUBLIC_POSTS_SUCCESS':
         return  {
                 ...state,
-                isLoading: false,
+                isLoaded: true,
                 lastPublicPosts: [].concat(action.payload)}
 
         case 'LOAD_LAST_PUBLIC_POSTS_FAILURE':
             return{
                 ...state,
-                isLoading: false,
+                isLoaded: true,
                 errorMessage: action.payload.message}
 
         default:

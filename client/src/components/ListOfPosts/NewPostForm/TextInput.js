@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
-import '../components.css';
+import '../../components.css';
 
 class TextInput extends Component {
 

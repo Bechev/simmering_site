@@ -4,7 +4,6 @@ export function fetchLastPublicPosts(history){
         return fetch("http://localhost:3000/api/v1/posts")
         .then(response => response.json())
         .then(posts_list => {
-            console.log("posts_lists: " + posts_list) 
             dispatch({type:'LOAD_LAST_PUBLIC_POSTS_SUCCESS', payload: posts_list})
         })
         .catch(error =>{
