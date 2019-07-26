@@ -7,7 +7,7 @@ class ShareButton extends Component {
     constructor(props){
         super(props);
         this.state = {
-            number_of_reshares: 8,
+            numberOfReshares: this.props.numberOfReshares,
         }
     }
 
@@ -18,7 +18,7 @@ class ShareButton extends Component {
                 <img src={Share} 
                 alt='share_button'>
                 </img>
-                <div className="post_social_counter">{this.state.number_of_reshares}</div>
+                <div className="post_social_counter">{this.state.numberOfReshares}</div>
                 
             </div>
         )

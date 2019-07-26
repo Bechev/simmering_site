@@ -7,7 +7,7 @@ class LikeButton extends Component {
     constructor(props){
         super(props);
         this.state = {
-            number_of_likes: 7,
+            numberOfLikes: this.props.numberOfLikes,
         }
     }
 
@@ -18,7 +18,7 @@ class LikeButton extends Component {
                 <img src={Like} 
                 alt='like_button'>
                 </img>
-                <div className="post_social_counter">{this.state.number_of_likes}</div>
+                <div className="post_social_counter">{this.state.numberOfLikes}</div>
                 
             </div>
         )

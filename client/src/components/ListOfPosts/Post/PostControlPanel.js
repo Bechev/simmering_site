@@ -11,8 +11,8 @@ class PostControlPanel extends Component {
 
         return(
             <div className="post_control_panel">
-                <LikeButton/>
-                <ShareButton/>
+                <LikeButton numberOfLikes={this.props.numberOfLikes}/>
+                <ShareButton numberOfReshares={this.props.numberOfReshares}/>
                 <CommentButton/>
             </div>
             )

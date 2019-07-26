@@ -12,15 +12,17 @@ constructor(props){
     super(props);
     this.state = {
         isLoaded: this.props.isLoaded,
+        errorMessage: this.props.errorMessage,
         lastPublicPosts: this.props.lastPublicPosts
     }
 }
 
 componentDidUpdate(prevProps){
-    if (this.props.lastPublicPosts !== prevProps.lastPublicPosts){
+    if (this.props !== prevProps){
         this.setState ({
             isLoaded: this.props.isLoaded,
-            lastPublicPosts: this.props.lastPublicPosts
+            lastPublicPosts: this.props.lastPublicPosts,
+            errorMessage: this.props.errorMessage,
         })
     }
 
@@ -31,6 +33,13 @@ renderListOfPosts(){
         return(
             <div>
                 Loading
+            </div>
+        )
+    }else if(this.state.errorMessage){
+        console.log("this.state.errorMessage" + this.state.errorMessage)
+        return(
+            <div>
+                {this.state.errorMessage}
             </div>
         )
     }else{
@@ -58,6 +67,7 @@ renderListOfPosts(){
 const mapStateToProps = (state) => {
     return {
         isLoaded: state.posts.isLoaded,
+        errorMessage: state.posts.errorMessage,
         lastPublicPosts: state.posts.lastPublicPosts,
     }
   }

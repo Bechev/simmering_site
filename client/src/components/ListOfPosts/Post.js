@@ -11,7 +11,7 @@ class Post extends Component {
             postContent: this.props.post.message,
             isComment: false,
             numberOfLikes: this.props.post.likes,
-            numberOfReshares: this.props.post.reshares,
+            numberOfReshares: this.props.post.reshare,
             id: this.props.key
         }
     }
@@ -24,8 +24,8 @@ class Post extends Component {
                     postContent={this.state.postContent}/>
 
                 <PostContentControlPanel 
-                    likes={this.state.numberOfLikes} 
-                    reshares={this.state.numberOfReshares}/>
+                    numberOfLikes={this.state.numberOfLikes} 
+                    numberOfReshares={this.state.numberOfReshares}/>
             </div>
             )
         }
