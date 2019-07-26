@@ -30,7 +30,7 @@ renderListOfPosts(){
     if(!this.state.isLoaded){
         return(
             <div>
-                "Loading"
+                Loading
             </div>
         )
     }else{

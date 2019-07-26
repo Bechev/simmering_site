@@ -100,6 +100,10 @@
     padding-right: 4vh;
 }
 
+.post_social_counter{
+    margin: 1vh;
+}
+
 .comment{
     display: flex;
     width: 73%;

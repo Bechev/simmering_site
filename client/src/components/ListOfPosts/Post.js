@@ -19,8 +19,13 @@ class Post extends Component {
     render() {
         return(
             <div className="post">
-                <PostContent postContent={this.state.postContent} isComment={this.state.isComment}/>
-                <PostContentControlPanel likes={this.state.numberOfLikes} reshares={this.state.numberOfReshares} />
+                <PostContent 
+                    postid={this.state.id} 
+                    postContent={this.state.postContent}/>
+
+                <PostContentControlPanel 
+                    likes={this.state.numberOfLikes} 
+                    reshares={this.state.numberOfReshares}/>
             </div>
             )
         }
