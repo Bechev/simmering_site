@@ -12,7 +12,7 @@ class Post extends Component {
             isComment: false,
             numberOfLikes: this.props.post.likes,
             numberOfReshares: this.props.post.reshare,
-            id: this.props.key
+            id: this.props.post.id
         }
     }
 
@@ -20,10 +20,11 @@ class Post extends Component {
         return(
             <div className="post">
                 <PostContent 
-                    postid={this.state.id} 
+                    postId={this.state.id} 
                     postContent={this.state.postContent}/>
 
                 <PostContentControlPanel 
+                    postId={this.state.id} 
                     numberOfLikes={this.state.numberOfLikes} 
                     numberOfReshares={this.state.numberOfReshares}/>
             </div>

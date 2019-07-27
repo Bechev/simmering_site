@@ -13,27 +13,6 @@ export function fetchLastPublicPosts(history){
 };
 
 
-// export function fetchRecommendedRecipes(user_id, history){
-//     return (dispatch) => {
-//         dispatch({ type: 'FETCH_USER_RECOMENDED_RECIPES' });    
-//         return fetch("http://localhost:3000/favorite_recipes/"+ user_id,{
-//             method: "POST",
-//             cache: "no-cache",
-//             credentials: "same-origin",
-//             headers: {
-//                 "Content-Type": "application/json"
-//             },
-//             body: JSON.stringify({
-//                 id: user_id,
-//             })
-//         })
-//         .then(response => response.json())
-//         .then(recipe_category_list => { 
-//             dispatch({type:'LOAD_RECOMENDED_RECIPES_LIST_SUCCESS', payload: recipe_category_list})
-//         })
-//     }    
-// };
-
 // export function addToFavoriteRecipes(recipeId, userId, history){
 //     return (dispatch) => {
 //         dispatch({ type: 'START_ADDING_RECIPE_TO_FAVORITES' });    

@@ -8,11 +8,14 @@ import '../../components.css';
 class PostControlPanel extends Component {
 
     render() {
-
         return(
             <div className="post_control_panel">
-                <LikeButton numberOfLikes={this.props.numberOfLikes}/>
-                <ShareButton numberOfReshares={this.props.numberOfReshares}/>
+                <LikeButton 
+                    postId={this.props.postId} 
+                    numberOfLikes={this.props.numberOfLikes}/>
+                <ShareButton 
+                    postId={this.props.postId} 
+                    numberOfReshares={this.props.numberOfReshares}/>
                 <CommentButton/>
             </div>
             )

@@ -25,7 +25,6 @@ componentDidUpdate(prevProps){
             errorMessage: this.props.errorMessage,
         })
     }
-
 }
 
 renderListOfPosts(){
@@ -36,7 +35,6 @@ renderListOfPosts(){
             </div>
         )
     }else if(this.state.errorMessage){
-        console.log("this.state.errorMessage" + this.state.errorMessage)
         return(
             <div>
                 {this.state.errorMessage}
@@ -44,9 +42,9 @@ renderListOfPosts(){
         )
     }else{
         return(
-            this.state.lastPublicPosts.map((post, id)=>{
+            this.state.lastPublicPosts.map((post)=>{
                 return(
-                    <Post key={id} post={post}/>
+                    <Post key={post.id} post={post}/>
                 )
             })
         )
