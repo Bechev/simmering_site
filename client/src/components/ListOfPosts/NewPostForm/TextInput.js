@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
+import { connect } from 'react-redux'
+import {submit_new_post} from '../../../services/actions/post.js' 
+
 import '../../components.css';
 
 class TextInput extends Component {
@@ -11,6 +14,7 @@ class TextInput extends Component {
             character_remaining: 255,
         }
         this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     handleChange(event) {
@@ -22,6 +26,11 @@ class TextInput extends Component {
         }else{
             alert("You're too chatty bro")
         }
+    }
+
+    handleSubmit(){
+        let new_post = {message: this.state.post_value, likes: 0, reshare: 0}
+        this.props.submit_new_post(new_post)
     }
 
     render() {
@@ -40,4 +49,21 @@ class TextInput extends Component {
 
 }
   
-export default withRouter(TextInput);
+
+// const mapStateToProps = (state, ownProps) => {
+//     return {
+//     //   number_of_likes: state.post.likes,
+//     //   isLoaded: state.isLoaded,
+//     //   errorMessage: state.errorMessage,
+//     }
+//   }
+   
+  const mapDispatchToProps = dispatch => {
+    return {
+        submit_new_post: (post, history) => dispatch(submit_new_post(post, history))
+    //   like_post: (postId, history) => dispatch(like_post(postId, history)),
+    }
+  }
+  
+export default withRouter(connect(null, mapDispatchToProps)(TextInput));
+// export default withRouter(TextInput);

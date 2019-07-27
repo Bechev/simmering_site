@@ -22,3 +22,28 @@ export function like_post(post_id,number_of_likes, history){
         })
     }    
 };
+
+
+export function submit_new_post(post, history){
+    return (dispatch) => {
+        dispatch({ type: 'SUBMIT_NEW_POST' });    
+        return fetch("http://localhost:3000/api/v1/posts/" ,{
+            method: "POST",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json; charset=utf-8"
+            },
+            body: JSON.stringify({
+                post: post
+            })
+        })
+        .then(response => response.json())
+        .then(post => { 
+            dispatch({type:'SUBMIT_NEW_POST_SUCCESS', payload: post})
+        })
+        .catch(error =>{
+            dispatch({type:'SUBMIT_NEW_POST_FAILURE', payload: error, error:true})
+        })
+    }    
+};
