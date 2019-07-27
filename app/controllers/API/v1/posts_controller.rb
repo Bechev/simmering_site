@@ -12,16 +12,41 @@ module Api
                 render json: @posts
             end
             
-            def like_post
-                @post = Post.find(params[:id])
-                if @post
-                    @post.likes += 1
-                    # debugger
-                    @post.save
+            # def like_post
+            #     @post = Post.find(params[:id])
+            #     if @post
+            #         @post.likes += 1
+            #         @post.save
+            #         render json: @post, status: 201
+            #     else
+            #         render json: {errors: @post.errors.full_messages}, status: 422
+            #     end
+            # end
+
+            def create
+                @post = Post.new(params)
+                if @post.save
                     render json: @post, status: 201
                 else
                     render json: {errors: @post.errors.full_messages}, status: 422
                 end
+            end
+
+            def update 
+                @post = Post.find(params[:id])
+                # debugger
+                @post.update_attributes(post_params)
+                if @post.save
+                    render json: @post, status: 201
+                else
+                    render json: {errors: @post.errors.full_messages}, status: 422
+                end
+            end
+
+
+            private
+            def post_params
+                params.require(:post).permit(:message, :likes, :reshare)
             end
 
 

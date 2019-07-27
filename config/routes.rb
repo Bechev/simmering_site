@@ -5,13 +5,13 @@ Rails.application.routes.draw do
         namespace :v1 do 
 
             
-            resources :posts, only: [:index]
+            resources :posts
             resources :mealplans, only: [:index]
             resources :days, only: [:index]
             resources :meals, only: [:index]
             resources :recipes, only: [:index]
             
-            post 'posts/:id/like_post' =>"posts#like_post"
+            # post 'posts/:id/like_post' =>"posts#like_post"
 
             resources :users do 
                 resources :posts

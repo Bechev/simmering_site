@@ -17,10 +17,10 @@ class LikeButton extends Component {
     }
 
     handleClick(){
-        this.props.like_post(this.props.postId)
         this.setState({
             numberOfLikes: this.state.numberOfLikes + 1
         })
+        this.props.like_post(this.props.postId, this.state.numberOfLikes)
     }
     
     renderNumberOfLikes(){

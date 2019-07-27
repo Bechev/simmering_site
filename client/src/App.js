@@ -6,13 +6,12 @@ import NavigationBar from './scenes/NavigationBar.js'
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <div className="App-header">
       <NavigationBar/>
-      </header>
-      <body className="App-body">
+      </div>
+      <div className="App-body">
       <Routes/>
-      </body>
-      
+      </div>
     </div>
   );
 }
