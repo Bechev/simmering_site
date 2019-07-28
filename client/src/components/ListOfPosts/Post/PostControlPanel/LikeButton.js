@@ -10,7 +10,7 @@ class LikeButton extends Component {
         super(props);
         this.state = {
             isLoaded: this.props.isLoaded,
-            numberOfLikes: this.props.numberOfLikes,
+            numberOfLikes: this.props.post.likes,
             errorMessage: this.props.errorMessage,
         }
         this.handleClick = this.handleClick.bind(this)
@@ -20,13 +20,7 @@ class LikeButton extends Component {
         this.setState({
             numberOfLikes: this.state.numberOfLikes + 1
         })
-        this.props.like_post(this.props.postId, this.state.numberOfLikes)
-    }
-    
-    renderNumberOfLikes(){
-        return(
-            <div className="post_social_counter">{this.state.numberOfLikes}</div>
-        )
+        this.props.like_post(this.props.post.id, this.state.numberOfLikes + 1)
     }
 
     render() {

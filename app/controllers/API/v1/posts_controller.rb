@@ -13,7 +13,7 @@ module Api
             end
 
             def create
-                @post = Post.new(post_params)
+                @post = Post.new(message: params[:post_message], likes: 0, reshare: 0)
                 if @post.save
                     render json: @post, status: 201
                 else
@@ -23,7 +23,6 @@ module Api
 
             def update 
                 @post = Post.find(params[:id])
-                # debugger
                 @post.update_attributes(post_params)
                 if @post.save
                     render json: @post, status: 201

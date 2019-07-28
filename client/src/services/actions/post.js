@@ -23,8 +23,34 @@ export function like_post(post_id,number_of_likes, history){
     }    
 };
 
+export function share_post(post_id, number_of_shares, history){
+    return (dispatch) => {
+        dispatch({ type: 'SHARE_POST' });    
+        return fetch("http://localhost:3000/api/v1/posts/" + post_id ,{
+            method: "PUT",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json; charset=utf-8"
+            },
+            body: JSON.stringify({
+                id: post_id,
+                reshare: number_of_shares
+            })
+        })
+        .then(response => response.json())
+        .then(post => { 
+            dispatch({type:'SHARE_POST_SUCCESS', payload: post})
+            window.location.reload()
+        })
+        .catch(error =>{
+            dispatch({type:'SHARE_POST_FAILURE', payload: error, error:true})
+        })
+    }    
+};
 
-export function submit_new_post(post, history){
+
+export function submit_new_post(post_message, history){
     return (dispatch) => {
         dispatch({ type: 'SUBMIT_NEW_POST' });    
         return fetch("http://localhost:3000/api/v1/posts/" ,{
@@ -35,7 +61,7 @@ export function submit_new_post(post, history){
                 "Content-Type": "application/json; charset=utf-8"
             },
             body: JSON.stringify({
-                post: post
+                post_message: post_message
             })
         })
         .then(response => response.json())

@@ -6,7 +6,7 @@ class PostContent extends Component {
     constructor(props){
         super(props);
         this.state = {
-            postContent: this.props.postContent,
+            postContent: this.props.post.message,
             isComment: this.props.isComment,
         }
     }

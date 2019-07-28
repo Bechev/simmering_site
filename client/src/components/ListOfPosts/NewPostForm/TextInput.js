@@ -29,8 +29,7 @@ class TextInput extends Component {
     }
 
     handleSubmit(){
-        let new_post = {message: this.state.post_value, likes: 0, reshare: 0}
-        this.props.submit_new_post(new_post)
+        this.props.submit_new_post(this.state.post_value)
     }
 
     render() {
@@ -49,21 +48,11 @@ class TextInput extends Component {
 
 }
   
-
-// const mapStateToProps = (state, ownProps) => {
-//     return {
-//     //   number_of_likes: state.post.likes,
-//     //   isLoaded: state.isLoaded,
-//     //   errorMessage: state.errorMessage,
-//     }
-//   }
-   
-  const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
     return {
-        submit_new_post: (post, history) => dispatch(submit_new_post(post, history))
-    //   like_post: (postId, history) => dispatch(like_post(postId, history)),
+        submit_new_post: (post_message, history) => dispatch(submit_new_post(post_message, history))
     }
-  }
+}
   
 export default withRouter(connect(null, mapDispatchToProps)(TextInput));
 // export default withRouter(TextInput);
