@@ -33,6 +33,28 @@ for x in POSTS do
     Post.create(message: x[0], reshare: x[1], likes: x[2], user_id: x[3])
 end
 
+COMMENTS = [["comment1",1],
+            ["comment 2",1],
+            ["comment 3",2],
+            ["comment 4",3],
+            ["comment 5",3],
+            ["comment 6",5],
+            ["comment 7",5],
+            ["comment 8",5],
+            ["comment 9",5],
+            ["comment 10",6],
+            ["comment 11",7],
+            ["comment 12",8],
+            ["comment 13",8],
+            ["comment 14",10],
+            ["comment 15",11],
+            ["comment 16",11],
+            ["comment 17",11]]
+
+for x in COMMENTS do
+    Comment.create(message: x[0], post_id: x[1])
+end
+
 # Seed ingredients
 INGREDIENTS =  [
     ["tomatoes"],

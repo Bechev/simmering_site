@@ -11,7 +11,10 @@ Rails.application.routes.draw do
             resources :meals, only: [:index]
             resources :recipes, only: [:index]
             
-            # post 'posts/:id/like_post' =>"posts#like_post"
+
+            resources :posts do
+                resources :comments, only: [:index]
+            end
 
             resources :users do 
                 resources :posts

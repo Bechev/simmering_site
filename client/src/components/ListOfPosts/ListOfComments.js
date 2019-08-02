@@ -2,18 +2,20 @@ import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux'
 
-import NewPostForm from './ListOfPosts/NewPostForm.js';
-import Post from './ListOfPosts/Post.js';
-import './components.css';
+import Post from './Post.js'
 
-class ListOfPosts extends Component {
+import NewPostForm from './NewPostForm.js';
+// import Post from './Post.js';
+import '../components.css';
+
+class ListOfComments extends Component {
 
 constructor(props){
     super(props);
     this.state = {
         isLoaded: this.props.isLoaded,
         errorMessage: this.props.errorMessage,
-        lastPublicPosts: this.props.lastPublicPosts
+        comments: this.props.post.comments
     }
 }
 
@@ -21,13 +23,13 @@ componentDidUpdate(prevProps){
     if (this.props !== prevProps){
         this.setState ({
             isLoaded: this.props.isLoaded,
-            lastPublicPosts: this.props.lastPublicPosts,
+            postComments: this.props.post.comments,
             errorMessage: this.props.errorMessage,
         })
     }
 }
 
-renderListOfPosts(){
+renderListOfComments(){
     if(!this.state.isLoaded){
         return(
             <div>
@@ -40,22 +42,24 @@ renderListOfPosts(){
                 {this.state.errorMessage}
             </div>
         )
-    }else{
-        return(
-            this.state.lastPublicPosts.map((post)=>{
-                return(
-                    <Post key={post.id} post={post} isComment={false}/>
-                )
-            })
-        )
+    }else if(this.props.post.comments){
+        console.log("this.props.post.comments" + this.props.post.comments)
+            return(
+                this.props.post.comments.map((post)=>{
+                    return(
+                        <Post key={post.id} post={post} isComment={true}/>
+                    )
+                })
+            )
     }
 }
 
   render() {
+      console.log("this happened first")
     return(
         <div className="list_of_posts">
             <NewPostForm/>
-            {this.renderListOfPosts()}
+            {this.renderListOfComments()}
         </div>
         )
     }
@@ -66,8 +70,8 @@ const mapStateToProps = (state) => {
     return {
         isLoaded: state.posts.isLoaded,
         errorMessage: state.posts.errorMessage,
-        lastPublicPosts: state.posts.lastPublicPosts,
+        postComments: state.posts.postComments,
     }
   }
    
-export default withRouter(connect(mapStateToProps, null)(ListOfPosts));
+export default withRouter(connect(mapStateToProps, null)(ListOfComments));
