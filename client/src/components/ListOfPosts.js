@@ -54,7 +54,7 @@ renderListOfPosts(){
   render() {
     return(
         <div className="list_of_posts">
-            <NewPostForm/>
+            <NewPostForm isComment={false}/>
             {this.renderListOfPosts()}
         </div>
         )

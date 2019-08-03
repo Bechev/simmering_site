@@ -42,6 +42,7 @@
     border-radius: 7px;
 }
 
+
 .post_input_field_button{
     display: table-cell;
     vertical-align: middle;
@@ -49,6 +50,16 @@
     width: 94%;
     font-size: 2.5vh;
     border-radius: 5px; 
+}
+
+.comment_input_field_button{
+    display: table-cell;
+    vertical-align: middle;
+    height: auto;
+    width: 94%;
+    font-size: 2.5vh;
+    border-radius: 5px; 
+    background-color: gray;
 }
 
 .char_counter{

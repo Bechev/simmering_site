@@ -13,8 +13,10 @@ class TextInput extends Component {
             post_value:  '',
             character_remaining: 255,
         }
+        // this.renderTextInput = this.renderTextInput.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handlePostSubmit = this.handlePostSubmit.bind(this);
+        this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
     }
 
     handleChange(event) {
@@ -28,23 +30,45 @@ class TextInput extends Component {
         }
     }
 
-    handleSubmit(){
+    handlePostSubmit(){
         this.props.submit_new_post(this.state.post_value)
     }
 
-    render() {
-        return(
-            <div className="post_input">
-                <form onSubmit={this.handleSubmit}>
+    handleCommentSubmit(){
+        this.props.submit_new_post(this.state.post_value)
+    }
+
+    renderTextInput(){
+        if(this.props.isComment===false){
+            return(
+                <form onSubmit={this.handlePostSubmit}>
                     <label className='post_input_field'>
                         <textarea className='post_input_field' type="text" name="post_value" value={this.state.post_value} onChange={this.handleChange} placeholder="Share you meal plans here"/>
                     </label><br></br>
                     <input className='post_input_field_button button' type="submit" value="Post" />
                     <label className='char_counter'>Char remaining: {this.state.character_remaining}</label>
                 </form>
-            </div>
+            )
+        }else{
+            return(
+                <form onSubmit={this.handleCommentSubmit}>
+                    <label className='post_input_field'>
+                        <textarea className='post_input_field' type="text" name="post_value" value={this.state.post_value} onChange={this.handleChange} placeholder="Any comments?"/>
+                    </label><br></br>
+                    <input className='comment_input_field_button button' type="submit" value="Post" />
+                    <label className='char_counter'>Char remaining: {this.state.character_remaining}</label>
+                </form>
             )
         }
+    }
+
+    render() {
+        return(
+            <div className="post_input">
+                {this.renderTextInput()}
+            </div>
+        )
+    }
 
 }
   
