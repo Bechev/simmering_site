@@ -9,7 +9,7 @@ class NewPostForm extends Component {
 
     return(
         <div className="new_post_form">
-            <TextInput isComment={this.props.isComment}/>
+            <TextInput post_id={this.props.post_id} isComment={this.props.isComment}/>
         </div>
         )
     }

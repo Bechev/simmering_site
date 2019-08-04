@@ -58,7 +58,7 @@ renderListOfComments(){
       console.log("this happened first")
     return(
         <div className="list_of_posts">
-            <NewPostForm isComment={true}/>
+            <NewPostForm post_id={this.props.post.id} isComment={true}/>
             {this.renderListOfComments()}
         </div>
         )

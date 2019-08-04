@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux'
-import {displayPostComments, hidePostComments } from '../../../../services/actions/comments.js'
+import { displayPostComments, hidePostComments } from '../../../../services/actions/comments.js'
 
 import Comment from '../../../../assets/control_panel_buttons/Comment_button_30x30.png'
 import '../../../components.css';

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux'
-import {submit_new_post} from '../../../services/actions/post.js' 
+import { submit_new_post } from '../../../services/actions/post.js' 
+import { submit_new_comment } from '../../../services/actions/comment.js' 
 
 import '../../components.css';
 
@@ -13,7 +14,6 @@ class TextInput extends Component {
             post_value:  '',
             character_remaining: 255,
         }
-        // this.renderTextInput = this.renderTextInput.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handlePostSubmit = this.handlePostSubmit.bind(this);
         this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
@@ -35,7 +35,7 @@ class TextInput extends Component {
     }
 
     handleCommentSubmit(){
-        this.props.submit_new_post(this.state.post_value)
+        this.props.submit_new_comment(this.state.post_value, this.props.post_id)
     }
 
     renderTextInput(){
@@ -74,7 +74,8 @@ class TextInput extends Component {
   
 const mapDispatchToProps = dispatch => {
     return {
-        submit_new_post: (post_message, history) => dispatch(submit_new_post(post_message, history))
+        submit_new_post: (post_message, history) => dispatch(submit_new_post(post_message, history)),
+        submit_new_comment: (comment_message, post_id, history) => dispatch(submit_new_comment(comment_message, post_id, history))
     }
 }
   

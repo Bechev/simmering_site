@@ -6,13 +6,18 @@ module Api
                 @post=Post.find(params[:post_id])
                 @comments = @post.comments
                 render json: @comments, status: 201
+            end
 
+            def create
+                @post=Post.find(params[:post_id])
+                @comment = Comment.create(comment_params)
+                render json: @comment, status: 201
             end
 
 
             private
-            def post_params
-                params.require(:comment).permit(:message, :likes, :reshare)
+            def comment_params
+                params.require(:comment).permit(:message, :post_id)
             end
 
 
