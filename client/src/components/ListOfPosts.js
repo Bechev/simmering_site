@@ -18,12 +18,14 @@ constructor(props){
 }
 
 componentDidUpdate(prevProps){
-    if (this.props !== prevProps){
-        this.setState ({
-            isLoaded: this.props.isLoaded,
-            lastPublicPosts: this.props.lastPublicPosts,
-            errorMessage: this.props.errorMessage,
-        })
+    if (this.props.lastPublicPosts.comments === prevProps.lastPublicPosts.comments){
+        if (this.props.lastPublicPosts !== prevProps.lastPublicPosts ){
+            this.setState ({
+                isLoaded: this.props.isLoaded,
+                lastPublicPosts: this.props.lastPublicPosts,
+                errorMessage: this.props.errorMessage,
+            })
+        }
     }
 }
 
