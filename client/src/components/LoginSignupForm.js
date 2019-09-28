@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
+import { connect } from 'react-redux'
+import {sign_in } from '../services/actions/auth.js'
 import './components.css';
 
 class LoginSignupForm extends Component {
@@ -18,10 +20,17 @@ class LoginSignupForm extends Component {
         this.setState({
             [event.target.name]: event.target.value,
         });
+        // console.log("this.state.email_value")
     }
 
-    handleSubmit(){
-        
+    handleSubmit(e){
+        e.preventDefault()
+        if(this.props.submission === 'login'){
+            // console.log("executed")
+            this.props.sign_in(this.state.email_value, this.state.password_value)
+        }else if (this.props.submission === 'signup'){
+
+        }
     }
 
     renderWelcomeSentence(){
@@ -33,7 +42,7 @@ class LoginSignupForm extends Component {
                     </span>
                     <br></br>
                     <span className="link_to_login_signup">
-                        New to Simmering? Click <a href="http://localhost:3000/signup">here</a> to create an account.
+                        New to Simmering? Click <a href="http://localhost:3006/signup">here</a> to create an account.
                     </span>
                 </div>
             )
@@ -45,7 +54,7 @@ class LoginSignupForm extends Component {
                     </span>
                     <br></br>
                     <span className="link_to_login_signup">
-                        Already part of the family? Log in <a href="http://localhost:3000/login">here</a>.
+                        Already part of the family? Log in <a href="http://localhost:3006/login">here</a>.
                     </span>
                 </div>
             )
@@ -71,4 +80,18 @@ class LoginSignupForm extends Component {
 
 }
   
-export default withRouter(LoginSignupForm);
+// export default withRouter(LoginSignupForm);
+
+// const mapStateToProps = (state) => {
+//     return {
+//       lastPublicPosts: state.lastPublicPosts,
+//     }
+//   }
+   
+  const mapDispatchToProps = dispatch => {
+    return {
+        sign_in: (email, password, history) => dispatch(sign_in(email, password, history)),
+    }
+  }
+  
+  export default withRouter(connect(null, mapDispatchToProps)(LoginSignupForm));

@@ -42,7 +42,8 @@ class NavigationBar extends Component {
                 exact
                 style={link}
                 >Profile</NavLink>
-                {/* <NavLink className="navbar-link aligned-left"
+
+                <NavLink className="navbar-link aligned-left"
                 to="/signup"
                 exact
                 style={link}
@@ -52,7 +53,7 @@ class NavigationBar extends Component {
                 to="/login"
                 exact
                 style={link}
-                >Log in</NavLink> */}
+                >Log in</NavLink>
             </div>
 
         </div>

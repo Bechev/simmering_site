@@ -1,6 +1,8 @@
 module Api
     module V1
         class PostsController < ApplicationController
+            before_action :authenticate_user!
+            skip_before_action :authenticate_user!, only: [:index]
 
             def index
                 if params[:user_id] 
