@@ -18,7 +18,6 @@ class Post extends Component {
     renderComments(){
         if(this.props.idsOfPostsFromWhichDisplaComments.includes(this.props.post.id) && this.props.isComment===false){
             return(
-                    // <NewPostForm/>
                     <ListOfComments post={this.props.post}/>
             )
         }

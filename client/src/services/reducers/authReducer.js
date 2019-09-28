@@ -1,5 +1,5 @@
 export default function authReducer(state = {
-    
+    isLoaded: false,
 }, action) {
 
     switch (action.type) {
