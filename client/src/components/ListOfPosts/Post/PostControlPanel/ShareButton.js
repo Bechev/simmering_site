@@ -15,7 +15,6 @@ class ShareButton extends Component {
             errorMessage: this.props.errorMessage,
         }
         this.handleClick = this.handleClick.bind(this)
-        console.log(this.props.post.reshare)
     }
 
     handleClick(){

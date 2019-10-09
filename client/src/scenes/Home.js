@@ -7,10 +7,6 @@ import Wall from './Home/Wall.js'
 
 class Home extends Component {
 
-componentDidMount(){
-    this.props.fetchLastPublicPosts()
-}
-
   render() {
 
     return(

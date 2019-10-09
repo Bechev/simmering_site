@@ -6,10 +6,10 @@ export default function authReducer(state = {
         case 'LOGGING_USER_IN':
             return  {
                 ...state,
-                // test: action.payload
             }
-            
+
         case 'LOGGING_USER_IN_SUCCESS':
+            // console.log(action.payload.get("access-token"))
             return  {
                 // ...state,
                 isLoaded: true,

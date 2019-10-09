@@ -26,8 +26,8 @@ class LoginSignupForm extends Component {
     handleSubmit(e){
         e.preventDefault()
         if(this.props.submission === 'login'){
-            // console.log("executed")
             this.props.sign_in(this.state.email_value, this.state.password_value)
+            this.props.history.push('/')
         }else if (this.props.submission === 'signup'){
 
         }

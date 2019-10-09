@@ -12,36 +12,36 @@ const link = {
 
 class NavigationBar extends Component {
 
-    constructor(props){
-        super(props);
-    }
+    // constructor(props){
+    //     super(props);
+    // }
 
     renderNavBar(){
             if(this.props.user){
                 return(
                     <React.Fragment>
-                        <div className="right-navbar">
-                            <NavLink className="navbar-link aligned-right"
+                        <div className="left-navbar">
+                            <NavLink className="navbar-link"
                             to="/"
                             exact
                             style={link}
                             >Home</NavLink>
                         </div>
     
-                        <div className="left-navbar">
-                            <NavLink className="navbar-link aligned-left"
+                        <div className="right-navbar">
+                            <NavLink className="navbar-link"
                             to="/browse"
                             exact
                             style={link}
                             >Browse</NavLink>
     
-                            <NavLink className="navbar-link aligned-left"
+                            <NavLink className="navbar-link"
                             to="/mycart"
                             exact
                             style={link}
                             >My Cart</NavLink>
     
-                            <NavLink className="navbar-link aligned-left"
+                            <NavLink className="navbar-link"
                             to="/profile"
                             exact
                             style={link}
@@ -52,7 +52,7 @@ class NavigationBar extends Component {
             }else if(!this.props.user){
                 return(
                     <React.Fragment>
-                        <div className="right-navbar">
+                        <div className="left-navbar">
                             <NavLink className="navbar-link aligned-right"
                             to="/signup"
                             exact
