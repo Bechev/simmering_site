@@ -1,7 +1,10 @@
 import React from 'react';
-import './App.css';
+import {withRouter} from 'react-router-dom';
+import { connect } from 'react-redux'
+import {refresh_user } from './services/actions/auth.js'
 import Routes from './services/Routes.js'
 import NavigationBar from './scenes/NavigationBar.js'
+import './App.css';
 
 class App extends React.Component{
 
@@ -12,7 +15,7 @@ class App extends React.Component{
               + "&access-token=" + user['access-token'])
         .then(response=>{
             if(!response.ok) throw new Error(response.status)
-            else return response.json()
+            else this.props.refresh_user(user)
         })
         .catch(error=>{
             console.log(error)
@@ -26,11 +29,23 @@ class App extends React.Component{
                 <NavigationBar/>
                 </div>
                 <div className="App-body">
-                <Routes/>
+                <Routes user={this.props.user}/>
                 </div>
             </div>
         );
     }
 }
 
-export default App;
+const mapStateToProps = (state, ownProps) => {
+    return {
+      user: state.auth.user
+    }
+  }
+
+const mapDispatchToProps = dispatch => {
+    return {
+        refresh_user: (user) => dispatch(refresh_user(user)),
+    }
+}
+
+  export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

@@ -79,19 +79,11 @@ class LoginSignupForm extends Component {
     }
 
 }
-  
-// export default withRouter(LoginSignupForm);
-
-// const mapStateToProps = (state) => {
-//     return {
-//       lastPublicPosts: state.lastPublicPosts,
-//     }
-//   }
-   
-  const mapDispatchToProps = dispatch => {
+     
+const mapDispatchToProps = dispatch => {
     return {
         sign_in: (email, password, history) => dispatch(sign_in(email, password, history)),
     }
-  }
+}
   
   export default withRouter(connect(null, mapDispatchToProps)(LoginSignupForm));

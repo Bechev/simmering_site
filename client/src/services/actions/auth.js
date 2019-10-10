@@ -30,3 +30,9 @@ export function sign_in(email, password){
         })
     }    
 };
+
+export function refresh_user(user){
+    return(dispatch=>{
+        dispatch({type: "REFRESH_USER", payload: user})
+    })
+}

@@ -9,9 +9,7 @@ export default function authReducer(state = {
             }
 
         case 'LOGGING_USER_IN_SUCCESS':
-            // console.log(action.payload.get("access-token"))
             return  {
-                // ...state,
                 isLoaded: true,
                 user: action.payload}
 
@@ -21,6 +19,11 @@ export default function authReducer(state = {
                 isLoaded: true,
                 errorMessage: action.payload.message}
         
+        case 'REFRESH_USER':
+            return  {
+                isLoaded: true,
+                user: action.payload}        
+
         default:
             return state;
     }
