@@ -68,7 +68,7 @@ export function sign_out(user){
         })
         .catch(error=>{
             console.log(error)
-            dispatch({type:'SIGN_OUT_USER_FAILURE', payload: error, error:true})
+        dispatch({type:'SIGN_OUT_USER_FAILURE', payload: error, error:true})
         })
     })
 }
