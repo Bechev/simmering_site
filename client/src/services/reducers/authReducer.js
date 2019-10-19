@@ -3,27 +3,58 @@ export default function authReducer(state = {
 }, action) {
 
     switch (action.type) {
-        case 'LOGGING_USER_IN':
+        
+        // User login actions
+        case 'SIGNING_IN_USER':
             return  {
                 ...state,
             }
 
-        case 'LOGGING_USER_IN_SUCCESS':
+        case 'SIGN_IN_USER_SUCCESS':
             return  {
                 isLoaded: true,
                 user: action.payload}
 
-        case 'LOGGING_USER_IN_FAILURE':
+        case 'SIGN_IN_USER_FAILURE':
+            return{
+                ...state,
+                isLoaded: true,
+                errorMessage: action.payload.message}
+
+        // Credential verification actions
+        case 'CREDENTIAL_VERIFICATION':
+            return  {
+                ...state,
+            }
+        
+        case 'CREDENTIAL_VERIFICATION_SUCCESS':
+            return  {
+                isLoaded: true,
+                user: action.payload}                
+
+        case 'CREDENTIAL_VERIFICATION_FAILURE':
             return{
                 ...state,
                 isLoaded: true,
                 errorMessage: action.payload.message}
         
-        case 'REFRESH_USER':
+        // Logout actions
+        case 'SIGNING_OUT_USER':
+            return  {
+                ...state,
+            }
+        
+        case 'SIGN_OUT_USER_SUCCESS':
             return  {
                 isLoaded: true,
-                user: action.payload}        
+                user: action.payload}                
 
+        case 'SIGN_OUT_USER_FAILURE':
+            return{
+                ...state,
+                isLoaded: true,
+                errorMessage: action.payload.message}
+        
         default:
             return state;
     }
