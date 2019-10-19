@@ -31,8 +31,22 @@ export function sign_in(email, password){
     }    
 };
 
-export function refresh_user(user){
+export function verify_credentials(user){
     return(dispatch=>{
         dispatch({type: "REFRESH_USER", payload: user})
+        return fetch("http://localhost:3000/api/v1/auth/validate_token", {
+            headers:{
+                "uid": user.uid,
+                "client":  user.client,
+                "access-token":  user['access-token']
+            }
+        })
+        .then(response=>{
+            if(!response.ok) throw new Error(response.status)
+            else this.props.refresh_user(user)
+        })
+        .catch(error=>{
+            console.log(error)
+        })
     })
 }

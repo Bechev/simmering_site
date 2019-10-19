@@ -6,15 +6,17 @@ import { connect } from 'react-redux'
 import Wall from './Home/Wall.js'
 
 class Home extends Component {
-
-  render() {
-
-    return(
-        <div className="home">
-            <Wall/>
-        </div>
-        )
+    componentDidMount(){
+        this.props.fetchLastPublicPosts()
     }
+    render() {
+
+        return(
+            <div className="home">
+                <Wall/>
+            </div>
+            )
+        }
 
 }
 
