@@ -50,7 +50,7 @@ export function share_post(post_id, number_of_shares, history){
 };
 
 
-export function submit_new_post(post_message, history){
+export function submit_new_post(post_message, user, history){
     return (dispatch) => {
         dispatch({ type: 'SUBMIT_NEW_POST' });    
         return fetch("http://localhost:3000/api/v1/posts/" ,{
@@ -58,7 +58,10 @@ export function submit_new_post(post_message, history){
             cache: "no-cache",
             credentials: "same-origin",
             headers: {
-                "Content-Type": "application/json; charset=utf-8"
+                "Content-Type": "application/json; charset=utf-8",
+                "uid": user.uid,
+                "client":  user.client,
+                "access-token":  user['access-token']
             },
             body: JSON.stringify({
                 post_message: post_message

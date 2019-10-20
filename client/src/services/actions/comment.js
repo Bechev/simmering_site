@@ -1,4 +1,4 @@
-export function submit_new_comment(comment_message, post_id, history){
+export function submit_new_comment(comment_message, post_id, user, history){
     return (dispatch) => {
         dispatch({ type: 'SUBMIT_NEW_COMMENT' });    
         return fetch("http://localhost:3000/api/v1/posts/"+post_id+"/comments" ,{
@@ -6,7 +6,10 @@ export function submit_new_comment(comment_message, post_id, history){
             cache: "no-cache",
             credentials: "same-origin",
             headers: {
-                "Content-Type": "application/json; charset=utf-8"
+                "Content-Type": "application/json; charset=utf-8",
+                "uid": user.uid,
+                "client":  user.client,
+                "access-token":  user['access-token']
             },
             body: JSON.stringify({
                 comment:{

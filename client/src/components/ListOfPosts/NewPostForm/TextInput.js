@@ -31,11 +31,11 @@ class TextInput extends Component {
     }
 
     handlePostSubmit(){
-        this.props.submit_new_post(this.state.post_value)
+        this.props.submit_new_post(this.state.post_value, this.props.user)
     }
 
     handleCommentSubmit(){
-        this.props.submit_new_comment(this.state.post_value, this.props.post_id)
+        this.props.submit_new_comment(this.state.post_value, this.props.post_id, this.props.user)
     }
 
     renderTextInput(){
@@ -71,6 +71,12 @@ class TextInput extends Component {
     }
 
 }
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+      user: state.auth.user
+    }
+  }
   
 const mapDispatchToProps = dispatch => {
     return {
@@ -79,5 +85,5 @@ const mapDispatchToProps = dispatch => {
     }
 }
   
-export default withRouter(connect(null, mapDispatchToProps)(TextInput));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TextInput));
 // export default withRouter(TextInput);

@@ -1,8 +1,8 @@
 module Api
     module V1
         class PostsController < ApplicationController
-            # before_action :authenticate_api_v1_user!
-            # skip_before_action :authenticate_api_v1_user!, only: [:index]
+            before_action :authenticate_api_v1_user!
+            skip_before_action :authenticate_api_v1_user!, only: [:index]
 
             def index
                 if params[:user_id] 
@@ -15,14 +15,14 @@ module Api
             end
 
             def create
-                # if params[:user_id].user_signed_in?
-                    @post = Post.new(message: params[:post_message], likes: 0, reshare: 0)
-                    if @post.save
-                        render json: @post, status: 201
-                    else
-                        render json: {errors: @post.errors.full_messages}, status: 422
-                    end
-                # end
+                @post = Post.new(message: params[:post_message], likes: 0, reshare: 0)
+                @user = User.find_by(email: request.headers["uid"])
+                if @post.save
+                    @user.posts << @post
+                    render json: @post, status: 201
+                else
+                    render json: {errors: @post.errors.full_messages}, status: 422
+                end
             end
 
             def update 
