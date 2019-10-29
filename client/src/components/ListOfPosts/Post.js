@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux'
 import PostContent from './Post/PostContent.js'
-import PostContentControlPanel from './Post/PostControlPanel.js'
+import PostControlPanel from './Post/PostControlPanel.js'
 import '../components.css';
 import ListOfComments from './ListOfComments.js';
 // import NewPostForm from './NewPostForm.js';
@@ -31,7 +31,7 @@ class Post extends Component {
                     post={this.state.post}
                     isComment={this.props.isComment}/>
 
-                <PostContentControlPanel 
+                <PostControlPanel 
                     post={this.state.post}
                     isComment={this.props.isComment}/>
                 {this.renderComments()}

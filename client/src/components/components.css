@@ -154,3 +154,57 @@
     color: black;
     font-size: 2vh;
 }
+
+/* CSS for Recipe cards */
+.recipe_card{
+    width: 30vh;
+    height: 25vh;
+    border: 0.3vh;
+    border-color:  rgb(85, 105, 47) ;
+    border-style: solid;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.recipe_card_header{
+    display: flex;
+    align-items: stretch;
+}
+
+.recipe_card_title{
+    color: rgb(85, 105, 47);
+    font-weight: bold;
+    font-size: 2vh;
+    text-align: left;
+    padding-right: 0vh;
+}
+
+.meal_plan_controls{
+    display: flex;
+}
+
+.edit_recipe{
+    margin: 1vh;
+}
+
+.remove_recipe{
+    margin: 1vh;
+}
+
+.recipe_card_information{
+    padding: 2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.recipe_card_information_element{
+    width: 10vh;
+    align-self: flex-end;
+    /* This is for the people counter as it is composed of other divs */
+    justify-content: flex-end;
+    /* This is for the calories and time as it is just text */
+    text-align: right;
+}
+
+.recipe_feed_count_control_panel{
+    display: flex;
+}

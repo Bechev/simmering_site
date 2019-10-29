@@ -43,7 +43,6 @@ renderListOfComments(){
             </div>
         )
     }else if(this.props.post.comments){
-        console.log("this.props.post.comments" + this.props.post.comments)
             return(
                 this.props.post.comments.map((post)=>{
                     return(
@@ -55,7 +54,6 @@ renderListOfComments(){
 }
 
   render() {
-      console.log("this happened first")
     return(
         <div className="list_of_posts">
             <NewPostForm post_id={this.props.post.id} isComment={true}/>

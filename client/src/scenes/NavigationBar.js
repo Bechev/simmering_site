@@ -30,6 +30,18 @@ class NavigationBar extends Component {
     
                         <div className="right-navbar">
                             <NavLink className="navbar-link"
+                            to="/meal_plan"
+                            exact
+                            style={link}
+                            >Your Meal Plan</NavLink>
+                            
+                            <NavLink className="navbar-link"
+                            to="/profile"
+                            exact
+                            style={link}
+                            >Profile</NavLink>
+    
+                            <NavLink className="navbar-link"
                             to="/browse"
                             exact
                             style={link}
@@ -40,12 +52,6 @@ class NavigationBar extends Component {
                             exact
                             style={link}
                             >My Cart</NavLink>
-    
-                            <NavLink className="navbar-link"
-                            to="/profile"
-                            exact
-                            style={link}
-                            >Profile</NavLink>
                         </div>
                     </React.Fragment>
                 )

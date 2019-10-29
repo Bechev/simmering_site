@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
+import RecipeCard from './RecipeCard.js'
 
 
 class BrowseCatgegory extends Component {
@@ -9,6 +10,7 @@ class BrowseCatgegory extends Component {
     return(
         <div className="browse_category">
             Browse
+            <RecipeCard isMealPlan={false}/>
         </div>
         )
     }

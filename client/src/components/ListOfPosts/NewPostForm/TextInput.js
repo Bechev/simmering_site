@@ -86,4 +86,3 @@ const mapDispatchToProps = dispatch => {
 }
   
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TextInput));
-// export default withRouter(TextInput);
