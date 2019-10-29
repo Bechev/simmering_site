@@ -9,7 +9,11 @@ class BrowseCatgegory extends Component {
 
     return(
         <div className="browse_category">
-            Browse
+            <RecipeCard isMealPlan={true}/>
+            <RecipeCard isMealPlan={true}/>
+            <RecipeCard isMealPlan={false}/>
+            <RecipeCard isMealPlan={true}/>
+            <RecipeCard isMealPlan={false}/>
             <RecipeCard isMealPlan={false}/>
         </div>
         )

@@ -124,10 +124,6 @@
     border-left-style: solid;
     border-color: rgb(139, 139, 139);
     border-top-style: none;
-    /* width: 90%;
-    padding: 2vh;
-    flex-direction: row;
-    justify-content: space-between; */
 }
 
 
@@ -163,6 +159,8 @@
     border-color:  rgb(85, 105, 47) ;
     border-style: solid;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 2vh;
+    margin: 5vh;
 }
 .recipe_card_header{
     display: flex;
@@ -174,26 +172,31 @@
     font-weight: bold;
     font-size: 2vh;
     text-align: left;
-    padding-right: 0vh;
+
 }
 
 .meal_plan_controls{
     display: flex;
+    max-width: 20%;
 }
 
+.icon{
+    display: flex;
+    max-width: 100%;
+}
 .edit_recipe{
-    margin: 1vh;
+    margin: 0.5vh;
 }
 
 .remove_recipe{
-    margin: 1vh;
+    margin: 0.5vh;
 }
 
 .recipe_card_information{
-    padding: 2vh;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    margin-top: 25%;
 }
 
 .recipe_card_information_element{
@@ -203,8 +206,31 @@
     justify-content: flex-end;
     /* This is for the calories and time as it is just text */
     text-align: right;
+    justify-content: space-around;
+    margin: 0.5%;
+}
+
+.recipe_feed_count_change{
+    display: flex;
+    justify-content: center;
 }
 
 .recipe_feed_count_control_panel{
     display: flex;
+}
+
+.minus{
+    max-width: 50%;
+}
+
+.plus{
+    max-width: 50%;
+}
+
+.cooking_time{
+    display: flex;
+}
+
+.stopwatch{
+max-width: 25%;
 }
