@@ -33,6 +33,16 @@ class RecipeCard extends Component {
         console.log("executed")
     }
 
+    renderAddToMealPlanButton(){
+        if(!this.props.isMealPlan){
+            return(
+                <div className="add_to_meal_plan_button">
+                    Add to MealPlan
+                </div>
+            )
+        }
+    }
+
     renderRecipeMealPlanControls(){
         if(this.props.isMealPlan){
             return(
@@ -71,6 +81,7 @@ class RecipeCard extends Component {
                 <div className="recipe_card_title">
                     This is my delicious recipe that's a tiddy bit long  
                 </div>
+                {this.renderAddToMealPlanButton()}
                 {this.renderRecipeMealPlanControls()}
             </div>
             <div className="recipe_card_information">
