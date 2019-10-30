@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
-import Edit from '../assets/edit-icon.png'
+import Calories from '../assets/calories-icon.png'
 import Delete from '../assets/delete-icon.png'
+import Edit from '../assets/edit-icon.png'
 import Minus from '../assets/minus-icon.png'
+import Person from '../assets/person-icon.png'
 import Plus from '../assets/plus-icon.png'
 import Stopwatch from '../assets/stopwatch-icon.png'
 import './components.css';
@@ -49,19 +51,14 @@ class RecipeCard extends Component {
     renderRecipeFeedCout(){
         if(this.props.isMealPlan){
             return(
-                <React.Fragment>
-                    <div className="recipe_feed_count_decrease recipe_feed_count_change" onClick={this.changeFeedCount.bind(this, "decrement")}>
-                        <img src={Minus} className="minus icon" alt='minus_button'></img>
-                    </div>
-                    <div className="recipe_feed_count">{this.state.recipe_feed_count}</div>
-                    <div className="recipe_feed_count_increase recipe_feed_count_change" onClick={this.changeFeedCount.bind(this, "increment")}>
+                <div className="feed_count_controls">
+                    <div className="recipe_feed_count recipe_feed_count_change" onClick={this.changeFeedCount.bind(this, "increment")}>
                         <img src={Plus} className="plus icon" alt='plus_button'></img>
                     </div>
-                </React.Fragment>
-            )
-        }else{
-            return(
-                <div className="recipe_feed_count">{this.state.recipe_feed_count}</div>
+                    <div className="recipe_feed_count recipe_feed_count_change" onClick={this.changeFeedCount.bind(this, "decrement")}>
+                        <img src={Minus} className="minus icon" alt='minus_button'></img>
+                    </div>
+                </div>
             )
         }
     }
@@ -77,14 +74,19 @@ class RecipeCard extends Component {
                 {this.renderRecipeMealPlanControls()}
             </div>
             <div className="recipe_card_information">
-                <div className="recipe_feed_count_control_panel recipe_card_information_element">
-                    {this.renderRecipeFeedCout()}
+                <div className="recipe_card_information_element">
+                    <img src={Person} className="person icon" alt='person_icon'></img>
+                        {this.renderRecipeFeedCout()}
+                        <div className="recipe_feed_count">{this.state.recipe_feed_count}</div>
                 </div>
                 <div className="cooking_time recipe_card_information_element">
-                    <img src={Stopwatch} className="stopwatch icon" alt='plus_button'></img>
-                    10
+                    <img src={Stopwatch} className="stopwatch icon" alt='stopwatch_icon'></img>
+                        10
                 </div>
-                <div className="calories_count recipe_card_information_element">350pp</div>
+                <div className="calories_count recipe_card_information_element">
+                    <img src={Calories} className="calories icon" alt='calories_icon'></img>
+                        310
+                </div>
             </div>
         </div>
         )

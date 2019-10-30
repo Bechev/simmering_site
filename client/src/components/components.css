@@ -184,6 +184,7 @@
     display: flex;
     max-width: 100%;
 }
+
 .edit_recipe{
     margin: 0.5vh;
 }
@@ -200,37 +201,58 @@
 }
 
 .recipe_card_information_element{
+    display: flex;
     width: 10vh;
     align-self: flex-end;
     /* This is for the people counter as it is composed of other divs */
     justify-content: flex-end;
     /* This is for the calories and time as it is just text */
     text-align: right;
-    justify-content: space-around;
+    justify-content: space-between;
     margin: 0.5%;
 }
 
-.recipe_feed_count_change{
+.recipe_card_data{
     display: flex;
-    justify-content: center;
 }
 
-.recipe_feed_count_control_panel{
+.recipe_feed_count{
     display: flex;
+    justify-content: space-around;
+}
+
+
+.feed_count_controls{
+    max-width: 40%;
 }
 
 .minus{
-    max-width: 50%;
+    max-width: 40%;
 }
 
 .plus{
-    max-width: 50%;
+    max-width: 40%;
 }
 
 .cooking_time{
     display: flex;
 }
 
+.person{
+    max-width: 20%;
+    align-self: flex-start;
+}
+
 .stopwatch{
-max-width: 25%;
+    max-width: 25%;
+    align-self: flex-start;
+}
+
+.calories_count{
+    display: flex;
+}
+
+.calories{
+    max-width: 30%;
+    justify-content: flex-start;
 }
