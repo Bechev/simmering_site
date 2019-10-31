@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux'
 import {sign_out } from '../services/actions/auth.js'
+import Plan from '../components/Plan.js'
 
 class MealPlan extends Component {
     
@@ -9,7 +10,7 @@ class MealPlan extends Component {
 
         return(
             <div className="meal_plan">
-                Meal Plan
+                <Plan/>
             </div>
         )
     }

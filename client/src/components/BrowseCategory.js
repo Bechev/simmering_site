@@ -16,7 +16,7 @@ class BrowseCatgegory extends Component {
             <RecipeCard isMealPlan={false}/>
             <RecipeCard isMealPlan={false}/>
         </div>
-        )
+        )   
     }
 
 }
