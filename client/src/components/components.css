@@ -224,7 +224,7 @@
     width: 10vh;
     align-self: flex-end;
     /* This is for the people counter as it is composed of other divs */
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
     /* This is for the calories and time as it is just text */
     text-align: right;
     justify-content: space-between;
@@ -287,22 +287,46 @@
 
 .day{
     display: flex;
-    height: 10vh;
+    min-height: 10vh;
     width: 70vh;
     background-color: lightgray;
     margin: 3vh;
     padding: 2vh;
     padding-left: 3vh;
     border-radius: 1.5vh;
-    align-items: center;
+    /* align-items: center; */
+
+    flex-direction: column;
+    align-items: flex-start;
+    /* justify-content: flex-start; */
     
     font-size: 3vh;
     font-weight: bold;
 }
-.day_clicable{
+
+.day_header{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    /* align-content: space-around; */
+}
+
+/* .day_clicable{
     display: flex;
     align-items: center;
     
     width: 100%;
     height: 100%;
+} */
+
+.meals{
+    display: flex;
+    flex-direction: column;
+}
+
+.meal_title{
+    font-size : 2.5vh;
+    display: flex;
+    justify-content: flex-start;
 }
