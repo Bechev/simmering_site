@@ -59,7 +59,7 @@ class RecipeCard extends Component {
     }
 
     renderRecipeFeedCout(){
-        if(this.props.isMealPlan){
+        // if(this.props.isMealPlan){
             return(
                 <div className="feed_count_controls">
                     <div className="recipe_feed_count recipe_feed_count_change" onClick={this.changeFeedCount.bind(this, "increment")}>
@@ -70,7 +70,7 @@ class RecipeCard extends Component {
                     </div>
                 </div>
             )
-        }
+        // }
     }
 
   render() {

@@ -201,7 +201,8 @@
 
 .icon{
     display: flex;
-    max-width: 100%;
+    /* max-width: 100%; */
+    width: 2vh;
 }
 
 .edit_recipe{
@@ -247,11 +248,11 @@
 }
 
 .minus{
-    max-width: 40%;
+    max-width: 2vh;
 }
 
 .plus{
-    max-width: 40%;
+    max-width: 2vh;
 }
 
 .cooking_time{
@@ -329,4 +330,16 @@
     font-size : 2.5vh;
     display: flex;
     justify-content: flex-start;
+}
+
+/* CSS for DayControlPAnel */
+.day_control_panel{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.controls{
+    display: flex;
+    flex-direction: row;
 }
