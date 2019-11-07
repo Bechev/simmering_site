@@ -33,7 +33,10 @@ class Suggestions extends Component {
                     <div className="suggestion_title">
                         Suggestions:
                     </div>
-                    <RecipeCard isMealPlan={false}/>
+                    <div className="recipe_suggestions">
+                        <RecipeCard isMealPlan={false}/>
+                        <RecipeCard isMealPlan={false}/>
+                    </div>
                 </div>
             )
         }

@@ -348,12 +348,22 @@
 .suggestions{
     width: 75vh;
     background-color: white;
-    border-style: solid;
-    border-color: black;
+    /* border-style: solid; */
+    /* border-color: black; */
+
+    padding: 0 0 2vh 0 ;
 
     bottom:0;
     position:fixed;
     z-index:150;
+
+    border-radius: 1.5vh 1.5vh 0 0;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.recipe_suggestions{
+    display: flex;
+    flex-direction: row;
 }
 
 .expanded{
@@ -368,7 +378,7 @@
 .suggestion_title{
     display: flex;
     justify-content: flex-start;
-    margin: 2vh;
+    margin: 2vh 2vh  0 2vh;
     
     font-size : 2vh;
     font-weight: bold;
