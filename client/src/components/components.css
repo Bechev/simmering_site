@@ -283,13 +283,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    --scene-width: 70vh;
 }
 
 .day{
     display: flex;
     min-height: 10vh;
-    width: 70vh;
+    width: var(--scene-width);
     background-color: lightgray;
     margin: 3vh;
     padding: 2vh;
@@ -312,14 +312,6 @@
     justify-content: space-between;
     /* align-content: space-around; */
 }
-
-/* .day_clicable{
-    display: flex;
-    align-items: center;
-    
-    width: 100%;
-    height: 100%;
-} */
 
 .meals{
     display: flex;
@@ -346,7 +338,7 @@
 
 /* CSS for Suggestions  */
 .suggestions{
-    width: 75vh;
+    width: var(--scene-width);
     background-color: white;
     /* border-style: solid; */
     /* border-color: black; */
@@ -361,6 +353,7 @@
 
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 .recipe_suggestions{
     display: flex;
     flex-direction: row;
@@ -368,11 +361,13 @@
 
 .expanded{
     height: 35vh;
+    width:100%
 }
 
 
 .collapsed{
     height: 3vh;
+    width: 100%
 }
 
 .suggestion_title{
