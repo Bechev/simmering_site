@@ -161,6 +161,7 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding: 2vh;
     margin: 2vh;
+    background-color: white;
 }
 .recipe_card_header{
     display: flex;
@@ -283,7 +284,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    --scene-width: 70vh;
+    --scene-width: 80vh;
 }
 
 .day{
@@ -303,6 +304,8 @@
     
     font-size: 3vh;
     font-weight: bold;
+
+    
 }
 
 .day_header{
@@ -316,12 +319,33 @@
 .meals{
     display: flex;
     flex-direction: column;
+    max-width: 100%;
+}
+
+.meal{
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    margin: 2vh 0 2vh;
+    border-style: solid;
+    border-color: rgb(85, 105, 47);
+    background-color: white;
+    border-radius: 2vh;
+    
+}
+
+.meal_recipes{
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+    flex-flow: wrap;
 }
 
 .meal_title{
     font-size : 2.5vh;
     display: flex;
     justify-content: flex-start;
+    margin-left: 2vh;
 }
 
 /* CSS for DayControlPAnel */

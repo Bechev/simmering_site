@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import './components.css'
+import RecipeCard from './RecipeCard';
 
 
 class Meal extends Component {
@@ -25,7 +26,10 @@ class Meal extends Component {
         if(this.state.displayRecipes){
             return(
                 <div>
-                    Here come your recipees
+                    <RecipeCard/>
+                    <RecipeCard/>
+                    <RecipeCard/>
+                    <RecipeCard/>
                 </div>
             )
         }
@@ -38,7 +42,13 @@ class Meal extends Component {
                 <div className="meal_title" onClick={this.handleClick}>    
                     {this.state.meal_name}
                 </div>
-                {this.renderRecipes()}
+                <div className="meal_recipes">
+                    <RecipeCard isMealPlan={true}/>
+                    <RecipeCard isMealPlan={true}/>
+                    <RecipeCard isMealPlan={true}/>
+                    {/* {this.renderRecipes()} */}
+                </div>
+
             </div>
         )
     }
