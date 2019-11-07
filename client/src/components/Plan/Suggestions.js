@@ -23,14 +23,14 @@ class Suggestions extends Component {
     renderSuggestions(){
         if(this.state.expanded === false){
             return(
-                <div className="suggestion_title collapsed">
+                <div className="suggestion_title collapsed" onClick={this.handleClick}>
                     Suggestions:
                 </div>
             )
         }else{
             return(
                 <div className="expanded">
-                    <div className="suggestion_title">
+                    <div className="suggestion_title" onClick={this.handleClick}>
                         Suggestions:
                     </div>
                     <div className="recipe_suggestions">
@@ -46,7 +46,7 @@ class Suggestions extends Component {
   render() {
 
     return(
-        <div className="suggestions" onClick={this.handleClick}>
+        <div className="suggestions" >
             {this.renderSuggestions()}
         </div>
         )
