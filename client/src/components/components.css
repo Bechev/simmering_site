@@ -160,7 +160,7 @@
     border-style: solid;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding: 2vh;
-    margin: 5vh;
+    margin: 2vh;
 }
 .recipe_card_header{
     display: flex;
@@ -342,4 +342,36 @@
 .controls{
     display: flex;
     flex-direction: row;
+}
+
+/* CSS for Suggestions  */
+.suggestions{
+    width: 75vh;
+    background-color: white;
+    border-style: solid;
+    border-color: black;
+
+    bottom:0;
+    position:fixed;
+    z-index:150;
+}
+
+.expanded{
+    height: 35vh;
+}
+
+
+.collapsed{
+    height: 5vh;
+}
+
+.suggestion_title{
+    display: flex;
+    justify-content: flex-start;
+    margin: 2vh;
+    
+    font-size : 2vh;
+    font-weight: bold;
+    color: rgb(85, 105, 47) ;
+    
 }

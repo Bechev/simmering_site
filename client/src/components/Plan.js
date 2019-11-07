@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import Day from './Plan/Day.js'
+import Suggestions from './Plan/Suggestions.js'
 import './components.css'
 
 
@@ -14,6 +15,11 @@ class Plan extends Component {
             <Day/>
             <Day/>
             <Day/>
+            <Day/>
+            <Day/>
+            <Day/>
+            <Day/>
+            <Suggestions/>
 
         </div>
         )
