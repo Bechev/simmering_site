@@ -21,10 +21,10 @@ class Suggestions extends Component {
     }
 
     renderSuggestions(){
-        if(this.state.expanded === true){
+        if(this.state.expanded === false){
             return(
-                <div className="collapsed">
-                    Collapsed
+                <div className="suggestion_title collapsed">
+                    Suggestions:
                 </div>
             )
         }else{
