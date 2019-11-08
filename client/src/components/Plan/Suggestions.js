@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import '../components.css'
 import RecipeCard from '../RecipeCard';
+import DownArrow from '../../assets/downarrow-icon.png'
+import UpArrow from '../../assets/uparrow-icon.png'
 
 
 class Suggestions extends Component {
@@ -25,6 +27,7 @@ class Suggestions extends Component {
             return(
                 <div className="suggestion_title collapsed" onClick={this.handleClick}>
                     Suggestions:
+                    <img  src={UpArrow} className="uparrow arrow icon" alt='uparrow_button'></img>
                 </div>
             )
         }else{
@@ -32,6 +35,7 @@ class Suggestions extends Component {
                 <div className="expanded">
                     <div className="suggestion_title" onClick={this.handleClick}>
                         Suggestions:
+                        <img  src={DownArrow} className="downarrow arrow icon" alt='downarrow_button'></img>
                     </div>
                     <div className="recipe_suggestions">
                         <RecipeCard isMealPlan={false}/>
