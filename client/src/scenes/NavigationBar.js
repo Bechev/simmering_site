@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux'
-
+import SearchBar from "../components/SearchBar.js"
 import './scenes.css';
 
 const link = {
@@ -27,13 +27,15 @@ class NavigationBar extends Component {
                             style={link}
                             >Home</NavLink>
                         </div>
-    
+
+
+                        <SearchBar/>
                         <div className="right-navbar">
                             <NavLink className="navbar-link"
                             to="/meal_plan"
                             exact
                             style={link}
-                            >Your Meal Plan</NavLink>
+                            >MealPlan</NavLink>
                             
                             <NavLink className="navbar-link"
                             to="/profile"
@@ -51,7 +53,7 @@ class NavigationBar extends Component {
                             to="/mycart"
                             exact
                             style={link}
-                            >My Cart</NavLink>
+                            >Cart</NavLink>
                         </div>
                     </React.Fragment>
                 )

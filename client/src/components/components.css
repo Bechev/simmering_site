@@ -364,8 +364,6 @@
 .suggestions{
     width: var(--scene-width);
     background-color: white;
-    /* border-style: solid; */
-    /* border-color: black; */
 
     padding: 0 0 2vh 0 ;
 
@@ -403,4 +401,82 @@
     font-weight: bold;
     color: rgb(85, 105, 47) ;
     
+}
+
+/* CSS for the searchbar */
+
+/* 
+.layout_block-title{
+    text-align: left;
+    font-size: 10px;
+} */
+
+/* .layout_display-block{
+    border-color:  grey;
+    background-color: rgb(235,235,235);
+    border-width: 3px;
+    padding: 1% 1% 1% 1%;
+    margin: auto;
+    width: 91%;
+    height: 100%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+} */
+
+.search_bar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    max-height: 100%
+}
+
+.inputField{
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    justify-self: center;
+    position: relative;
+    /* width: auto; */
+    /* float: initial; */
+    height: 3vh;
+    font-size: 2.5vh;
+}
+
+.label{
+    font-size: 20px;
+}
+
+.search_results{
+    border-style: solid;
+    border-color:  grey;
+    background-color: white;
+    position: absolute;
+    z-index: 10;
+    text-align: left;
+    padding: 1% 1% 1% 1%;
+    margin: auto;
+    width: 321px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search_result{
+    font-size: 20px;
+    color: grey;
+    padding: 0% 2% 0% 2%
+}
+
+.search_result:hover{
+    background-color: lightgray;
+}
+
+.search_button{
+    display: flex;
+    height: 4vh;
+    text-align: center;
+    padding: 0vh 1vh 0vh 1vh;
 }
