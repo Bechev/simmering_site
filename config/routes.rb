@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
             mount_devise_token_auth_for 'User', at: 'auth'
 
+            post '/search' => "recipes#search"
             resources :posts
             resources :mealplans, only: [:index]
             resources :days, only: [:index]

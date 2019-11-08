@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SearchResults from './Searchbar/SearchResults.js'
+import { connect } from 'react-redux'
 import {withRouter} from 'react-router-dom';
 import './components.css'
 
@@ -59,11 +60,14 @@ class SearchBar extends Component {
     }
 
     getResults() {
-      fetch("http://localhost:3000/search",{
+      fetch("http://localhost:3000/api/v1/search",{
         method: "POST",
         cache: "no-cache",
         credentials: "same-origin",
         headers: {
+            "uid": this.props.user.uid,
+            "client":  this.props.user.client,
+            "access-token":  this.props.user['access-token'],
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
@@ -105,4 +109,18 @@ class SearchBar extends Component {
   }
 }
 
-export default withRouter(SearchBar);
+// export default withRouter(SearchBar);
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+      user: state.auth.user
+    }
+  }
+
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         verify_credentials: (user) => dispatch(verify_credentials(user)),
+//     }
+// }
+
+export default withRouter(connect(mapStateToProps, null)(SearchBar));
