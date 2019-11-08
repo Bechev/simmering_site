@@ -86,9 +86,9 @@ class SearchBar extends Component {
     renderResults(){
       if(this.state.results.length >= 1){
         return(
-          <div className="search_results">
-            <SearchResults  results={this.state.results} />
-          </div>
+            <div className="search_results">
+                <SearchResults  results={this.state.results} />
+            </div>
         )
       }
     }
@@ -96,15 +96,16 @@ class SearchBar extends Component {
 
     render() {
     return (
-      <React.Fragment>
-        <form className="search_bar" onSubmit={this.handleSubmit}>
+      <div className="search_bar">
+        <form onSubmit={this.handleSubmit}>
             <label>
                 <input className='inputField' type="text" ref={input => this.search = input} onChange={this.handleChange} placeholder={'Search for Recipes'} />
             </label>
-            <input className='search_button button' type="submit" value="Search" />
+            {/* <input className='search_button button' type="submit" value="Search" /> */}
         </form>
         {this.renderResults()}
-      </React.Fragment>
+      </div>
+    //   </React.Fragment>
     );
   }
 }

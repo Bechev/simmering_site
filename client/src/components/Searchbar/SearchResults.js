@@ -9,11 +9,13 @@ class SearchResults extends Component{
         return (
             this.props.results.map(result => {
             return(
-                <Link to={`/recipes/${result.id}`}>
-                    <p>
-                        {result.name}
-                    </p>
-                </Link>
+                <div className="search_result">
+                    <Link to={`/recipes/${result.id}`}>
+                        <p>
+                            {result.name}
+                        </p>
+                    </Link>
+                </div>
             )
         })
         ) 
