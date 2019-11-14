@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux'
-import {sign_out } from '../services/actions/auth.js'
+import {fetchUserMealPlans } from '../services/actions/mealplans.js'
 import Plan from '../components/Plan.js'
 
 class MealPlan extends Component {
+    componentDidMount(){
+        this.props.fetchUserMealPlans(this.props.user)
+    }
     
     render() {
 
@@ -25,7 +28,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        sign_out: (user) => dispatch(sign_out(user)),
+        fetchUserMealPlans: (user) => dispatch(fetchUserMealPlans(user)),
     }
 }
 
