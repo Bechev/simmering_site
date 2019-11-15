@@ -10,12 +10,21 @@ class Day extends Component {
     constructor(props){
         super(props);
         this.state = {
-            day: "Monday",
+            day: this.props.day.date,
             displayMeals: false,
+            day_name: "Loading"
         }
         this.handleClick = this.handleClick.bind(this);
     }
-    
+
+    componentDidMount(){
+        var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        var d = new Date(this.props.day.date);
+        var dayName = days[d.getDay()];
+        this.setState({
+            day_name: dayName
+        })
+    }
     
     handleClick(){
         this.setState({
@@ -24,13 +33,13 @@ class Day extends Component {
     }
 
     renderMeals(){
-        if(this.state.displayMeals){
+        if(this.state.displayMeals && this.props.day.meals){
             return(
-                <React.Fragment>
-                    <Meal name={"Breakfast"}/>
-                    <Meal name={"Lunch"}/>
-                    <Meal name={"Dinner"}/>
-                </React.Fragment>
+                this.props.day.meals.map((meal)=> {
+                    return(
+                        <Meal key={meal.id} meal={meal}/>
+                    )
+                })
             )
         }
     }
@@ -41,7 +50,7 @@ class Day extends Component {
             <div className="day" >
                 <div className="day_header">
                     <div className="day_title" onClick={this.handleClick}>    
-                        {this.state.day}
+                        {this.state.day_name}
                     </div>
                     <div className="blabla">
                         <DayControlPanel/>

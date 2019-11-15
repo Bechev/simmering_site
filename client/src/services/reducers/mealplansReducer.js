@@ -1,7 +1,7 @@
 export default function mealplansReducer(state = {
     isLoaded: false,
     errorMessage: '',
-    mealplans: [],
+    userMealplans: [],
     }, action) {
 
     switch (action.type) {
@@ -14,7 +14,7 @@ export default function mealplansReducer(state = {
             return  {
                     ...state,
                     isLoaded: true,
-                    mealplans: [].concat(action.payload)}
+                    userMealplans: [].concat(action.payload)}
 
         case 'GET_MEALPLANS_FAILURE':
             return{

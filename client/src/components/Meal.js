@@ -8,8 +8,9 @@ class Meal extends Component {
 
     constructor(props){
         super(props);
+        
         this.state = {
-            meal_name: this.props.name,
+            meal_name: this.props.meal.name,
             displayRecipes: false,
         }
         this.handleClick = this.handleClick.bind(this);
@@ -23,16 +24,17 @@ class Meal extends Component {
     }
 
     renderRecipes(){
-        if(this.state.displayRecipes){
+        // if(this.state.displayRecipes){
+        if(this.props.meal.recipes){
             return(
-                <div>
-                    <RecipeCard/>
-                    <RecipeCard/>
-                    <RecipeCard/>
-                    <RecipeCard/>
-                </div>
+                this.props.meal.recipes.map((recipe) => {
+                    return(
+                        <RecipeCard recipe={recipe}/>
+                    )
+                })
             )
         }
+        // }
     }
 
     render() {
@@ -43,10 +45,7 @@ class Meal extends Component {
                     {this.state.meal_name}
                 </div>
                 <div className="meal_recipes">
-                    <RecipeCard isMealPlan={true}/>
-                    <RecipeCard isMealPlan={true}/>
-                    <RecipeCard isMealPlan={true}/>
-                    {/* {this.renderRecipes()} */}
+                    {this.renderRecipes()}
                 </div>
 
             </div>

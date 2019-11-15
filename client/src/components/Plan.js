@@ -6,19 +6,30 @@ import './components.css'
 
 
 class Plan extends Component {
+        
+    renderMealPlan(){
+        if(this.props.mealplan && this.props.mealplan.days.length > 0){
+            return(
+                this.props.mealplan.days.map((day) => {
+                    return(
+                            <Day key={day.id} day={day}/>
+                        )
+                    })
+            )
+        }else{
+            return(
+                <h1> 
+                    Loading...
+                </h1>
+            )
+        }
+    }
 
   render() {
 
     return(
         <div className="plan">
-            <Day/>
-            <Day/>
-            <Day/>
-            <Day/>
-            <Day/>
-            <Day/>
-            <Day/>
-            <Day/>
+            {this.renderMealPlan()}
             <Suggestions/>
 
         </div>

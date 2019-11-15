@@ -15,6 +15,7 @@ class RecipeCard extends Component {
         super(props);
         this.state = {
             recipe_feed_count: 0,
+            recipe_name: "No name"
         }
         this.changeFeedCount = this.changeFeedCount.bind(this);
     }
@@ -29,8 +30,53 @@ class RecipeCard extends Component {
         this.setState({
             recipe_feed_count: this.state.recipe_feed_count + increment
         })
-        console.log(this.state.recipe_feed_count)
-        console.log("executed")
+    }
+
+    renderRecipeName(){
+        if(this.props.recipe){
+            return(
+                <React.Fragment>
+                    {this.state.recipe_name}
+                </React.Fragment>
+            )
+        }else{
+            return(
+                <React.Fragment>
+                    "No Name"
+                </React.Fragment>
+            )
+        }
+    }
+
+    renderRecipeCard(){
+        if(this.props.recipe || !this.props.isMealPlan){
+            return(
+                <React.Fragment>
+                    <div className="recipe_card_header">
+                        <div className="recipe_card_title">
+                            {this.renderRecipeName() }
+                        </div>
+                        {this.renderAddToMealPlanButton()}
+                        {this.renderRecipeMealPlanControls()}
+                    </div>
+                    <div className="recipe_card_information">
+                        <div className="recipe_card_information_element">
+                            <img src={Person} className="person icon" alt='person_icon'></img>
+                                {this.renderRecipeFeedCout()}
+                                <div className="recipe_feed_count">{this.state.recipe_feed_count}</div>
+                        </div>
+                        <div className="cooking_time recipe_card_information_element">
+                            <img src={Stopwatch} className="stopwatch icon" alt='stopwatch_icon'></img>
+                                10
+                        </div>
+                        <div className="calories_count recipe_card_information_element">
+                            <img src={Calories} className="calories icon" alt='calories_icon'></img>
+                                310
+                        </div>
+                    </div>
+                </React.Fragment>
+            )
+        }
     }
 
     renderAddToMealPlanButton(){
@@ -77,28 +123,7 @@ class RecipeCard extends Component {
 
     return(
         <div className="recipe_card">
-            <div className="recipe_card_header">
-                <div className="recipe_card_title">
-                    This is my delicious recipe that's a tiddy bit long  
-                </div>
-                {this.renderAddToMealPlanButton()}
-                {this.renderRecipeMealPlanControls()}
-            </div>
-            <div className="recipe_card_information">
-                <div className="recipe_card_information_element">
-                    <img src={Person} className="person icon" alt='person_icon'></img>
-                        {this.renderRecipeFeedCout()}
-                        <div className="recipe_feed_count">{this.state.recipe_feed_count}</div>
-                </div>
-                <div className="cooking_time recipe_card_information_element">
-                    <img src={Stopwatch} className="stopwatch icon" alt='stopwatch_icon'></img>
-                        10
-                </div>
-                <div className="calories_count recipe_card_information_element">
-                    <img src={Calories} className="calories icon" alt='calories_icon'></img>
-                        310
-                </div>
-            </div>
+            {this.renderRecipeCard()}
         </div>
         )
     }

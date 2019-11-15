@@ -8,12 +8,16 @@ class MealPlan extends Component {
     componentDidMount(){
         this.props.fetchUserMealPlans(this.props.user)
     }
+
+    // componentDidUpdate(){
+    //     console.log(this.props.mealplans)
+    // }
     
     render() {
 
         return(
             <div className="meal_plan">
-                <Plan/>
+                <Plan mealplan={this.props.mealplans[this.props.mealplans.length - 2]}/>
             </div>
         )
     }
@@ -22,7 +26,8 @@ class MealPlan extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-      user: state.auth.user
+      user: state.auth.user,
+      mealplans: state.mealplans.userMealplans
     }
   }
 

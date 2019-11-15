@@ -11,10 +11,6 @@ module Api
                     # @mealplans = user.mealplans.last(10).reverse
                     @mealplans = user.mealplans
                     render json: @mealplans, include: '**'
-                else
-                    @mealplans = Mealplan.all.last(10).reverse
-                    @mealplans = Mealplan.all
-                    render json: @mealplans
                 end
             end
         
