@@ -29,7 +29,7 @@ class Meal extends Component {
             return(
                 this.props.meal.recipes.map((recipe) => {
                     return(
-                        <RecipeCard recipe={recipe}/>
+                        <RecipeCard recipe={recipe} isMealPlan={true}/>
                     )
                 })
             )

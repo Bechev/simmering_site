@@ -114,12 +114,15 @@ MEALS = ["meal1",
 
 for meal in MEALS
     meal = Meal.create(name: meal, user_id: rand(1..3))
-    meal.recipes << Recipe.find(rand(1..20))
+    num_recipes_per_meal = rand(1..3)
+    for recipe in (1..num_recipes_per_meal)
+        meal.recipes << Recipe.find(rand(1..20))
+    end
 end
 
 # Seed days
-for day in (0..10)
-    day = Day.create(date: Date.today+100, user_id: rand(1..3))
+for n in (0..10)
+    day = Day.create(date: Date.today+100+n, user_id: rand(1..3))
     number_of_meals_for_the_day = rand(0..5)
     for meal in (1..number_of_meals_for_the_day)
         day.meals << Meal.find(rand(1..10))

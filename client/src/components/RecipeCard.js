@@ -15,10 +15,11 @@ class RecipeCard extends Component {
         super(props);
         this.state = {
             recipe_feed_count: 0,
-            recipe_name: "No name"
         }
         this.changeFeedCount = this.changeFeedCount.bind(this);
     }
+
+
 
     changeFeedCount(action){
         var increment = 0
@@ -36,7 +37,7 @@ class RecipeCard extends Component {
         if(this.props.recipe){
             return(
                 <React.Fragment>
-                    {this.state.recipe_name}
+                    {this.props.recipe.name}
                 </React.Fragment>
             )
         }else{

@@ -50,7 +50,7 @@ class Day extends Component {
             <div className="day" >
                 <div className="day_header">
                     <div className="day_title" onClick={this.handleClick}>    
-                        {this.state.day_name}
+                        {this.props.day.date}
                     </div>
                     <div className="blabla">
                         <DayControlPanel/>
