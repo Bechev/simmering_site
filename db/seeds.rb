@@ -113,10 +113,13 @@ MEALS = ["meal1",
          "meal10"]
 
 for meal in MEALS
+    order = 1
     meal = Meal.create(name: meal, user_id: rand(1..3))
     num_recipes_per_meal = rand(1..3)
     for recipe in (1..num_recipes_per_meal)
+        meal.order = order
         meal.recipes << Recipe.find(rand(1..20))
+        order = order + 1
     end
 end
 

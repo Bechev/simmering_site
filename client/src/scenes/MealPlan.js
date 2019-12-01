@@ -17,7 +17,8 @@ class MealPlan extends Component {
 
         return(
             <div className="meal_plan">
-                <Plan mealplan={this.props.mealplans[this.props.mealplans.length - 2]}/>
+                {/* Temp fix - displaying last meal plan of the user */}
+                <Plan mealplan={this.props.mealplans[this.props.mealplans.length - 1]}/>
             </div>
         )
     }

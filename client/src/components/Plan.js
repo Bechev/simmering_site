@@ -6,11 +6,24 @@ import './components.css'
 
 
 class Plan extends Component {
-        
+    
+    sort_days(arr){
+        let sorted_array = arr.sort(function(a,b){
+            let dateA = new Date(a.date)
+            let dateB = new Date(b.date)
+            // console.log(dateA)
+            return dateA  - dateB
+        })
+        return sorted_array
+    }
+
     renderMealPlan(){
         if(this.props.mealplan && this.props.mealplan.days.length > 0){
+            let days_array = Object.values(this.props.mealplan.days)
+            days_array = this.sort_days(days_array)
+            console.log(days_array)
             return(
-                this.props.mealplan.days.map((day) => {
+                days_array.map((day) => {
                     return(
                             <Day key={day.id} day={day}/>
                         )

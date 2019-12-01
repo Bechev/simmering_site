@@ -55,7 +55,7 @@ class RecipeCard extends Component {
                 <React.Fragment>
                     <div className="recipe_card_header">
                         <div className="recipe_card_title">
-                            {this.renderRecipeName() }
+                            {this.renderRecipeName()}
                         </div>
                         {this.renderAddToMealPlanButton()}
                         {this.renderRecipeMealPlanControls()}

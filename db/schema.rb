@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2019_08_05_105132) do
 
   create_table "meals", force: :cascade do |t|
     t.string "name"
+    t.integer "order"
     t.integer "party_size"
     t.integer "user_id"
     t.datetime "created_at", null: false
