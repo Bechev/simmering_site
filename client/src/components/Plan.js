@@ -11,7 +11,6 @@ class Plan extends Component {
         let sorted_array = arr.sort(function(a,b){
             let dateA = new Date(a.date)
             let dateB = new Date(b.date)
-            // console.log(dateA)
             return dateA  - dateB
         })
         return sorted_array
@@ -19,11 +18,10 @@ class Plan extends Component {
 
     renderMealPlan(){
         if(this.props.mealplan && this.props.mealplan.days.length > 0){
-            let days_array = Object.values(this.props.mealplan.days)
-            days_array = this.sort_days(days_array)
-            console.log(days_array)
+            let sorted_days_array = Object.values(this.props.mealplan.days)
+            sorted_days_array = this.sort_days(sorted_days_array)
             return(
-                days_array.map((day) => {
+                sorted_days_array.map((day) => {
                     return(
                             <Day key={day.id} day={day}/>
                         )
