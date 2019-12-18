@@ -10,10 +10,10 @@ module Api
                 elsif params[:meal_id]
                     meal = Meal.find(params[:meal_id])
                     @recipes = meal.recipes
-                    render json: @recipes
+                    render json: @recipes, include: '**'
                 else
                     @recipes = Recipe.all.last(10).reverse
-                    render json: @recipes
+                    render json: @recipes, include: '**'
                 end
             end
 

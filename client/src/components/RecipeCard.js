@@ -68,11 +68,11 @@ class RecipeCard extends Component {
                         </div>
                         <div className="cooking_time recipe_card_information_element">
                             <img src={Stopwatch} className="stopwatch icon" alt='stopwatch_icon'></img>
-                                10
+                                {/* {this.props.recipe.name} */}
                         </div>
                         <div className="calories_count recipe_card_information_element">
                             <img src={Calories} className="calories icon" alt='calories_icon'></img>
-                                310
+                            {/* {this.props.recipe.calories} */}
                         </div>
                     </div>
                 </React.Fragment>

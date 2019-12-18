@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 2019_08_05_105132) do
     t.integer "preparation_time"
     t.integer "cooking_time"
     t.integer "total_recipe_time"
+    t.integer "calories"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

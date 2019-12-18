@@ -93,7 +93,9 @@ for recipe in (0..25)
         ingredient_list << Ingredient.find(rand(1..INGREDIENTS.length))
     end
     recipe_name = ingredient_list[0].name + " with " + ingredient_list[1].name
-    recipe = Recipe.create(name: recipe_name, user_id: rand(1..3))
+    recipe_calories = rand(200..1000)
+    recipe_total_recipe_time = rand (5..120)
+    recipe = Recipe.create(name: recipe_name, calories: recipe_calories, total_recipe_time: recipe_total_recipe_time, user_id: rand(1..3))
     for ingredient in (0..ingredient_list.length - 1)
         recipe.ingredients << ingredient_list[ingredient]
     end
