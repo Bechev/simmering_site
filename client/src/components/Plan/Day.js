@@ -22,7 +22,8 @@ class Day extends Component {
         var d = new Date(this.props.day.date);
         var dayName = days[d.getDay()];
         this.setState({
-            day_name: dayName
+            day_name: dayName,
+            date_display: (d.getMonth()+1) + "/" + (d.getDate()+1)
         })
     }
     
@@ -50,7 +51,7 @@ class Day extends Component {
             <div className="day" >
                 <div className="day_header">
                     <div className="day_title" onClick={this.handleClick}>    
-                        {this.state.day_name} ({this.props.day.date})
+                        {this.state.day_name}, {this.state.date_display}
                     </div>
                     <div className="blabla">
                         <DayControlPanel/>
