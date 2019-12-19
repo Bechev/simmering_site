@@ -49,6 +49,26 @@ class RecipeCard extends Component {
         }
     }
 
+    renderRecipeCalories(){
+        if(this.props.recipe){
+            return(
+                <React.Fragment>
+                    {this.props.recipe.calories}
+                </React.Fragment>
+            )
+        }
+    }
+
+    recipeTotalTime(){
+        if(this.props.recipe){
+            return(
+                <React.Fragment>
+                    {this.props.recipe.total_recipe_time}
+                </React.Fragment>
+            )
+        }
+    }
+
     renderRecipeCard(){
         if(this.props.recipe || !this.props.isMealPlan){
             return(
@@ -68,11 +88,11 @@ class RecipeCard extends Component {
                         </div>
                         <div className="cooking_time recipe_card_information_element">
                             <img src={Stopwatch} className="stopwatch icon" alt='stopwatch_icon'></img>
-                                {/* {this.props.recipe.name} */}
+                            {this.recipeTotalTime()}
                         </div>
                         <div className="calories_count recipe_card_information_element">
                             <img src={Calories} className="calories icon" alt='calories_icon'></img>
-                            {/* {this.props.recipe.calories} */}
+                            {this.renderRecipeCalories()}
                         </div>
                     </div>
                 </React.Fragment>

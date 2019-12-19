@@ -8,11 +8,6 @@ import '../../components.css';
 
 class DayControlPanel extends Component {
 
-    // handleEditClick(){
-    //     alert("That's some big fat edit")
-    // }
-
-
     // handleDeleteClick(){
     //     alert("That's some big fat delete")
     // }
@@ -21,22 +16,19 @@ class DayControlPanel extends Component {
 
     return(
         <div className="day_control_panel">
-            {/* <div className="controls">
-                <div className="edit_recipe">
-                    <img  src={Edit} className="edit icon" alt='edit_button' onClick={this.handleEditClick}></img>
-                </div>
+            <div className="controls">
                 <div className="remove_recipe">
                     <img src={Delete} className="delete icon" alt='delete_button' onClick={this.handleDeleteClick}></img>
                 </div>
-            </div> */}
+            </div>
             <div className="day_data">
                 <div className="cooking_time recipe_card_information_element">
                     <img src={Stopwatch} className="stopwatch icon" alt='stopwatch_icon'></img>
-                        10
+                        {this.props.totalDayCookingTime}
                 </div>
                 <div className="calories_count recipe_card_information_element">
                     <img src={Calories} className="calories icon" alt='calories_icon'></img>
-                        310
+                    {this.props.totalDayCalories}
                 </div>
             </div>
 

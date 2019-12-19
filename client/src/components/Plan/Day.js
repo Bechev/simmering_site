@@ -10,9 +10,8 @@ class Day extends Component {
     constructor(props){
         super(props);
         this.state = {
-            day: this.props.day.date,
             displayMeals: false,
-            day_name: "Loading"
+            day_name: "Loading",
         }
         this.handleClick = this.handleClick.bind(this);
     }
@@ -24,10 +23,27 @@ class Day extends Component {
         
         this.setState({
             day_name: dayName,
-            date_display: (d.getMonth() + 1) + "/" + (d.getDate() + 1)
+            date_display: (d.getMonth() + 1) + "/" + (d.getDate())
         })
+
+        {this.calculateControlPanelInformation(this.props.day.meals)}
     }
     
+    calculateControlPanelInformation(meals){
+        let totalDayCookingTime = 0 
+        let totalDayCalories = 0
+        meals.map((meal) =>{
+            meal.recipes.map((recipe) => {
+                totalDayCookingTime = totalDayCookingTime + recipe.total_recipe_time
+                totalDayCalories = totalDayCalories + recipe.calories
+            })
+        })
+        this.setState({
+            totalDayCookingTime: totalDayCookingTime,
+            totalDayCalories: totalDayCalories
+        })
+    }
+
     sort_meals(arr){
         let sorted_array = arr.sort(function(a,b){
             return a.order  - b.order
@@ -63,8 +79,8 @@ class Day extends Component {
                     <div className="day_title" onClick={this.handleClick}>    
                         {this.state.day_name}, {this.state.date_display}
                     </div>
-                    <div className="blabla">
-                        <DayControlPanel/>
+                    <div className="day_control_panel">
+                        <DayControlPanel totalDayCookingTime={this.state.totalDayCookingTime} totalDayCalories={this.state.totalDayCalories}/>
                     </div>
                 </div>
                 <div className="meals">
