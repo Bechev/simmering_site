@@ -22,7 +22,12 @@ module Api
             def update
                 @meal = Meal.find(params[:id])
                 @meal.recipes = @meal.recipes.reject { |recipe| recipe[:id] == request.headers["recipe-id"].to_i }
-                render json: @meal
+                if @meal.recipes.length === 0 
+                    @meal.delete
+                    render json: nil
+                else 
+                    render json: @meal  
+                end
             end
         
         end

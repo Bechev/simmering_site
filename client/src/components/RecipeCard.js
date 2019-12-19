@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux'
+import {removeRecipeFromMeal} from '../services/actions/mealplan.js'
 import Calories from '../assets/calories-icon.png'
 import Delete from '../assets/delete-icon.png'
 import Edit from '../assets/edit-icon.png'
@@ -21,8 +22,6 @@ class RecipeCard extends Component {
         this.removeRecipeFromMeal = this.removeRecipeFromMeal.bind(this)
     }
 
-
-
     changeFeedCount(action){
         var increment = 0
         if(action === "increment"){
@@ -36,20 +35,7 @@ class RecipeCard extends Component {
     }
 
     removeRecipeFromMeal(){
-        fetch("http://localhost:3000/api/v1/meals/" + this.props.mealID,{
-            method: 'PUT',
-            headers:{
-                "uid": this.props.user.uid,
-                "client":  this.props.user.client,
-                "access-token":  this.props.user['access-token'],
-                "recipe-id": this.props.recipe.id,
-            }
-        })
-        .then(response => response.json())
-        .then(response =>{})
-        .catch(error =>{
-            alert(error.message)
-        })
+        this.props.removeRecipeFromMeal(this.props.user, this.props.mealID, this.props.recipe.id)
     }
 
     renderRecipeName(){
@@ -177,5 +163,11 @@ const mapStateToProps = (state, ownProps) => {
     }
   }
 
+const mapDispatchToProps = dispatch => {
+    return {
+        removeRecipeFromMeal: (user, meal_id, recipe_id) => dispatch(removeRecipeFromMeal(user,  meal_id, recipe_id)),
+    }
+}
 
-export default withRouter(connect(mapStateToProps, null)(RecipeCard));
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RecipeCard));

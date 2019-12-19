@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
             post '/search' => "recipes#search"
             resources :posts
-            resources :mealplans, only: [:index]
+            resources :mealplans, only: [:index, :show]
             resources :days, only: [:index]
-            resources :meals, only: [:index]
+            resources :meals, only: [:index, :update]
             resources :recipes, only: [:index]
             
 
@@ -27,21 +27,21 @@ Rails.application.routes.draw do
             #     resources :recipes
             # end
             
-            resources :mealplans do
-                resources :days, only: [:index]
-            end
+            # resources :mealplans do
+            #     resources :days, only: [:index]
+            # end
             
-            resources :days do
-                resources :meals, only: [:index]
-            end
+            # resources :days do
+            #     resources :meals, only: [:index]
+            # end
             
-            resources :meals  do 
-                resources :recipes, only: [:index]
-            end
+            # resources :meals  do 
+            #     resources :recipes, only: [:index]
+            # end
             
-            resources :recipes do
-                resources :ingredients, only: [:index]
-            end
+            # resources :recipes do
+            #     resources :ingredients, only: [:index]
+            # end
         
         end 
     end

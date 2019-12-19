@@ -11,26 +11,18 @@ class Meal extends Component {
         
         this.state = {
             meal_name: this.props.meal.name,
-            displayRecipes: false,
+            // displayRecipes: true,
         }
-        this.handleClick = this.handleClick.bind(this);
+        // this.handleClick = this.handleClick.bind(this);
     }
     
     
-    handleClick(){
-        this.setState({
-            displayRecipes: !this.state.displayRecipes
-        })
-    }
-
-
-
     renderRecipes(){
         if(this.props.meal.recipes){
             return(
                 this.props.meal.recipes.map((recipe) => {
                     return(
-                        <RecipeCard recipe={recipe} isMealPlan={true} mealID={this.props.meal.id}/>
+                        <RecipeCard key={this.props.meal.id} recipe={recipe} isMealPlan={true} mealID={this.props.meal.id}/>
                     )
                 })
             )

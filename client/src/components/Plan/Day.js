@@ -3,6 +3,8 @@ import Meal from '../Meal.js'
 import DayControlPanel from './Day/DayControlPanel.js'
 import {withRouter} from 'react-router-dom';
 import '../components.css'
+import DownArrow from '../../assets/downarrow-icon.png'
+import UpArrow from '../../assets/uparrow-icon.png'
 
 
 class Day extends Component {
@@ -10,7 +12,7 @@ class Day extends Component {
     constructor(props){
         super(props);
         this.state = {
-            displayMeals: false,
+            displayMeals: true,
             day_name: "Loading",
         }
         this.handleClick = this.handleClick.bind(this);
@@ -57,6 +59,18 @@ class Day extends Component {
         })
     }
 
+    renderArrow(){
+        if(this.state.displayMeals === false){
+            return(
+                <img  src={DownArrow} className="day_arrow icon" alt='downarrow_button'></img>
+            )
+        }else{
+            return(
+                <img  src={UpArrow} className="day_arrow icon" alt='uparrow_button'></img>
+            )
+        }
+    }
+
     renderMeals(){
         if(this.state.displayMeals && this.props.day.meals){
             let sorted_meals_array = Object.values(this.props.day.meals)  
@@ -76,9 +90,12 @@ class Day extends Component {
         return(
             <div className="day" >
                 <div className="day_header">
-                    <div className="day_title" onClick={this.handleClick}>    
-                        {this.state.day_name}, {this.state.date_display}
-                    </div>
+                    <span className="day_expansion_area" onClick={this.handleClick}>
+                        {this.renderArrow()}
+                        <div className="day_title" >    
+                            {this.state.day_name}, {this.state.date_display}
+                        </div>
+                    </span>
                     <div className="day_control_panel">
                         <DayControlPanel totalDayCookingTime={this.state.totalDayCookingTime} totalDayCalories={this.state.totalDayCalories}/>
                     </div>

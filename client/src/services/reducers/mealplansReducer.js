@@ -13,8 +13,8 @@ export default function mealplansReducer(state = {
         case 'GET_MEALPLANS_SUCCESS':
             return  {
                     ...state,
-                    isLoaded: true,
-                    userMealplans: [].concat(action.payload)}
+                    userMealplans: [].concat(action.payload),
+                    isLoaded: true,}
 
         case 'GET_MEALPLANS_FAILURE':
             return{

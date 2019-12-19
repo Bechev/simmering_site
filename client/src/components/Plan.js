@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux'
+import {fetchMealPlan} from '../services/actions/mealplan.js'
 import Day from './Plan/Day.js'
 import Suggestions from './Plan/Suggestions.js'
 import './components.css'
@@ -7,6 +9,19 @@ import './components.css'
 
 class Plan extends Component {
     
+    constructor(props){
+        super(props);
+        this.state = {
+            mealplan: {},
+        }
+    }
+
+    componentDidUpdate(prevProps){
+        if (this.props.mealplansLoaded && prevProps.mealplans !== this.props.mealplans) {
+            this.props.fetchMealPlan(this.props.user, this.props.mealplans[this.props.mealplans.length-1].id)
+        }
+    }
+
     sort_days(arr){
         let sorted_array = arr.sort(function(a,b){
             let dateA = new Date(a.date)
@@ -17,12 +32,11 @@ class Plan extends Component {
     }
 
     renderMealPlan(){
-        if(this.props.mealplan && this.props.mealplan.days.length > 0){
+        if(this.props.mealplan.isLoaded && this.props.mealplan.days.length > 0){
             let sorted_days_array = Object.values(this.props.mealplan.days)
             sorted_days_array = this.sort_days(sorted_days_array)
             return(
                 sorted_days_array.map((day) => {
-                    console.log("day: "+ day)
                     return(
                             <Day key={day.id} day={day}/>
                         )
@@ -50,4 +64,19 @@ class Plan extends Component {
 
 }
   
-export default withRouter(Plan);
+const mapStateToProps = (state, ownProps) => {
+    return {
+      user: state.auth.user,
+      mealplansLoaded: state.mealplans.isLoaded,
+      mealplans: state.mealplans.userMealplans,
+      mealplan: state.mealplan
+    }
+  }
+
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchMealPlan: (user, mealplan_id) => dispatch(fetchMealPlan(user, mealplan_id)),
+    }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Plan));
