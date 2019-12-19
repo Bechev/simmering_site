@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
+import { connect } from 'react-redux'
 import Calories from '../assets/calories-icon.png'
 import Delete from '../assets/delete-icon.png'
 import Edit from '../assets/edit-icon.png'
@@ -17,6 +18,7 @@ class RecipeCard extends Component {
             recipe_feed_count: 0,
         }
         this.changeFeedCount = this.changeFeedCount.bind(this);
+        this.removeRecipeFromMeal = this.removeRecipeFromMeal.bind(this)
     }
 
 
@@ -30,6 +32,23 @@ class RecipeCard extends Component {
         }
         this.setState({
             recipe_feed_count: this.state.recipe_feed_count + increment
+        })
+    }
+
+    removeRecipeFromMeal(){
+        fetch("http://localhost:3000/api/v1/meals/" + this.props.mealID,{
+            method: 'PUT',
+            headers:{
+                "uid": this.props.user.uid,
+                "client":  this.props.user.client,
+                "access-token":  this.props.user['access-token'],
+                "recipe-id": this.props.recipe.id,
+            }
+        })
+        .then(response => response.json())
+        .then(response =>{})
+        .catch(error =>{
+            alert(error.message)
         })
     }
 
@@ -114,10 +133,10 @@ class RecipeCard extends Component {
         if(this.props.isMealPlan){
             return(
                 <div className="meal_plan_controls">
-                    <div className="edit_recipe">
+                    {/* <div className="edit_recipe">
                         <img  src={Edit} className="edit icon" alt='edit_button'></img>
-                    </div>
-                    <div className="remove_recipe">
+                    </div> */}
+                    <div className="remove_recipe" onClick={this.removeRecipeFromMeal}>
                         <img src={Delete} className="edit icon" alt='delete_button'></img>
                     </div>
                 </div>
@@ -150,5 +169,13 @@ class RecipeCard extends Component {
     }
 
 }
-  
-export default withRouter(RecipeCard);
+
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+      user: state.auth.user,
+    }
+  }
+
+
+export default withRouter(connect(mapStateToProps, null)(RecipeCard));
