@@ -8,14 +8,14 @@ import '../../components.css';
 
 class DayControlPanel extends Component {
 
-    handleEditClick(){
-        alert("That's some big fat edit")
-    }
+    // handleEditClick(){
+    //     alert("That's some big fat edit")
+    // }
 
 
-    handleDeleteClick(){
-        alert("That's some big fat delete")
-    }
+    // handleDeleteClick(){
+    //     alert("That's some big fat delete")
+    // }
 
   render() {
 

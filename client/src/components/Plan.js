@@ -22,6 +22,7 @@ class Plan extends Component {
             sorted_days_array = this.sort_days(sorted_days_array)
             return(
                 sorted_days_array.map((day) => {
+                    console.log("day: "+ day)
                     return(
                             <Day key={day.id} day={day}/>
                         )
