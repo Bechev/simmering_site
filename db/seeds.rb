@@ -114,7 +114,7 @@ MEALS = ["meal1",
          "meal9",
          "meal10"]
 
-ord = 1
+ord = 20
 for meal in MEALS
     meal = Meal.create(name: meal, order: ord, user_id: rand(1..3))
     num_recipes_per_meal = rand(1..3)
@@ -122,7 +122,7 @@ for meal in MEALS
         meal.order = ord
         meal.recipes << Recipe.find(rand(1..20))
     end
-    ord = ord + 1
+    ord = ord - 1
 end
 
 # Seed days

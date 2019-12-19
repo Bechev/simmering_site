@@ -28,6 +28,13 @@ class Day extends Component {
         })
     }
     
+    sort_meals(arr){
+        let sorted_array = arr.sort(function(a,b){
+            return a.order  - b.order
+        })
+        return sorted_array
+    }
+
     handleClick(){
         this.setState({
             displayMeals: !this.state.displayMeals
@@ -36,8 +43,10 @@ class Day extends Component {
 
     renderMeals(){
         if(this.state.displayMeals && this.props.day.meals){
+            let sorted_meals_array = Object.values(this.props.day.meals)  
+            sorted_meals_array = this.sort_meals(sorted_meals_array)
             return(
-                this.props.day.meals.map((meal)=> {
+                sorted_meals_array.map((meal)=> {
                     return(
                         <Meal key={meal.id} meal={meal}/>
                     )

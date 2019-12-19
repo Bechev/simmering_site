@@ -16,12 +16,6 @@ class Meal extends Component {
         this.handleClick = this.handleClick.bind(this);
     }
     
-    sort_meals(arr){
-        let sorted_array = arr.sort(function(a,b){
-            return a.order  - b.order
-        })
-        return sorted_array
-    }
     
     handleClick(){
         this.setState({
@@ -33,10 +27,8 @@ class Meal extends Component {
 
     renderRecipes(){
         if(this.props.meal.recipes){
-            let sorted_meals_array = Object.values(this.props.meal.recipes)  
-            sorted_meals_array = this.sort_meals(sorted_meals_array)
             return(
-                sorted_meals_array.map((recipe) => {
+                this.props.meal.recipes.map((recipe) => {
                     return(
                         <RecipeCard recipe={recipe} isMealPlan={true}/>
                     )
