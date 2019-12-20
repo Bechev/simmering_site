@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux'
 import {removeRecipeFromMeal} from '../services/actions/mealplan.js'
+import AddToMealPlan from './AddToMealPlan.js'
 import Calories from '../assets/calories-icon.png'
 import Delete from '../assets/delete-icon.png'
 // import Edit from '../assets/edit-icon.png'
@@ -17,60 +18,26 @@ class RecipeCard extends Component {
         super(props);
         this.state = {
             recipe_feed_count: 0,
+            displayQuickAddToMealPlan: false,
         }
         this.changeFeedCount = this.changeFeedCount.bind(this);
         this.removeRecipeFromMeal = this.removeRecipeFromMeal.bind(this)
+        this.displayQuickAddToMealPlan = this.displayQuickAddToMealPlan.bind(this)
     }
 
-    changeFeedCount(action){
-        var increment = 0
-        if(action === "increment"){
-            increment = 1
-        }else if (action === "decrement" && this.state.recipe_feed_count > 0){
-            increment = -1
-        }
-        this.setState({
-            recipe_feed_count: this.state.recipe_feed_count + increment
-        })
-    }
+    componentDidMount(){
+        document.addEventListener("keydown", this.hideAddRecipeToWeekWindow, false);
+      }
+  
+      componentWillUnmount(){
+        document.removeEventListener("keydown", this.hideAddRecipeToWeekWindow, false);
+      }
 
-    removeRecipeFromMeal(){
-        this.props.removeRecipeFromMeal(this.props.user, this.props.mealID, this.props.recipe.id)
-    }
-
-    renderRecipeName(){
-        if(this.props.recipe){
-            return(
-                <React.Fragment>
-                    {this.props.recipe.name}
-                </React.Fragment>
-            )
-        }else{
-            return(
-                <React.Fragment>
-                    "No Name"
-                </React.Fragment>
-            )
-        }
-    }
-
-    renderRecipeCalories(){
-        if(this.props.recipe){
-            return(
-                <React.Fragment>
-                    {this.props.recipe.calories}
-                </React.Fragment>
-            )
-        }
-    }
-
-    recipeTotalTime(){
-        if(this.props.recipe){
-            return(
-                <React.Fragment>
-                    {this.props.recipe.total_recipe_time}
-                </React.Fragment>
-            )
+    hideAddRecipeToWeekWindow = (event) => {
+        if(event.keyCode === 27){
+            this.setState({
+                displayQuickAddToMealPlan: false
+            })
         }
     }
 
@@ -108,9 +75,26 @@ class RecipeCard extends Component {
     renderAddToMealPlanButton(){
         if(!this.props.isMealPlan){
             return(
-                <div className="add_to_meal_plan_button">
-                    Add to MealPlan
-                </div>
+                <React.Fragment>
+                    <div className="alt_button recipe_card_button" onClick={this.displayQuickAddToMealPlan}>
+                        Add to MealPlan
+                    </div>
+                    {this.renderAddToMealPlan()}
+                </React.Fragment>
+            )
+        }
+    }
+
+    displayQuickAddToMealPlan(){
+        this.setState({
+            displayQuickAddToMealPlan: !this.state.displayQuickAddToMealPlan
+        })
+    }
+
+    renderAddToMealPlan(){
+        if(this.state.displayQuickAddToMealPlan){
+            return (
+                <AddToMealPlan recipe={this.props.recipe} displayQuickAddToMealPlan={this.displayQuickAddToMealPlan}/>
             )
         }
     }
@@ -130,6 +114,46 @@ class RecipeCard extends Component {
         }
     }
 
+    removeRecipeFromMeal(){
+        this.props.removeRecipeFromMeal(this.props.user, this.props.mealID, this.props.recipe.id)
+    }
+
+    renderRecipeName(){
+        if(this.props.recipe){
+            return(
+                <React.Fragment>
+                    {this.props.recipe.name}
+                </React.Fragment>
+            )
+        }else{
+            return(
+                <React.Fragment>
+                    "Loading..."
+                </React.Fragment>
+            )
+        }
+    }
+
+    renderRecipeCalories(){
+        if(this.props.recipe){
+            return(
+                <React.Fragment>
+                    {this.props.recipe.calories}
+                </React.Fragment>
+            )
+        }
+    }
+
+    recipeTotalTime(){
+        if(this.props.recipe){
+            return(
+                <React.Fragment>
+                    {this.props.recipe.total_recipe_time}
+                </React.Fragment>
+            )
+        }
+    }
+
     renderRecipeFeedCout(){
         // if(this.props.isMealPlan){
             return(
@@ -143,6 +167,18 @@ class RecipeCard extends Component {
                 </div>
             )
         // }
+    }
+
+    changeFeedCount(action){
+        var increment = 0
+        if(action === "increment"){
+            increment = 1
+        }else if (action === "decrement" && this.state.recipe_feed_count > 0){
+            increment = -1
+        }
+        this.setState({
+            recipe_feed_count: this.state.recipe_feed_count + increment
+        })
     }
 
   render() {
