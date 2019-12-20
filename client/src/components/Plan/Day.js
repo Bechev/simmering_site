@@ -28,7 +28,7 @@ class Day extends Component {
             date_display: (d.getMonth() + 1) + "/" + (d.getDate())
         })
 
-        {this.calculateControlPanelInformation(this.props.day.meals)}
+        this.calculateControlPanelInformation(this.props.day.meals)
     }
     
     calculateControlPanelInformation(meals){
@@ -38,7 +38,9 @@ class Day extends Component {
             meal.recipes.map((recipe) => {
                 totalDayCookingTime = totalDayCookingTime + recipe.total_recipe_time
                 totalDayCalories = totalDayCalories + recipe.calories
+                return null
             })
+            return null
         })
         this.setState({
             totalDayCookingTime: totalDayCookingTime,

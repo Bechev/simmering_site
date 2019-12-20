@@ -35,8 +35,10 @@ export default function mealplanReducer(state = {
             return state.days.forEach( day => {
                 day.meals.forEach((meal, index_meal) => {
                     if (action.payload === null ){
+                        // delete the meal is no more recipes
                         day.meals.splice(index_meal, 1)
                     }else if (meal.id === action.payload.id){
+                        // replace previous meal by the one returned by the backend
                         day.meals.splice(index_meal, 1, action.payload)
                     }
                 });
