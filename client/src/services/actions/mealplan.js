@@ -40,3 +40,27 @@ export function removeRecipeFromMeal(user, meal_id, recipe_id){
         })
     }    
 };
+
+export function addRecipeToMealplan(user,mealplan_id,day_date, meal_name, recipe_id){
+    return (dispatch) => {
+        dispatch({ type: 'ADD_RECIPE_TO_MEAL' });    
+        return fetch("http://localhost:3000/api/v1/mealplans/" + mealplan_id,{
+        method: 'PUT',    
+        headers:{
+                "uid": user.uid,
+                "client":  user.client,
+                "access-token":  user['access-token'],
+                "day-date": day_date,
+                "meal-id": meal_name,
+                "recipe-id": recipe_id,     
+            }
+        })
+        .then(response => response.json())
+        .then(updated_meal => {
+            dispatch({type:'ADD_RECIPE_TO_MEAL_SUCCESS', payload: updated_meal})
+        })
+        .catch(error =>{
+            dispatch({type:'ADD_RECIPE_TO_MEAL_FAILURE', payload: error, error:true})
+        })
+    }    
+};

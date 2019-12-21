@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
             post '/search' => "recipes#search"
             resources :posts
-            resources :mealplans, only: [:index, :show]
+            resources :mealplans, only: [:index, :show, :update]
             resources :days, only: [:index]
             resources :meals, only: [:index, :update]
             resources :recipes, only: [:index]

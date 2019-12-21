@@ -12,7 +12,7 @@ class Day extends Component {
     constructor(props){
         super(props);
         this.state = {
-            displayMeals: true,
+            displayMeals: false,
             day_name: "Loading",
         }
         this.handleClick = this.handleClick.bind(this);
@@ -21,11 +21,11 @@ class Day extends Component {
     componentDidMount(){
         var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         var d = new Date(this.props.day.date);
-        var dayName = days[d.getDay()];
-        
+        var dayName = days[d.getUTCDay()];
+        console.log("d: " + d)
         this.setState({
             day_name: dayName,
-            date_display: (d.getMonth() + 1) + "/" + (d.getDate())
+            date_display: (d.getUTCMonth() + 1) + "/" + (d.getUTCDate())
         })
 
         this.calculateControlPanelInformation(this.props.day.meals)

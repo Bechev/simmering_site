@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
+import {addRecipeToMealplan} from '../services/actions/mealplan.js'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 // import {fetchMealPlan} from '../services/actions/mealplan.js'
@@ -14,8 +15,8 @@ class AddToMealPlan extends Component {
         super(props);
 
         this.state = {
-            recipe_day: new Date(),
-            recipe_meal: ""
+            day_date: new Date(),
+            meal_name: ""
         }
         this.handleDateChange = this.handleDateChange.bind(this)
         this.handleMealChange = this.handleMealChange.bind(this)
@@ -23,7 +24,9 @@ class AddToMealPlan extends Component {
     }
 
     addRecipeToMealPlan() {
-        alert("day:" + this.state.recipe_day + "meal:" + this.state.recipe_meal)
+        // Put some placeholder for the recipe_id as the recipe_card is a placeholder itself
+        // this.props.addRecipeToMealPlan(this.props.user, this.props.mealplan_id, this.state.day_date, this.state.meal_name, this.props.recipe_id)
+        this.props.addRecipeToMealplan(this.props.user, this.props.mealplan_id, this.state.day_date, this.state.meal_name, 1)
     }
 
     // Stop the propagation to allow removing the AddToMealPlan window when cliking on the parent but not when clicking on the child.
@@ -31,17 +34,20 @@ class AddToMealPlan extends Component {
         e.stopPropagation();
     }
 
-    handleDateChange = date => {
+    handleDateChange(date) {
         this.setState({
-            startDate: date
+            day_date: date,
         });
-    };
+    }
 
     handleMealChange(event) {
-        this.setState({
-            recipe_meal: event.target.value,
-        });
-
+        if (event.target.value === ""){
+            alert("Meal name cannot be blank")
+        }else{
+            this.setState({
+                meal_name: event.target.value,
+            });
+        }
     }
 
     render() {
@@ -49,26 +55,28 @@ class AddToMealPlan extends Component {
         return (
             <div className="add_to_mealplan_blackground" onClick={this.props.displayQuickAddToMealPlan} >
                 <div className="add_to_mealplan_window" onClick={this.stopPropagation}>
-                    {/* <div className="add_to_mealplan_form"> */}
-                        <form className="add_to_mealplan_form">
-                            <div className="date_picker add_to_mealplan_input">
-                                <label className='recipe_day_selection'> Day: </label>
-                                <br></br>
-                                <DatePicker className='input_field day_selection_input_field add_to_mealplan_input_field' dateFormat="yyyy/MM/dd" selected={this.state.recipe_day} onChange={this.handleDateChange} placeholder={this.state.recipe_day} />
-                            </div>
+                    <div className="recipe_card_title">
+                        Add {this.props.recipe ? this.props.recipe.name : "Loading..."} to your mealplan
+                    </div>
+                    <br></br><br></br>
+                    <form className="add_to_mealplan_form">
+                        <div className="date_picker add_to_mealplan_input">
+                            <label className='recipe_day_selection'> Day: </label>
                             <br></br>
-                            <div className="meal_selection add_to_mealplan_input">
-                                <label className='meal_selection'> Meal: </label>
-                                <br></br>
-                                <input className='input_field meal_selection_input_field add_to_mealplan_input_field' type="text" name="meal_value" value={this.state.recipe_meal} onChange={this.handleMealChange} placeholder="Meal" />
-                            </div>
-                            <br></br><br></br>
-                            <div className="add_to_mealplan_buttons">
-                                <input className='alt_button add_to_mealplan_button add_button' type="button" value="Add" onClick={this.addRecipeToMealPlan} />
-                                <input className='alt_button add_to_mealplan_button' type="button" value="Cancel" onClick={this.props.displayQuickAddToMealPlan} />
-                            </div>
-                        </form>
-                    {/* </div> */}
+                            <DatePicker className='input_field day_selection_input_field add_to_mealplan_input_field' dateFormat="yyyy/MM/dd" selected={this.state.day_date} onChange={this.handleDateChange} placeholder={this.state.day_date} />
+                        </div>
+                        <br></br>
+                        <div className="meal_selection add_to_mealplan_input">
+                            <label className='meal_selection'> Meal: </label>
+                            <br></br>
+                            <input className='input_field meal_selection_input_field add_to_mealplan_input_field' type="text" name="meal_value" value={this.state.recipe_meal} onChange={this.handleMealChange} placeholder="Meal" />
+                        </div>
+                        <br></br><br></br>
+                        <div className="add_to_mealplan_buttons">
+                            <input className='alt_button add_to_mealplan_button add_button' type="button" value="Add" onClick={this.addRecipeToMealPlan} />
+                            <input className='alt_button add_to_mealplan_button' type="button" value="Cancel" onClick={this.props.displayQuickAddToMealPlan} />
+                        </div>
+                    </form>
                 </div>
             </div>
         )
@@ -79,12 +87,13 @@ class AddToMealPlan extends Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         user: state.auth.user,
+        mealplan_id: state.mealplan.id,
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        // fetchMealPlan: (user, mealplan_id) => dispatch(fetchMealPlan(user, mealplan_id)),
+        addRecipeToMealplan: (user,mealplan_id,day_date, meal_name, recipe_id) => dispatch(addRecipeToMealplan(user,mealplan_id,day_date, meal_name, recipe_id)),
     }
 }
 

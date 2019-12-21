@@ -127,7 +127,8 @@ end
 
 # Seed days
 for n in (0..10)
-    day = Day.create(date: Date.today+100+n, user_id: rand(1..3))
+    date = Date.today.to_time(:utc) + (n+100)*60*60*24
+    day = Day.create(date: date, user_id: rand(1..3))
     number_of_meals_for_the_day = rand(2..5)
     for meal in (1..number_of_meals_for_the_day)
         day.meals << Meal.find(rand(1..10))
