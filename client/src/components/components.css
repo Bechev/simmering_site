@@ -499,13 +499,18 @@
     /* opacity: 0; */
 
     display: flex;
+    justify-content: center;
+    align-items: center;
 
     z-index: 15;
 }
 
 .add_to_mealplan_button{
-    width: 5vh;
-    height: 3vh;
+    width: 10vh;
+    height: 5vh;
+    font-size: 2vh;
+    align-items: center;
+    justify-content: center;
 }
 
 .addRecipeToMealPlanDashboard{
@@ -519,4 +524,29 @@
 .add_button{
     background-color: rgb(85, 105, 47);
     color: white;
+}
+
+.add_to_mealplan_form{
+    display: flex;
+    flex-direction: column;
+    font-size: 2vh;
+    width: 48%;
+
+}
+
+.add_to_mealplan_input{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.add_to_mealplan_buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.add_to_mealplan_input_field{
+    font-size: 2vh;
 }
