@@ -1,4 +1,4 @@
-export function sign_in(email, password){
+export function sign_in(email, password, history){
     return (dispatch) => {
         dispatch({ type: 'SIGNING_IN_USER' });    
         return fetch("http://localhost:3000/api/v1/auth/sign_in" ,{
@@ -15,13 +15,19 @@ export function sign_in(email, password){
         })
         .then(response => { 
             if(!response.ok){ 
-                throw new Error(response.status)
+                if(response.status === 401){
+                    alert("Please verify your login and password")
+                }else{
+                    alert("Could not log you in, please try again later")
+                }
+                throw new Error(response)
             }
             else {
                 const user = {};
                 response.headers.forEach((value, name) => user[name] = value);
                 localStorage.setItem('user', JSON.stringify(user));
                 dispatch({type:'SIGN_IN_USER_SUCCESS', payload: user })
+                history.push('/')
             }
         })
         .catch(error =>{

@@ -26,10 +26,9 @@ class LoginSignupForm extends Component {
     handleSubmit(e){
         e.preventDefault()
         if(this.props.submission === 'login'){
-            this.props.sign_in(this.state.email_value, this.state.password_value)
-            this.props.history.push('/')
+            this.props.sign_in(this.state.email_value, this.state.password_value, this.props.history)
         }else if (this.props.submission === 'signup'){
-
+            alert("You didn't create the signup functionality buddy...")
         }
     }
 
