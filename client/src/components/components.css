@@ -552,3 +552,26 @@
 .add_to_mealplan_input_field{
     font-size: 2vh;
 }
+
+/* CSS for the Carousel */
+.carousel{
+    display: flex;
+    justify-content: center;
+}
+
+.carouselItem{
+    margin: auto;   
+}
+
+.slide-arrow{
+}
+
+.carouselleft{
+    margin: auto;
+ 
+}
+
+.carouselright{
+    margin: auto;
+}
+
