@@ -26,7 +26,7 @@ module Api
                     @meal.delete
                     render json: nil
                 else 
-                    render json: @meal  
+                    render json: @meal, include: "**"  
                 end
             end
         

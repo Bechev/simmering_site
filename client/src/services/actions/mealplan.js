@@ -19,48 +19,56 @@ export function fetchMealPlan(user, mealplan_id){
     }    
 };
 
-export function removeRecipeFromMeal(user, meal_id, recipe_id){
-    return (dispatch) => {
-        dispatch({ type: 'REMOVE_RECIPE_FROM_MEAL' });    
-        return fetch("http://localhost:3000/api/v1/meals/" + meal_id,{
-        method: 'PUT',    
-        headers:{
-                "uid": user.uid,
-                "client":  user.client,
-                "access-token":  user['access-token'],
-                "recipe-id": recipe_id,     
-            }
-        })
-        .then(response => response.json())
-        .then(updated_meal => {
-            dispatch({type:'REMOVE_RECIPE_FROM_MEAL_SUCCESS', payload: updated_meal})
-        })
-        .catch(error =>{
-            dispatch({type:'REMOVE_RECIPE_FROM_MEAL_FAILURE', payload: error, error:true})
-        })
-    }    
-};
+// export function removeRecipeFromMeal(user, meal_id, recipe_id){
+//     return (dispatch) => {
+//         dispatch({ type: 'REMOVE_RECIPE_FROM_MEAL' });    
+//         return fetch("http://localhost:3000/api/v1/meals/" + meal_id,{
+//         method: 'PUT',    
+//         headers:{
+//                 "uid": user.uid,
+//                 "client":  user.client,
+//                 "access-token":  user['access-token'],
+//                 "recipe-id": recipe_id,     
+//             }
+//         })
+//         .then(response => response.json())
+//         .then(updated_meal => {
+//             dispatch({type:'REMOVE_RECIPE_FROM_MEAL_SUCCESS', payload: updated_meal})
+//         })
+//         .catch(error =>{
+//             dispatch({type:'REMOVE_RECIPE_FROM_MEAL_FAILURE', payload: error, error:true})
+//         })
+//     }    
+// };
 
-export function addRecipeToMealplan(user,mealplan_id,day_date, meal_name, recipe_id){
+export function addOrRemoveRecipeToMealplan(action, user, mealplan_id, day_date, meal_name, recipe_id){
     return (dispatch) => {
-        dispatch({ type: 'ADD_RECIPE_TO_MEAL' });    
+        dispatch({ type: 'ADD_OR_REMOVE_RECIPE_TO_MEAL' });    
         return fetch("http://localhost:3000/api/v1/mealplans/" + mealplan_id,{
         method: 'PUT',    
         headers:{
-                "uid": user.uid,
-                "client":  user.client,
-                "access-token":  user['access-token'],
-                "day-date": day_date,
-                "meal-id": meal_name,
-                "recipe-id": recipe_id,     
-            }
+            "Content-Type": "application/json; charset=utf-8",
+            "uid": user.uid,
+            "client":  user.client,
+            "access-token":  user['access-token'],
+            },
+        body:JSON.stringify({
+            "to-do": action,
+            "day-date": day_date,
+            "meal-name": meal_name,
+            "recipe-id": recipe_id,  
+        })
         })
         .then(response => response.json())
-        .then(updated_meal => {
-            dispatch({type:'ADD_RECIPE_TO_MEAL_SUCCESS', payload: updated_meal})
+        .then(response => {
+            if (action === "Remove"){
+                dispatch({type:'REMOVE_RECIPE_TO_MEAL_SUCCESS', payload: response})
+            }else if (action === "Add"){
+                // dispatch({type:'ADD_RECIPE_TO_MEAL_SUCCESS', payload: response})
+            }
         })
         .catch(error =>{
-            dispatch({type:'ADD_RECIPE_TO_MEAL_FAILURE', payload: error, error:true})
+            dispatch({type:'ADD_OR_REMOVE_RECIPE_TO_MEAL_FAILURE', payload: error, error:true})
         })
     }    
 };

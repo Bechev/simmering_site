@@ -16,9 +16,13 @@ class Plan extends Component {
         }
     }
 
+
     componentDidUpdate(prevProps){
         if (this.props.mealplansLoaded && prevProps.mealplans !== this.props.mealplans) {
             this.props.fetchMealPlan(this.props.user, this.props.mealplans[this.props.mealplans.length-1].id)
+        }
+        if(this.props !== prevProps){
+            this.sort_days_array()
         }
     }
 
@@ -31,12 +35,18 @@ class Plan extends Component {
         return sorted_array
     }
 
+    sort_days_array(){
+        let arr = Object.values(this.props.mealplan.days)
+        let sorted_days_array = this.sort_days(arr)
+        this.setState({
+            sorted_days_array: sorted_days_array
+        })
+    }
+
     renderMealPlan(){
-        if(this.props.mealplan.isLoaded && this.props.mealplan.days.length > 0){
-            let sorted_days_array = Object.values(this.props.mealplan.days)
-            sorted_days_array = this.sort_days(sorted_days_array)
+        if(this.props.mealplan.days.length > 0 && this.state.sorted_days_array){
             return(
-                sorted_days_array.map((day) => {
+                this.state.sorted_days_array.map((day) => {
                     return(
                             <Day key={day.id} day={day}/>
                         )

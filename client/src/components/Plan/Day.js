@@ -22,12 +22,10 @@ class Day extends Component {
         var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         var d = new Date(this.props.day.date);
         var dayName = days[d.getUTCDay()];
-        console.log("d: " + d)
         this.setState({
             day_name: dayName,
             date_display: (d.getUTCMonth() + 1) + "/" + (d.getUTCDate())
         })
-
         this.calculateControlPanelInformation(this.props.day.meals)
     }
     
@@ -80,7 +78,7 @@ class Day extends Component {
             return(
                 sorted_meals_array.map((meal)=> {
                     return(
-                        <Meal key={meal.id} meal={meal}/>
+                        <Meal key={meal.id} day={this.props.day} meal={meal}/>
                     )
                 })
             )

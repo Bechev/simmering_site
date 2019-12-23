@@ -112,7 +112,17 @@ MEALS = ["meal1",
          "meal7",
          "meal8",
          "meal9",
-         "meal10"]
+         "meal10",
+         "meal11",
+         "meal12",
+         "meal13",
+         "meal14",
+         "meal15",
+         "meal16",
+         "meal17",
+         "meal18",
+         "meal19",
+         "meal20"]
 
 ord = 20
 for meal in MEALS
@@ -126,14 +136,26 @@ for meal in MEALS
 end
 
 # Seed days
-for n in (0..10)
-    date = Date.today.to_time(:utc) + (n+100)*60*60*24
+for n in (0..9)
+    date = Date.today.to_time(:utc) + ((n+1)*100)*60*60*24
+    puts date.to_s + "\n"
     day = Day.create(date: date, user_id: rand(1..3))
-    number_of_meals_for_the_day = rand(2..5)
-    for meal in (1..number_of_meals_for_the_day)
-        day.meals << Meal.find(rand(1..10))
-    end
 end
+
+Day.all.each_with_index do |day, index|
+    meal1 = Meal.find_by(name: MEALS[index*2])
+    meal2 = Meal.find_by(name: MEALS[index*2 + 1])
+    puts MEALS.length.to_s + "\n"
+    puts Day.all.length.to_s + "\n"
+    puts index.to_s + "\n"
+    puts meal1.to_s + "\n"
+    puts meal2.to_s + "\n"
+    day.meals << meal1
+    day.meals << meal2
+
+    # day.meals << Meal.find_by(name: MEALS[index*2 + 1])
+end
+
 
 
 # Seed Mealplans

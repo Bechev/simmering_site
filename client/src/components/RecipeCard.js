@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux'
-import {removeRecipeFromMeal} from '../services/actions/mealplan.js'
+import {addOrRemoveRecipeToMealplan} from '../services/actions/mealplan.js'
 import AddToMealPlan from './AddToMealPlan.js'
 import Calories from '../assets/calories-icon.png'
 import Delete from '../assets/delete-icon.png'
@@ -115,7 +115,7 @@ class RecipeCard extends Component {
     }
 
     removeRecipeFromMeal(){
-        this.props.removeRecipeFromMeal(this.props.user, this.props.mealID, this.props.recipe.id)
+        this.props.addOrRemoveRecipeToMealplan("Remove", this.props.user, this.props.mealplan_id, this.props.day.date ,this.props.meal.name, this.props.recipe.id)
     }
 
     renderRecipeName(){
@@ -196,12 +196,13 @@ class RecipeCard extends Component {
 const mapStateToProps = (state, ownProps) => {
     return {
       user: state.auth.user,
+      mealplan_id: state.mealplan.id,
     }
   }
 
 const mapDispatchToProps = dispatch => {
     return {
-        removeRecipeFromMeal: (user, meal_id, recipe_id) => dispatch(removeRecipeFromMeal(user,  meal_id, recipe_id)),
+        addOrRemoveRecipeToMealplan: (action, user, mealplan_id, day_date, meal_name, recipe_id) => dispatch(addOrRemoveRecipeToMealplan(action, user, mealplan_id, day_date, meal_name, recipe_id)),
     }
 }
 

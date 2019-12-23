@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
-import {addRecipeToMealplan} from '../services/actions/mealplan.js'
+import {addOrRemoveRecipeToMealplan} from '../services/actions/mealplan.js'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 // import {fetchMealPlan} from '../services/actions/mealplan.js'
@@ -26,7 +26,8 @@ class AddToMealPlan extends Component {
     addRecipeToMealPlan() {
         // Put some placeholder for the recipe_id as the recipe_card is a placeholder itself
         // this.props.addRecipeToMealPlan(this.props.user, this.props.mealplan_id, this.state.day_date, this.state.meal_name, this.props.recipe_id)
-        this.props.addRecipeToMealplan(this.props.user, this.props.mealplan_id, this.state.day_date, this.state.meal_name, 1)
+        this.props.addOrRemoveRecipeToMealplan("Add", this.props.user, this.props.mealplan_id, this.state.day_date, this.state.meal_name, 1)
+        this.props.displayQuickAddToMealPlan()
     }
 
     // Stop the propagation to allow removing the AddToMealPlan window when cliking on the parent but not when clicking on the child.
@@ -93,7 +94,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addRecipeToMealplan: (user,mealplan_id,day_date, meal_name, recipe_id) => dispatch(addRecipeToMealplan(user,mealplan_id,day_date, meal_name, recipe_id)),
+        addOrRemoveRecipeToMealplan: (action, user, mealplan_id, day_date, meal_name, recipe_id) => dispatch(addOrRemoveRecipeToMealplan(action, user, mealplan_id, day_date, meal_name, recipe_id)),
     }
 }
 
