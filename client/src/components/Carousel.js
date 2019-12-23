@@ -29,10 +29,35 @@ class Carousel extends Component {
         const { currentDisplayedItemIndex } = this.state;
         const shouldResetIndex = currentDisplayedItemIndex === lastIndex;
         const index =  shouldResetIndex ? 0 : currentDisplayedItemIndex + 1;
-    
+        
         this.setState({
             currentDisplayedItemIndex: index
         });
+    }
+
+    renderSecondRecipeCard(){
+
+    }
+
+    renderRecipeCards(){
+        if(!this.props.recipes || this.props.recipes.length === 0){
+            return(
+                <h1>No suggestions at the time. We can't do better than you!</h1>
+            )
+        }
+        else if(this.props.recipes.length ===1){
+            return(
+                <RecipeCard className='carouselItem' isMealPlan={false} recipe={this.props.recipes[this.state.currentDisplayedItemIndex]}/>
+            )
+        }else{
+            let indexSecondCard = this.state.currentDisplayedItemIndex === this.props.recipes.length -1 ? 0 : this.state.currentDisplayedItemIndex + 1
+                return(
+                    <React.Fragment>
+                    <RecipeCard className='carouselItem' isMealPlan={false} recipe={this.props.recipes[this.state.currentDisplayedItemIndex]}/>
+                    <RecipeCard className='carouselItem' isMealPlan={false} recipe={this.props.recipes[indexSecondCard]}/>
+                </React.Fragment>
+                )
+        }
     }
 
     render () {
@@ -44,10 +69,9 @@ class Carousel extends Component {
                         direction="carouselleft"
                         clickFunction={ this.previousSlide }
                         glyph="&#9664;" />
-                    
-                    <RecipeCard className='carouselItem' isMealPlan={false} recipe={this.props.recipes[this.state.currentDisplayedItemIndex]}/>
-                    <RecipeCard className='carouselItem' isMealPlan={false} recipe={this.props.recipes[this.state.currentDisplayedItemIndex + 1]}/>
-                    
+
+                        {this.renderRecipeCards()}
+
                     <Arrow
                         direction="carouselright"
                         clickFunction={ this.nextSlide }
