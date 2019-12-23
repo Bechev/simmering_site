@@ -35,7 +35,6 @@ export default function mealplanReducer(state = {
             }
 
         case 'REMOVE_RECIPE_TO_MEAL_SUCCESS':
-
                 state.days.map((day, day_index) => {
                     if (day.id === action.payload.day.id) {
                         if (action.payload.level === "day") {
@@ -50,97 +49,69 @@ export default function mealplanReducer(state = {
                                             if(recipe.id === action.payload.recipe.id){
                                                 meal.recipes.splice(recipe_index ,1)
                                             }
+                                            return null
                                         })
                                     }
                                 } 
+                                return null
                             })
                         }
                     } 
+                    return null
                 })
-   
-
-        // return {
-        //     ...state,
-        //     days: {
-        //         ...state.days,
-        //         meals: {
-        //             ...state.days.meals,
-        //             recipes: state.days.meals.recipes.filter(function (recipe) {
-        //                 return recipe.id !== action.payload.recipe.id
-        //             })
-        //         }
-        //     }
-        // }
-        // Is this shit immutable?! It's working for now though...
-        // return state.days.forEach( day => {
-        //     day.meals.forEach((meal, index_meal) => {
-        //         if (action.payload === null ){
-        //             // delete the meal if no more recipes
-        //             day.meals.splice(index_meal, 1)
-        //         }else if (meal.id === action.payload.id){
-        //             // replace previous meal by the one returned by the backend
-        //             day.meals.splice(index_meal, 1, action.payload)
-        //         }
-        //     });
-        // })
-
-        // let newDaysArray = state.days.slice()
-        // newDaysArray.forEach( day => {
-        //     let newMealsArray = day.meals
-        //     newMealsArray.forEach((meal, index_meal) => {
-        //         if (action.payload === null ){
-        //             // delete the meal is no more recipes
-        //             newMealsArray.splice(index_meal, 1)
-        //         }else if (meal.id === action.payload.id){
-        //             // replace previous meal by the one returned by the backend
-        //             newMealsArray.splice(index_meal, 1, action.payload)
-        //         }
-        //     });
-        // })
-        // console.log("newDaysArray: " + newDaysArray)
-        // return{
-        //     ...state,
-        //     days: newDaysArray
-        // }
+            return{...state}
 
         case 'ADD_RECIPE_TO_MEAL_SUCCESS':
-            // console.log("action.payload.day " + action.payload.day) 
-            // console.log("action.payload.day.meal " + action.payload.day.meal)
-            // console.log("action.payload.day.meal.recipe " + action.payload.day.meal.recipe)
-        // ...state
-        // Create a copy of the days array to ensure immutability
-        // let newDaysArray = state.days
-        // // Check if the day already exists or not
-        // if (newDaysArray.some(e => e.id === action.payload.id)) {
-        //     // If day exists, we replace it
-        //     newDaysArray.forEach((day, day_index) => {
-        //         if (day.id === action.payload.id) {
-        //             state.days.splice(day_index, 1, action.payload)
-        //         }
-        //     })
-        //     return {
-        //         ...state,
-        //         days: newDaysArray
-        //     }
-        // } else {
-        //     // If the day doesn't exist, we add it
-        //     return {
-        //         ...state,
-        //         days: [...newDaysArray, action.payload]
-        //     }
-        // }
+            // If the highest level is a recipe, we identify the day and the meal where it needs to be added and add it
+            if (action.payload.level === "recipe"){
+                state.days.map((day, day_index)=>{
+                    if(day.id === action.payload.day.id){
+                        day.meals.map((meal, meal_index)=>{
+                            if(meal.id===action.payload.meal.id){
+                                meal.recipes.splice(meal.recipes.length, 0, action.payload.recipe)
+                            }
+                            return null
+                        })
+                    }
+                    return null
+                })
+            // If the highest level is a meal, we find the day where it needs to be added and create the data structure to be added, then add it 
+            }else if(action.payload.level === "meal"){
+                // First we map over the day
+                state.days.map((day, day_index)=>{
+                    if (day.id === action.payload.day.id){
+                        // When the day is found, we create the meal in the array of meals within days
+                        day.meals.splice(day.meals.length, 0, action.payload.meal)
+                        let meal = day.meals[day.meals.length -1]
+                        // We then add a new "recipes" key to the meal object and add an a value of an array containing the new recipe
+                        meal["recipes"] = [action.payload.recipe] 
+                    }
+                    return null
+                })
+            // If the highest level is a day, create the data structure to be added, then add it 
+            }else{
+                // We create the data structure by adding the recipe to the meal
+                let meal = action.payload.meal
+                meal["recipes"] = [action.payload.recipe]
+                // we then add the meal to the days
+                let day = action.payload.day
+                day["meals"] = [action.payload.meal]
+                // We then add the day to the days in the state
+                let days = state.days
+                days.splice(state.days.length, 0, day)
+                // We then return the updated state
+                return {...state,
+                    days: days
+                
+                }
+            }
+        return{...state}
 
         case 'ADD_OR_REMOVE_RECIPE_TO_MEAL_FAILURE':
             return {
                 ...state,
                 errorMessage: action.payload.message
             }
-
-        // case 'ADD_RECIPE_TO_MEAL':
-        //     return {
-        //         ...state,
-        //     }
-
 
         default:
             return state;

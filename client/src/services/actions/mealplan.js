@@ -64,7 +64,7 @@ export function addOrRemoveRecipeToMealplan(action, user, mealplan_id, day_date,
             if (action === "Remove"){
                 dispatch({type:'REMOVE_RECIPE_TO_MEAL_SUCCESS', payload: response})
             }else if (action === "Add"){
-                // dispatch({type:'ADD_RECIPE_TO_MEAL_SUCCESS', payload: response})
+                dispatch({type:'ADD_RECIPE_TO_MEAL_SUCCESS', payload: response})
             }
         })
         .catch(error =>{

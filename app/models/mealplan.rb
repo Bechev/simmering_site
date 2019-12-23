@@ -68,7 +68,7 @@ class Mealplan < ApplicationRecord
             level = "meal"
         end
 
-        return {level: level, day: day, meal: meal, recipe: recipe}
+        return {level: level, day: day, include: "**", meal: meal, recipe: recipe}
         
     end
 end

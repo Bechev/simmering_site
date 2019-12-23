@@ -137,9 +137,10 @@ end
 
 # Seed days
 for n in (0..9)
-    date = Date.today.to_time(:utc) + ((n+1)*100)*60*60*24
+    date = Date.today.to_time(:utc) + ((n+1)*100)*60*60*2
     puts date.to_s + "\n"
     day = Day.create(date: date, user_id: rand(1..3))
+    puts day.date
 end
 
 Day.all.each_with_index do |day, index|
@@ -171,9 +172,13 @@ MEALPLANS = ["mealplan1",
              "mealplan10"]
 
 for x in MEALPLANS
-    mealplan = Mealplan.create(name: x, user_id: rand(1..3))
-    number_of_days_for_the_mealplans = rand(2..7)
-    for day in (1..number_of_days_for_the_mealplans)
-        mealplan.days << Day.find(rand(1..10))
-    end
+    user= User.find(rand(1..3))
+    mealplan = Mealplan.create(name: x, user_id: user.id)
+    mealplan.days << user.days
+    # number_of_days_for_the_mealplans = rand(2..7)
+    # for day in Day.all
+    #     if day.user === mealplan.user
+    #         mealplan.days << Day.find(rand(1..10))
+    #     end
+    # end
 end
