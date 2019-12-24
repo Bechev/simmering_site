@@ -6,6 +6,7 @@ import commentReducer from './commentReducer.js';
 import commentsReducer from './commentsReducer.js';
 import mealplansReducer from './mealplansReducer.js'
 import mealplanReducer from './mealplanReducer.js'
+import categoriesReducer from './categoriesReducer.js'
 
 
 export default combineReducers({
@@ -16,6 +17,6 @@ export default combineReducers({
     comments: commentsReducer,
     mealplans: mealplansReducer,
     mealplan: mealplanReducer,
-
+    categories: categoriesReducer
   })
   

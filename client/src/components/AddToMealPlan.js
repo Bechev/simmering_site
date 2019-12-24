@@ -26,7 +26,7 @@ class AddToMealPlan extends Component {
     addRecipeToMealPlan() {
         // Put some placeholder for the recipe_id as the recipe_card is a placeholder itself
         // this.props.addRecipeToMealPlan(this.props.user, this.props.mealplan_id, this.state.day_date, this.state.meal_name, this.props.recipe_id)
-        this.props.addOrRemoveRecipeToMealplan("Add", this.props.user, this.props.mealplan_id, this.state.day_date, this.state.meal_name, 1)
+        this.props.addOrRemoveRecipeToMealplan("Add", this.props.user, this.props.mealplan_id, this.state.day_date, this.state.meal_name, this.props.recipe.id)
         this.props.displayQuickAddToMealPlan()
     }
 

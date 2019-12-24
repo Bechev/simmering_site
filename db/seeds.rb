@@ -146,11 +146,6 @@ end
 Day.all.each_with_index do |day, index|
     meal1 = Meal.find_by(name: MEALS[index*2])
     meal2 = Meal.find_by(name: MEALS[index*2 + 1])
-    puts MEALS.length.to_s + "\n"
-    puts Day.all.length.to_s + "\n"
-    puts index.to_s + "\n"
-    puts meal1.to_s + "\n"
-    puts meal2.to_s + "\n"
     day.meals << meal1
     day.meals << meal2
 
@@ -181,4 +176,33 @@ for x in MEALPLANS
     #         mealplan.days << Day.find(rand(1..10))
     #     end
     # end
+end
+
+CATEGORIES = [ "Category 1",
+               "Category 2",
+               "Category 3",
+               "Category 4",
+               "Category 5",
+               "Category 6",
+               "Category 7",
+               "Category 8",
+               "Category 9",
+               "Category 10"]
+
+num_of_recipes = Recipe.all.length
+for category in CATEGORIES
+    puts category
+    c = Category.create(name: category)
+    num_of_recipes_per_cat = rand(2..5)
+    for x in (1..num_of_recipes_per_cat)
+        recipe =  Recipe.find(rand(1..num_of_recipes))
+        c.recipes << recipe
+    end
+end
+
+num_of_cat = Category.all.length
+for x in (1..num_of_recipes)
+    r = Recipe.find(x)
+    category = Category.find(rand(1..num_of_cat))
+    r.categories << category
 end

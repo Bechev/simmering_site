@@ -14,6 +14,7 @@ Rails.application.routes.draw do
             resources :meals, only: [:index, :update]
             resources :recipes, only: [:index]
             
+            resources :categories, only: [:index]
 
             resources :posts do
                 resources :comments, only: [:index, :create]
