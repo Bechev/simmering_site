@@ -91,16 +91,12 @@ class Carousel extends Component {
                 <div className="carousel">
         
                     <Arrow
-                        direction="carouselleft"
-                        clickFunction={ this.previousSlide }
-                        glyph="&#9664;" />
+                        direction="carouselLeft" clickFunction={ this.previousSlide } />
 
                         {this.renderRecipeCards()}
 
                     <Arrow
-                        direction="carouselright"
-                        clickFunction={ this.nextSlide }
-                        glyph="&#9654;" />
+                        direction="carouselRight" clickFunction={ this.nextSlide } />
         
                 </div>
             );

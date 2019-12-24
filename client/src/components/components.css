@@ -211,6 +211,7 @@
     width: 2vh;
 }
 
+
 .day_arrow{
     width: 4vh;
     height: 4vh;
@@ -563,16 +564,13 @@
     margin: auto;   
 }
 
-.slide-arrow{
-}
-
-.carouselleft{
+.arrow_icon{
+    display: flex;
+    /* max-width: 100%; */
+    width: 7vh;
     margin: auto;
- 
-}
-
-.carouselright{
-    margin: auto;
+    margin-left: 0;
+    margin-right:0;
 }
 
 /* CSS for category */
