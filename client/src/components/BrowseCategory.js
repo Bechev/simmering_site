@@ -1,24 +1,20 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
-import RecipeCard from './RecipeCard.js'
+import Category from './BrowseCategory/Category.js'
 
 
-class BrowseCatgegory extends Component {
+
+class BrowseCategory extends Component {
 
   render() {
 
     return(
         <div className="browse_category">
-            <RecipeCard isMealPlan={true}/>
-            <RecipeCard isMealPlan={true}/>
-            <RecipeCard isMealPlan={false}/>
-            <RecipeCard isMealPlan={true}/>
-            <RecipeCard isMealPlan={false}/>
-            <RecipeCard isMealPlan={false}/>
+            <Category/>
         </div>
         )   
     }
 
 }
   
-export default withRouter(BrowseCatgegory);
+export default withRouter(BrowseCategory);

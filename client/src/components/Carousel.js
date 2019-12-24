@@ -49,12 +49,37 @@ class Carousel extends Component {
             return(
                 <RecipeCard className='carouselItem' isMealPlan={false} recipe={this.props.recipes[this.state.currentDisplayedItemIndex]}/>
             )
-        }else{
+        }else if(!this.props.isCategory){
             let indexSecondCard = this.state.currentDisplayedItemIndex === this.props.recipes.length -1 ? 0 : this.state.currentDisplayedItemIndex + 1
                 return(
                     <React.Fragment>
                     <RecipeCard className='carouselItem' isMealPlan={false} recipe={this.props.recipes[this.state.currentDisplayedItemIndex]}/>
                     <RecipeCard className='carouselItem' isMealPlan={false} recipe={this.props.recipes[indexSecondCard]}/>
+                </React.Fragment>
+                )
+        }else{
+            let indexSecondCard = this.state.currentDisplayedItemIndex + 1
+            let indexThirdCard = this.state.currentDisplayedItemIndex + 2
+            let indexFourthCard = this.state.currentDisplayedItemIndex + 3
+            if (this.state.currentDisplayedItemIndex === this.props.recipes.length - 1){
+                indexSecondCard =  0
+                indexThirdCard =  1
+                indexFourthCard =  2
+            }else if(this.state.currentDisplayedItemIndex === this.props.recipes.length - 2){
+                indexSecondCard =  this.props.recipes.length - 1
+                indexThirdCard =  0
+                indexFourthCard =  1
+            }else if(this.state.currentDisplayedItemIndex === this.props.recipes.length - 3){
+                indexSecondCard =  this.props.recipes.length - 2
+                indexThirdCard =  this.props.recipes.length - 1
+                indexFourthCard =  0
+            }
+                return(
+                    <React.Fragment>
+                    <RecipeCard className='carouselItem' isMealPlan={false} recipe={this.props.recipes[this.state.currentDisplayedItemIndex]}/>
+                    <RecipeCard className='carouselItem' isMealPlan={false} recipe={this.props.recipes[indexSecondCard]}/>
+                    <RecipeCard className='carouselItem' isMealPlan={false} recipe={this.props.recipes[indexThirdCard]}/>
+                    <RecipeCard className='carouselItem' isMealPlan={false} recipe={this.props.recipes[indexFourthCard]}/>
                 </React.Fragment>
                 )
         }
