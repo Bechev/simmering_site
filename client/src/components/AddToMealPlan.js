@@ -24,10 +24,8 @@ class AddToMealPlan extends Component {
     }
 
     addRecipeToMealPlan() {
-        // Put some placeholder for the recipe_id as the recipe_card is a placeholder itself
-        // this.props.addRecipeToMealPlan(this.props.user, this.props.mealplan_id, this.state.day_date, this.state.meal_name, this.props.recipe_id)
-        this.props.addOrRemoveRecipeToMealplan("Add", this.props.user, this.props.mealplan_id, this.state.day_date, this.state.meal_name, this.props.recipe.id)
-        this.props.displayQuickAddToMealPlan()
+            this.props.addOrRemoveRecipeToMealplan("Add", this.props.user, this.props.mealplan_id, this.state.day_date, this.state.meal_name, this.props.recipe.id)
+            this.props.displayQuickAddToMealPlan()
     }
 
     // Stop the propagation to allow removing the AddToMealPlan window when cliking on the parent but not when clicking on the child.

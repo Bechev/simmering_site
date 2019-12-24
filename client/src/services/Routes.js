@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Route} from 'react-router-dom'
-import {PrivateRoute} from './Routes/PrivateRoutes.js'
+import {PrivateRoute} from './Routes/PrivateRoute.js'
+import {LoginSignupRoute} from './Routes/LoginSignupRoute.js'
 import {withRouter} from 'react-router-dom';
 
 import Home from '../scenes/Home.js'
@@ -17,11 +18,11 @@ class Routes extends Component {
         return(
             <React.Fragment>
                 <Route exact path="/" component={Home} />
-                <Route exact path="/signup" component={Signup} />
-                <Route exact path="/login" component={Login} />
+                <LoginSignupRoute exact path="/signup" component={Signup} authed={this.props.user}/>
+                <LoginSignupRoute exact path="/login" component={Login} authed={this.props.user}/>
                 <PrivateRoute exact path="/meal_plan" component={MealPlan} authed={this.props.user}/>
                 <PrivateRoute exact path="/profile" component={Profile} authed={this.props.user}/>
-                <PrivateRoute exact path="/browse" component={Browse} authed={this.props.user}/>
+                <Route exact path="/browse" component={Browse}/>
                 <PrivateRoute exact path="/mycart" component={Cart} authed={this.props.user}/>
             </React.Fragment>
         )

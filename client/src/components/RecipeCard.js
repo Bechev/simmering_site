@@ -23,6 +23,7 @@ class RecipeCard extends Component {
         this.changeFeedCount = this.changeFeedCount.bind(this);
         this.removeRecipeFromMeal = this.removeRecipeFromMeal.bind(this)
         this.displayQuickAddToMealPlan = this.displayQuickAddToMealPlan.bind(this)
+        this.redirectToLoginPage = this.redirectToLoginPage.bind(this)
     }
 
     componentDidMount(){
@@ -76,13 +77,17 @@ class RecipeCard extends Component {
         if(!this.props.isMealPlan){
             return(
                 <React.Fragment>
-                    <div className="alt_button recipe_card_button" onClick={this.displayQuickAddToMealPlan}>
+                    <div className="alt_button recipe_card_button" onClick={this.props.user ? this.displayQuickAddToMealPlan : this.redirectToLoginPage}>
                         Add to MealPlan
                     </div>
                     {this.renderAddToMealPlan()}
                 </React.Fragment>
             )
         }
+    }
+
+    redirectToLoginPage(){
+        this.props.history.push('/login')
     }
 
     displayQuickAddToMealPlan(){
