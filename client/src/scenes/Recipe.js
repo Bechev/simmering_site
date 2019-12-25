@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux'
 import {fetchRecipe } from '../services/actions/recipe.js'
+import RecipePresentation from '../components/RecipePresentation.js'
 
 class Recipe extends Component {
     
@@ -18,8 +19,7 @@ class Recipe extends Component {
 
         return(
             <div className="recipe">
-                {/* <Recipe/> */}
-                Recipe
+                <RecipePresentation/>
             </div>
         )
     }
@@ -29,6 +29,7 @@ class Recipe extends Component {
 const mapStateToProps = (state, ownProps) => {
     return {
       user: state.auth.user,
+      recipe: state.recipe.recipe
     }
   }
 
