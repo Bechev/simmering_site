@@ -23,6 +23,11 @@ module Api
                 render json: @recipes, status: 201
             end
         
+
+            def show
+                @recipe = Recipe.find(params[:id])
+                render json: @recipe, status: 201
+            end
         end
     end
 end

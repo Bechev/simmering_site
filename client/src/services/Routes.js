@@ -11,6 +11,7 @@ import Browse from '../scenes/Browse.js'
 import Cart from '../scenes/Cart.js'
 import Profile from '../scenes/Profile.js'
 import MealPlan from '../scenes/MealPlan.js';
+import Recipe from '../scenes/Recipe.js';
 
 class Routes extends Component {
 
@@ -24,6 +25,7 @@ class Routes extends Component {
                 <PrivateRoute exact path="/profile" component={Profile} authed={this.props.user}/>
                 <Route exact path="/browse" component={Browse}/>
                 <PrivateRoute exact path="/mycart" component={Cart} authed={this.props.user}/>
+                <PrivateRoute path="/recipe/:id" component={Recipe} authed={this.props.user}/>
             </React.Fragment>
         )
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {withRouter} from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
 import { connect } from 'react-redux'
 import {addOrRemoveRecipeToMealplan} from '../services/actions/mealplan.js'
 import AddToMealPlan from './AddToMealPlan.js'
@@ -127,7 +127,7 @@ class RecipeCard extends Component {
         if(this.props.recipe){
             return(
                 <React.Fragment>
-                    {this.props.recipe.name}
+                    <Link style={{ textDecoration: 'none', color: `rgb(85, 105, 47)`}} to={`recipe/${this.props.recipe.id}`}>{this.props.recipe.name}</Link>
                 </React.Fragment>
             )
         }else{

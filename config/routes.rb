@@ -12,7 +12,7 @@ Rails.application.routes.draw do
             resources :mealplans, only: [:index, :show, :update]
             resources :days, only: [:index]
             resources :meals, only: [:index, :update]
-            resources :recipes, only: [:index]
+            resources :recipes, only: [:index, :show]
             
             resources :categories, only: [:index]
 
