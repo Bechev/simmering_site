@@ -10,9 +10,9 @@ class BrowseCatgegory extends Component {
 
     return(
         <div className="category">
-            <h1 className="category_title">
+            <div className="category_title">
                 {this.props.categoryTitle}
-            </h1>
+            </div>
             <Carousel isCategory={true} recipes={this.props.recipes}/>
         </div>
         )   

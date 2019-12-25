@@ -9,7 +9,7 @@ class RecipeIngredients extends Component {
     render() {
 
         return(
-            <div className="recipe_inggredients" >
+            <div className="recipe_ingredients" >
             </div>
         )
     }

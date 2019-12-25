@@ -69,3 +69,10 @@
  .meal_plan{
     margin-bottom: 35vh;
  }
+
+ .recipe{
+    display: flex;
+    align-self: center;
+    width: 70vh;
+    justify-content: center;
+ }

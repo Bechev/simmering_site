@@ -22,24 +22,31 @@ class RecipePresentation extends Component {
 
         return(
             <div className="recipe_presentation" >
-                <div className="recipe_title">
-                    {/* {this.props.recipe.name} */}
-                    {this.state.name}
+                <div className="recipe_presentation_header">
+                    <div className="recipe_title">
+                        {/* {this.props.recipe.name} */}
+                        {/* <h1> */}
+                            {this.state.name}
+                        {/* </h1> */}
+                    </div>
+
+                    <React.Fragment>
+                        <RecipeInformations informations={this.state.informations}/>
+                    </React.Fragment>
                 </div>
 
-                <React.Fragment>
-                    <RecipeInformations informations={this.state.informations}/>
-                </React.Fragment>
+                <div className="recipe_presentation_body">
+                    <React.Fragment>
+                        {/* <RecipeIngredients ingredients={this.props.recipe.ingredients}/> */}
+                        <RecipeIngredients ingredients={this.state.ingredients}/>
+                    </React.Fragment>
 
-                <React.Fragment>
-                    {/* <RecipeIngredients ingredients={this.props.recipe.ingredients}/> */}
-                    <RecipeIngredients ingredients={this.state.ingredients}/>
-                </React.Fragment>
+                    <React.Fragment>
+                        {/* <RecipeInstructions ingredients={this.props.recipe.instructions}/> */}
+                        <RecipeInstructions ingredients={this.state.instructions}/>
+                    </React.Fragment>
+                </div>
 
-                <React.Fragment>
-                    {/* <RecipeInstructions ingredients={this.props.recipe.instructions}/> */}
-                    <RecipeInstructions ingredients={this.state.instructions}/>
-                </React.Fragment>
             </div>
         )
     }
