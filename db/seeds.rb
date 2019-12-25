@@ -94,8 +94,19 @@ for recipe in (0..25)
     end
     recipe_name = ingredient_list[0].name + " with " + ingredient_list[1].name
     recipe_calories = rand(200..1000)
-    recipe_total_recipe_time = rand (5..120)
-    recipe = Recipe.create(name: recipe_name, calories: recipe_calories, total_recipe_time: recipe_total_recipe_time, user_id: rand(1..3))
+    recipe_cooking_time = rand (5..120)
+    recipe_preparation_time = rand (5..120)
+    recipe_total_recipe_time = recipe_cooking_time + recipe_preparation_time
+    recipe_instructions = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Commodo viverra maecenas accumsan lacus vel. Nisl tincidunt eget nullam non nisi est sit amet. Molestie nunc non blandit massa enim nec dui nunc. Lobortis feugiat vivamus at augue eget. Sed viverra tellus in hac habitasse platea dictumst. Purus viverra accumsan in nisl nisi. Iaculis at erat pellentesque adipiscing commodo. Laoreet id donec ultrices tincidunt arcu non sodales. Amet tellus cras adipiscing enim eu turpis egestas. Rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt. Eleifend mi in nulla posuere sollicitudin aliquam ultrices. Lorem donec massa sapien faucibus et molestie ac feugiat. Massa id neque aliquam vestibulum morbi blandit. Risus commodo viverra maecenas accumsan lacus. Et sollicitudin ac orci phasellus egestas tellus rutrum tellus pellentesque. Arcu vitae elementum curabitur vitae. Euismod lacinia at quis risus sed vulputate odio. Eu turpis egestas pretium aenean pharetra. Sapien faucibus et molestie ac feugiat sed lectus vestibulum.
+
+        Iaculis nunc sed augue lacus viverra vitae congue eu consequat. Gravida quis blandit turpis cursus in hac habitasse platea dictumst. In massa tempor nec feugiat. Risus quis varius quam quisque. Orci eu lobortis elementum nibh tellus molestie nunc non. Aliquet porttitor lacus luctus accumsan. In massa tempor nec feugiat. Erat velit scelerisque in dictum non consectetur a. Semper feugiat nibh sed pulvinar. Vitae auctor eu augue ut lectus arcu bibendum at. Sollicitudin nibh sit amet commodo nulla. Mattis vulputate enim nulla aliquet porttitor. Pulvinar pellentesque habitant morbi tristique senectus. Nulla aliquet enim tortor at auctor urna nunc id. Ac tortor vitae purus faucibus ornare. Platea dictumst quisque sagittis purus sit. Nunc sed augue lacus viverra vitae congue eu. Mattis aliquam faucibus purus in massa tempor. Rhoncus est pellentesque elit ullamcorper.
+        
+        Tincidunt ornare massa eget egestas purus viverra accumsan. Vel fringilla est ullamcorper eget nulla facilisi etiam dignissim. Accumsan in nisl nisi scelerisque eu ultrices vitae. Risus viverra adipiscing at in tellus integer feugiat scelerisque varius. Et magnis dis parturient montes nascetur ridiculus. Ipsum a arcu cursus vitae congue mauris rhoncus. Leo vel fringilla est ullamcorper eget nulla facilisi etiam. Et malesuada fames ac turpis egestas integer eget aliquet. Rhoncus aenean vel elit scelerisque mauris. Sed odio morbi quis commodo odio aenean sed adipiscing diam.
+        
+        Sit amet venenatis urna cursus eget nunc scelerisque viverra mauris. Mi sit amet mauris commodo quis imperdiet massa tincidunt nunc. Cum sociis natoque penatibus et magnis dis parturient montes nascetur. Vestibulum lorem sed risus ultricies tristique nulla aliquet enim. Ut sem viverra aliquet eget sit amet tellus cras adipiscing. Interdum velit laoreet id donec ultrices tincidunt arcu non. Tincidunt nunc pulvinar sapien et ligula. Amet volutpat consequat mauris nunc congue nisi. Viverra aliquet eget sit amet tellus cras. Tellus mauris a diam maecenas sed enim ut sem viverra. Tellus orci ac auctor augue mauris augue. Ac tortor dignissim convallis aenean. Ac felis donec et odio pellentesque diam volutpat commodo. Ut diam quam nulla porttitor massa id. Diam vel quam elementum pulvinar etiam non quam lacus suspendisse. Tempus imperdiet nulla malesuada pellentesque. Gravida dictum fusce ut placerat. Senectus et netus et malesuada fames ac turpis. Arcu non odio euismod lacinia at. Leo a diam sollicitudin tempor id.
+
+        Accumsan sit amet nulla facilisi morbi tempus. Est lorem ipsum dolor sit amet. Ac auctor augue mauris augue neque. Quam viverra orci sagittis eu volutpat odio facilisis mauris sit. Et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut. Et netus et malesuada fames ac turpis egestas. Sit amet justo donec enim diam vulputate ut pharetra sit. Penatibus et magnis dis parturient. Urna et pharetra pharetra massa massa ultricies. Porttitor eget dolor morbi non arcu risus quis. Iaculis urna id volutpat lacus laoreet non curabitur gravida. A diam sollicitudin tempor id. Ornare lectus sit amet est placerat in egestas. Sed nisi lacus sed viverra tellus in hac. At elementum eu facilisis sed. Etiam dignissim diam quis enim. Placerat in egestas erat imperdiet sed euismod nisi porta lorem. Sapien faucibus et molestie ac feugiat. Tortor id aliquet lectus proin nibh nisl condimentum id. Feugiat scelerisque varius morbi enim nunc faucibus."
+    recipe = Recipe.create(name: recipe_name, instructions: recipe_instructions, calories: recipe_calories,cooking_time: recipe_cooking_time, preparation_time: recipe_preparation_time, total_recipe_time: recipe_total_recipe_time, user_id: rand(1..3))
     for ingredient in (0..ingredient_list.length - 1)
         recipe.ingredients << ingredient_list[ingredient]
     end
@@ -138,9 +149,7 @@ end
 # Seed days
 for n in (0..9)
     date = Date.today.to_time(:utc) + ((n+1)*100)*60*60*2
-    puts date.to_s + "\n"
     day = Day.create(date: date, user_id: rand(1..3))
-    puts day.date
 end
 
 Day.all.each_with_index do |day, index|
@@ -191,7 +200,6 @@ CATEGORIES = [ "Category 1",
 
 num_of_recipes = Recipe.all.length
 for category in CATEGORIES
-    puts category
     c = Category.create(name: category)
     num_of_recipes_per_cat = rand(2..5)
     for x in (1..num_of_recipes_per_cat)

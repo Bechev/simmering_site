@@ -1,56 +1,79 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
-import RecipeInformations from './RecipePresentation/RecipeInformations.js'
+import { connect } from 'react-redux'
+import RecipeInformations from './RecipeInformations.js'
 import RecipeIngredients from './RecipePresentation/RecipeIngredients.js'
 import RecipeInstructions from './RecipePresentation/RecipeInstructions.js'
 import './components.css'
+import AddToMealPlan from './AddToMealPlan.js';
 
 
 class RecipePresentation extends Component {
 
     constructor(props){
-        super(props);  
+        super(props);
         this.state = {
-            name: "Random recipe",
-            informations: {cooking_time: 54, total_recipe_time: 100, calories:200},
-            ingredients: ["eggs", "tomatoes", "cheese", "zucchini", "peppers", "ingredient", "ingredient2", "ingredient3", "ingredient4"],
-            instructions: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            displayQuickAddToMealPlan: false,
+        }
+        this.displayQuickAddToMealPlan = this.displayQuickAddToMealPlan.bind(this)
+        this.redirectToLoginPage = this.redirectToLoginPage.bind(this)
+    }
+
+    displayQuickAddToMealPlan(){
+        this.setState({
+            displayQuickAddToMealPlan: !this.state.displayQuickAddToMealPlan
+        })
+    }
+
+    redirectToLoginPage(){
+        this.props.history.push('/login')
+    }
+
+    renderAddToMealPlan(){
+        if(this.state.displayQuickAddToMealPlan){
+            return (
+                <AddToMealPlan recipe={this.props.recipe} displayQuickAddToMealPlan={this.displayQuickAddToMealPlan}/>
+            )
         }
     }
-    
+
     render() {
 
         return(
             <div className="recipe_presentation" >
+                {this.renderAddToMealPlan()}
                 <div className="recipe_presentation_header">
                     <div className="recipe_title">
-                        {/* {this.props.recipe.name} */}
-                        {/* <h1> */}
-                            {this.state.name}
-                        {/* </h1> */}
+                        {this.props.recipe.name}
+                        <button className="alt_button recipe_card_button" onClick={this.props.user ? this.displayQuickAddToMealPlan : this.redirectToLoginPage}>
+                            Add to MealPlan
+                        </button>
                     </div>
-
-                    <React.Fragment>
-                        <RecipeInformations informations={this.state.informations}/>
-                    </React.Fragment>
+                    <RecipeInformations recipe={this.props.recipe}/>
                 </div>
 
                 <div className="recipe_presentation_body">
                     <React.Fragment>
-                        {/* <RecipeIngredients ingredients={this.props.recipe.ingredients}/> */}
-                        <RecipeIngredients ingredients={this.state.ingredients}/>
+                        <RecipeIngredients ingredients={this.props.recipe.ingredients}/>
+                        {/* <RecipeIngredients ingredients={this.state.ingredients}/> */}
                     </React.Fragment>
 
                     <React.Fragment>
-                        {/* <RecipeInstructions ingredients={this.props.recipe.instructions}/> */}
-                        <RecipeInstructions ingredients={this.state.instructions}/>
+                        <RecipeInstructions instructions={this.props.recipe.instructions}/>
+                        {/* <RecipeInstructions ingredients={this.state.instructions}/> */}
                     </React.Fragment>
                 </div>
-
             </div>
         )
     }
 
 }
-  
-export default withRouter(RecipePresentation);
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+      user: state.auth.user,
+      recipe: state.recipe.recipe
+    }
+  }
+
+export default withRouter(connect(mapStateToProps, null)(RecipePresentation));

@@ -55,7 +55,7 @@ class AddToMealPlan extends Component {
             <div className="add_to_mealplan_blackground" onClick={this.props.displayQuickAddToMealPlan} >
                 <div className="add_to_mealplan_window" onClick={this.stopPropagation}>
                     <div className="recipe_card_title">
-                        Add {this.props.recipe ? this.props.recipe.name : "Loading..."} to your mealplan
+                        Add {this.props.recipe ? this.props.recipe.name : "Loading..."} to your mealplan?
                     </div>
                     <br></br><br></br>
                     <form className="add_to_mealplan_form">

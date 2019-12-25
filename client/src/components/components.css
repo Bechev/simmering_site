@@ -177,6 +177,7 @@
     color: rgb(85, 105, 47);
     font-size: 2vh;
     text-align: left;
+    font-weight: bold;
 
 }
 
@@ -193,6 +194,8 @@
     justify-content: center;
     flex-direction: column;
     text-align: center;
+    color: rgb(85, 105, 47);
+    font-weight: bold;
 }
 
 .recipe_card_button{
@@ -230,12 +233,7 @@
 }
 
 .recipe_card_information{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
     margin-top: 25%;
-    font-weight: bold;
-    align-self: flex-end;
 }
 
 .recipe_card_information_element{
@@ -594,10 +592,11 @@
     font-size: 3vh;
     font-weight: bold;
     color: rgb(85, 105, 47) ;   
+    margin-left: 2vh;
 }
 
 .recipe_presentation{
-    /* width: 100%; */
+    width: 100%;
     border-style: solid;
     border-width: 1px; 
     border-color: rgb(139, 139, 139);
@@ -612,43 +611,49 @@
     width: 100%;
     justify-content: space-between;
     align-items: top;
+    margin-bottom: 5vh;
 }
 
 .recipe_presentation_body{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     /* justify-content: center; */
-    align-items: center;
+    align-items: top;
     width: 100%;
-    
+    height: auto;
+    font-size: 1.7vh;
 }
 
-.recipe_informations{
-    margin: 2vh;
-    width: 30vh;
-    height: 20vh;
-    /* border-radius: 3vh; */
-    /* background-color: white; */
-    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
-    /* border: 0.3vh;
-    border-color:  rgb(85, 105, 47) ;
-    border-style: solid; */
+.information{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-weight: bold;
+    align-self: flex-end;
+}
+
+.recipe_information{
+    padding-top: 1.5vh;
 }
 
 .recipe_ingredients{
-    width: 100%;
+    width: 40%;
+    /* height: 20vh; */
     min-height: 25vh;
-    border: 0.3vh;
-    /* border-color:  rgb(85, 105, 47) ;
-    border-style: solid; */
     margin: 2vh;
+    text-align: left;
+    background-color: lightgrey;
+    border-radius: 5px;
 }
 
 .recipe_instructions{
-    width: 100%;
+    display: flex;
+    width: 60%;
+    height: auto;
     min-height: 25vh;
-    border: 0.3vh;
     /* border-color:  rgb(85, 105, 47) ;
     border-style: solid; */
     margin: 2vh;
+    text-align: justify;
+
 }
