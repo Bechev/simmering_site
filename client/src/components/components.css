@@ -658,5 +658,43 @@
     border-style: solid; */
     margin: 2vh;
     text-align: justify;
+}
 
+.groceries_title{
+    text-align: left;
+    margin: 2vh;
+    color: rgb(85, 105, 47);
+    width: 100%;
+    padding-left: 5vh;
+    font-size: 3vh;
+    font-weight: bold;
+}
+
+.groceries_list{
+    display: flex;
+    flex-direction: column;
+    
+    width: 100%;
+    max-width: 100%;
+
+    text-align: left;
+    margin-bottom: 5vh;
+    
+    /* align-items: center;
+    justify-content: center; */
+}
+
+.ingredient_checkbox{
+    margin:1vh;
+    padding-left: 2vh;
+    /* margin-right: 2vh; */
+}
+
+.ingredient_label{
+    /* padding-left: 2vh; */
+    margin-left: 2vh;
+}
+
+.checkbox{
+    transform: scale(1.8)
 }
