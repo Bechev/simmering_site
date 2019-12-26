@@ -589,10 +589,13 @@
 
 /* CSS for RecipePresentation */
 .recipe_title{
+    display: flex;
+    flex-direction: column;
     font-size: 3vh;
     font-weight: bold;
     color: rgb(85, 105, 47) ;   
     margin-left: 2vh;
+    justify-content: space-between;
 }
 
 .recipe_presentation{

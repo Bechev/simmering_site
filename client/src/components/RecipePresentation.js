@@ -44,7 +44,10 @@ class RecipePresentation extends Component {
                 {this.renderAddToMealPlan()}
                 <div className="recipe_presentation_header">
                     <div className="recipe_title">
+                        <div>
                         {this.props.recipe.name}
+                        
+                        </div>
                         <button className="alt_button recipe_card_button" onClick={this.props.user ? this.displayQuickAddToMealPlan : this.redirectToLoginPage}>
                             Add to MealPlan
                         </button>
