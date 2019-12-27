@@ -10,7 +10,11 @@ class App extends React.Component{
 
     componentDidMount(){
         const user = JSON.parse(localStorage.getItem('user'))
-        this.props.verify_credentials(user)
+        if(user){
+            this.props.verify_credentials(user)
+        }else{
+            this.props.history.push('/login')
+        }
     }
 
     render(){
