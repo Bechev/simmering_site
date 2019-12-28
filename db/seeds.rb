@@ -178,7 +178,9 @@ MEALPLANS = ["mealplan1",
 for x in MEALPLANS
     user= User.find(rand(1..3))
     mealplan = Mealplan.create(name: x, user_id: user.id)
+    groceries_list = GroceriesList.create(mealplan_id: mealplan.id)
     mealplan.days << user.days
+    mealplan.save
     # number_of_days_for_the_mealplans = rand(2..7)
     # for day in Day.all
     #     if day.user === mealplan.user

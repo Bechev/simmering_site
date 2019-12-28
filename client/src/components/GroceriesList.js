@@ -1,38 +1,25 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
-import Category from './BrowseCategory/Category.js'
-import RecipeCard from './RecipeCard.js';
+// import {checkOrUncheckIngredient} from '../services/actions/groceriesList.js'
 
 
 class GroceriesList extends Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            ingredients: [{ name: "ingredient A" },
-            { name: "ingredient B" },
-            { name: "ingredient C" },
-            { name: "ingredient D" },
-            { name: "ingredient E" },
-            { name: "ingredient F" },
-            { name: "ingredient G" },
-            { name: "ingredient H" },
-            { name: "ingredient I" },
-            { name: "ingredient J" },
-            { name: "ingredient K" },
-            { name: "ingredient L" }]
-        }
+
+    handleChange(event, ingredient) {
+        // checkOrUncheckIngredient(event.target.checked,ingredient);
     }
 
     renderIngredientsList() {
-        if (this.state.ingredients) {
+        if (this.props.groceries_list) {
             return (
-                this.state.ingredients.map((ingredient) => {
+                this.props.groceries_list.map((ingredient) => {
+                    console.log(ingredient)
                     return (
                         <div className="ingredient_checkbox">
 
-                            <input className="checkbox" type="checkbox" name={ingredient.name} value={ingredient.name}></input>
+                            <input className="checkbox" type="checkbox" onClick={(event) => this.handleChange(event, ingredient)} name={ingredient.name} value={ingredient.name}></input>
                             <label className="ingredient_label">
                                 {ingredient.name}
                             </label>
@@ -64,15 +51,15 @@ class GroceriesList extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        categories: state.categories.categoriesList,
-        // user: state.auth.user
+        // categories: state.categories.categoriesList,
+        groceries_list: state.groceriesList.ingredients
     }
 }
 
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         sign_out: (user) => dispatch(sign_out(user)),
-//     }
-// }
+const mapDispatchToProps = dispatch => {
+    return {
+        // checkOrUncheckIngredient: (ingredient, isChecked) => dispatch(checkOrUncheckIngredient(ingredient, isChecked)),
+    }
+}
 
 export default withRouter(connect(mapStateToProps, null)(GroceriesList));

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_24_012405) do
+ActiveRecord::Schema.define(version: 2019_12_28_025915) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -52,6 +52,18 @@ ActiveRecord::Schema.define(version: 2019_12_24_012405) do
     t.index ["day_id", "meal_id"], name: "index_days_meals_on_day_id_and_meal_id"
   end
 
+  create_table "groceries_lists", force: :cascade do |t|
+    t.integer "mealplan_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "groceries_lists_ingredients", id: false, force: :cascade do |t|
+    t.integer "groceries_list_id", null: false
+    t.integer "ingredient_id", null: false
+    t.index ["groceries_list_id", "ingredient_id"], name: "idx_groceries_ingredients_on_groceries_and_ingredient"
+  end
+
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.integer "calories"
@@ -68,6 +80,12 @@ ActiveRecord::Schema.define(version: 2019_12_24_012405) do
     t.integer "ingredient_id", null: false
     t.integer "recipe_id", null: false
     t.index ["ingredient_id", "recipe_id"], name: "index_ingredients_recipes_on_ingredient_id_and_recipe_id"
+  end
+
+  create_table "ingredients_users", id: false, force: :cascade do |t|
+    t.integer "ingredient_id", null: false
+    t.integer "user_id", null: false
+    t.index ["ingredient_id", "user_id"], name: "index_ingredients_users_on_ingredient_id_and_user_id"
   end
 
   create_table "mealplans", force: :cascade do |t|

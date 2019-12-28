@@ -2,6 +2,7 @@ class Mealplan < ApplicationRecord
     has_and_belongs_to_many :days
     accepts_nested_attributes_for :days
     belongs_to :user
+    has_one :groceries_list
 
     def addOrRemoveRecipe(action, userId, date, meal_name, recipe_id)
         # Create boolean to track the level to include in the response (recipe if meal and day already exists, meal if day already exist or day)
