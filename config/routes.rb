@@ -8,42 +8,21 @@ Rails.application.routes.draw do
             mount_devise_token_auth_for 'User', at: 'auth'
 
             post '/search' => "recipes#search"
+            # post '/users/:id/ingredients' => "users#show_ingredients"
+            # update '/users/:id/ingredients' => "users#update"
             resources :posts
             resources :mealplans, only: [:index, :show, :update]
             resources :days, only: [:index]
             resources :meals, only: [:index, :update]
             resources :recipes, only: [:index, :show]
             resources :groceries_list, only: [:create]
-            
+            resources :ingredients, only: [:index, :update, :destroy]
             resources :categories, only: [:index]
 
             resources :posts do
                 resources :comments, only: [:index, :create]
             end
 
-            # resources :users do 
-            #     resources :posts
-            #     resources :mealplans
-            #     resources :days
-            #     resources :meals
-            #     resources :recipes
-            # end
-            
-            # resources :mealplans do
-            #     resources :days, only: [:index]
-            # end
-            
-            # resources :days do
-            #     resources :meals, only: [:index]
-            # end
-            
-            # resources :meals  do 
-            #     resources :recipes, only: [:index]
-            # end
-            
-            # resources :recipes do
-            #     resources :ingredients, only: [:index]
-            # end
         
         end 
     end

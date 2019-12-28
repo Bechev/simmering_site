@@ -9,6 +9,7 @@ import mealplanReducer from './mealplanReducer.js'
 import categoriesReducer from './categoriesReducer.js'
 import recipeReducer from './recipeReducer.js'
 import groceriesListReducer from './groceriesListReducer.js'
+import userIngredientsReducer from './userIngredientsReducer.js'
 
 
 export default combineReducers({
@@ -22,5 +23,6 @@ export default combineReducers({
     categories: categoriesReducer,
     recipe: recipeReducer,
     groceriesList: groceriesListReducer,
+    userIngredients: userIngredientsReducer,
   })
   

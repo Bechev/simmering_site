@@ -1,29 +1,32 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
-// import {checkOrUncheckIngredient} from '../services/actions/groceriesList.js'
+import {updateUserIngredients} from '../services/actions/userIngredients.js'
 
 
 class GroceriesList extends Component {
 
 
-    handleChange(event, ingredient) {
-        // checkOrUncheckIngredient(event.target.checked,ingredient);
+    handleChange(user, ingredient) {
+        this.props.updateUserIngredients(user, ingredient.id);
     }
 
     renderIngredientsList() {
         if (this.props.groceries_list) {
             return (
                 this.props.groceries_list.map((ingredient) => {
-                    console.log(ingredient)
                     return (
                         <div className="ingredient_checkbox">
 
-                            <input className="checkbox" type="checkbox" onClick={(event) => this.handleChange(event, ingredient)} name={ingredient.name} value={ingredient.name}></input>
+                            <input className="checkbox" type="checkbox"
+                                   onClick={() => this.handleChange(this.props.user, ingredient)} 
+                                   name={ingredient.name} value={ingredient.name}
+                                   checked={this.props.user_ingredients.some(user_ingredient => user_ingredient['id'] === ingredient.id ) ?  true : false}></input>
                             <label className="ingredient_label">
                                 {ingredient.name}
                             </label>
                             <br></br>
+
                         </div>
                     )
                 })
@@ -51,15 +54,16 @@ class GroceriesList extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        // categories: state.categories.categoriesList,
-        groceries_list: state.groceriesList.ingredients
+        user: state.auth.user,
+        groceries_list: state.groceriesList.ingredients,
+        user_ingredients: state.userIngredients.ingredients,
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        // checkOrUncheckIngredient: (ingredient, isChecked) => dispatch(checkOrUncheckIngredient(ingredient, isChecked)),
+        updateUserIngredients: (user, ingredient_id) => dispatch(updateUserIngredients(user, ingredient_id)),
     }
 }
 
-export default withRouter(connect(mapStateToProps, null)(GroceriesList));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(GroceriesList));

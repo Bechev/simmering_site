@@ -3,7 +3,7 @@ module Api
         class UsersController < ApplicationController
             before_action :authenticate_api_v1_user!
             
-            def ingredients
+            def show_ingredients
                 @user = User.find(params[:id])
                 render json: @user.ingredients
             end
