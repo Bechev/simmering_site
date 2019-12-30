@@ -39,27 +39,15 @@ class Mealplan < ApplicationRecord
         
         
         # Look for the day.
-        puts "///////////////////////////////////////"
-        # puts day_name
-        
         day = self.days.find_by(name: day_name)
-        puts day.name
-        puts "///////////////////////////////////////"
-        # if !day
-        #     day = Day.create(date: Date.parse(date), user_id: user_id)
-        #     created_or_destroyed_day = true
-        #     self.days << day
-        # end
 
         # Given the day, look for the meal, if doesn't exist, create it and add to the day
         meal = day.meals.find_by(name: meal_name)
-        puts meal
         if !meal
             meal = Meal.create(name: meal_name, user_id: user_id)
             created_or_destroyed_meal = true
             day.meals << meal
         end
-        puts "??????????????????????????????"
         
 
         # Find the recipe (will alway exist)
@@ -78,10 +66,7 @@ class Mealplan < ApplicationRecord
                 created_or_destroyed_meal = true
             end
             # Check if it was the last meal of the day, if so, destroy the day
-            if day.meals.length === 0 
-                day.destroy
-                created_or_destroyed_day = true
-            end
+
         end
 
         # Save the variables

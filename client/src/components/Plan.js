@@ -33,21 +33,26 @@ class Plan extends Component {
 
         let beginning_of_week = days.slice(days.indexOf(USER_SETTINGS_PREFERED_DAY))
         let end_of_week = days.slice(0, days.indexOf(USER_SETTINGS_PREFERED_DAY))
-        return  beginning_of_week.concat(end_of_week)
+        let user_week = beginning_of_week.concat(end_of_week)
+        // console.log(user_week)
+        return user_week
     }
 
     sort_days(arr){
         
         let days = this.define_days_order()
+        // console.log("arr" + arr)
         let sorted_array = arr.sort(function(a,b){
 
             return days.indexOf(a.name)  - days.indexOf(b.name)
         })
+        console.log(sorted_array)
         return sorted_array
     }
 
     sort_days_array(){
         let arr = Object.values(this.props.mealplan.days)
+        console.log("arr" + arr)
         let sorted_days_array = this.sort_days(arr)
         this.setState({
             sorted_days_array: sorted_days_array

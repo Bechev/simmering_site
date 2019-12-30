@@ -5,6 +5,7 @@ class GroceriesList < ApplicationRecord
 
     def generate
         mealplan = self.mealplan
+        self.ingredients = []
         for day in mealplan.days
             for meal in day.meals
                 for recipe in meal.recipes

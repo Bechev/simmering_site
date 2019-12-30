@@ -12,6 +12,15 @@ class Cart extends Component {
             this.props.fetchUserIngredients(this.props.user)
     }
     
+
+    componentDidUpdate(prevProps){
+        if(prevProps != this.props){
+            this.props.fetchGroceriesList(this.props.user, this.props.mealplan_id)
+            this.props.fetchUserIngredients(this.props.user)
+        }
+    }
+
+
   render() {
 
     return(
@@ -27,7 +36,8 @@ class Cart extends Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         user: state.auth.user,
-        mealplan_id: state.mealplan.id
+        mealplan_id: state.mealplan.id,
+        mealplan: state.mealplan.id
     }
 }
 
