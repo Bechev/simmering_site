@@ -6,7 +6,7 @@ module Api
 
             def index
                 if params[:user_id] 
-                    user = User.find(params[:user_id])
+                    user = current_api_v1_user()
                     @posts = user.posts.last(10).reverse
                 else
                     @posts = Post.all.last(10).reverse
@@ -16,7 +16,7 @@ module Api
 
             def create
                 @post = Post.new(message: params[:post_message], likes: 0, reshare: 0)
-                @user = User.find_by(email: request.headers["uid"])
+                @user = current_api_v1_user()
                 if @post.save
                     @user.posts << @post
                     render json: @post, status: 201

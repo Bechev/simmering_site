@@ -1,5 +1,5 @@
 class DaySerializer < ActiveModel::Serializer
-    attributes :id, :date
+    attributes :id, :name
 #   belongs_to :mealplan
     has_many :meals
     # has_many :mealplans

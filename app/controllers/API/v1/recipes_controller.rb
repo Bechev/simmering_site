@@ -4,7 +4,7 @@ module Api
             
             def index
                 if params[:user_id] 
-                    user = User.find(params[:user_id])
+                    user = current_api_v1_user()
                     @recipes = user.recipes.last(10).reverse
                     render json: @recipes, include: '**'
                 elsif params[:meal_id]

@@ -4,7 +4,7 @@ module Api
             before_action :authenticate_api_v1_user!
             
             def show_ingredients
-                @user = User.find(params[:id])
+                @user = current_api_v1_user()
                 render json: @user.ingredients
             end
         

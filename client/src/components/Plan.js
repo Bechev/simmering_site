@@ -19,6 +19,7 @@ class Plan extends Component {
 
     componentDidUpdate(prevProps){
         if (this.props.mealplansLoaded && prevProps.mealplans !== this.props.mealplans) {
+            
             this.props.fetchMealPlan(this.props.user, this.props.mealplans[this.props.mealplans.length-1].id)
         }
         if(this.props !== prevProps){

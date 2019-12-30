@@ -1,4 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
+    # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 # Examples:
@@ -147,19 +147,12 @@ for meal in MEALS
 end
 
 # Seed days
-for n in (0..9)
-    date = Date.today.to_time(:utc) + ((n+1)*100)*60*60*2
-    day = Day.create(date: date, user_id: rand(1..3))
-end
+# for n in (0..9)
+#     date = Date.today.to_time(:utc) + ((n+1)*100)*60*60*2
+#     day = Day.create(date: date, user_id: rand(1..3))
+# end
 
-Day.all.each_with_index do |day, index|
-    meal1 = Meal.find_by(name: MEALS[index*2])
-    meal2 = Meal.find_by(name: MEALS[index*2 + 1])
-    day.meals << meal1
-    day.meals << meal2
 
-    # day.meals << Meal.find_by(name: MEALS[index*2 + 1])
-end
 
 
 
@@ -179,7 +172,12 @@ for x in MEALPLANS
     user= User.find(rand(1..3))
     mealplan = Mealplan.create(name: x, user_id: user.id)
     groceries_list = GroceriesList.create(mealplan_id: mealplan.id)
-    mealplan.days << user.days
+    # mealplan.days << user.days
+    # for day in mealplan.days
+        # puts day.name
+        # mealplan.days[day.name].meals << rand(1..MEALS.length)
+        # mealplan.days[day.name].meals << rand(1..MEALS.length)
+    # end
     mealplan.save
     # number_of_days_for_the_mealplans = rand(2..7)
     # for day in Day.all
@@ -188,6 +186,15 @@ for x in MEALPLANS
     #     end
     # end
 end
+
+# Day.all.each_with_index do |day, index|
+#     meal1 = Meal.find_by(name: MEALS[index*2])
+#     meal2 = Meal.find_by(name: MEALS[index*2 + 1])
+#     day.meals << meal1
+#     day.meals << meal2
+
+#     # day.meals << Meal.find_by(name: MEALS[index*2 + 1])
+# end
 
 CATEGORIES = [ "Category 1",
                "Category 2",
@@ -209,6 +216,7 @@ for category in CATEGORIES
         c.recipes << recipe
     end
 end
+
 
 num_of_cat = Category.all.length
 for x in (1..num_of_recipes)

@@ -7,7 +7,7 @@ module Api
             def index
                 # debugger
                 if request.headers["uid"] 
-                    @user = User.find_by(email: request.headers["uid"])
+                    @user = current_api_v1_user()
                     # @mealplans = user.mealplans.last(10).reverse
                     @mealplans = @user.mealplans
                     render json: @mealplans
@@ -24,9 +24,9 @@ module Api
 
             def update
                 # debugger
-                @user = User.find_by(email: request.headers["uid"])
+                @user = current_api_v1_user()
                 @mealplan = Mealplan.find(params[:id])
-                response = @mealplan.addOrRemoveRecipe(params["to-do"], @user.id, params["day-date"], params["meal-name"], params["recipe-id"])
+                response = @mealplan.addOrRemoveRecipe(params["to-do"], @user.id, params["day-name"], params["meal-name"], params["recipe-id"])
                 render json: response
             end
 

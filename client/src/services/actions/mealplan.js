@@ -41,7 +41,7 @@ export function fetchMealPlan(user, mealplan_id){
 //     }    
 // };
 
-export function addOrRemoveRecipeToMealplan(action, user, mealplan_id, day_date, meal_name, recipe_id){
+export function addOrRemoveRecipeToMealplan(action, user, mealplan_id, day_name, meal_name, recipe_id){
     return (dispatch) => {
         dispatch({ type: 'ADD_OR_REMOVE_RECIPE_TO_MEAL' });    
         return fetch("http://localhost:3000/api/v1/mealplans/" + mealplan_id,{
@@ -54,7 +54,7 @@ export function addOrRemoveRecipeToMealplan(action, user, mealplan_id, day_date,
             },
         body:JSON.stringify({
             "to-do": action,
-            "day-date": day_date,
+            "day-name": day_name,
             "meal-name": meal_name,
             "recipe-id": recipe_id,  
         })

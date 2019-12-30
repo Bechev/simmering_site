@@ -6,7 +6,7 @@ module Api
             def create
                 # Need to fix getting the correct MealPlan - for now, looking for the last meal plan of the user - same in the client (Plan Component)
                 if !params[:mealplan_id]
-                    user = User.find_by(uid: request.headers["uid"])
+                    user = current_api_v1_user()
                     @mealplan = Mealplan.where(user_id: user.id).last
                 else
                     @mealplan = Mealplan.find(params[:mealplan_id])

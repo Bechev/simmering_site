@@ -12,20 +12,20 @@ class Day extends Component {
     constructor(props){
         super(props);
         this.state = {
-            displayMeals: false,
+            displayMeals: true,
             day_name: "Loading",
         }
         this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount(){
-        var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        var d = new Date(this.props.day.date);
-        var dayName = days[d.getUTCDay()];
-        this.setState({
-            day_name: dayName,
-            date_display: (d.getUTCMonth() + 1) + "/" + (d.getUTCDate())
-        })
+        // var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        // var d = new Date(this.props.day.date);
+        // var dayName = days[d.getUTCDay()];
+        // this.setState({
+        //     day_name: dayName,
+        //     date_display: (d.getUTCMonth() + 1) + "/" + (d.getUTCDate())
+        // })
         this.calculateControlPanelInformation(this.props.day.meals)
     }
     
@@ -93,7 +93,7 @@ class Day extends Component {
                     <span className="day_expansion_area" onClick={this.handleClick}>
                         {this.renderArrow()}
                         <div className="day_title" >    
-                            {this.state.day_name}, {this.state.date_display}
+                            {this.props.day.name}
                         </div>
                     </span>
                     <div className="day_control_panel">

@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2019_12_28_025915) do
   end
 
   create_table "days", force: :cascade do |t|
-    t.date "date"
+    t.string "name"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
