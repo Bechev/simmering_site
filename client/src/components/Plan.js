@@ -19,7 +19,7 @@ class Plan extends Component {
 
     componentDidUpdate(prevProps){
         if (this.props.mealplansLoaded && prevProps.mealplans !== this.props.mealplans) {
-            
+
             this.props.fetchMealPlan(this.props.user, this.props.mealplans[this.props.mealplans.length-1].id)
         }
         if(this.props !== prevProps){
@@ -27,11 +27,21 @@ class Plan extends Component {
         }
     }
 
+    define_days_order(){
+        const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+        const USER_SETTINGS_PREFERED_DAY = "Saturday"
+
+        let beginning_of_week = days.slice(days.indexOf(USER_SETTINGS_PREFERED_DAY))
+        let end_of_week = days.slice(0, days.indexOf(USER_SETTINGS_PREFERED_DAY))
+        return  beginning_of_week.concat(end_of_week)
+    }
+
     sort_days(arr){
+        
+        let days = this.define_days_order()
         let sorted_array = arr.sort(function(a,b){
-            let dateA = new Date(a.date)
-            let dateB = new Date(b.date)
-            return dateA  - dateB
+
+            return days.indexOf(a.name)  - days.indexOf(b.name)
         })
         return sorted_array
     }

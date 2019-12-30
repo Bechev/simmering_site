@@ -19,13 +19,6 @@ class Day extends Component {
     }
 
     componentDidMount(){
-        // var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        // var d = new Date(this.props.day.date);
-        // var dayName = days[d.getUTCDay()];
-        // this.setState({
-        //     day_name: dayName,
-        //     date_display: (d.getUTCMonth() + 1) + "/" + (d.getUTCDate())
-        // })
         this.calculateControlPanelInformation(this.props.day.meals)
     }
     
