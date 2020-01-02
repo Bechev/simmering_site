@@ -2,6 +2,7 @@ export default function groceriesListReducer(state = {
     isLoaded: false,
     errorMessage: '',
     ingredients: [],
+    quantities: [],
     }, action) {
 
     switch (action.type) {
@@ -13,7 +14,8 @@ export default function groceriesListReducer(state = {
         case 'FETCH_GROCERIES_LIST_SUCCESS':
             return  {
                     ...state,
-                    ingredients: [].concat(action.payload),
+                    ingredients: [].concat(action.payload.ingredients),
+                    quantities: [].concat(action.payload.quantities),
                     isLoaded: true,}
 
         case 'FETCH_GROCERIES_LIST_FAILURE':

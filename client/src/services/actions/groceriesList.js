@@ -1,4 +1,4 @@
-export function fetchGroceriesList(user, mealplan_id){
+export function fetchGroceriesList(user){
     return (dispatch) => {
         dispatch({ type: 'FETCH_GROCERIES_LIST' });    
         return fetch("http://localhost:3000/api/v1/groceries_list/" ,{
@@ -9,13 +9,9 @@ export function fetchGroceriesList(user, mealplan_id){
                 "Content-Type": "application/json; charset=utf-8",
                 "uid": user.uid,
                 "client":  user.client,
-                "access-token":  user['access-token']
+                "access-token":  user['access-token'],
+                "Access-Control-Allow-Origin": "*",
             },
-            body: JSON.stringify({
-                comment:{
-                    mealplan_id: mealplan_id,
-                }
-            })
         })
         .then(response => response.json())
         .then(groceries_list => { 

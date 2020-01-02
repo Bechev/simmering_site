@@ -12,9 +12,10 @@ class GroceriesList extends Component {
     }
 
     renderIngredientsList() {
-        if (this.props.groceries_list) {
+        if (this.props.groceries_list_ingredients && this.props.groceries_list_quantities) {
             return (
-                this.props.groceries_list.map((ingredient) => {
+                this.props.groceries_list_ingredients.map((ingredient) => {
+                    let ingredient_quantity =  this.props.groceries_list_quantities.find(quantity => quantity.ingredient_id === ingredient.id )
                     return (
                         <div className="ingredient_checkbox">
 
@@ -23,7 +24,7 @@ class GroceriesList extends Component {
                                    name={ingredient.name} value={ingredient.name}
                                    checked={this.props.user_ingredients.some(user_ingredient => user_ingredient['id'] === ingredient.id ) ?  true : false}></input>
                             <label className="ingredient_label">
-                                {ingredient.name}
+                                {ingredient_quantity.measure} {ingredient_quantity.unit}, {ingredient.name}
                             </label>
                             <br></br>
 
@@ -55,7 +56,8 @@ class GroceriesList extends Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         user: state.auth.user,
-        groceries_list: state.groceriesList.ingredients,
+        groceries_list_ingredients: state.groceriesList.ingredients,
+        groceries_list_quantities: state.groceriesList.quantities,
         user_ingredients: state.userIngredients.ingredients,
     }
 }
