@@ -28,6 +28,28 @@ export default function mealplanReducer(state = {
                 isLoaded: true,
                 errorMessage: action.payload.message
             }
+        
+            case 'CREATE_NEW_MEALPLAN':
+                return {
+                    ...state,
+                    isLoaded: false
+                }
+    
+            case 'CREATE_NEW_MEALPLAN_SUCCESS':
+                return {
+                    ...state,
+                    isLoaded: true,
+                    id: action.payload.id,
+                    name: action.payload.name,
+                    days: [].concat(action.payload.days)
+                }
+    
+            case 'CREATE_NEW_MEALPLAN_FAILURE':
+                return {
+                    ...state,
+                    isLoaded: true,
+                    errorMessage: action.payload.message
+                }
 
         case 'REMOVE_RECIPE_FROM_MEAL':
             return {

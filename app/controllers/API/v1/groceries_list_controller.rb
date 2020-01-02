@@ -4,6 +4,7 @@ module Api
             before_action :authenticate_api_v1_user!
 
             def create
+                # debugger
                 # Need to fix getting the correct MealPlan - for now, looking for the last meal plan of the user - same in the client (Plan Component)
                 if !params[:mealplan_id]
                     user = current_api_v1_user()
@@ -13,7 +14,8 @@ module Api
                 end
 
                 if !@mealplan.groceries_list
-                    @groceries_list = GroceriesList.create(mealplan_id: @meaplan.id)
+                    # debugger
+                    @groceries_list = GroceriesList.create(mealplan_id: @mealplan.id)
                 else
                     @groceries_list = @mealplan.groceries_list 
                 end

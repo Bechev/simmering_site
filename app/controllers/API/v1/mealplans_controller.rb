@@ -14,6 +14,14 @@ module Api
                 end
             end
 
+            def create
+                @user = current_api_v1_user()
+                @user.ingredients = []
+                # debugger
+                @mealplan = Mealplan.create(name: params[:mealplan_name], user_id: @user.id)
+                render json: @mealplan, include: "**"
+            end
+
             def show
                 if params[:id]
                     @mealplan = Mealplan.find(params[:id])

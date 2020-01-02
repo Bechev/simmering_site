@@ -5,6 +5,7 @@ import {fetchMealPlan} from '../services/actions/mealplan.js'
 import Day from './Plan/Day.js'
 import Suggestions from './Plan/Suggestions.js'
 import './components.css'
+import CreateNewMealPlan from './Plan/CreateNewMealPlan.js';
 
 
 class Plan extends Component {
@@ -13,7 +14,9 @@ class Plan extends Component {
         super(props);
         this.state = {
             mealplan: {},
+            displayQuickAddToMealPlan: false
         }
+        this.displayQuickAddToMealPlan = this.displayQuickAddToMealPlan.bind(this)
     }
 
 
@@ -53,7 +56,8 @@ class Plan extends Component {
         let arr = Object.values(this.props.mealplan.days)
         let sorted_days_array = this.sort_days(arr)
         this.setState({
-            sorted_days_array: sorted_days_array
+            sorted_days_array: sorted_days_array,
+            displayQuickAddToMealPlan: false
         })
     }
 
@@ -75,17 +79,32 @@ class Plan extends Component {
         }
     }
 
+    
+    displayQuickAddToMealPlan(){
+        this.setState({
+            displayQuickAddToMealPlan: !this.state.displayQuickAddToMealPlan
+        })
+    }
+
+    renderCreateMealPlan(){
+        if(this.state.displayQuickAddToMealPlan){
+            return (
+                <CreateNewMealPlan displayQuickAddToMealPlan={this.displayQuickAddToMealPlan}/>
+            )
+        }
+    }
+
   render() {
 
     return(
         <div className="plan">
             <div className="mealplan_header">
                 <div className="mealplan_title title">{this.props.mealplan.name}</div>
-                <button className="button" onClick={this.handleClick}>Create new Mealplan</button>
+                <button className="button" onClick={this.displayQuickAddToMealPlan}>Create new Mealplan</button>
             </div>
             {this.renderMealPlan()}
             <Suggestions/>
-
+            {this.renderCreateMealPlan()}
         </div>
         )
     }

@@ -19,6 +19,31 @@ export function fetchMealPlan(user, mealplan_id){
     }    
 };
 
+export function createNewMealplan(user, mealplan_name){
+    return (dispatch) => {
+        dispatch({ type: 'CREATE_NEW_MEALPLAN' });    
+        return fetch("http://localhost:3000/api/v1/mealplans/",{
+        method: 'POST',    
+        headers:{
+            "Content-Type": "application/json; charset=utf-8",
+            "uid": user.uid,
+            "client":  user.client,
+            "access-token":  user['access-token'],
+            },
+        body:JSON.stringify({
+            "mealplan_name": mealplan_name,
+        })
+        })
+        .then(response => response.json())
+        .then(response => {
+            dispatch({type:'CREATE_NEW_MEALPLAN_SUCCESS', payload: response})
+        })
+        .catch(error =>{
+            dispatch({type:'CREATE_NEW_MEALPLAN_FAILURE', payload: error, error:true})
+        })
+    }    
+};
+
 // export function removeRecipeFromMeal(user, meal_id, recipe_id){
 //     return (dispatch) => {
 //         dispatch({ type: 'REMOVE_RECIPE_FROM_MEAL' });    

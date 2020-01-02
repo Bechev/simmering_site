@@ -11,7 +11,7 @@ Rails.application.routes.draw do
             # post '/users/:id/ingredients' => "users#show_ingredients"
             # update '/users/:id/ingredients' => "users#update"
             resources :posts
-            resources :mealplans, only: [:index, :show, :update]
+            resources :mealplans, only: [:index, :show, :update, :create]
             resources :days, only: [:index]
             resources :meals, only: [:index, :update]
             resources :recipes, only: [:index, :show]
