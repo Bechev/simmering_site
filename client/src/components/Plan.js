@@ -46,13 +46,11 @@ class Plan extends Component {
 
             return days.indexOf(a.name)  - days.indexOf(b.name)
         })
-        console.log(sorted_array)
         return sorted_array
     }
 
     sort_days_array(){
         let arr = Object.values(this.props.mealplan.days)
-        console.log("arr" + arr)
         let sorted_days_array = this.sort_days(arr)
         this.setState({
             sorted_days_array: sorted_days_array
@@ -81,6 +79,10 @@ class Plan extends Component {
 
     return(
         <div className="plan">
+            <div className="mealplan_header">
+                <div className="mealplan_title title">{this.props.mealplan.name}</div>
+                <button className="button" onClick={this.handleClick}>Create new Mealplan</button>
+            </div>
             {this.renderMealPlan()}
             <Suggestions/>
 

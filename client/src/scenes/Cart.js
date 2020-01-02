@@ -36,7 +36,6 @@ class Cart extends Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         user: state.auth.user,
-        // mealplan_id: state.mealplan.id,
         mealplan: state.mealplan.id
     }
 }

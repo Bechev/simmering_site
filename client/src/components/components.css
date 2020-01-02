@@ -302,6 +302,20 @@
     --scene-width: 80vh;
 }
 
+.mealplan_header{
+    display: flex;
+    margin-top: 5vh;
+    width: var(--scene-width);
+    justify-content: space-between;
+}
+
+.mealplan_title{
+    font-size: 4vh;
+    color: rgb(85, 105, 47);
+    font-weight: bold;
+}
+
+
 .day{
     display: flex;
     min-height: 10vh;
@@ -491,13 +505,10 @@
 }
 
 .add_to_mealplan_window{
-    /* position: absolute; */
     width: 70vh;
     height: 40vh;
     
     background-color: rgba(256,256,256);
-    /* opacity: 0; */
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -532,7 +543,6 @@
     flex-direction: column;
     font-size: 2vh;
     width: 48%;
-
 }
 
 .add_to_mealplan_input{
