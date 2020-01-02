@@ -15,6 +15,7 @@ class App extends React.Component{
         }else{
             this.props.history.push('/login')
         }
+        // console.log(ENV['DOMAIN_URL'])
     }
 
     render(){

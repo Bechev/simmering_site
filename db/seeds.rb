@@ -113,6 +113,24 @@ for recipe in (0..25)
     RECIPES << recipe
 end
 
+QUANTITIES_UNIT = [
+    "cups",
+    "pinch",
+    "tbsp",
+    "tsp",
+    "pack",
+    ""]
+
+for recipe in Recipe.all
+    puts recipe.name
+    for ingredient in recipe.ingredients
+        puts ingredient.name
+        Quantity.create(measure: rand(200.25), unit: QUANTITIES_UNIT[rand(0..5)], ingredient_id: ingredient.id, recipe_id: recipe.id)
+    end
+end
+
+
+
 # Seed meal
 MEALS = ["meal1",
          "meal2",

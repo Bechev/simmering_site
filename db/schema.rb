@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_28_025915) do
+ActiveRecord::Schema.define(version: 2020_01_02_134123) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -117,6 +117,15 @@ ActiveRecord::Schema.define(version: 2019_12_28_025915) do
     t.integer "reshare", default: 0
     t.integer "likes", default: 0
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "quantities", force: :cascade do |t|
+    t.decimal "measure"
+    t.string "unit"
+    t.integer "ingredient_id"
+    t.integer "recipe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
