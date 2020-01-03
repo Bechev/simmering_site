@@ -3,13 +3,9 @@ import {withRouter, Link} from 'react-router-dom';
 import { connect } from 'react-redux'
 import {addOrRemoveRecipeToMealplan} from '../services/actions/mealplan.js'
 import AddToMealPlan from './AddToMealPlan.js'
-import Calories from '../assets/calories-icon.png'
 import Delete from '../assets/delete-icon.png'
 // import Edit from '../assets/edit-icon.png'
-import Minus from '../assets/minus-icon.png'
-import Person from '../assets/person-icon.png'
-import Plus from '../assets/plus-icon.png'
-import Stopwatch from '../assets/stopwatch-icon.png'
+
 import RecipeInformations from './RecipeInformations.js'
 import './components.css';
 

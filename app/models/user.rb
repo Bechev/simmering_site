@@ -2,6 +2,7 @@
  
 class User < ActiveRecord::Base 
 extend Devise::Models
+    after_save :create_user_mealplan
     has_many :posts
     has_many :comments
     has_many :mealplans
@@ -15,6 +16,13 @@ extend Devise::Models
             :recoverable, :rememberable, :trackable, :validatable
     
     include DeviseTokenAuth::Concerns::User
+
+    def create_user_mealplan
+        if self.mealplans.length === 0
+            puts '//////////////////////////////////////////////'
+            Mealplan.create(name: "My first mealplan", description:"This is my first mealplan", user_id: self.id)
+        end
+    end
 
   
 end

@@ -172,36 +172,36 @@ end
 
 
 
-# Seed Mealplans
-MEALPLANS = ["mealplan1",
-             "mealplan2",
-             "mealplan3",
-             "mealplan4",
-             "mealplan5",
-             "mealplan6",
-             "mealplan7",
-             "mealplan8",
-             "mealplan9",
-             "mealplan10"]
+# # Seed Mealplans
+# MEALPLANS = ["mealplan1",
+#              "mealplan2",
+#              "mealplan3",
+#              "mealplan4",
+#              "mealplan5",
+#              "mealplan6",
+#              "mealplan7",
+#              "mealplan8",
+#              "mealplan9",
+#              "mealplan10"]
 
-for x in MEALPLANS
-    user= User.find(rand(1..3))
-    mealplan = Mealplan.create(name: x, user_id: user.id)
-    groceries_list = GroceriesList.create(mealplan_id: mealplan.id)
-    # mealplan.days << user.days
-    # for day in mealplan.days
-        # puts day.name
-        # mealplan.days[day.name].meals << rand(1..MEALS.length)
-        # mealplan.days[day.name].meals << rand(1..MEALS.length)
-    # end
-    mealplan.save
-    # number_of_days_for_the_mealplans = rand(2..7)
-    # for day in Day.all
-    #     if day.user === mealplan.user
-    #         mealplan.days << Day.find(rand(1..10))
-    #     end
-    # end
-end
+# for x in MEALPLANS
+#     user= User.find(rand(1..3))
+#     mealplan = Mealplan.create(name: x, user_id: user.id)
+#     groceries_list = GroceriesList.create(mealplan_id: mealplan.id)
+#     # mealplan.days << user.days
+#     # for day in mealplan.days
+#         # puts day.name
+#         # mealplan.days[day.name].meals << rand(1..MEALS.length)
+#         # mealplan.days[day.name].meals << rand(1..MEALS.length)
+#     # end
+#     mealplan.save
+#     # number_of_days_for_the_mealplans = rand(2..7)
+#     # for day in Day.all
+#     #     if day.user === mealplan.user
+#     #         mealplan.days << Day.find(rand(1..10))
+#     #     end
+#     # end
+# end
 
 # Day.all.each_with_index do |day, index|
 #     meal1 = Meal.find_by(name: MEALS[index*2])
