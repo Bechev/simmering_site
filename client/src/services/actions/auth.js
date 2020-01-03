@@ -78,3 +78,43 @@ export function sign_out(user){
         })
     })
 }
+
+export function sign_up(email, password, password_confirmation, history){
+    return (dispatch) => {
+        dispatch({ type: 'SIGNING_UP_USER' });    
+        return fetch("http://localhost:3000/api/v1/auth/" ,{
+            method: "POST",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json; charset=utf-8",
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+                password_confirmation: password_confirmation
+            })
+        })
+        .then(response => { 
+            if(!response.ok){ 
+                if(response.status === 401){
+                    alert("Please verify your login and password")
+                }else{
+                    alert("Could not log you in, please try again later")
+                }
+                throw new Error(response)
+            }
+            else {
+                // const user = {};
+                // response.headers.forEach((value, name) => user[name] = value);
+                // localStorage.setItem('user', JSON.stringify(user));
+                dispatch({type:'SIGN_UP_USER_SUCCESS', payload: response })
+                alert('Please check your emails to validate your login')
+                history.push('/')
+            }
+        })
+        .catch(error =>{
+            dispatch({type:'SIGN_UP_USER_FAILURE', payload: error, error:true})
+        })
+    }    
+};

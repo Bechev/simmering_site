@@ -54,6 +54,23 @@ export default function authReducer(state = {
                 ...state,
                 isLoaded: true,
                 errorMessage: action.payload.message}
+
+                // Sign Up action
+        case 'SIGNING_UP_USER':
+            return  {
+                ...state,
+            }
+
+        case 'SIGN_UP_USER_SUCCESS':
+            return  {
+                isLoaded: true,
+                pendingEmailConfirmation: true}
+
+        case 'SIGN_UP_USER_FAILURE':
+            return{
+                ...state,
+                isLoaded: true,
+                errorMessage: action.payload.message}
         
         default:
             return state;

@@ -16,6 +16,7 @@ module Api
 
             def create
                 @user = current_api_v1_user()
+                # Delete the user's ingredients to generate a fresh groceires list for the new mealplan 
                 @user.ingredients = []
                 # debugger
                 @mealplan = Mealplan.create(name: params[:mealplan_name], user_id: @user.id)
