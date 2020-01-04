@@ -97,19 +97,18 @@ export function sign_up(email, password, password_confirmation, history){
         })
         .then(response => { 
             if(!response.ok){ 
-                if(response.status === 401){
-                    alert("Please verify your login and password")
+                if(response.status === 422){
+                    alert("This email and password combination is not valid")
                 }else{
                     alert("Could not log you in, please try again later")
                 }
                 throw new Error(response)
             }
             else {
-                // const user = {};
-                // response.headers.forEach((value, name) => user[name] = value);
-                // localStorage.setItem('user', JSON.stringify(user));
+                const user = {};
+                response.headers.forEach((value, name) => user[name] = value);
+                localStorage.setItem('user', JSON.stringify(user));
                 dispatch({type:'SIGN_UP_USER_SUCCESS', payload: response })
-                alert('Please check your emails to validate your login')
                 history.push('/')
             }
         })
