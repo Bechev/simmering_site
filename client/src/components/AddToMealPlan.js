@@ -24,7 +24,7 @@ class AddToMealPlan extends Component {
     }
 
     addRecipeToMealPlan() {
-        if(this.state.day_name == "Select a day"){
+        if(this.state.day_name === "Select a day"){
             alert("The day cannot be empty")
         }else{
             this.props.addOrRemoveRecipeToMealplan("Add", this.props.user, this.props.mealplan_id, this.state.day_name, this.state.meal_name, this.props.recipe.id)

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
             mount_devise_token_auth_for 'User', at: 'auth'
 
             post '/search' => "recipes#search"
+            get '/mealplan' => "mealplans#userLastMealplan"
             # post '/users/:id/ingredients' => "users#show_ingredients"
             # update '/users/:id/ingredients' => "users#update"
             resources :posts

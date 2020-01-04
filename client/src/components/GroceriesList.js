@@ -27,7 +27,6 @@ class GroceriesList extends Component {
                                 {ingredient_quantity.measure} {ingredient_quantity.unit}, {ingredient.name}
                             </label>
                             <br></br>
-
                         </div>
                     )
                 })

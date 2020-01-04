@@ -14,6 +14,11 @@ module Api
                 end
             end
 
+            def userLastMealplan
+                @user = current_api_v1_user()
+                render json: @user.mealplans.all.last, include: "**"
+            end
+
             def create
                 @user = current_api_v1_user()
                 # Delete the user's ingredients to generate a fresh groceires list for the new mealplan 
