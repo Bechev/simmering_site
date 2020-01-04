@@ -53,7 +53,7 @@ class NavigationBar extends Component {
                             to="/mycart"
                             exact
                             style={link}
-                            >Cart</NavLink>
+                            >Groceries List</NavLink>
                         </div>
                     </React.Fragment>
                 )
