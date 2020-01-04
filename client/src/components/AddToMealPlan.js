@@ -15,8 +15,8 @@ class AddToMealPlan extends Component {
         super(props);
 
         this.state = {
-            day_name: "Monday",
-            meal_name: ""
+            day_name: "Select a day",
+            meal_name: "",
         }
         this.handleDayNameChange = this.handleDayNameChange.bind(this)
         this.handleMealChange = this.handleMealChange.bind(this)
@@ -24,8 +24,12 @@ class AddToMealPlan extends Component {
     }
 
     addRecipeToMealPlan() {
+        if(this.state.day_name == "Select a day"){
+            alert("The day cannot be empty")
+        }else{
             this.props.addOrRemoveRecipeToMealplan("Add", this.props.user, this.props.mealplan_id, this.state.day_name, this.state.meal_name, this.props.recipe.id)
             this.props.displayQuickAddToMealPlan()
+        }
     }
 
     // Stop the propagation to allow removing the AddToMealPlan window when cliking on the parent but not when clicking on the child.
@@ -34,14 +38,9 @@ class AddToMealPlan extends Component {
     }
 
     handleDayNameChange(event) {
-        if(event.target.value === ""){
-            alert("please select a day")
-        }else{
-            this.setState({
-                day_name: event.target.value,
-            });
-        }
-        console.log(this.state.day_name)
+        this.setState({
+            day_name: event.target.value,
+        });
     }
 
     handleMealChange(event) {
@@ -52,13 +51,23 @@ class AddToMealPlan extends Component {
                 meal_name: event.target.value,
             });
         }
-        console.log(this.state.meal_name)
+    }
+
+    define_days_order(){
+        const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+        const USER_SETTINGS_PREFERED_DAY = "Wednesday"
+
+        let beginning_of_week = days.slice(days.indexOf(USER_SETTINGS_PREFERED_DAY))
+        let end_of_week = days.slice(0, days.indexOf(USER_SETTINGS_PREFERED_DAY))
+        let user_week = beginning_of_week.concat(end_of_week)
+        user_week =  ["Select a day"].concat(user_week)
+        return user_week
     }
 
     renderDayNameDropdown(){
-        let day_names = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+        let days = this.define_days_order()
         return(
-            day_names.map((day)=>{
+            days.map((day)=>{
             return(
                 <option value={day}>{day}</option>
                 )
