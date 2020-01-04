@@ -22,6 +22,12 @@ class Day extends Component {
         this.calculateControlPanelInformation(this.props.day.meals)
     }
     
+    componentDidUpdate(prevPros){
+        if(prevPros !== this.props){
+            this.calculateControlPanelInformation(this.props.day.meals)
+        }
+    }
+
     calculateControlPanelInformation(meals){
         let totalDayCookingTime = 0 
         let totalDayCalories = 0
