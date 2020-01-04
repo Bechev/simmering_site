@@ -708,3 +708,8 @@
 .checkbox{
     transform: scale(1.8)
 }
+
+.mealplan_name{
+    margin-right: 2vh;
+    font-weight: bold;
+}

@@ -45,13 +45,13 @@ class CreateNewMealPlan extends Component {
             <div className="add_to_mealplan_blackground" onClick={this.props.displayQuickAddToMealPlan} >
                 <div className="add_to_mealplan_window" onClick={this.stopPropagation}>
                     <div className="recipe_card_title">
-                        Add {this.props.recipe ? this.props.recipe.name : "Loading..."} to your mealplan?
+                        Create a new Mealplan
                     </div>
                     <br></br><br></br>
                     <form className="add_to_mealplan_form">
                         <br></br>
                         <div className="meal_selection add_to_mealplan_input">
-                            <label className='meal_selection'> MealPlan name: </label>
+                            <label className='mealplan_name'> Name: </label>
                             <br></br>
                             <input className='input_field meal_selection_input_field add_to_mealplan_input_field' type="text" name="mealplan_value" value={this.state.mealplan_name} onChange={this.handleMealPlanNameChange} placeholder="Mealplan Name" />
                         </div>

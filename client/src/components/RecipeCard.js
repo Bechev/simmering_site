@@ -58,9 +58,9 @@ class RecipeCard extends Component {
         if(!this.props.isMealPlan){
             return(
                 <React.Fragment>
-                    <div className="alt_button recipe_card_button" onClick={this.props.user ? this.displayQuickAddToMealPlan : this.redirectToLoginPage}>
+                    <button className="alt_button recipe_card_button" onClick={this.props.user ? this.displayQuickAddToMealPlan : this.redirectToLoginPage}>
                         Add to MealPlan
-                    </div>
+                    </button>
                     {this.renderAddToMealPlan()}
                 </React.Fragment>
             )
