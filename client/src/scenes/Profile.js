@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ProfileInformation from '../components/ProfileInformation';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
+import {fetchUserMealPlans } from '../services/actions/mealplans.js'
 
 class Profile extends Component {
     
@@ -11,6 +12,7 @@ class Profile extends Component {
             display: 'User Settings'
         }
         this.handleClick = this.handleClick.bind(this)
+        // this.fetchUserMealPlans = this.props.fetchUserMealPlans.bind(this)
     }
 
     handleClick(clickValue){
@@ -24,8 +26,8 @@ class Profile extends Component {
             case 'Diet and Allergies':
                 this.props.fetchUserDietAndAllergies(this.props.user)
                 break;
-            case 'Previous Mealplans':
-                this.props.fetchUserPreviousMealplans(this.props.user)
+            case 'My Mealplans':
+                this.props.fetchUserMealPlans(this.props.user)
                 break;
             default:
                 break;
@@ -37,7 +39,7 @@ class Profile extends Component {
             <React.Fragment>
                 <button onClick={() => this.handleClick('User Settings')}>User Settings</button>
                 <button onClick={() => this.handleClick('Diet and Allergies')}>Diet and Allergies</button>
-                <button onClick={() => this.handleClick('Previous Mealplans')}>Previous Mealplans</button>
+                <button onClick={() => this.handleClick('My Mealplans')}>Previous Mealplans</button>
             </React.Fragment>
         )
     }
@@ -62,4 +64,27 @@ const mapStateToProps = (state, ownProps) => {
     }
   }
 
-  export default withRouter(connect(mapStateToProps, null)(Profile));
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchUserMealPlans: (user) => dispatch(fetchUserMealPlans(user)),
+        // fetchMealPlan: (user, mealplan_id) => dispatch(fetchMealPlan(user, mealplan_id)),
+    }
+}
+
+
+  export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Profile));
+
+
+  
+//   handleClick(clickValue){
+//     this.setState({
+//         display: clickValue
+//     })
+//     if(clickValue === 'My Mealplans'){
+//         this.props.fetchUserMealPlans(this.props.user)
+//     }else if(clickValue === 'User Settings'){
+//         this.props.fetchUserSettings(this.props.user)
+//     }else if(clickValue==='Diet and Allergies'){
+//         this.props.fetchUserDietAndAllergies(this.props.user)
+//     }
+// }
