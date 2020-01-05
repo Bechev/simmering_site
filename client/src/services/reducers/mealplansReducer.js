@@ -21,6 +21,31 @@ export default function mealplansReducer(state = {
                 ...state,
                 isLoaded: true,
                 errorMessage: action.payload.message}
+            
+        case 'GET_PREVIOUS_MEALPLAN':
+            return  {
+                    ...state,
+                    isLoaded: false}
+            
+        case 'GET_PREVIOUS_MEALPLAN_SUCCESS':
+            state.userMealplans.map((mealplan, mealplan_index)=>{
+                if(mealplan.id === action.payload.id){
+                    let mealplan_object = Object.assign({}, action.payload, {mealplanLoaded: true})
+                    return state.userMealplans.splice(mealplan_index, 1, mealplan_object)
+                }else{
+                    return null
+                }
+            })
+            // return  {
+            //         ...state,
+            //         userMealplans: [].concat(action.payload),
+            //         isLoaded: true,}
+
+        case 'GET_PREVIOUS_MEALPLAN_FAILURE':
+            return{
+                ...state,
+                isLoaded: true,
+                errorMessage: action.payload.message}
 
         default:
             return state;

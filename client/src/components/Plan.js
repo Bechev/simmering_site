@@ -44,7 +44,6 @@ class Plan extends Component {
     sort_days(arr){
         
         let days = this.define_days_order()
-        // console.log("arr" + arr)
         let sorted_array = arr.sort(function(a,b){
 
             return days.indexOf(a.name)  - days.indexOf(b.name)

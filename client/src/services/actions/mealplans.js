@@ -17,3 +17,26 @@ export function fetchUserMealPlans(user){
         })
     }    
 };
+
+export function fetchPreviousMealplanInfo(user, mealplan_id){
+    console.log(mealplan_id)
+    return (dispatch) => {
+        dispatch({ type: 'GET_PREVIOUS_MEALPLAN' });    
+        return fetch("http://localhost:3000/api/v1/mealplans/" + mealplan_id,{
+            headers:{
+                "uid": user.uid,
+                "client":  user.client,
+                "access-token":  user['access-token'],
+                "Access-Control-Allow-Origin": "*",
+                "Content-Type": "application/json; charset=utf-8"
+            }
+        })
+        .then(response => response.json())
+        .then(mealplan => {
+            dispatch({type:'GET_PREVIOUS_MEALPLAN_SUCCESS', payload: mealplan})
+        })
+        .catch(error =>{
+            dispatch({type:'GET_PREVIOUS_MEALPLAN_FAILURE', payload: error, error:true})
+        })
+    }    
+};

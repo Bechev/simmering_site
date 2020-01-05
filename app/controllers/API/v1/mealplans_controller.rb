@@ -32,6 +32,8 @@ module Api
                 if params[:id]
                     @mealplan = Mealplan.find(params[:id])
                     render json: @mealplan, include: "**"
+                else
+                    render json: {errors: "Mealplan does not exist"}, status: 422
                 end
             end
 
