@@ -680,6 +680,10 @@
     font-weight: bold;
 }
 
+.groceries_list_text{
+    margin: 2vh;
+}
+
 .groceries_list{
     display: flex;
     flex-direction: column;

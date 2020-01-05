@@ -12,13 +12,17 @@ class GroceriesList extends Component {
     }
 
     renderIngredientsList() {
-        if (this.props.groceries_list_ingredients && this.props.groceries_list_quantities) {
+
+        if (this.props.groceries_list_ingredients.length===0 && this.props.groceries_list_quantities.length===0) {
+            return (
+                <div className="groceries_list_text"> Your mealplan is empty, start adding some recipes to create your groceries list!</div>
+            )
+        } else {
             return (
                 this.props.groceries_list_ingredients.map((ingredient) => {
                     let ingredient_quantity =  this.props.groceries_list_quantities.find(quantity => quantity.ingredient_id === ingredient.id )
                     return (
                         <div className="ingredient_checkbox">
-
                             <input className="checkbox" type="checkbox"
                                    onClick={() => this.handleChange(this.props.user, ingredient)} 
                                    name={ingredient.name} value={ingredient.name}
@@ -30,10 +34,6 @@ class GroceriesList extends Component {
                         </div>
                     )
                 })
-            )
-        } else {
-            return (
-                <h2> Loading </h2>
             )
         }
     }
