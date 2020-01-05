@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import Wall from './Home/Wall.js'
 
 class Home extends Component {
+    
     componentDidMount(){
         this.props.fetchLastPublicPosts()
     }

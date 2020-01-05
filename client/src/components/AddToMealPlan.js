@@ -23,6 +23,12 @@ class AddToMealPlan extends Component {
         this.addRecipeToMealPlan = this.addRecipeToMealPlan.bind(this)
     }
 
+    componentDidMount(){
+        if(this.props.userParameters.isLoaded === false ){
+            this.props.fetchUserParameters(this.props.user)
+        }
+    }
+
     addRecipeToMealPlan() {
         if(this.state.day_name === "Select a day"){
             alert("The day cannot be empty")
@@ -55,7 +61,7 @@ class AddToMealPlan extends Component {
 
     define_days_order(){
         const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-        const USER_SETTINGS_PREFERED_DAY = "Wednesday"
+        const USER_SETTINGS_PREFERED_DAY = this.props.week_starting_day
 
         let beginning_of_week = days.slice(days.indexOf(USER_SETTINGS_PREFERED_DAY))
         let end_of_week = days.slice(0, days.indexOf(USER_SETTINGS_PREFERED_DAY))
@@ -117,6 +123,8 @@ const mapStateToProps = (state, ownProps) => {
     return {
         user: state.auth.user,
         mealplan_id: state.mealplan.id,
+        userParameters: state.userParameters,
+        week_starting_day: state.userParameters.userSettings.week_starting_day
     }
 }
 

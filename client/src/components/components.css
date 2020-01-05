@@ -717,3 +717,43 @@
     margin-right: 2vh;
     font-weight: bold;
 }
+
+/* CSS for Profileinformation */
+.profile_information_header{
+    font-size: 3vh;
+    font-weight: bold;
+    color: rgb(85, 105, 47) ;   
+}
+
+
+/* CSS for UsrSettings */
+.user_settings_form{
+    display: flex;
+    font-size: 2vh;
+    margin: 2vh;
+    align-items: center;
+}
+
+.user_settings_inputs{
+    margin-left: 2vh;
+    font-size: 2vh;
+    /* font-size: 3vh; */
+}
+
+.user_settings_submit_panel{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* CSS for DietAndAllergies */
+.diet_and_allergies{
+    font-size: 2vh;
+    text-align: left;
+    margin: 3vh;
+}
+
+.dietary_item{
+    margin-bottom: 1vh;
+    /* font-weight: bold; */
+}

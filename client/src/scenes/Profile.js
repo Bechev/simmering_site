@@ -3,6 +3,9 @@ import ProfileInformation from '../components/ProfileInformation';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 import {fetchUserMealPlans } from '../services/actions/mealplans.js'
+import {fetchUserParameters } from '../services/actions/user.js'
+import { sign_out } from '../services/actions/auth.js'
+
 
 class Profile extends Component {
     
@@ -12,35 +15,33 @@ class Profile extends Component {
             display: 'User Settings'
         }
         this.handleClick = this.handleClick.bind(this)
-        // this.fetchUserMealPlans = this.props.fetchUserMealPlans.bind(this)
+    }
+
+    componentDidMount(){
+        if(this.props.userParameters.isLoaded === false ){
+            this.props.fetchUserParameters(this.props.user)
+        }
+        this.props.fetchUserMealPlans(this.props.user)
     }
 
     handleClick(clickValue){
         this.setState({
             display: clickValue
         })
-        switch(clickValue){
-            case 'User Settings':
-                this.props.fetchUserSettings(this.props.user)
-                break;
-            case 'Diet and Allergies':
-                this.props.fetchUserDietAndAllergies(this.props.user)
-                break;
-            case 'My Mealplans':
-                this.props.fetchUserMealPlans(this.props.user)
-                break;
-            default:
-                break;
-        }
+    }
+
+    handleSignOut(){
+        this.props.sign_out(this.props.user)
+        window.location.reload()
     }
 
     renderProfileControlPanel(){
         return(
-            <React.Fragment>
-                <button onClick={() => this.handleClick('User Settings')}>User Settings</button>
-                <button onClick={() => this.handleClick('Diet and Allergies')}>Diet and Allergies</button>
-                <button onClick={() => this.handleClick('My Mealplans')}>Previous Mealplans</button>
-            </React.Fragment>
+            <div className="profile_dashboard">
+                <button className="profile_button" onClick={() => this.handleClick('User Settings')}>User Settings</button>
+                <button className="profile_button" onClick={() => this.handleClick('Diet and Allergies')}>Diet and Allergies</button>
+                <button className="profile_button" onClick={() => this.handleClick('My Mealplans')}>Previous Mealplans</button>
+            </div>
         )
     }
 
@@ -49,9 +50,20 @@ class Profile extends Component {
 
         return(
             <div className="profile">
-                <div className="profile_header">Profile</div>
-                {this.renderProfileControlPanel()}
-                <ProfileInformation informations={this.state.display}/>
+                <div className="profile_header">
+                    <div className="profile_title">
+                        Profile
+                    </div>
+                    <button className="button sign_out_button" onClick={this.handleSignOut}>
+                        Sign Out
+                    </button>
+                </div>
+                <div className="profile_content">
+                    {this.renderProfileControlPanel()}
+                    <div className="profile_content_information">
+                        <ProfileInformation informations={this.state.display}/>
+                    </div>
+                </div>
             </div>
         )
     }
@@ -60,31 +72,18 @@ class Profile extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-      user: state.auth.user
+      user: state.auth.user,
+      userParameters: state.userParameters,
     }
   }
 
 const mapDispatchToProps = dispatch => {
     return {
+        sign_out: (user) => dispatch(sign_out(user)),
         fetchUserMealPlans: (user) => dispatch(fetchUserMealPlans(user)),
-        // fetchMealPlan: (user, mealplan_id) => dispatch(fetchMealPlan(user, mealplan_id)),
+        fetchUserParameters: (user) => dispatch(fetchUserParameters(user)),
     }
 }
 
 
   export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Profile));
-
-
-  
-//   handleClick(clickValue){
-//     this.setState({
-//         display: clickValue
-//     })
-//     if(clickValue === 'My Mealplans'){
-//         this.props.fetchUserMealPlans(this.props.user)
-//     }else if(clickValue === 'User Settings'){
-//         this.props.fetchUserSettings(this.props.user)
-//     }else if(clickValue==='Diet and Allergies'){
-//         this.props.fetchUserDietAndAllergies(this.props.user)
-//     }
-// }

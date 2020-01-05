@@ -10,18 +10,20 @@ import categoriesReducer from './categoriesReducer.js'
 import recipeReducer from './recipeReducer.js'
 import groceriesListReducer from './groceriesListReducer.js'
 import userIngredientsReducer from './userIngredientsReducer.js'
+import userReducer from './userReducer.js'
 
 
 export default combineReducers({
     auth: authReducer,
     post: postReducer,
     posts: postsReducer,
+    recipe: recipeReducer,
     comment: commentReducer,
     comments: commentsReducer,
-    mealplans: mealplansReducer,
     mealplan: mealplanReducer,
+    mealplans: mealplansReducer,
+    userParameters: userReducer,
     categories: categoriesReducer,
-    recipe: recipeReducer,
     groceriesList: groceriesListReducer,
     userIngredients: userIngredientsReducer,
   })

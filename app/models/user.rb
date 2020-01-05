@@ -10,6 +10,7 @@ extend Devise::Models
     has_many :meals
     has_many :recipes
     has_and_belongs_to_many :ingredients
+    has_one :parameter
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable,
@@ -19,8 +20,8 @@ extend Devise::Models
 
     def create_user_mealplan
         if self.mealplans.length === 0
-            puts '//////////////////////////////////////////////'
             Mealplan.create(name: "My first mealplan", description:"This is my first mealplan", user_id: self.id)
+            Parameter.create(user_id: self.id)
         end
     end
 

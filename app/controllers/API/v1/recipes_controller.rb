@@ -19,7 +19,7 @@ module Api
 
             def search
                 letter = params[:char]
-                @recipes = Recipe.where("name like ?", "%"+letter+"%").limit(10)
+                @recipes = Recipe.where("name like ?", "%" + letter + "%").limit(10)
                 render json: @recipes, status: 201
             end
         

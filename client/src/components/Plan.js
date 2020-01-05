@@ -32,10 +32,10 @@ class Plan extends Component {
 
     define_days_order(){
         const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-        const USER_SETTINGS_PREFERED_DAY = "Saturday"
+        const USER_SETTINGS_WEEK_STARTING_DAY = this.props.week_starting_day
 
-        let beginning_of_week = days.slice(days.indexOf(USER_SETTINGS_PREFERED_DAY))
-        let end_of_week = days.slice(0, days.indexOf(USER_SETTINGS_PREFERED_DAY))
+        let beginning_of_week = days.slice(days.indexOf(USER_SETTINGS_WEEK_STARTING_DAY))
+        let end_of_week = days.slice(0, days.indexOf(USER_SETTINGS_WEEK_STARTING_DAY))
         let user_week = beginning_of_week.concat(end_of_week)
         // console.log(user_week)
         return user_week
@@ -116,7 +116,8 @@ const mapStateToProps = (state, ownProps) => {
       user: state.auth.user,
       mealplansLoaded: state.mealplans.isLoaded,
       mealplans: state.mealplans.userMealplans,
-      mealplan: state.mealplan
+      mealplan: state.mealplan,
+      week_starting_day: state.userParameters.userSettings.week_starting_day,
     }
   }
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_02_134123) do
+ActiveRecord::Schema.define(version: 2020_01_04_234858) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -109,6 +109,19 @@ ActiveRecord::Schema.define(version: 2020_01_02_134123) do
     t.integer "meal_id", null: false
     t.integer "recipe_id", null: false
     t.index ["meal_id", "recipe_id"], name: "index_meals_recipes_on_meal_id_and_recipe_id"
+  end
+
+  create_table "parameters", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "week_starting_day", default: "Saturday"
+    t.boolean "is_gluten_free", default: false
+    t.boolean "is_vegetarian", default: false
+    t.boolean "is_vegan", default: false
+    t.boolean "shellfish_allergic", default: false
+    t.boolean "nuts_allergic", default: false
+    t.boolean "lactose_intolerant", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "posts", force: :cascade do |t|

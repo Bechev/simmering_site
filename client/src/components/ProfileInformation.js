@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
-import {sign_out } from '../services/actions/auth.js'
+import DietAndAllergies from './ProfileInformation/DietAndAllergies.js'
+import UserSettings from './ProfileInformation/UserSettings.js'
+import MyMealplans from './ProfileInformation/MyMealplans.js'
 import './components.css'
 
 
@@ -9,20 +11,40 @@ class ProfileInformation extends Component {
 
     // constructor(props){
     //     super(props);
-        
+
     // }
 
-    
-    sign_out(){
-        this.props.sign_out(this.state.user)
-        window.location.reload()
+    renderInformations() {
+        if (this.props.userParameters.isLoaded) {
+            if (this.props.informations === 'Diet and Allergies') {
+                return (
+                    <DietAndAllergies />
+                )
+            } else if (this.props.informations === 'User Settings') {
+                return (
+                    <UserSettings />
+                )
+            } else if (this.props.informations === 'My Mealplans') {
+                return (
+                    <MyMealplans />
+                )
+            }
+        } else {
+            return (
+                <div>Loading</div>
+            )
+        }
     }
 
     render() {
 
-        return(
+        return (
             <div className="profile_information" >
-                {this.props.informations}
+                <div className="profile_information_header">
+                    {this.props.informations}
+                </div>
+                
+                {this.renderInformations()}
             </div>
         )
     }
@@ -32,14 +54,13 @@ class ProfileInformation extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-      user: state.auth.user
-    }
-  }
-
-const mapDispatchToProps = dispatch => {
-    return {
-        sign_out: (user) => dispatch(sign_out(user)),
+        user: state.auth.user,
+        mealplans: state.mealplans.userMealplans,
+        userParameters: state.userParameters,
+        userSettings: state.userParameters.userSettings,
+        dietAndAllergies: state.userParameters.dietAndAllergies
     }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProfileInformation));
+
+export default withRouter(connect(mapStateToProps, null)(ProfileInformation));
