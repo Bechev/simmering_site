@@ -17,11 +17,8 @@ class DaySummary extends Component {
     renderDayMeals(){
         return(
             this.props.day.meals.map((meal) => {
-                return(
-                    <div className="mealplan_summary_meal">
-                        {meal.name}
-                        <MealSummary meal={meal}/>
-                    </div>
+                return( 
+                    <MealSummary meal={meal}/>
                     )
                 })
         )
@@ -30,7 +27,7 @@ class DaySummary extends Component {
   render() {
 
     return(
-        <div className="mealplan_summary_meal">
+        <div className="mealplan_summary_day">
             {this.renderDayMeals()}
         </div>
         )   

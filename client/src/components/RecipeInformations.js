@@ -4,7 +4,9 @@ import Calories from '../assets/calories-icon.png'
 import Minus from '../assets/minus-icon.png'
 import Person from '../assets/person-icon.png'
 import Plus from '../assets/plus-icon.png'
-import Stopwatch from '../assets/stopwatch-icon.png'
+import PreparationTime from '../assets/preparation-time-icon.png'
+import CookingTime from '../assets/cooking-time-icon.png'
+import TotalCookingTime from '../assets/total-cooking-time-icon.png'
 import './components.css'
 
 
@@ -54,11 +56,11 @@ class RecipeInformations extends Component {
         return (
             <React.Fragment>
                 <div className="preparation_time recipe_card_information_element">
-                    <img src={Stopwatch} className="stopwatch icon" alt='stopwatch_icon'></img>
+                    <img src={PreparationTime} className="preparation_time icon" alt='stopwatch_icon'></img>
                     {this.props.recipe.preparation_time}
                 </div>
                 <div className="cooking_time recipe_card_information_element">
-                    <img src={Stopwatch} className="stopwatch icon" alt='stopwatch_icon'></img>
+                    <img src={CookingTime} className="cooking_time icon" alt='stopwatch_icon'></img>
                     {this.props.recipe.cooking_time}
                 </div>
             </React.Fragment>
@@ -69,7 +71,7 @@ class RecipeInformations extends Component {
         return (
             <React.Fragment>
                 <div className="total_time recipe_card_information_element">
-                    <img src={Stopwatch} className="stopwatch icon" alt='stopwatch_icon'></img>
+                    <img src={TotalCookingTime} className="total_cooking_time icon" alt='stopwatch_icon'></img>
                     {this.props.recipe.total_recipe_time}
                 </div>
                 <div className="calories_count recipe_card_information_element">

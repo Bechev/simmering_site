@@ -10,7 +10,7 @@ class MealSummary extends Component {
             this.props.meal.recipes.map((recipe) => {
                 return(
                     <div className="mealplan_summary_recipe">
-                        <Link to={`/recipe/${recipe.id}`}>
+                        <Link style={{ textDecoration: 'none', color: `rgb(85, 105, 47)`}} to={`/recipe/${recipe.id}` }>
                             {recipe.name}
                         </Link>
                     </div>
@@ -23,6 +23,7 @@ class MealSummary extends Component {
 
     return(
         <div className="mealplan_summary_meal">
+            {this.props.meal.name}
             {this.renderMealRecipes()}
         </div>
         )   

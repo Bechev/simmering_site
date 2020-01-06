@@ -768,12 +768,50 @@
 .previousMealplan{
     display: flex;
     border: 0;
+    background-color: white;
+    padding: 1vh;
+    min-height: 2vh;
+    border-radius: 1vh;
+    border: solid;
+    border-color: rgb(85, 105, 47);
+
+    margin: 1vh;
+    /* padding: 2vh; */
+    /* padding-left: 3vh; */
+    /* align-items: center; */
+
+    flex-direction: column;
+    align-items: flex-start;
+    /* justify-content: flex-start; */
+    
+    font-size: 2vh;    
+}
+
+
+
+.mealplan_summary{
+    width: 100%;
+}
+
+.mealplan_summary_name{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+    font-weight: bold;
+    color: rgb(85, 105, 47)
+}
+
+.mealplan_summary_day{
+    display: flex;
+    border: 0;
     background-color: lightgray;
     padding: 1vh;
     min-height: 2vh;
     border-radius: 1vh;
 
-
+    width:90%;
     /* width: var(--scene-width); */
     margin: 1vh;
     /* padding: 2vh; */
@@ -785,4 +823,30 @@
     /* justify-content: flex-start; */
     
     font-size: 2vh;    
+    font-weight: bold;
+}
+
+.mealplan_summary_meal{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 1vh 0 1vh;
+    /* border-style: solid; */
+    /* border-color: rgb(85, 105, 47); */
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 1vh;
+    text-align: left;
+    padding: 1vh 0 1vh 1vh;;
+}
+
+.mealplan_summary_recipe{
+    border: 0.2vh;
+    border-color:  rgb(85, 105, 47) ;
+    border-style: solid;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 2vh;
+    margin: 1vh;
+    background-color: white;
+  
 }

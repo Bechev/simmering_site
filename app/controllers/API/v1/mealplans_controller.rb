@@ -8,9 +8,8 @@ module Api
                 # debugger
                 if request.headers["uid"] 
                     @user = current_api_v1_user()
-                    # @mealplans = user.mealplans.last(10).reverse
-                    @mealplans = @user.mealplans
-                    render json: @mealplans
+                    @mealplans = @user.mealplans.last(10)
+                    render json: @mealplans, include: '**'
                 end
             end
 

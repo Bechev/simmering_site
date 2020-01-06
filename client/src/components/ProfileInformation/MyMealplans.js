@@ -1,47 +1,49 @@
 import React, { Component } from 'react';
-import {withRouter, Link} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux'
 import {fetchPreviousMealplanInfo} from '../../services/actions/mealplans.js'
 import '../components.css'
-import DaySummary from './MyMealplans/DaySummary.js';
+import MealplanSummary from './MyMealplans/MealplanSummary.js';
 
 
 class MyMealplans extends Component {
 
-    // constructor(props){
-    //     super(props);
-    //     this.state={
-    //         days: this.props.
-    //     }
-    // }
-    
-    handleClick(mealplan_id){
-        this.props.fetchPreviousMealplanInfo(this.props.user, mealplan_id)
+    constructor(props){
+        super(props);
+        this.state={
+            loadedMealplans: [],
+            sortedMealplans: [],
+        }
     }
 
-    renderMealPlanInfo(mealplan){
-        if(mealplan.mealplanLoaded){
-            return(
-                mealplan.days.map((day) => {
-                    return(
-                        <div className="mealplan_summary_day">
-                            {day.name}
-                            <DaySummary day={day}/>
-                        </div>
-                        )
-                    })
-            )
+    componentDidMount(){
+        this.sort_mealplans_array()
+    }
+
+    componentDidUpdate(prevProps){
+        if(prevProps !== this.props){
+            this.sort_mealplans_array()
         }
+    }
+    
+    sort_mealplans_array(){
+        let sortedMealplans=this.sortById(this.props.previousMealplans)
+        this.setState({
+            sortedMealplans: sortedMealplans
+        })
+    }
+
+    sortById(arr){
+        return arr.sort((a, b) => (a.id > b.id) ? -1 : 1)
     }
 
     renderPreviousMealplans(){
         if(this.props.previousMealplansLoaded){
             return(
-                this.props.previousMealplans.reverse().map(mealplan =>{
+                this.state.sortedMealplans.map(mealplan =>{
                     return(
-                        <div className="previousMealplan" onClick={()=>this.handleClick(mealplan.id)}>
-                            {mealplan.name}
-                            {this.renderMealPlanInfo(mealplan)}
+                        <div className="previousMealplan">
+                            <MealplanSummary mealplan={mealplan} handleClick={()=>this.handleClick(mealplan.id)}/>
                         </div>
                     )
                 })
