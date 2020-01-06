@@ -2,7 +2,7 @@ class CreateParameters < ActiveRecord::Migration[5.2]
   def change
     create_table :parameters do |t|
         t.integer :user_id
-        t.string :week_starting_day, :default => "Saturday"
+        t.string :week_starting_day, :default => "Monday"
         t.integer :default_number_of_guests, :default => 1
         t.boolean :is_gluten_free, :default => false
         t.boolean :is_vegetarian, :default => false
