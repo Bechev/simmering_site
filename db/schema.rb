@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(version: 2020_01_04_234858) do
   create_table "parameters", force: :cascade do |t|
     t.integer "user_id"
     t.string "week_starting_day", default: "Saturday"
+    t.integer "default_number_of_guests", default: 1
     t.boolean "is_gluten_free", default: false
     t.boolean "is_vegetarian", default: false
     t.boolean "is_vegan", default: false

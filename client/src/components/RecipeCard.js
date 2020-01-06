@@ -89,9 +89,6 @@ class RecipeCard extends Component {
         if(this.props.isMealPlan){
             return(
                 <div className="meal_plan_controls">
-                    {/* <div className="edit_recipe">
-                        <img  src={Edit} className="edit icon" alt='edit_button'></img>
-                    </div> */}
                     <div className="remove_recipe" onClick={this.removeRecipeFromMeal}>
                         <img src={Delete} className="edit icon" alt='delete_button'></img>
                     </div>

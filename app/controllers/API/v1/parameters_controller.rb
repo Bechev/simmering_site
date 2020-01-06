@@ -12,6 +12,7 @@ module Api
                 @user = current_api_v1_user()
                 @parameter = @user.parameter
                 @parameter.update(parameter_settings)
+                # debugger
                 if @parameter.save
                     render json: @user.parameter, status: 201
                 else
@@ -22,7 +23,7 @@ module Api
 
             private
             def parameter_settings
-                params.require(:settings).permit(:week_starting_day, :is_gluten_free, :is_vegetarian, :is_vegan, :shellfish_allergic, :nuts_allergic, :lactose_intolerant)
+                params.require(:settings).permit(:week_starting_day, :default_number_of_guests, :is_gluten_free, :is_vegetarian, :is_vegan, :shellfish_allergic, :nuts_allergic, :lactose_intolerant)
             end
 
 

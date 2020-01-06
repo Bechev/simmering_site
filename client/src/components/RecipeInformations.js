@@ -7,6 +7,7 @@ import Plus from '../assets/plus-icon.png'
 import PreparationTime from '../assets/preparation-time-icon.png'
 import CookingTime from '../assets/cooking-time-icon.png'
 import TotalCookingTime from '../assets/total-cooking-time-icon.png'
+import { connect } from 'react-redux'
 import './components.css'
 
 
@@ -15,7 +16,7 @@ class RecipeInformations extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            recipe_feed_count: 0,
+            recipe_feed_count: this.props.userSettings.default_number_of_guests,
         }
         this.changeFeedCount = this.changeFeedCount.bind(this);
         this.renderInformations = this.renderInformations.bind(this)
@@ -107,4 +108,10 @@ class RecipeInformations extends Component {
 
 }
 
-export default withRouter(RecipeInformations);
+const mapStateToProps = (state, ownProps) => {
+    return {
+        userSettings: state.userParameters.userSettings,
+    }
+} 
+
+  export default withRouter(connect(mapStateToProps, null)(RecipeInformations));

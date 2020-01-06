@@ -732,12 +732,22 @@
     font-size: 2vh;
     margin: 2vh;
     align-items: center;
+    flex-direction: column;
 }
 
 .user_settings_inputs{
     margin-left: 2vh;
     font-size: 2vh;
     /* font-size: 3vh; */
+}
+
+.user_settings_form_input{
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 1.5vh;
+    justify-content: space-between;
 }
 
 .user_settings_submit_panel{
