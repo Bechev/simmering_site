@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_04_234858) do
+ActiveRecord::Schema.define(version: 2020_01_07_021219) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -105,6 +105,12 @@ ActiveRecord::Schema.define(version: 2020_01_04_234858) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "meals_quantities_multiplicators", id: false, force: :cascade do |t|
+    t.integer "meal_id", null: false
+    t.integer "quantities_multiplicator_id", null: false
+    t.index ["meal_id", "quantities_multiplicator_id"], name: "idx_meals_quantities_multl_on_quantities_mult_and_meals"
+  end
+
   create_table "meals_recipes", id: false, force: :cascade do |t|
     t.integer "meal_id", null: false
     t.integer "recipe_id", null: false
@@ -113,7 +119,7 @@ ActiveRecord::Schema.define(version: 2020_01_04_234858) do
 
   create_table "parameters", force: :cascade do |t|
     t.integer "user_id"
-    t.string "week_starting_day", default: "Saturday"
+    t.string "week_starting_day", default: "Monday"
     t.integer "default_number_of_guests", default: 1
     t.boolean "is_gluten_free", default: false
     t.boolean "is_vegetarian", default: false
@@ -142,6 +148,20 @@ ActiveRecord::Schema.define(version: 2020_01_04_234858) do
     t.integer "recipe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "quantities_multiplicators", force: :cascade do |t|
+    t.integer "multiplicator"
+    t.integer "meal_id"
+    t.integer "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "quantities_multiplicators_recipes", id: false, force: :cascade do |t|
+    t.integer "quantities_multiplicator_id", null: false
+    t.integer "recipe_id", null: false
+    t.index ["quantities_multiplicator_id", "recipe_id"], name: "idx_recipes_quantities_multl_on_quantities_mult_and_recipes"
   end
 
   create_table "recipes", force: :cascade do |t|
