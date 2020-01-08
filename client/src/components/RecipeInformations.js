@@ -16,7 +16,8 @@ class RecipeInformations extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            recipe_feed_count: this.props.userSettings.default_number_of_guests,
+            recipe_feed_count: null,
+            quantities_multiplicator_id: null
         }
         this.changeFeedCount = this.changeFeedCount.bind(this);
         this.renderInformations = this.renderInformations.bind(this)
@@ -27,26 +28,25 @@ class RecipeInformations extends Component {
         this.defineNumberOfGuests()
     }
 
-    // componentDidUpdate(prevProps){
-    //     if(this.prevProps !== this.props){
-    //         let number_of_guests = this.defineNumberOfGuests()
-    //         console.log("number_of_guests" + number_of_guests )
-    //         if(number_of_guests){
-    //             this.setState({
-    //                 recipe_feed_count: number_of_guests
-    //             })
-    //         }
-    //     }
-    // }
+    // component did update allows to fecth and render the userparams settings default number of guests
+    componentDidUpdate(prevProps){
+        if(prevProps.userSettings.default_number_of_guests !== this.props.userSettings.default_number_of_guests)
+        this.defineNumberOfGuests()
+    }
 
     defineNumberOfGuests(){
-        if(this.props.isMealPlan){
+        if(this.props.quantities_multiplicators){
             this.props.quantities_multiplicators.map((quantities_multiplicator)=>{
-                if(quantities_multiplicator.recipe_id === this.props.recipe.id){
+                if(quantities_multiplicator.recipe_id === this.props.recipe.id){    
                     this.setState({
-                        recipe_feed_count: quantities_multiplicator.multiplicator
+                        recipe_feed_count: quantities_multiplicator.multiplicator,
+                        quantities_multiplicator_id: quantities_multiplicator.id
                     })
                 }
+            })
+        }else{
+            this.setState({
+                recipe_feed_count: this.props.userSettings.default_number_of_guests
             })
         }
 
@@ -144,4 +144,11 @@ const mapStateToProps = (state, ownProps) => {
     }
 } 
 
-  export default withRouter(connect(mapStateToProps, null)(RecipeInformations));
+const mapDispatchToProps = dispatch => {
+    return {
+        // changeQuantitiesMultplicator: (action, user, quantities_multiplicator_id) => dispatch(changeQuantitiesMultplicator(action, user, quantities_multiplicator_id)),
+        // addOrRemoveRecipeToMealplan: (action, user, mealplan_id, day_name, meal_name, recipe_id) => dispatch(addOrRemoveRecipeToMealplan(action, user, mealplan_id, day_name, meal_name, recipe_id)),
+    }
+}
+
+  export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RecipeInformations));
