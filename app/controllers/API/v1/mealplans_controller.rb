@@ -41,7 +41,7 @@ module Api
                 # debugger
                 @user = current_api_v1_user()
                 @mealplan = Mealplan.find(params[:id])
-                response = @mealplan.addOrRemoveRecipe(params["to-do"], @user.id, params["day-name"], params["meal-name"], params["recipe-id"])
+                response = @mealplan.addOrRemoveRecipe(params["to-do"], @user.id, params["day-name"], params["meal-name"], params["recipe-id"], params["multiplicator"])
                 render json: response
             end
 

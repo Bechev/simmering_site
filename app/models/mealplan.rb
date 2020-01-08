@@ -27,7 +27,7 @@ class Mealplan < ApplicationRecord
         end
     end
 
-    def addOrRemoveRecipe(action, userId, day_name, meal_name, recipe_id)
+    def addOrRemoveRecipe(action, userId, day_name, meal_name, recipe_id, multiplicator)
         # Create boolean to track the level to include in the response (recipe if meal and day already exists, meal if day already exist or day)
         created_or_destroyed_day = false
         created_or_destroyed_meal = false
@@ -60,9 +60,9 @@ class Mealplan < ApplicationRecord
             
             # We start by looking the default number of guest for the user concerned
             user = User.find(user_id)
-            default_number_of_guests = user.parameter.default_number_of_guests
+            # default_number_of_guests = user.parameter.default_number_of_guests
             # We then create the quantities multiplicator for the recipe/meal combination
-            meal_recipe_quantites_multiplicator = QuantitiesMultiplicator.create(multiplicator: default_number_of_guests, meal_id: meal.id, recipe_id: recipe.id)
+            meal_recipe_quantites_multiplicator = QuantitiesMultiplicator.create(multiplicator: multiplicator, meal_id: meal.id, recipe_id: recipe.id)
 
 
         # if the action is to remove the recipe, we remove it
