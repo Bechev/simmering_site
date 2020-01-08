@@ -501,7 +501,7 @@
     align-items: center;
     justify-content: center;
 
-    z-index: 10;
+    z-index: 0;
 }
 
 .add_to_mealplan_window{
@@ -514,7 +514,7 @@
     justify-content: center;
     align-items: center;
 
-    z-index: 15;
+    z-index: 0;
 }
 
 .add_to_mealplan_button{

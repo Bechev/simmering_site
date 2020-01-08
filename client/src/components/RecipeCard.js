@@ -48,7 +48,10 @@ class RecipeCard extends Component {
                         {this.renderAddToMealPlanButton()}
                         {this.renderRecipeMealPlanControls()}
                     </div>
-                    <RecipeInformations isRecipeCard={true} recipe={this.props.recipe}/>
+                    <RecipeInformations quantities_multiplicators= {this.props.quantities_multiplicators} 
+                                        recipe={this.props.recipe} 
+                                        isRecipeCard={true}
+                                        isMealPlan={this.props.isMealPlan} />
                 </React.Fragment>
             )
         }

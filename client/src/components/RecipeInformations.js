@@ -20,6 +20,36 @@ class RecipeInformations extends Component {
         }
         this.changeFeedCount = this.changeFeedCount.bind(this);
         this.renderInformations = this.renderInformations.bind(this)
+        this.defineNumberOfGuests = this.defineNumberOfGuests.bind(this)
+    }
+
+    componentDidMount(){
+        this.defineNumberOfGuests()
+    }
+
+    // componentDidUpdate(prevProps){
+    //     if(this.prevProps !== this.props){
+    //         let number_of_guests = this.defineNumberOfGuests()
+    //         console.log("number_of_guests" + number_of_guests )
+    //         if(number_of_guests){
+    //             this.setState({
+    //                 recipe_feed_count: number_of_guests
+    //             })
+    //         }
+    //     }
+    // }
+
+    defineNumberOfGuests(){
+        if(this.props.isMealPlan){
+            this.props.quantities_multiplicators.map((quantities_multiplicator)=>{
+                if(quantities_multiplicator.recipe_id === this.props.recipe.id){
+                    this.setState({
+                        recipe_feed_count: quantities_multiplicator.multiplicator
+                    })
+                }
+            })
+        }
+
     }
 
     changeFeedCount(action) {
