@@ -7,7 +7,7 @@ import Plus from '../assets/plus-icon.png'
 import PreparationTime from '../assets/preparation-time-icon.png'
 import CookingTime from '../assets/cooking-time-icon.png'
 import TotalCookingTime from '../assets/total-cooking-time-icon.png'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 import './components.css'
 
 
@@ -15,69 +15,25 @@ class RecipeInformations extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            recipe_feed_count: null,
-            quantities_multiplicator_id: null
-        }
-        this.changeFeedCount = this.changeFeedCount.bind(this);
         this.renderInformations = this.renderInformations.bind(this)
-        this.defineNumberOfGuests = this.defineNumberOfGuests.bind(this)
+        
     }
 
-    componentDidMount(){
-        this.defineNumberOfGuests()
-    }
-
-    // component did update allows to fecth and render the userparams settings default number of guests
-    componentDidUpdate(prevProps){
-        if(prevProps.userSettings.default_number_of_guests !== this.props.userSettings.default_number_of_guests)
-        this.defineNumberOfGuests()
-    }
-
-    defineNumberOfGuests(){
-        if(this.props.quantities_multiplicators){
-            this.props.quantities_multiplicators.map((quantities_multiplicator)=>{
-                if(quantities_multiplicator.recipe_id === this.props.recipe.id){    
-                    this.setState({
-                        recipe_feed_count: quantities_multiplicator.multiplicator,
-                        quantities_multiplicator_id: quantities_multiplicator.id
-                    })
-                }
-            })
-        }else{
-            this.setState({
-                recipe_feed_count: this.props.userSettings.default_number_of_guests
-            })
-        }
-
-    }
-
-    changeFeedCount(action) {
-        var increment = 0
-        if (action === "increment") {
-            increment = 1
-        } else if (action === "decrement" && this.state.recipe_feed_count > 0) {
-            increment = -1
-        }
-        this.setState({
-            recipe_feed_count: this.state.recipe_feed_count + increment
-        })
-    }
 
     renderRecipeFeedCount() {
         return (
             <div className="recipe_card_information_element">
                 <img src={Person} className="person icon" alt='person_icon'></img>
                 <div className="feed_count_controls">
-                    <div className="recipe_feed_count recipe_feed_count_change" onClick={this.changeFeedCount.bind(this, "increment")}>
+                    <div className="recipe_feed_count recipe_feed_count_change" onClick={this.props.changeFeedCount.bind(this, "increment")}>
                         <img src={Plus} className="plus icon" alt='plus_button'></img>
                     </div>
-                    <div className="recipe_feed_count recipe_feed_count_change" onClick={this.changeFeedCount.bind(this, "decrement")}>
+                    <div className="recipe_feed_count recipe_feed_count_change" onClick={this.props.changeFeedCount.bind(this, "decrement")}>
                         <img src={Minus} className="minus icon" alt='minus_button'></img>
                     </div>
                 </div>
                 <div className="recipe_feed_count">
-                    {this.state.recipe_feed_count}
+                    {this.props.recipe_feed_count}
                 </div>
             </div>
         )
@@ -138,17 +94,18 @@ class RecipeInformations extends Component {
 
 }
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-        userSettings: state.userParameters.userSettings,
-    }
-} 
+// const mapStateToProps = (state, ownProps) => {
+//     return {
+//         userSettings: state.userParameters.userSettings,
+//     }
+// } 
 
-const mapDispatchToProps = dispatch => {
-    return {
-        // changeQuantitiesMultplicator: (action, user, quantities_multiplicator_id) => dispatch(changeQuantitiesMultplicator(action, user, quantities_multiplicator_id)),
-        // addOrRemoveRecipeToMealplan: (action, user, mealplan_id, day_name, meal_name, recipe_id) => dispatch(addOrRemoveRecipeToMealplan(action, user, mealplan_id, day_name, meal_name, recipe_id)),
-    }
-}
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         // changeQuantitiesMultplicator: (action, user, quantities_multiplicator_id) => dispatch(changeQuantitiesMultplicator(action, user, quantities_multiplicator_id)),
+//         // addOrRemoveRecipeToMealplan: (action, user, mealplan_id, day_name, meal_name, recipe_id) => dispatch(addOrRemoveRecipeToMealplan(action, user, mealplan_id, day_name, meal_name, recipe_id)),
+//     }
+// }
 
-  export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RecipeInformations));
+//   export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RecipeInformations));
+export default withRouter(RecipeInformations);
