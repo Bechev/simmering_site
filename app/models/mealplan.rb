@@ -56,10 +56,25 @@ class Mealplan < ApplicationRecord
         # if the action is to add the recipe, we add it to the meal
         if action==="Add"
             meal.recipes << recipe
+            # When the recipe is added to the meal, we can create the associated quantities multiplicator
+            
+            # We start by looking the default number of guest for the user concerned
+            user = User.find(user_id)
+            default_number_of_guests = user.parameter.default_number_of_guests
+            # We then create the quantities multiplicator for the recipe/meal combination
+            meal_recipe_quantites_multiplicator = QuantitiesMultiplicator.create(multiplicator: default_number_of_guests, meal_id: meal.id, recipe_id: recipe.id)
+
 
         # if the action is to remove the recipe, we remove it
         elsif action === "Remove"
             meal.recipes.delete(recipe)
+
+            # If we emove the recipe, we also delete the associated quantites multiplicator for the meal/recipe combination
+            # As there is only on quantity_multiplicator per meal/recipe combination, we can always remove the first occurence
+            meal_recipe_quantites_multiplicator = meal.quantities_multiplicators.where(recipe_id: recipe.id).first
+            if meal_recipe_quantites_multiplicator
+                meal_recipe_quantites_multiplicator.delete
+            end
             # Check if it was the last recipe of the meal, if so, destroy the meal
             if meal.recipes.length === 0
                 meal.destroy
@@ -88,8 +103,8 @@ class Mealplan < ApplicationRecord
             level = "meal"
         end
 
-        return {level: level, day: day, include: "**", meal: meal, recipe: recipe}
-        
+        # return {level: level, day: day, meal: meal, recipe: recipe}
+        return {level: level, day: day, meal: meal, quantities_multiplicator: meal_recipe_quantites_multiplicator, recipe: recipe}
     end
 end
 

@@ -105,12 +105,6 @@ ActiveRecord::Schema.define(version: 2020_01_07_021219) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "meals_quantities_multiplicators", id: false, force: :cascade do |t|
-    t.integer "meal_id", null: false
-    t.integer "quantities_multiplicator_id", null: false
-    t.index ["meal_id", "quantities_multiplicator_id"], name: "idx_meals_quantities_multl_on_quantities_mult_and_meals"
-  end
-
   create_table "meals_recipes", id: false, force: :cascade do |t|
     t.integer "meal_id", null: false
     t.integer "recipe_id", null: false

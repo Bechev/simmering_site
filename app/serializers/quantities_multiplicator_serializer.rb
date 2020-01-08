@@ -1,3 +1,3 @@
 class QuantitiesMultiplicatorSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :meal_id, :recipe_id
 end

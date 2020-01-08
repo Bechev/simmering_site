@@ -73,6 +73,12 @@ export default function mealplanReducer(state = {
                                             }
                                             return null
                                         })
+                                        meal.quantities_multiplicators.map((quantities_multiplicator, quantities_multiplicator_index)=>{
+                                            if(quantities_multiplicator.id === action.payload.quantities_multiplicator.id){
+                                                meal.quantities_multiplicators.splice(quantities_multiplicator_index ,1)
+                                            }
+                                            return null
+                                        })
                                     }
                                 } 
                                 return null
@@ -91,6 +97,7 @@ export default function mealplanReducer(state = {
                         day.meals.map((meal, meal_index)=>{
                             if(meal.id===action.payload.meal.id){
                                 meal.recipes.splice(meal.recipes.length, 0, action.payload.recipe)
+                                meal.quantities_multiplicators.splice(meal.quantities_multiplicators.length, 0, action.payload.quantities_multiplicator)
                             }
                             return null
                         })
@@ -106,15 +113,18 @@ export default function mealplanReducer(state = {
                         day.meals.splice(day.meals.length, 0, action.payload.meal)
                         let meal = day.meals[day.meals.length -1]
                         // We then add a new "recipes" key to the meal object and add an a value of an array containing the new recipe
-                        meal["recipes"] = [action.payload.recipe] 
+                        meal["recipes"] = [action.payload.recipe]
+                        // We then add a new "quantities_multiplicators" key to the meal object and add an a value of an array containing the new recipe
+                        meal["quantities_multiplicators"] = [action.payload.quantities_multiplicator]
                     }
                     return null
                 })
             // If the highest level is a day, create the data structure to be added, then add it 
             }else{
-                // We create the data structure by adding the recipe to the meal
+                // We create the data structure by adding the recipe to the meal and the quantities_multiplicator
                 let meal = action.payload.meal
                 meal["recipes"] = [action.payload.recipe]
+                meal["quantities_multiplicators"] = [action.payload.quantities_multiplicator]
                 // we then add the meal to the days
                 let day = action.payload.day
                 day["meals"] = [action.payload.meal]
