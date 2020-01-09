@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 2020_01_07_021219) do
     t.string "name"
     t.integer "order"
     t.integer "party_size"
+    t.integer "day_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

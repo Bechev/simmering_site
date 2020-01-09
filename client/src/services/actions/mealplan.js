@@ -44,27 +44,30 @@ export function createNewMealplan(user, mealplan_name){
     }    
 };
 
-// export function removeRecipeFromMeal(user, meal_id, recipe_id){
-//     return (dispatch) => {
-//         dispatch({ type: 'REMOVE_RECIPE_FROM_MEAL' });    
-//         return fetch("http://localhost:3000/api/v1/meals/" + meal_id,{
-//         method: 'PUT',    
-//         headers:{
-//                 "uid": user.uid,
-//                 "client":  user.client,
-//                 "access-token":  user['access-token'],
-//                 "recipe-id": recipe_id,     
-//             }
-//         })
-//         .then(response => response.json())
-//         .then(updated_meal => {
-//             dispatch({type:'REMOVE_RECIPE_FROM_MEAL_SUCCESS', payload: updated_meal})
-//         })
-//         .catch(error =>{
-//             dispatch({type:'REMOVE_RECIPE_FROM_MEAL_FAILURE', payload: error, error:true})
-//         })
-//     }    
-// };
+export function updateMealMultiplicator(to_do, user, multiplicator_id){
+    return (dispatch) => {
+        dispatch({ type: 'ADD_OR_REMOVE_GUEST_FOR_RECIPE' });    
+        return fetch("http://localhost:3000/api/v1/quantities_multiplicator/" + multiplicator_id,{
+        method: 'PUT',    
+        headers:{
+            "Content-Type": "application/json; charset=utf-8",
+            "uid": user.uid,
+            "client":  user.client,
+            "access-token":  user['access-token'],
+            },
+        body:JSON.stringify({
+            "to_do": to_do,
+        })
+        })
+        .then(response => response.json())
+        .then(response => {
+            dispatch({type:'ADD_OR_REMOVE_GUEST_FOR_RECIPE_SUCCESS', payload: response})
+        })
+        .catch(error =>{
+            dispatch({type:'ADD_OR_REMOVE_GUEST_FOR_RECIPE_FAILURE', payload: error, error:true})
+        })
+    }    
+};
 
 export function addOrRemoveRecipeToMealplan(action, user, mealplan_id, day_name, meal_name, recipe_id, multiplicator){
     return (dispatch) => {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {withRouter, Link} from 'react-router-dom';
 import { connect } from 'react-redux'
-import {addOrRemoveRecipeToMealplan} from '../services/actions/mealplan.js'
+import {addOrRemoveRecipeToMealplan, updateMealMultiplicator} from '../services/actions/mealplan.js'
 import AddToMealPlan from './AddToMealPlan.js'
 import Delete from '../assets/delete-icon.png'
 // import Edit from '../assets/edit-icon.png'
@@ -61,6 +61,11 @@ class RecipeCard extends Component {
 
     changeFeedCount(action) {
         var increment = 0
+        // If the recipeCar is rendered in a Mealplan (in opposition to a suggestion or while browsing recipes), 
+        // when we increase the number of guests, we update the associated quantities multiplicator 
+        if(this.props.isMealPlan){
+            this.props.updateMealMultiplicator(action, this.props.user, this.state.quantities_multiplicator_id)
+        }
         if (action === "increment") {
             increment = 1
         } else if (action === "decrement" && this.state.recipe_feed_count > 0) {
@@ -93,7 +98,7 @@ class RecipeCard extends Component {
                     <RecipeInformations quantities_multiplicators= {this.props.quantities_multiplicators} 
                                         recipe={this.props.recipe} 
                                         recipe_feed_count= {this.state.recipe_feed_count}
-                                        changeFeedCount= {this.changeFeedCount}
+                                        changeFeedCount= {this.changeFeedCount.bind(this)}
                                         isRecipeCard={true}
                                         isMealPlan={this.props.isMealPlan} />
                 </React.Fragment>
@@ -190,6 +195,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
     return {
         addOrRemoveRecipeToMealplan: (action, user, mealplan_id, day_name, meal_name, recipe_id) => dispatch(addOrRemoveRecipeToMealplan(action, user, mealplan_id, day_name, meal_name, recipe_id)),
+        updateMealMultiplicator: (action, user, multiplicator_id) => dispatch(updateMealMultiplicator(action, user, multiplicator_id)),
     }
 }
 

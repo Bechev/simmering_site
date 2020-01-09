@@ -20,6 +20,7 @@ Rails.application.routes.draw do
             resources :ingredients, only: [:index, :update, :destroy]
             resources :categories, only: [:index]
             resources :parameters, only: [:index, :update]
+            resources :quantities_multiplicator, only: [:update]
 
             resources :posts do
                 resources :comments, only: [:index, :create]
