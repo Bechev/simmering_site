@@ -153,6 +153,25 @@ export default function mealplanReducer(state = {
             }
         
         case "ADD_OR_REMOVE_GUEST_FOR_RECIPE_SUCCESS":
+            state.days.map((day, day_index)=>{
+                if(day.id === action.payload.day.id){
+                    day.meals.map((meal, meal_index)=>{
+                        if(meal.id === action.payload.quantities_multiplicator.meal_id){
+                            meal.quantities_multiplicators.map((quantities_multiplicator,quantities_multiplicator_index)=>{
+                                if(quantities_multiplicator.id===action.payload.quantities_multiplicator.id){
+                                    meal.quantities_multiplicators.splice(quantities_multiplicator_index, 1, action.payload.quantities_multiplicator)
+                                }else{
+                                    return null
+                                }
+                            } )
+                        }else{
+                            return null
+                        }
+                    })
+                }else{
+                    return null
+                }
+            })
                 return state
 
         case "ADD_OR_REMOVE_GUEST_FOR_RECIPE_FAILURE":

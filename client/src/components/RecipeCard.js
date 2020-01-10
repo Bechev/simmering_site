@@ -61,19 +61,23 @@ class RecipeCard extends Component {
 
     changeFeedCount(action) {
         var increment = 0
-        // If the recipeCar is rendered in a Mealplan (in opposition to a suggestion or while browsing recipes), 
-        // when we increase the number of guests, we update the associated quantities multiplicator 
-        if(this.props.isMealPlan){
-            this.props.updateMealMultiplicator(action, this.props.user, this.state.quantities_multiplicator_id)
+        if(action === "decrement" && this.state.recipe_feed_count <= 1){
+            // If the recipeCar is rendered in a Mealplan (in opposition to a suggestion or while browsing recipes), 
+            // when we increase the number of guests, we update the associated quantities multiplicator 
+            alert("A recipe cannot be for 0 person!")
+        }else{
+            if(this.props.isMealPlan){
+                this.props.updateMealMultiplicator(action, this.props.user, this.state.quantities_multiplicator_id)
+            }
+            if (action === "increment") {
+                increment = 1
+            } else if (action === "decrement" && this.state.recipe_feed_count > 0) {
+                increment = -1
+            }
+            this.setState({
+                recipe_feed_count: this.state.recipe_feed_count + increment
+            })
         }
-        if (action === "increment") {
-            increment = 1
-        } else if (action === "decrement" && this.state.recipe_feed_count > 0) {
-            increment = -1
-        }
-        this.setState({
-            recipe_feed_count: this.state.recipe_feed_count + increment
-        })
     }
 
     hideAddRecipeToWeekWindow = (event) => {

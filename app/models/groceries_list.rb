@@ -11,11 +11,7 @@ class GroceriesList < ApplicationRecord
 
     def sum_quantities
 
-        # sample_arr.inject { |acc, next_obj| acc.merge(next_obj) { |key,arg1,arg2| arg1+agr2 } }
-        # return self.quantities.inject { |quantity_sum, next_quantity| 
-        #     if next_quantity.id
-        #     quantity_sum.merge(next_obj) { |key,arg1,arg2| arg1+agr2 } }
-        # quantities = self.quantities
+
         summed_quantities = []
         for quantity in self.quantities
             
@@ -26,38 +22,5 @@ class GroceriesList < ApplicationRecord
             end
         end
         return summed_quantities
-        # eople.select{|x| x[:job_title] == "developer"}.map{|y| y[:salary].to_i}.reduce(:+)
-        # self.quantities.map{|quantity| quantity.select{|quantity_id| }}
-        # self.quantities.select{|quantity| self.quantities.map{|quanti}}
-
-
     end
-
-    # def generate
-    #     mealplan = self.mealplan
-    #     self.ingredients = []
-    #     for day in mealplan.days
-    #         for meal in day.meals
-    #             for recipe in meal.recipes
-    #                 self.ingredients << recipe.ingredients
-    #             end
-    #         end
-    #     end
-    #     self.save
-
-    #     return nil
-    # end
-
-    # def generate2
-    #     return self.mealplan.joins(:days).joins(:meals).joins(:recipes)
-    # end
-
-    # def list
-    #     if self.ingredients.length === 0
-    #         self.generate_list
-    #     end
-
-    #     return self.ingredients.uniq
-    # end
-
 end
