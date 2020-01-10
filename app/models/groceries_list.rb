@@ -1,17 +1,14 @@
 class GroceriesList < ApplicationRecord
     belongs_to :mealplan
-    # has_and_belongs_to_many :ingredients
     has_many :days, through: :mealplan
     has_many :meals, through: :days
     has_many :recipes, through: :meals
+    has_many :quantities_multiplicators, through: :meals
     has_many :ingredients, through: :recipes
     has_many :quantities, through: :recipes
 
-    # has_many :ingredients
 
     def sum_quantities
-
-
         summed_quantities = []
         for quantity in self.quantities
             

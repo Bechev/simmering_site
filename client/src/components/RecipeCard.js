@@ -62,10 +62,9 @@ class RecipeCard extends Component {
     changeFeedCount(action) {
         var increment = 0
         if(action === "decrement" && this.state.recipe_feed_count <= 1){
+        }else{
             // If the recipeCar is rendered in a Mealplan (in opposition to a suggestion or while browsing recipes), 
             // when we increase the number of guests, we update the associated quantities multiplicator 
-            alert("A recipe cannot be for 0 person!")
-        }else{
             if(this.props.isMealPlan){
                 this.props.updateMealMultiplicator(action, this.props.user, this.state.quantities_multiplicator_id)
             }
