@@ -94,7 +94,7 @@ class RecipePresentation extends Component {
 
                 <div className="recipe_presentation_body">
                     <React.Fragment>
-                        <RecipeIngredients ingredients={this.props.recipe.ingredients} quantities={this.props.recipe.quantities}/>
+                        <RecipeIngredients ingredients={this.props.recipe.ingredients} quantities={this.props.recipe.quantities} multiplicator={this.state.recipe_feed_count}/>
                         {/* <RecipeIngredients ingredients={this.state.ingredients}/> */}
                     </React.Fragment>
 

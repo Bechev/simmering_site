@@ -18,9 +18,10 @@ class RecipeIngredients extends Component {
         return(
             this.props.ingredients.map(ingredient => {
                 let quantity = this.findRelatedQuantity(ingredient)
+                let multiplicator = this.props.multiplicator ? this.props.multiplicator : 1
                 return(
                     <li className="ingredient">
-                        {quantity.measure} {quantity.unit}, {ingredient.name}
+                        {quantity.measure*multiplicator} {quantity.unit}, {ingredient.name}
                     </li>            
                 )
             })
