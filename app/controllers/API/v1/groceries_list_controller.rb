@@ -20,7 +20,7 @@ module Api
                     @groceries_list = @mealplan.groceries_list 
                 end
                 # debugger
-                quantities = @groceries_list.sum_quantities
+                quantities = @groceries_list.test
 
                 render json: {ingredients: @groceries_list.ingredients.uniq, quantities: quantities}
             end
