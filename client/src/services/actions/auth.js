@@ -79,7 +79,7 @@ export function sign_out(user){
     })
 }
 
-export function sign_up(email, password, password_confirmation, history){
+export function sign_up(state, email, password, password_confirmation, history){
     return (dispatch) => {
         dispatch({ type: 'SIGNING_UP_USER' });    
         return fetch("http://localhost:3000/api/v1/auth/" ,{
@@ -92,7 +92,8 @@ export function sign_up(email, password, password_confirmation, history){
             body: JSON.stringify({
                 email: email,
                 password: password,
-                password_confirmation: password_confirmation
+                password_confirmation: password_confirmation,
+                state: state
             })
         })
         .then(response => { 
@@ -109,7 +110,8 @@ export function sign_up(email, password, password_confirmation, history){
                 response.headers.forEach((value, name) => user[name] = value);
                 localStorage.setItem('user', JSON.stringify(user));
                 dispatch({type:'SIGN_UP_USER_SUCCESS', payload: response })
-                history.push('/')
+                // history.push('/')
+                window.location.reload(false);
             }
         })
         .catch(error =>{

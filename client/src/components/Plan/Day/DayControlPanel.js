@@ -17,9 +17,9 @@ class DayControlPanel extends Component {
     return(
         <div className="day_control_panel">
             <div className="controls">
-                <div className="remove_recipe">
+                {/* <div className="remove_recipe">
                     <img src={Delete} className="delete icon" alt='delete_button' onClick={this.handleDeleteClick}></img>
-                </div>
+                </div> */}
             </div>
             <div className="day_data">
                 <div className="cooking_time recipe_card_information_element">

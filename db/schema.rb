@@ -192,6 +192,7 @@ ActiveRecord::Schema.define(version: 2020_01_07_021219) do
     t.string "username"
     t.string "image"
     t.string "email"
+    t.string "state"
     t.text "tokens"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

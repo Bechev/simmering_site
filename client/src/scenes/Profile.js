@@ -12,9 +12,10 @@ class Profile extends Component {
     constructor(props){
         super(props);
         this.state = {
-            display: 'User Settings'
+            display: 'User Settings',
         }
         this.handleClick = this.handleClick.bind(this)
+        this.handleSignOut = this.handleSignOut.bind(this)
     }
 
     componentDidMount(){
