@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
-import Delete from '../../../assets/delete-icon.png'
+// import Delete from '../../../assets/delete-icon.png'
 // import Edit from '../../../assets/edit-icon.png'
 import Stopwatch from '../../../assets/stopwatch-icon.png'
 import Calories from '../../../assets/calories-icon.png'

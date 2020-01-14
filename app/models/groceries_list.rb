@@ -25,5 +25,5 @@ class GroceriesList < ApplicationRecord
             end
         end
         return summed_quantities
-
     end
+end

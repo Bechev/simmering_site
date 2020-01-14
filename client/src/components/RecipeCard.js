@@ -50,6 +50,7 @@ class RecipeCard extends Component {
                         quantities_multiplicator_id: quantities_multiplicator.id
                     })
                 }
+                return null
             })
         }else{
             this.setState({
