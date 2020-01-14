@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux'
 import '../components.css'
 import '../Carousel.js'
 // import RecipeCard from '../RecipeCard';
@@ -40,7 +41,7 @@ class Suggestions extends Component {
                         <img  src={DownArrow} className="downarrow arrow icon" alt='downarrow_button'></img>
                     </div>
                     <div className="recipe_suggestions">
-                        <Carousel recipes={[{id: 1, name: "test", calories: 1, total_recipe_time: 1}, {id: 2, name: "test2", calories: 2, total_recipe_time: 2}, {id: 3, name: "test3", calories: 3, total_recipe_time: 3}]}/>
+                        <Carousel recipes={this.props.suggestions}/>
                     </div>
                 </div>
             )
@@ -59,4 +60,11 @@ class Suggestions extends Component {
 
 }
   
-export default withRouter(Suggestions);
+const mapStateToProps = (state, ownProps) => {
+    return {
+      user: state.auth.user,
+      suggestions: state.suggestions.recipes
+    }
+  }
+
+export default withRouter(connect(mapStateToProps, null)(Suggestions));

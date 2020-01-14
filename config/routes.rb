@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
             post '/search' => "recipes#search"
             get '/mealplan' => "mealplans#userLastMealplan"
+            get '/suggestions' => "recipes#suggestions"
             # post '/users/:id/ingredients' => "users#show_ingredients"
             # update '/users/:id/ingredients' => "users#update"
             resources :posts

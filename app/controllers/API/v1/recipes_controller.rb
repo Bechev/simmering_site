@@ -17,16 +17,20 @@ module Api
                 end
             end
 
+            def show
+                @recipe = Recipe.find(params[:id])
+                render json: @recipe, status: 201
+            end
+
             def search
                 letter = params[:char]
                 @recipes = Recipe.where("name like ?", "%" + letter + "%").limit(10)
                 render json: @recipes, status: 201
             end
         
-
-            def show
-                @recipe = Recipe.find(params[:id])
-                render json: @recipe, status: 201
+            def suggestions
+                @recipes = Recipe.all.last(10).reverse
+                render json: @recipes
             end
         end
     end

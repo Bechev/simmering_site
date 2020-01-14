@@ -11,6 +11,7 @@ import recipeReducer from './recipeReducer.js'
 import groceriesListReducer from './groceriesListReducer.js'
 import userIngredientsReducer from './userIngredientsReducer.js'
 import userReducer from './userReducer.js'
+import suggestionsReducer from './suggestionsReducer.js'
 
 
 export default combineReducers({
@@ -24,6 +25,7 @@ export default combineReducers({
     mealplans: mealplansReducer,
     userParameters: userReducer,
     categories: categoriesReducer,
+    suggestions: suggestionsReducer,
     groceriesList: groceriesListReducer,
     userIngredients: userIngredientsReducer,
   })
