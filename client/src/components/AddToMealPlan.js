@@ -23,12 +23,6 @@ class AddToMealPlan extends Component {
         this.addRecipeToMealPlan = this.addRecipeToMealPlan.bind(this)
     }
 
-    componentDidMount(){
-        if(this.props.userParameters.isLoaded === false ){
-            this.props.fetchUserParameters(this.props.user)
-        }
-    }
-
     addRecipeToMealPlan() {
         if(this.state.day_name === "Select a day"){
             alert("The day cannot be empty")

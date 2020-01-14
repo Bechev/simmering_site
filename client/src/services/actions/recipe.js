@@ -1,4 +1,4 @@
-export function fetchRecipe(user, recipe_id){
+export function fetchRecipe( recipe_id){
     return (dispatch) => {
         dispatch({ type: 'FETCH_RECIPE' });    
         return fetch("http://localhost:3000/api/v1/recipes/" + recipe_id ,{
@@ -6,10 +6,7 @@ export function fetchRecipe(user, recipe_id){
             cache: "no-cache",
             credentials: "same-origin",
             headers: {
-                "Content-Type": "application/json; charset=utf-8",
-                "uid": user.uid,
-                "client":  user.client,
-                "access-token":  user['access-token']
+                "Content-Type": "application/json; charset=utf-8"
             },
         })
         .then(response => response.json())
@@ -21,3 +18,28 @@ export function fetchRecipe(user, recipe_id){
         })
     }    
 };
+
+
+// export function fetchRecipe(user, recipe_id){
+//     return (dispatch) => {
+//         dispatch({ type: 'FETCH_RECIPE' });    
+//         return fetch("http://localhost:3000/api/v1/recipes/" + recipe_id ,{
+//             method: "GET",
+//             cache: "no-cache",
+//             credentials: "same-origin",
+//             headers: {
+//                 "Content-Type": "application/json; charset=utf-8",
+//                 "uid": user.uid,
+//                 "client":  user.client,
+//                 "access-token":  user['access-token']
+//             },
+//         })
+//         .then(response => response.json())
+//         .then(post => { 
+//             dispatch({type:'FETCH_RECIPE_SUCCESS', payload: post})
+//         })
+//         .catch(error =>{
+//             dispatch({type:'FETCH_RECIPE_FAILURE', payload: error, error:true})
+//         })
+//     }    
+// };

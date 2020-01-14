@@ -34,7 +34,7 @@ class RecipePresentation extends Component {
   
     defineNumberOfGuests(){
         this.setState({
-            recipe_feed_count: this.props.userSettings.default_number_of_guests
+            recipe_feed_count: this.props.user ? this.props.userSettings.default_number_of_guests : 1
         })
 
     }
@@ -74,6 +74,16 @@ class RecipePresentation extends Component {
         }
     }
 
+    renderAddToMealPlanButton(){
+        if(this.props.user){
+            return(
+                <button className="alt_button recipe_card_button" onClick={this.props.user ? this.displayQuickAddToMealPlan : this.redirectToLoginPage}>
+                    Add to MealPlan
+                </button>
+            )
+        }
+    }
+
     render() {
 
         return(
@@ -85,9 +95,8 @@ class RecipePresentation extends Component {
                         {this.props.recipe.name}
                         
                         </div>
-                        <button className="alt_button recipe_card_button" onClick={this.props.user ? this.displayQuickAddToMealPlan : this.redirectToLoginPage}>
-                            Add to MealPlan
-                        </button>
+                        {this.renderAddToMealPlanButton()}
+                        
                     </div>
                     <RecipeInformations recipe={this.props.recipe} recipe_feed_count= {this.state.recipe_feed_count} changeFeedCount={this.changeFeedCount}/>
                 </div>

@@ -12,8 +12,6 @@ class App extends React.Component{
         const user = JSON.parse(localStorage.getItem('user'))
         if(user){
             this.props.verify_credentials(user)
-        }else{
-            this.props.history.push('/login')
         }
     }
 

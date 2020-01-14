@@ -7,10 +7,7 @@ class RecipeIngredients extends Component {
 
     findRelatedQuantity(ingredient){
         let index = this.props.quantities.map(e => e.ingredient_id).indexOf(ingredient.id);
-        // let quantity = this.props.quantities.map(function(e) { return e; }).indexOf(ingredient.id);
-        console.log(index)
         let quantity = this.props.quantities[index] 
-        console.log(this.props.quantities[index])
         return quantity
     }
 
