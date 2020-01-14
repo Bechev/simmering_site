@@ -9,9 +9,11 @@ class Browse extends Component {
 
     componentDidMount(){
         this.props.fetch_categories()
-        if(this.props.userParameters.isLoaded ===  false){
-            this.props.fetchUserParameters(this.props.user)
-        }        
+        if(this.props.user){
+            if(this.props.userParameters.isLoaded ===  false){
+                this.props.fetchUserParameters(this.props.user)
+            }        
+        }
     }
 
   render() {

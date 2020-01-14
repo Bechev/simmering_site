@@ -50,11 +50,11 @@ class RecipeCard extends Component {
                         quantities_multiplicator_id: quantities_multiplicator.id
                     })
                 }
-                return null
+            return null
             })
         }else{
             this.setState({
-                recipe_feed_count: this.props.userSettings.default_number_of_guests
+                recipe_feed_count: this.props.user ? this.props.userSettings.default_number_of_guests : 1 
             })
         }
 
@@ -111,7 +111,7 @@ class RecipeCard extends Component {
     }
 
     renderAddToMealPlanButton(){
-        if(!this.props.isMealPlan){
+        if(!this.props.isMealPlan && this.props.user){
             return(
                 <React.Fragment>
                     <button className="alt_button recipe_card_button" onClick={this.props.user ? this.displayQuickAddToMealPlan : this.redirectToLoginPage}>
