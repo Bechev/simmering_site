@@ -100,7 +100,7 @@ class LoginSignupForm extends Component {
             return (
                 <React.Fragment>
                     <label className='password_confirmation_input_field'>
-                        <input className='input_field password_confirmation_input_field' type="text" name="password_confirmation_value" value={this.state.password_confirmation_value} onChange={this.handleChange} placeholder="Confirm your password" />
+                        <input className='input_field password_confirmation_input_field' type="password" name="password_confirmation_value" value={this.state.password_confirmation_value} onChange={this.handleChange} placeholder="Confirm your password" />
                     </label><br></br>
                     <select style={{color:this.state.user_state === "Where do you live?" ? 'grey' : 'black' }} className='input_field' onChange={this.handleStateChange}>
                         {this.renderStateOptions()}
@@ -123,7 +123,7 @@ class LoginSignupForm extends Component {
                         <input className='input_field email_input_field' type="text" name="email_value" value={this.state.email_value} onChange={this.handleChange} placeholder="Email" />
                     </label><br></br>
                     <label className='password_input_field'>
-                        <input className='input_field password_input_field' type="text" name="password_value" value={this.state.password_value} onChange={this.handleChange} placeholder="Password" />
+                        <input className='input_field password_input_field' type="password" name="password_value" value={this.state.password_value} onChange={this.handleChange} placeholder="Password" />
                     </label><br></br>
                     {this.renderSignupDetails()}
                     <input className='button' type="submit" value="Submit" onSubmit={this.handleSubmit} />
