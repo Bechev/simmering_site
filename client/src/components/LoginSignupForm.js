@@ -104,7 +104,11 @@ class LoginSignupForm extends Component {
                     </label><br></br>
                     <select style={{color:this.state.user_state === "Where do you live?" ? 'grey' : 'black' }} className='input_field' onChange={this.handleStateChange}>
                         {this.renderStateOptions()}
-                    </select><br></br>
+                    </select>
+                    <div style={{textAlign: 'left'}}>
+                        As we suggest recipes with local food, we need to know that to best serve you!
+                    </div>
+                    <br></br><br></br>
                 </React.Fragment>
             )
         }
