@@ -8,7 +8,7 @@ extend Devise::Models
     has_many :mealplans
     has_many :days
     has_many :meals
-    has_many :recipes
+    # has_many :recipes
     has_and_belongs_to_many :ingredients
     has_one :parameter
   # Include default devise modules. Others available are:

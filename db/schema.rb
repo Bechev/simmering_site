@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_07_021219) do
+ActiveRecord::Schema.define(version: 2020_01_17_214735) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -67,11 +67,10 @@ ActiveRecord::Schema.define(version: 2020_01_07_021219) do
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.integer "calories"
-    t.string "unit"
-    t.boolean "contains_gluten"
-    t.boolean "contains_nuts"
-    t.boolean "contains_dairy"
-    t.boolean "shellfish"
+    t.boolean "contains_gluten", default: false
+    t.boolean "contains_nuts", default: false
+    t.boolean "contains_dairy", default: false
+    t.boolean "shellfish", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -166,9 +165,14 @@ ActiveRecord::Schema.define(version: 2020_01_07_021219) do
     t.integer "cooking_time"
     t.integer "total_recipe_time"
     t.integer "calories"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "seasons", force: :cascade do |t|
+    t.string "name"
+    t.date "beginning"
+    t.date "end"
   end
 
   create_table "users", force: :cascade do |t|

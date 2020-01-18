@@ -5,6 +5,6 @@ class Recipe < ApplicationRecord
     has_many :quantities
     has_many :quantities_multiplicators
     accepts_nested_attributes_for :ingredients
-    belongs_to :user
+    # belongs_to :user
 
 end
