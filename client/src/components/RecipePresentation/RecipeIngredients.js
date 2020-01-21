@@ -11,14 +11,34 @@ class RecipeIngredients extends Component {
         return quantity
     }
 
+    fractionize(quantity){
+        let integer = Math.floor(quantity)
+        if(integer === 0){
+            integer = ""
+        }else{
+            integer = integer.toString()
+        }
+        let fraction = quantity - integer
+        if (fraction === 0){
+            fraction = ""
+        } else{
+            fraction = " 1/" + (Math.round((1/fraction)*100/100).toString())
+        }
+        let fractionized_quantity = integer + fraction
+
+        return fractionized_quantity
+    }
+
     renderIngredients(){
         return(
             this.props.ingredients.map(ingredient => {
                 let quantity = this.findRelatedQuantity(ingredient)
                 let multiplicator = this.props.multiplicator ? this.props.multiplicator : 1
+                let quantity_measure = quantity.measure*multiplicator 
+                let quantity_measure_in_fraction = this.fractionize(quantity_measure)
                 return(
                     <li className="ingredient">
-                        {quantity.measure*multiplicator} {quantity.unit} {ingredient.name}
+                        {quantity_measure_in_fraction} {quantity.unit} {ingredient.name}
                     </li>            
                 )
             })

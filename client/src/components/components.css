@@ -636,7 +636,7 @@
     align-items: top;
     width: 100%;
     height: auto;
-    font-size: 2vh;
+    font-size: vh;
 }
 
 .information{
@@ -656,7 +656,7 @@
     width: 40%;
     /* height: 20vh; */
     min-height: 25vh;
-    margin: 2vh;
+    margin: 1vh;
     text-align: left;
     background-color: lightgrey;
     border-radius: 5px;
@@ -673,9 +673,8 @@
     min-height: 25vh;
     /* border-color:  rgb(85, 105, 47) ;
     border-style: solid; */
-    margin: 2vh;
+    /* margin: 2vh; */
     text-align: justify;
-    white-space: pre-wrap;
 }
 
 .groceries_title{
