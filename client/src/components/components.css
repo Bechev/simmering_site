@@ -606,6 +606,8 @@
     color: rgb(85, 105, 47) ;   
     margin-left: 2vh;
     justify-content: space-between;
+    text-align: left;
+    padding-right: 1.5vh;
 }
 
 .recipe_presentation{
@@ -634,7 +636,7 @@
     align-items: top;
     width: 100%;
     height: auto;
-    font-size: 1.7vh;
+    font-size: 2vh;
 }
 
 .information{
@@ -647,6 +649,7 @@
 
 .recipe_information{
     padding-top: 1.5vh;
+    padding-right: 1.7vh;
 }
 
 .recipe_ingredients{
@@ -659,8 +662,12 @@
     border-radius: 5px;
 }
 
+.ingredient{
+    margin: 1vh;
+}
+
 .recipe_instructions{
-    display: flex;
+    /* display: flex; */
     width: 60%;
     height: auto;
     min-height: 25vh;
@@ -668,6 +675,7 @@
     border-style: solid; */
     margin: 2vh;
     text-align: justify;
+    white-space: pre-wrap;
 }
 
 .groceries_title{

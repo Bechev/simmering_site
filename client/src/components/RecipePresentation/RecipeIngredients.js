@@ -18,7 +18,7 @@ class RecipeIngredients extends Component {
                 let multiplicator = this.props.multiplicator ? this.props.multiplicator : 1
                 return(
                     <li className="ingredient">
-                        {quantity.measure*multiplicator} {quantity.unit}, {ingredient.name}
+                        {quantity.measure*multiplicator} {quantity.unit} {ingredient.name}
                     </li>            
                 )
             })

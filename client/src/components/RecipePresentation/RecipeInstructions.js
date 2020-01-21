@@ -5,13 +5,25 @@ import '../components.css'
 
 class RecipeInstructions extends Component {
 
-    
+    renderTextWithBreaks(){
+        return(
+            this.props.instructions.split('\\n').map((i,key) => {
+                // console.log(i)
+                return (
+                    <React.Fragment>
+                        <li key={key}>{i}</li>
+                        <br></br>
+                    </React.Fragment>
+                )
+            })
+        )
+    }
     render() {
         if(this.props.instructions){
             return(
-                <div className="recipe_instructions" >
-                    {this.props.instructions}
-                </div>
+                <ol className="recipe_instructions" >
+                    {this.renderTextWithBreaks()}
+                </ol>
             )
         }else{
             return(

@@ -270,151 +270,218 @@ end
 #     end
 # end
 
-class String
-    def to_frac
-      numerator, denominator = split('/').map(&:to_f)
-      denominator ||= 1
-      numerator/denominator
-    end
-end
-
-path= '/mnt/c/Users/bertr/Dev/Projects/simmering_site/lib/tasks/seed/recipes.csv'
-
-
-File.readlines(path).each do |line|
-    rowArray = line.split(";")
-    if rowArray.length===15
-        puts rowArray[1]
-        # binding.pry
-        recipe_name = rowArray[2]
-        recipe_prep_time = rowArray[3]
-        recipe_cook_time = rowArray[4]
-        recipe_total_time = rowArray[5]
-        recipe_process = rowArray[6]
-        if recipe_process.include? "['"
-            recipe_process["['"] = ""
-        elsif recipe_process.include? '[""'
-            recipe_process['[""'] = ""
-        end
-        if recipe_process.include? "']"
-            recipe_process["']"] = ""
-        elsif 
-            recipe_process.include? '"]'
-            recipe_process['"]'] = ""
-        else 
-            puts 'end of recipe rescued'
-        end
-        recipe_process.gsub("', '", "\n")
-        recipe_calories = rowArray[8]
-        @recipe = Recipe.create(name: recipe_name, 
-                                instructions: recipe_process, 
-                                preparation_time: recipe_prep_time, 
-                                cooking_time: recipe_cook_time, 
-                                total_recipe_time: recipe_total_time, 
-                                calories: recipe_calories)
-
+# class String
+#     def to_frac
         
-        recipe_ingredients = rowArray[7]
+#         numerator, denominator = self.gsub("'","").split('/').map(&:to_f)
+#         denominator ||= 1
+#         numerator/denominator
+#         # binding.pry
+#     end
+# end
 
-        if recipe_ingredients.include? "['"
-            recipe_ingredients["['"] = ""
-        else
-            puts 'beginning of ingredients rescued'
-        end
+path_recipes = '/mnt/c/Users/bertr/Dev/Projects/simmering_site/lib/tasks/seed/recipes_seed.csv'
+path_ingredients = '/mnt/c/Users/bertr/Dev/Projects/simmering_site/lib/tasks/seed/ingredients_seed.csv'
+
+
+File.readlines(path_recipes).each do |line|
+    # binding.pry
+    rowArray = line.delete('\"').strip.split(",,")
+    recipe_name = rowArray[1]
+    recipe_prep_time = rowArray[2]
+    recipe_cook_time = rowArray[3]
+    recipe_total_time = rowArray[4]
+    recipe_calories = rowArray[5] 
+    recipe_process = rowArray[6]
+    # binding.pry
+    recipe_categories = rowArray[7].split(";")
+    @recipe = Recipe.create(name: recipe_name,
+                            instructions: recipe_process, 
+                            preparation_time: recipe_prep_time, 
+                            cooking_time: recipe_cook_time, 
+                            total_recipe_time: recipe_total_time, 
+                            calories: recipe_calories)
+                            # binding.pry
+    recipe_categories.each do |category|
+        @category = Category.find_or_create_by(name: category)
+        @category.recipes << @recipe
+        @recipe.categories << @category
+        @category.save
+    end
+                            
+    @recipe.save
+
+    
+end
+
+File.readlines(path_ingredients).each do |line|
+    rowArray = line.delete('\"').strip.split(",,")
+    recipe_id = rowArray[0].to_i
+    
+    if recipe_id === 0 
+        recipe_id = rowArray[0][1..-1].to_i
+    end
+    # binding.pry
+    ingredient_name = rowArray[1]
+    quantity_measure = rowArray[2].to_f
+    quantity_unit = rowArray[3]
+    # binding.pry
+    recipe = Recipe.find(recipe_id)
+    @ingredient = Ingredient.find_or_create_by(name: ingredient_name)
+    @quantity = Quantity.create(measure: quantity_measure, unit: quantity_unit, recipe_id: recipe.id, ingredient_id: @ingredient.id)
+    recipe.ingredients << @ingredient
+    recipe.save
+end
+
+# path= '/mnt/c/Users/bertr/Dev/Projects/simmering_site/lib/tasks/seed/recipes.csv'
+# 
+# 
+# File.readlines(path).each do |line|
+#     rowArray = line.split(";")
+#     if rowArray.length===15
+#         puts rowArray[1]
+#         # binding.pry
+#         recipe_name = rowArray[2]
+#         recipe_prep_time = rowArray[3]
+#         recipe_cook_time = rowArray[4]
+#         recipe_total_time = rowArray[5]
+#         recipe_process = rowArray[6]
+#         if recipe_process.include? "['"
+#             recipe_process["['"] = ""
+#         elsif recipe_process.include? '[""'
+#             recipe_process['[""'] = ""
+#         end
+#         if recipe_process.include? "']"
+#             recipe_process["']"] = ""
+#         elsif 
+#             recipe_process.include? '"]'
+#             recipe_process['"]'] = ""
+#         else 
+#             puts 'end of recipe rescued'
+#         end
+#         recipe_process.gsub("', '", "\n")
+#         recipe_calories = rowArray[8]
+
+#         @recipe = Recipe.create(name: recipe_name, 
+#                                 instructions: recipe_process, 
+#                                 preparation_time: recipe_prep_time, 
+#                                 cooking_time: recipe_cook_time, 
+#                                 total_recipe_time: recipe_total_time, 
+#                                 calories: recipe_calories)
+        
+#         recipe_ingredients = rowArray[7]
+
+#         if recipe_ingredients.include? "['"
+#             recipe_ingredients["['"] = ""
+#         else
+#             puts 'beginning of ingredients rescued'
+#         end
 
 
 
-        if recipe_ingredients.include? "']"
-            recipe_ingredients["']"] = ""
-        elsif 
-            recipe_ingredients.include? '"]'
-            recipe_ingredients['"]'] = ""
-        else 
-            puts 'end of ingredients rescued'
-        end
+#         if recipe_ingredients.include? "']"
+#             recipe_ingredients["']"] = ""
+#         elsif 
+#             recipe_ingredients.include? '"]'
+#             recipe_ingredients['"]'] = ""
+#         else 
+#             puts 'end of ingredients rescued'
+#         end
         
 
-        recipe_ingredients = recipe_ingredients.split("', ")
-        recipe_ingredients.each do |ingredient|
-            ingredient_data_array = ingredient.split(" ")
-            if ingredient_data_array.length() === 2
-                @ingredient = Ingredient.create(name: ingredient_data_array[ingredient_data_array.length() -1], calories: 0)
-                measure = ingredient_data_array[0].to_f
-                if measure === 0.0
-                    measure = ingredient_data_array[0].to_frac
-                end
-                @quantity = Quantity.create(measure: measure ,unit: "", recipe_id: @recipe.id, ingredient_id: @ingredient.id)
-            elsif ingredient_data_array.length() === 3
-                    @ingredient = Ingredient.create(name:ingredient_data_array[ingredient_data_array.length() -1], calories: 0)
-                    measure = ingredient_data_array[0].to_f
-                    if measure === 0.0
-                        measure = ingredient_data_array[0].to_frac
-                    end
-                    @quantity = Quantity.create(measure: measure, unit: ingredient_data_array[1], recipe_id: @recipe.id, ingredient_id: @ingredient.id)
-            elsif ingredient_data_array.length() === 4
-                    @ingredient = Ingredient.create(name: [ingredient_data_array[ingredient_data_array.length() -1], ingredient_data_array[ingredient_data_array.length() -2]].join(" "), calories: 0)
-                    measure = ingredient_data_array[0].to_f
-                    if measure === 0.0
-                        measure = ingredient_data_array[0].to_frac
-                    end
-                    @quantity = Quantity.create(measure: measure, unit: ingredient_data_array[1], recipe_id: @recipe.id, ingredient_id: @ingredient.id)
-            elsif ingredient_data_array.length() === 5
-                    measure1 = ingredient_data_array[0].to_f
-                    if measure1 === 0.0
-                        measure1 = ingredient_data_array[0].to_frac
-                    end
+#         recipe_ingredients = recipe_ingredients.split("', ")
+#         recipe_ingredients.each do |ingredient|
+#             ingredient_data_array = ingredient.split(" ")
+#             if ingredient_data_array.length() === 2
+#                 @ingredient = Ingredient.create(name: ingredient_data_array[ingredient_data_array.length() -1], calories: 0)
+#                 measure = ingredient_data_array[0].gsub("'","").to_f
+#                 puts measure.class
+#                 if measure === 0.0
+#                     measure = ingredient_data_array[0].to_frac
+#                 end
+#                 unit =""
+#             elsif ingredient_data_array.length() === 3
+#                     ingredient_name = ingredient_data_array[ingredient_data_array.length() -1]
+#                     measure = ingredient_data_array[0].gsub("'","").to_f
+#                     if measure === 0.0
+#                         measure = ingredient_data_array[0].to_frac
+#                     end
+#                     unit = ingredient_data_array[1]
+#             elsif ingredient_data_array.length() === 4
+#                     ingredient_name= [ingredient_data_array[ingredient_data_array.length() -1], ingredient_data_array[ingredient_data_array.length() -2]].join(" ")
+#                     measure = ingredient_data_array[0].gsub("'","").to_f
+#                     if measure === 0.0
+#                         measure = ingredient_data_array[0].to_frac
+#                     end
+#                     unit = ingredient_data_array[1]
+#             elsif ingredient_data_array.length() === 5
+#                     measure1 = ingredient_data_array[0].gsub("'","").to_f
+#                     if measure1 === 0.0
+#                         measure1 = ingredient_data_array[0].to_frac
+#                     end
                     
-                    if ingredient_data_array[1].to_f > 0.0
-                        measure2 = ingredient_data_array[1].to_f
-                        if measure2 === 0.0
-                            measure2 = ingredient_data_array[1].to_frac
-                        end
-                        measure = measure1 + measure2
-                        unit = ingredient_data_array[2]
-                        ingredient_name = [ingredient_data_array[ingredient_data_array.length() -1], ingredient_data_array[ingredient_data_array.length() - 2]].join(" ")
-                    else
-                        measure = measure1
-                        unit = ingredient_data_array[1]
-                        ingredient_name = [ingredient_data_array[ingredient_data_array.length() -1], ingredient_data_array[ingredient_data_array.length() - 2],ingredient_data_array[ingredient_data_array.length() -3]].join(" ")
-                    end
+#                     if ingredient_data_array[1].to_f > 0.0
+#                         measure2 = ingredient_data_array[1].gsub("'","").to_f
+#                         if measure2 === 0.0
+#                             measure2 = ingredient_data_array[1].to_frac
+#                         end
+#                         measure = measure1 + measure2
+#                         unit = ingredient_data_array[2]
+#                         ingredient_name = [ingredient_data_array[ingredient_data_array.length() -1], ingredient_data_array[ingredient_data_array.length() - 2]].join(" ")
+#                     else
+#                         measure = measure1
+#                         unit = ingredient_data_array[1]
+#                         ingredient_name = [ingredient_data_array[ingredient_data_array.length() -1], ingredient_data_array[ingredient_data_array.length() - 2],ingredient_data_array[ingredient_data_array.length() -3]].join(" ")
+#                     end
                     
-                    @ingredient = Ingredient.create(name: ingredient_name, calories: 0)
-                    @quantity = Quantity.create(measure: measure , unit: unit, recipe_id: @recipe.id, ingredient_id: @ingredient.id)
-            else
-                    @ingredient = Ingredient.create(name: ["to be checked", ingredient_data_array].join(','))
-            end
-            @recipe.ingredients << @ingredient
-        end
-    end
-end
+#             else
+#                 ingredient_name = "not valid"  
+#                 # ingredient_name = ["to be checked", ingredient_data_array].join(',')
+#             end
+
+#             if measure.class != NilClass
+#                 if  ingredient_data_array.length() <= 5 && ingredient_data_array.length() >= 2 
+#                     # calories = 0
+#                     @ingredient = Ingredient.create(name: ingredient_name, calories: 0)
+
+
+#                     @quantity = Quantity.create(measure: measure , unit: unit, recipe_id: @recipe.id, ingredient_id: @ingredient.id)
+#                     @recipe.ingredients << @ingredient
+#                     @recipe.save
+#                     puts rowArray[1]
+#                 end
+#             end
+#         end
+#     end
+# end
 
 
 
-CATEGORIES = [ "Category 1",
-               "Category 2",
-               "Category 3",
-               "Category 4",
-               "Category 5",
-               "Category 6",
-               "Category 7",
-               "Category 8",
-               "Category 9",
-               "Category 10"]
+# CATEGORIES = [ "Category 1",
+#                "Category 2",
+#                "Category 3",
+#                "Category 4",
+#                "Category 5",
+#                "Category 6",
+#                "Category 7",
+#                "Category 8",
+#                "Category 9",
+#                "Category 10"]
 
-num_of_recipes = Recipe.all.length
-for category in CATEGORIES
-    c = Category.create(name: category)
-    num_of_recipes_per_cat = rand(2..5)
-    for x in (1..num_of_recipes_per_cat)
-        recipe =  Recipe.find(rand(1..num_of_recipes))
-        c.recipes << recipe
-    end
-end
+# num_of_recipes = Recipe.all.length
+# for category in CATEGORIES
+#     c = Category.create(name: category)
+#     num_of_recipes_per_cat = rand(2..5)
+#     for x in (1..num_of_recipes_per_cat)
+#         recipe =  Recipe.find(rand(1..num_of_recipes))
+#         c.recipes << recipe
+#     end
+# end
 
 
-num_of_cat = Category.all.length
-for x in (1..num_of_recipes)
-    r = Recipe.find(x)
-    category = Category.find(rand(1..num_of_cat))
-    r.categories << category
-end
+# num_of_cat = Category.all.length
+# for x in (1..num_of_recipes)
+#     r = Recipe.find(x)
+#     category = Category.find(rand(1..num_of_cat))
+#     r.categories << category
+# end

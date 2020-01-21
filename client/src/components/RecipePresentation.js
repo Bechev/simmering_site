@@ -91,10 +91,7 @@ class RecipePresentation extends Component {
                 {this.renderAddToMealPlan()}
                 <div className="recipe_presentation_header">
                     <div className="recipe_title">
-                        <div>
                         {this.props.recipe.name}
-                        
-                        </div>
                         {this.renderAddToMealPlanButton()}
                         
                     </div>
