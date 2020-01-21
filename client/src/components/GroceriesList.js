@@ -11,6 +11,24 @@ class GroceriesList extends Component {
         this.props.updateUserIngredients(user, ingredient.id);
     }
 
+    fractionize(quantity){
+        let integer = Math.floor(quantity)
+        if(integer === 0){
+            integer = ""
+        }else{
+            integer = integer.toString()
+        }
+        let fraction = quantity - integer
+        if (fraction === 0){
+            fraction = ""
+        } else{
+            fraction = " 1/" + (Math.round((1/fraction)*100/100).toString())
+        }
+        let fractionized_quantity = integer + fraction
+
+        return fractionized_quantity
+    }
+
     renderIngredientsList() {
 
         if (this.props.groceries_list_ingredients.length===0 && this.props.groceries_list_quantities.length===0) {
@@ -28,7 +46,7 @@ class GroceriesList extends Component {
                                    name={ingredient.name} value={ingredient.name}
                                    checked={this.props.user_ingredients.some(user_ingredient => user_ingredient['id'] === ingredient.id ) ?  true : false}></input>
                             <label className="ingredient_label">
-                                {ingredient_quantity.measure} {ingredient_quantity.unit}, {ingredient.name}
+                                {this.fractionize(ingredient_quantity.measure)} {ingredient_quantity.unit}, {ingredient.name}
                             </label>
                             <br></br>
                         </div>
