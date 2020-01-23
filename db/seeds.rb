@@ -333,6 +333,42 @@ File.readlines(path_ingredients).each do |line|
     recipe.save
 end
 
+
+seasons_path = '/mnt/c/Users/bertr/Dev/Projects/simmering_site/lib/tasks/seed/seasons_seed.csv'
+state_path = '/mnt/c/Users/bertr/Dev/Projects/simmering_site/lib/tasks/seed/states_seed.csv'
+File.readlines(seasons_path).each do |season|
+    rowArray = season.split(",")
+    # binding.pry
+    beginningDate = Date.parse(rowArray[0])
+    endDate = Date.parse(rowArray[1].delete('\n'))
+
+    File.readlines(state_path).each do |state|
+        # binding.pry
+        state_cleaned = state.delete("\n")
+        puts state_cleaned
+        @season = Season.create(state: state_cleaned, season_beginning: beginningDate, season_end: endDate)
+        # puts @season
+    end
+end        
+
+# seasons_path = '/mnt/c/Users/bertr/Dev/Projects/simmering_site/lib/tasks/seed/seasonal_food_seed.csv'
+# File.readlines(seasons_path).each do |line|
+#     rowArray = line.split(",")
+#     ingredient_name = rowArray[0]
+#     state = rowArray[1]
+#     if rowArray.length() === 3
+#         season_beginning= Date.new(01/01/1900)
+#         season_end= Date.new(31/12/1900)
+#         @season = Season.find_or_create_by(season_beginning: season_beginning, season_end: season_end, state: state)
+#         @ingredient = Ingredient.find_or_create_by(name: ingredient_name)
+#     else
+#         season_beginning= Date.new(rowArray[2])
+#         season_end= Date.new(rowArray[3])
+#         @season = Season.find_or_create_by(season_beginning: season_beginning, season_end: season_end, state: state)
+#         @ingredient = Ingredient.find_or_create_by(name: ingredient_name)
+#     end
+# end
+
 # path= '/mnt/c/Users/bertr/Dev/Projects/simmering_site/lib/tasks/seed/recipes.csv'
 # 
 # 

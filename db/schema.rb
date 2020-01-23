@@ -170,9 +170,9 @@ ActiveRecord::Schema.define(version: 2020_01_17_214735) do
   end
 
   create_table "seasons", force: :cascade do |t|
-    t.string "name"
-    t.date "beginning"
-    t.date "end"
+    t.string "state"
+    t.date "season_beginning"
+    t.date "season_end"
   end
 
   create_table "users", force: :cascade do |t|
