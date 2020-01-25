@@ -42,7 +42,11 @@ class LoginSignupForm extends Component {
             if (this.props.submission === 'login') {
                 this.props.sign_in(this.state.email_value, this.state.password_value, this.props.history)
             } else if (this.props.submission === 'signup') {
-                this.props.sign_up(this.state.user_state, this.state.email_value, this.state.password_value, this.state.password_confirmation_value, this.props.history)
+                if(this.state.password_value !== this.state.password_confirmation_value){
+                    alert("Woops, passwords are not matching!" )
+                }else{
+                    this.props.sign_up(this.state.user_state, this.state.email_value, this.state.password_value, this.state.password_confirmation_value, this.props.history)
+                }
             }
         } else {
             alert('email not valid')
