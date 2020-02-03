@@ -52,4 +52,4 @@ gem 'devise_token_auth'
 
 gem 'dotenv-rails', groups: [:development, :test]
 
-gem 'pry', '~> 0.12.2'
+gem 'pry'
