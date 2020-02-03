@@ -44,8 +44,9 @@ class LoginSignupForm extends Component {
             } else if (this.props.submission === 'signup') {
                 if(this.state.password_value !== this.state.password_confirmation_value){
                     alert("Woops, passwords are not matching!" )
-                }else if (this.state.user_state="Where do you live?"){
+                }else if (this.state.user_state !== "Where do you live?"){
                     alert("Woops, you didn't tell us where you live!")
+                }else{
                     this.props.sign_up(this.state.user_state, this.state.email_value, this.state.password_value, this.state.password_confirmation_value, this.props.history)
                 }
             }
