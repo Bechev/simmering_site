@@ -5,7 +5,7 @@ path_recipes = '/mnt/c/Users/bertr/Dev/Projects/simmering_site/db/seeds/recipes_
 puts 'seeding recipes'
 
 File.readlines(path_recipes).each do |line|
-    binding.pry
+    # binding.pry
     rowArray = line.delete('\"').strip.split("@@")
     recipe_name = rowArray[1]
     # recipe_prep_time = rowArray[2]
@@ -18,7 +18,7 @@ File.readlines(path_recipes).each do |line|
     recipe_calories = 0
     default_servings = rowArray[5]
     recipe_process = rowArray[6].delete("['").delete("']")
-    binding.pry
+    # binding.pry
     # recipe_categories = rowArray[7].split(";")
     @recipe = Recipe.create(name: recipe_name,
                             instructions: recipe_process, 

@@ -12,22 +12,37 @@ class RecipeIngredients extends Component {
     }
 
     fractionize(quantity){
+        let string_integer = "" 
+        let string_fraction =  ""
+        let fractionized_quantity = ""
         let integer = Math.floor(quantity)
         if(integer === 0){
-            integer = ""
+            string_integer = ""
         }else{
-            integer = integer.toString()
+            string_integer = integer.toString()
         }
-        let fraction = quantity - integer
-        if (fraction === 0){
-            fraction = ""
-        } else{
-            fraction = " 1/" + (Math.round((1/fraction)*100/100).toString())
+        let numerator = (quantity - integer) * 100
+        if(numerator > 0){
+            let denominator = 100
+            let divisor = this.gcd(numerator, denominator)
+            if(integer > 0 ){
+                fractionized_quantity = integer + " " + (numerator/divisor).toString() + "/" + (denominator/divisor).toString()
+            }else{
+                fractionized_quantity = (numerator/divisor).toString() + "/" + (denominator/divisor).toString()
+            }
+        }else {
+            fractionized_quantity = string_integer
         }
-        let fractionized_quantity = integer + fraction
-
         return fractionized_quantity
     }
+
+    gcd(numerator, denominator) {  
+        if (!denominator) {  
+            return numerator;  
+        }  
+     
+        return this.gcd(denominator, numerator % denominator);  
+     };  
 
     renderIngredients(){
         return(

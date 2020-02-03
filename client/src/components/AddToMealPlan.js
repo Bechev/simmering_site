@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 import {addOrRemoveRecipeToMealplan} from '../services/actions/mealplan.js'
-// import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+// import "react-datepicker/dist/react-datepicker.css";
 // import {fetchMealPlan} from '../services/actions/mealplan.js'
 
 import './components.css'
