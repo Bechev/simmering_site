@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_17_214735) do
+ActiveRecord::Schema.define(version: 2020_01_25_203702) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -79,6 +79,12 @@ ActiveRecord::Schema.define(version: 2020_01_17_214735) do
     t.integer "ingredient_id", null: false
     t.integer "recipe_id", null: false
     t.index ["ingredient_id", "recipe_id"], name: "index_ingredients_recipes_on_ingredient_id_and_recipe_id"
+  end
+
+  create_table "ingredients_seasons", id: false, force: :cascade do |t|
+    t.integer "ingredient_id", null: false
+    t.integer "season_id", null: false
+    t.index ["ingredient_id", "season_id"], name: "index_ingredients_seasons_on_ingredient_id_and_season_id"
   end
 
   create_table "ingredients_users", id: false, force: :cascade do |t|
@@ -165,14 +171,14 @@ ActiveRecord::Schema.define(version: 2020_01_17_214735) do
     t.integer "cooking_time"
     t.integer "total_recipe_time"
     t.integer "calories"
+    t.integer "default_servings"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "seasons", force: :cascade do |t|
     t.string "state"
-    t.date "season_beginning"
-    t.date "season_end"
+    t.string "period"
   end
 
   create_table "users", force: :cascade do |t|

@@ -56,6 +56,94 @@ for x in COMMENTS do
     Comment.create(message: x[0], post_id: x[1])
 end
 
+
+########################## FUNCTION TO SEED RECIPES, INGREDIENTS AND SEASONS ######################################
+
+# path_recipes = '/mnt/c/Users/bertr/Dev/Projects/simmering_site/lib/tasks/seed/recipes_seed.csv'
+# path_recipes_ingredients = '/mnt/c/Users/bertr/Dev/Projects/simmering_site/lib/tasks/seed/recipes_ingredients_seed.csv'
+
+
+# File.readlines(path_recipes).each do |line|
+#     # binding.pry
+#     rowArray = line.delete('\"').strip.split(",,")
+#     recipe_name = rowArray[1]
+#     recipe_prep_time = rowArray[2]
+#     recipe_cook_time = rowArray[3]
+#     recipe_total_time = rowArray[4]
+#     recipe_calories = rowArray[5] 
+#     recipe_process = rowArray[6]
+#     # binding.pry
+#     recipe_categories = rowArray[7].split(";")
+#     @recipe = Recipe.create(name: recipe_name,
+#                             instructions: recipe_process, 
+#                             preparation_time: recipe_prep_time, 
+#                             cooking_time: recipe_cook_time, 
+#                             total_recipe_time: recipe_total_time, 
+#                             calories: recipe_calories)
+#                             # binding.pry
+#     recipe_categories.each do |category|
+#         @category = Category.find_or_create_by(name: category)
+#         @category.recipes << @recipe
+#         @recipe.categories << @category
+#         @category.save
+#     end
+                            
+#     @recipe.save
+
+    
+# end
+
+# File.readlines(path_recipes_ingredients).each do |line|
+#     rowArray = line.delete('\"').strip.split(",,")
+#     recipe_id = rowArray[0].to_i
+    
+#     if recipe_id === 0 
+#         recipe_id = rowArray[0][1..-1].to_i
+#     end
+#     # binding.pry
+#     ingredient_name = rowArray[1]
+#     quantity_measure = rowArray[2].to_f
+#     quantity_unit = rowArray[3]
+#     # binding.pry
+#     recipe = Recipe.find(recipe_id)
+#     @ingredient = Ingredient.find_or_create_by(name: ingredient_name)
+#     @quantity = Quantity.create(measure: quantity_measure, unit: quantity_unit, recipe_id: recipe.id, ingredient_id: @ingredient.id)
+#     recipe.ingredients << @ingredient
+#     recipe.save
+# end
+
+
+# seasons_path = '/mnt/c/Users/bertr/Dev/Projects/simmering_site/lib/tasks/seed/seasons_seed.csv'
+# state_path = '/mnt/c/Users/bertr/Dev/Projects/simmering_site/lib/tasks/seed/states_seed.csv'
+# File.readlines(seasons_path).each do |season|
+#     rowArray = season.split(",")
+#     # binding.pry
+#     beginningDate = Date.parse(rowArray[0])
+#     endDate = Date.parse(rowArray[1].delete('\n'))
+
+#     File.readlines(state_path).each do |state|
+#         # binding.pry
+#         state_cleaned = state.delete("\n")
+#         @season = Season.create(state: state_cleaned, season_beginning: beginningDate, season_end: endDate)
+#     end
+# end      
+
+# puts "seasonsal ingredients"
+
+# seasonal_ingredients_path = '/mnt/c/Users/bertr/Dev/Projects/simmering_site/lib/tasks/seed/seasonal_ingredients.csv'
+# File.readlines(seasonal_ingredients_path).each do |seasonal_ingredient|
+#     sleep(0.05)
+#     # binding.pry
+#     rowArray = seasonal_ingredient.split(',')
+#     @ingredient = Ingredient.find_or_create_by(name: rowArray[0])
+#     beginningDate = rowArray[2]
+#     endDate = rowArray[3].delete("\r\n")
+#     season = Season.find_by(state: rowArray[1], season_beginning: beginningDate, season_end: endDate)
+#     season.ingredients << @ingredient
+#     season.save
+# end
+# ################################################################################################################################################
+
 # Seed ingredients
 # INGREDIENTS =  [
 #     ["tomatoes"],
@@ -280,76 +368,6 @@ end
 #     end
 # end
 
-path_recipes = '/mnt/c/Users/bertr/Dev/Projects/simmering_site/lib/tasks/seed/recipes_seed.csv'
-path_ingredients = '/mnt/c/Users/bertr/Dev/Projects/simmering_site/lib/tasks/seed/ingredients_seed.csv'
-
-
-File.readlines(path_recipes).each do |line|
-    # binding.pry
-    rowArray = line.delete('\"').strip.split(",,")
-    recipe_name = rowArray[1]
-    recipe_prep_time = rowArray[2]
-    recipe_cook_time = rowArray[3]
-    recipe_total_time = rowArray[4]
-    recipe_calories = rowArray[5] 
-    recipe_process = rowArray[6]
-    # binding.pry
-    recipe_categories = rowArray[7].split(";")
-    @recipe = Recipe.create(name: recipe_name,
-                            instructions: recipe_process, 
-                            preparation_time: recipe_prep_time, 
-                            cooking_time: recipe_cook_time, 
-                            total_recipe_time: recipe_total_time, 
-                            calories: recipe_calories)
-                            # binding.pry
-    recipe_categories.each do |category|
-        @category = Category.find_or_create_by(name: category)
-        @category.recipes << @recipe
-        @recipe.categories << @category
-        @category.save
-    end
-                            
-    @recipe.save
-
-    
-end
-
-File.readlines(path_ingredients).each do |line|
-    rowArray = line.delete('\"').strip.split(",,")
-    recipe_id = rowArray[0].to_i
-    
-    if recipe_id === 0 
-        recipe_id = rowArray[0][1..-1].to_i
-    end
-    # binding.pry
-    ingredient_name = rowArray[1]
-    quantity_measure = rowArray[2].to_f
-    quantity_unit = rowArray[3]
-    # binding.pry
-    recipe = Recipe.find(recipe_id)
-    @ingredient = Ingredient.find_or_create_by(name: ingredient_name)
-    @quantity = Quantity.create(measure: quantity_measure, unit: quantity_unit, recipe_id: recipe.id, ingredient_id: @ingredient.id)
-    recipe.ingredients << @ingredient
-    recipe.save
-end
-
-
-seasons_path = '/mnt/c/Users/bertr/Dev/Projects/simmering_site/lib/tasks/seed/seasons_seed.csv'
-state_path = '/mnt/c/Users/bertr/Dev/Projects/simmering_site/lib/tasks/seed/states_seed.csv'
-File.readlines(seasons_path).each do |season|
-    rowArray = season.split(",")
-    # binding.pry
-    beginningDate = Date.parse(rowArray[0])
-    endDate = Date.parse(rowArray[1].delete('\n'))
-
-    File.readlines(state_path).each do |state|
-        # binding.pry
-        state_cleaned = state.delete("\n")
-        puts state_cleaned
-        @season = Season.create(state: state_cleaned, season_beginning: beginningDate, season_end: endDate)
-        # puts @season
-    end
-end        
 
 # seasons_path = '/mnt/c/Users/bertr/Dev/Projects/simmering_site/lib/tasks/seed/seasonal_food_seed.csv'
 # File.readlines(seasons_path).each do |line|

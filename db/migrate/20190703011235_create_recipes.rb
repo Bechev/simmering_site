@@ -7,6 +7,7 @@ class CreateRecipes < ActiveRecord::Migration[5.2]
       t.integer :cooking_time
       t.integer :total_recipe_time
       t.integer :calories
+      t.integer :default_servings
     #   t.integer :user_id
 
       t.timestamps
