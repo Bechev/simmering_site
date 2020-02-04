@@ -13,7 +13,6 @@ class GroceriesList extends Component {
 
     fractionize(quantity){
         let string_integer = "" 
-        let string_fraction =  ""
         let fractionized_quantity = ""
         let integer = Math.floor(quantity)
         if(integer === 0){

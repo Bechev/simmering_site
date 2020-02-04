@@ -6,15 +6,18 @@ import '../components.css'
 class RecipeInstructions extends Component {
 
     renderTextWithBreaks(){
+        // console.log(this.props.instructions)
         return(
-            this.props.instructions.split('\\n').map((i,key) => {
-                // console.log(i)
-                return (
-                    <React.Fragment>
-                        <li key={key}>{i}</li>
-                        <br></br>
-                    </React.Fragment>
-                )
+            this.props.instructions.split('.').map((i,key) => {
+                console.log(i)
+                if(i!==""){
+                    return (
+                        <React.Fragment>
+                            <li key={key}>{i}</li>
+                            <br></br>
+                        </React.Fragment>
+                    )
+                }
             })
         )
     }
