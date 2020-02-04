@@ -1,8 +1,9 @@
 .navbar {
     display: flex;
     width: 100%;
-    justify-content: space-between;
-    margin: 4vh;
+    justify-content: space-around;
+    margin: 1vh;
+    margin-top: 0;
 }
 
 .navbar-link {
@@ -29,7 +30,7 @@
     display: flex;
     flex-direction: column;
     
-    width: 70vh;
+    width: 80vh;
     min-height: 90vh;
 
     align-items: center;
@@ -82,7 +83,7 @@
     display: flex;
     flex-direction: column;
     
-    width: 70vh;
+    width: 80vh;
     min-height: 70vh;
     align-self: center;
     align-items: center;
@@ -98,7 +99,7 @@
 
 .profile{
     display: flex;
-    width: 70vh;
+    width: 80vh;
     flex-direction: column;
     align-self: center;
 }

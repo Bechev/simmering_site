@@ -9,8 +9,8 @@
 
 .App-header {
     display: flex;
-    min-height: 5vh;
-    max-height: 10vh;
+    min-height: 15vh;
+    max-height: 20vh;
     align-items: center;
     justify-content: center;
     font-size: 3.5vh;

@@ -20,17 +20,15 @@ class NavigationBar extends Component {
             if(this.props.user){
                 return(
                     <React.Fragment>
-                        <div className="left-navbar">
+
+                        
+                        <div className="navbar">
                             <NavLink className="navbar-link"
                             to="/"
                             exact
                             style={link}
                             >Home</NavLink>
-                        </div>
 
-
-                        <SearchBar/>
-                        <div className="right-navbar">
                             <NavLink className="navbar-link"
                             to="/meal_plan"
                             exact
@@ -55,6 +53,9 @@ class NavigationBar extends Component {
                             style={link}
                             >Groceries List</NavLink>
                         </div>
+
+                        <SearchBar/>
+
                     </React.Fragment>
                 )
             }else if(!this.props.user){
@@ -80,7 +81,7 @@ class NavigationBar extends Component {
     }
     render() {
         return (
-            <div className='navbar'>
+            <div className='navigation'>
                 {this.renderNavBar()}
             </div>
         );
