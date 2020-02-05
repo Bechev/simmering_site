@@ -17,7 +17,7 @@ class RecipeInstructions extends Component {
                             <br></br>
                         </React.Fragment>
                     )
-                }
+                }else{return null}
             })
         )
     }

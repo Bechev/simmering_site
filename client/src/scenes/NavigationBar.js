@@ -3,11 +3,14 @@ import { NavLink } from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux'
 import SearchBar from "../components/SearchBar.js"
+import Home from '../assets/desaisonlogo-icon.png'
+import Profile from '../assets/profile-icon.png'
+import GroceriesList from '../assets/grocerieslist-icon.png'
 import './scenes.css';
 
 const link = {
     textDecoration: 'none',
-    color: 'rgb(85, 105, 47)',
+    color: '#268C4F',
 } 
 
 class NavigationBar extends Component {
@@ -20,39 +23,42 @@ class NavigationBar extends Component {
             if(this.props.user){
                 return(
                     <React.Fragment>
+                        <div className='navlinks'>
+                            <div className="left-navbar">
+                                <NavLink className="navbar-link"
+                                to="/"
+                                exact
+                                style={link}
+                                ><img src={Home} className='home-logo scene-icon'></img></NavLink>
 
-                        
-                        <div className="navbar">
-                            <NavLink className="navbar-link"
-                            to="/"
-                            exact
-                            style={link}
-                            >Home</NavLink>
+                                <NavLink className="navbar-link"
+                                to="/meal_plan"
+                                exact
+                                style={link}
+                                >MealPlan</NavLink>
+        
+                                <NavLink className="navbar-link"
+                                to="/browse"
+                                exact
+                                style={link}
+                                >Browse</NavLink>
+                            </div>
 
-                            <NavLink className="navbar-link"
-                            to="/meal_plan"
-                            exact
-                            style={link}
-                            >MealPlan</NavLink>
-                            
-                            <NavLink className="navbar-link"
-                            to="/profile"
-                            exact
-                            style={link}
-                            >Profile</NavLink>
-    
-                            <NavLink className="navbar-link"
-                            to="/browse"
-                            exact
-                            style={link}
-                            >Browse</NavLink>
-    
-                            <NavLink className="navbar-link"
-                            to="/mycart"
-                            exact
-                            style={link}
-                            >Groceries List</NavLink>
+                            <div className="right-navbar">
+                                <NavLink className="navbar-link"
+                                to="/mycart"
+                                exact
+                                style={link}
+                                ><img src={GroceriesList} className='groceries scene-icon'></img></NavLink>
+
+                                <NavLink className="navbar-link"
+                                to="/profile"
+                                exact
+                                style={link}
+                                ><img src={Profile} className='profile scene-icon'></img></NavLink>
+                            </div>
                         </div>
+                        
 
                         <SearchBar/>
 

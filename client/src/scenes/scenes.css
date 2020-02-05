@@ -1,3 +1,6 @@
+.navigation{
+    width: 80vh;
+}
 .navbar {
     display: flex;
     width: 100%;
@@ -6,8 +9,20 @@
     margin-top: 0;
 }
 
+.navlinks{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 1vh;
+    align-items: center;
+    /* margin-top: 0; */
+
+}
+
 .navbar-link {
-    margin: 2vh;
+    display: flex;
+    margin: 1.2vh;
+    align-items: center;
 }
 
 .right-navbar{
@@ -30,7 +45,7 @@
     display: flex;
     flex-direction: column;
     
-    width: 80vh;
+    width: 76vh;
     min-height: 90vh;
 
     align-items: center;
@@ -53,7 +68,7 @@
     display: flex;
     width: 50%;
     height: 100vh;
-    background-color: rgb(85, 105, 47);
+    background-color: #268C4F;
     flex-direction: column;
     align-items: flex-end;
 }
@@ -74,7 +89,7 @@
  .recipe{
     display: flex;
     align-self: center;
-    width: 70vh;
+    width: 80vh;
     justify-content: center;
  }
 
@@ -106,7 +121,7 @@
 
 .profile_header{
     display: flex;
-    color: rgb(85, 105, 47);
+    color: #268C4F;
     font-weight: bold;
     font-size: 4vh;
     margin-bottom: 4vh;
@@ -148,7 +163,7 @@
     width: 100%;
 
     font-size: 1.8vh;
-    color: rgb(85, 105, 47);
+    color: #268C4F;
     font-weight: bold;
     text-align: left;
 
@@ -156,4 +171,15 @@
     background-color: transparent;
     border-radius: 0px;
     border: 0px;
+}
+
+.home-logo{
+    display: block;
+    max-width:5vh;
+    max-height:7vh;
+    width: auto;
+    height: auto;
+    }
+.scene-icon{
+    width: 7vh;
 }
