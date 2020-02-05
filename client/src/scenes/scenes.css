@@ -183,6 +183,11 @@
     height: auto;
     }
     
-.scene-icon{
-    width: 7vh;
+.profile-icon{
+    display: block;
+    /* width: 7vh; */
+    max-width:8vh;
+    max-height:10vh;
+    width: auto;
+    height: auto;
 }

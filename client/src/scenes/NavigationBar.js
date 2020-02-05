@@ -55,7 +55,7 @@ class NavigationBar extends Component {
                                 to="/profile"
                                 exact
                                 style={link}
-                                ><img src={Profile} className='profile scene-icon' alt=""></img></NavLink>
+                                ><img src={Profile} className='profile-icon' alt=""></img></NavLink>
                             </div>
                         </div>
                         
