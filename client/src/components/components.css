@@ -1,7 +1,7 @@
 /* Cross-app css */
 .input_field{
     display: flex;
-    font-size: 2.5vh;
+    font-size: 2vh;
     padding: 1vh;
     border-radius: 7px;
 }
@@ -246,7 +246,7 @@
     text-align: right;
     justify-content: space-between;
     margin: 0.5%;
-    font-size: 1.7vh;
+    font-size: 2vh;
 }
 
 .recipe_card_data{
@@ -310,7 +310,7 @@
 }
 
 .mealplan_title{
-    font-size: 4vh;
+    font-size: 3vh;
     color: #268C4F;
     font-weight: bold;
 }
@@ -331,7 +331,7 @@
     align-items: flex-start;
     /* justify-content: flex-start; */
     
-    font-size: 3vh;    
+    font-size: 2vh;    
 }
 
 .day_header{
@@ -367,6 +367,7 @@
     flex-direction: column;
     max-width: 100%;
     margin: 2vh 0 2vh;
+
     /* border-style: solid; */
     /* border-color: #268C4F; */
     background-color: white;
@@ -383,9 +384,10 @@
 }
 
 .meal_title{
-    font-size : 2.5vh;
+    font-size : 2vh;
     display: flex;
     justify-content: flex-start;
+    margin-top: 2vh;
     margin-left: 2vh;
     font-weight: bold;
 }
@@ -455,7 +457,7 @@
     /* width: auto; */
     /* float: initial; */
     height: 3vh;
-    font-size: 2.5vh;
+    font-size: 2vh;
 }
 
 .search_results{
@@ -618,7 +620,7 @@
     border-color: rgb(139, 139, 139);
     border-radius: 5px;
     padding: 2vh;
-    /* font-size: 2.5vh; */
+    font-size: 2vh;
     background-color: #ffffffff;
 }
 .recipe_presentation_header{
@@ -696,6 +698,7 @@
 .groceries_list{
     display: flex;
     flex-direction: column;
+    font-size: 2vh;
     
     width: 100%;
     max-width: 100%;
@@ -740,7 +743,7 @@
     display: flex;
     font-size: 2vh;
     margin: 2vh;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
 }
 
