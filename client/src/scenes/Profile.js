@@ -53,7 +53,7 @@ class Profile extends Component {
             <div className="profile">
                 <div className="profile_header">
                     <div className="profile_title">
-                        Profile
+                        
                     </div>
                     <button className="button sign_out_button" onClick={this.handleSignOut}>
                         Sign Out

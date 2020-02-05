@@ -175,13 +175,14 @@
     border: 0px;
 }
 
-.home-logo{
+.scene-icon{
     display: block;
     max-width:5vh;
     max-height:7vh;
     width: auto;
     height: auto;
     }
+    
 .scene-icon{
     width: 7vh;
 }

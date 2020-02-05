@@ -29,7 +29,7 @@ class NavigationBar extends Component {
                                 to="/"
                                 exact
                                 style={link}
-                                ><img src={Home} className='home-logo scene-icon'></img></NavLink>
+                                ><img src={Home} className='scene-icon' alt=""></img></NavLink>
 
                                 <NavLink className="navbar-link"
                                 to="/meal_plan"
@@ -49,13 +49,13 @@ class NavigationBar extends Component {
                                 to="/mycart"
                                 exact
                                 style={link}
-                                ><img src={GroceriesList} className='groceries scene-icon'></img></NavLink>
+                                ><img src={GroceriesList} className='scene-icon' alt=""></img></NavLink>
 
                                 <NavLink className="navbar-link"
                                 to="/profile"
                                 exact
                                 style={link}
-                                ><img src={Profile} className='profile scene-icon'></img></NavLink>
+                                ><img src={Profile} className='profile scene-icon' alt=""></img></NavLink>
                             </div>
                         </div>
                         
