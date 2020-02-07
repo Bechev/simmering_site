@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux'
+import {fetchGroceriesList} from '../services/actions/groceriesList.js'
+import {fetchUserIngredients} from '../services/actions/userIngredients.js'
 import SearchBar from "../components/SearchBar.js"
 import Home from '../assets/desaisonlogo-icon.png'
 import Profile from '../assets/profile-icon.png'
 import GroceriesList from '../assets/grocerieslist-icon.png'
+import EmptyGroceriesList from '../assets/grocerieslist-empty-icon.png'
 import './scenes.css';
 
 const link = {
@@ -18,6 +21,22 @@ class NavigationBar extends Component {
     // constructor(props){
     //     super(props);
     // }
+
+    componentDidMount(){
+        if(this.props.user){
+            this.props.fetchGroceriesList(this.props.user)
+            this.props.fetchUserIngredients(this.props.user)
+        }
+    }
+
+    componentDidUpdate(prevProps){
+        if(prevProps.user !== this.props.user || prevProps.groceriesList.ingredients.length !== this.props.groceriesList.ingredients.length ){
+            // if(prevProps.groceriesList.ingredients.length !== this.props.groceriesList.ingredients.length){
+                this.props.fetchGroceriesList(this.props.user)
+                this.props.fetchUserIngredients(this.props.user)
+            // }
+        }
+    }
 
     renderNavBar(){
             if(this.props.user){
@@ -49,7 +68,7 @@ class NavigationBar extends Component {
                                 to="/mycart"
                                 exact
                                 style={link}
-                                ><img src={GroceriesList} className='scene-icon' alt=""></img></NavLink>
+                                ><img src={this.props.groceriesList.ingredients.length > 0 ? GroceriesList : EmptyGroceriesList} className='scene-icon' alt=""></img></NavLink>
 
                                 <NavLink className="navbar-link"
                                 to="/profile"
@@ -98,7 +117,16 @@ class NavigationBar extends Component {
 const mapStateToProps = (state) => {
     return {
         user: state.auth.user,
+        groceriesList: state.groceriesList,
     }
-  }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchGroceriesList: (user) => dispatch(fetchGroceriesList(user)),
+        fetchUserIngredients: (user) => dispatch(fetchUserIngredients(user)),
+
+    }
+}
    
-export default withRouter(connect(mapStateToProps, null)(NavigationBar));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavigationBar));

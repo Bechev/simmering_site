@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {withRouter, Link} from 'react-router-dom';
 import { connect } from 'react-redux'
 import {addOrRemoveRecipeToMealplan, updateMealMultiplicator} from '../services/actions/mealplan.js'
+import {fetchGroceriesList} from '../services/actions/groceriesList.js'
+import {fetchUserIngredients} from '../services/actions/userIngredients.js'
 import AddToMealPlan from './AddToMealPlan.js'
 import Delete from '../assets/delete-icon.png'
 // import Edit from '../assets/edit-icon.png'
@@ -156,8 +158,10 @@ class RecipeCard extends Component {
         }
     }
 
-    removeRecipeFromMeal(){
-        this.props.addOrRemoveRecipeToMealplan("Remove", this.props.user, this.props.mealplan_id, this.props.day.name ,this.props.meal.name, this.props.recipe.id)
+    async removeRecipeFromMeal(){
+        await this.props.addOrRemoveRecipeToMealplan("Remove", this.props.user, this.props.mealplan_id, this.props.day.name ,this.props.meal.name, this.props.recipe.id)
+        this.props.fetchGroceriesList(this.props.user)
+        this.props.fetchUserIngredients(this.props.user)
     }
 
     renderRecipeName(){
@@ -200,6 +204,8 @@ const mapDispatchToProps = dispatch => {
     return {
         addOrRemoveRecipeToMealplan: (action, user, mealplan_id, day_name, meal_name, recipe_id) => dispatch(addOrRemoveRecipeToMealplan(action, user, mealplan_id, day_name, meal_name, recipe_id)),
         updateMealMultiplicator: (action, user, multiplicator_id) => dispatch(updateMealMultiplicator(action, user, multiplicator_id)),
+        fetchGroceriesList: (user) => dispatch(fetchGroceriesList(user)),
+        fetchUserIngredients:    (user) => dispatch(fetchUserIngredients(user)),
     }
 }
 

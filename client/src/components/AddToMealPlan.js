@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 import {addOrRemoveRecipeToMealplan} from '../services/actions/mealplan.js'
+import {fetchGroceriesList} from '../services/actions/groceriesList.js'
+import {fetchUserIngredients} from '../services/actions/userIngredients.js'
 // import "react-datepicker/dist/react-datepicker.css";
 // import {fetchMealPlan} from '../services/actions/mealplan.js'
 
@@ -22,12 +24,14 @@ class AddToMealPlan extends Component {
         this.addRecipeToMealPlan = this.addRecipeToMealPlan.bind(this)
     }
 
-    addRecipeToMealPlan() {
+    async addRecipeToMealPlan() {
         if(this.state.day_name === "Select a day"){
             alert("The day cannot be empty")
         }else{
-            this.props.addOrRemoveRecipeToMealplan("Add", this.props.user, this.props.mealplan_id, this.state.day_name, this.state.meal_name, this.props.recipe.id, this.props.recipe_feed_count)
-            this.props.displayQuickAddToMealPlan()
+            await this.props.addOrRemoveRecipeToMealplan("Add", this.props.user, this.props.mealplan_id, this.state.day_name, this.state.meal_name, this.props.recipe.id, this.props.recipe_feed_count)
+            await this.props.displayQuickAddToMealPlan()
+            this.props.fetchGroceriesList(this.props.user)
+            this.props.fetchUserIngredients(this.props.user)
         }
     }
 
@@ -124,6 +128,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
     return {
         addOrRemoveRecipeToMealplan: (action, user, mealplan_id, day_date, meal_name, recipe_id, multiplicator) => dispatch(addOrRemoveRecipeToMealplan(action, user, mealplan_id, day_date, meal_name, recipe_id, multiplicator)),
+        fetchGroceriesList: (user) => dispatch(fetchGroceriesList(user)),
+        fetchUserIngredients: (user) => dispatch(fetchUserIngredients(user)),
     }
 }
 
