@@ -1,5 +1,5 @@
 .navigation{
-    width: 80vh;
+    width: 85vh;
 }
 .navbar {
     display: flex;
@@ -14,7 +14,8 @@
     width: 100%;
     justify-content: space-between;
     margin: 1vh;
-    margin-bottom: 0vh;
+    margin-left: 0vh;
+    /* margin-bottom: 0vh; */
     align-items: center;
     font-size: 3vh;
         /* margin-top: 0; */
@@ -24,6 +25,7 @@
 .navbar-link {
     display: flex;
     margin: 1.2vh;
+    margin-left: 0vh;
     margin-bottom: 0vh;
     align-items: center;
 }
@@ -188,8 +190,8 @@
 .profile-icon{
     display: block;
     /* width: 7vh; */
-    max-width:8vh;
-    max-height:10vh;
+    max-width:4vh;
+    max-height:6vh;
     width: auto;
     height: auto;
 }
