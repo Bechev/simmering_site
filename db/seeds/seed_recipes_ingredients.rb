@@ -98,6 +98,7 @@ def convertToNumber(string)
 end
 
 File.readlines(path_recipes_ingredients).each do |line|
+    
 # def parse_ingredient_list
     list = line.split('@@')
     # recipe_id = list[0][0] === "" ? 1 : list[0].to_i
@@ -105,8 +106,8 @@ File.readlines(path_recipes_ingredients).each do |line|
     # binding.pry
     recipe = Recipe.find(recipe_id)
     list.shift()
-    list[0] = list[0].delete("['")
-    list[-1] = list[-1].delete("']\r\n")
+    # list[0] = list[0].delete("['")
+    list[-1] = list[-1].delete("\r\n")
     # binding.pry
     # list.gsub("' '", "@@")
     # list.split("@@")
@@ -143,6 +144,9 @@ File.readlines(path_recipes_ingredients).each do |line|
                     ingredient_name = ingredient_name + " " + component
                 end
             end
+            # binding.pry
+            measure = (measure/recipe.default_servings).round(1)
+            
             @ingredient = Ingredient.find_or_create_by(name: ingredient_name)
             @quantity = Quantity.create(measure: measure, unit: unit, ingredient_id: @ingredient.id, recipe_id: recipe.id)
             recipe.ingredients << @ingredient
