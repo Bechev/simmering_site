@@ -19,13 +19,20 @@
     align-items: center;
     font-size: 3vh;
         /* margin-top: 0; */
+}
 
+.text{
+    /* margin-right: 3vh; */
+    margin-left: 4vh;
+}
+.icon{
+    margin-right: 1.2vh;
 }
 
 .navbar-link {
     display: flex;
-    margin: 1.2vh;
-    margin-left: 0vh;
+    margin-top: 1.2vh;
+    /* margin-left: 0vh; */
     margin-bottom: 0vh;
     align-items: center;
 }
