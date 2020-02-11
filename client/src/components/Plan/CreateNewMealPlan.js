@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 import {createNewMealplan} from '../../services/actions/mealplan.js'
-
+import {fetchGroceriesList} from '../../services/actions/groceriesList.js'
+import {fetchUserIngredients} from '../../services/actions/userIngredients.js'
 import '../components.css'
 
 
@@ -18,9 +19,11 @@ class CreateNewMealPlan extends Component {
         this.createNewMealPlan = this.createNewMealPlan.bind(this)
     }
 
-    createNewMealPlan() {
-            this.props.createNewMealplan(this.props.user, this.state.mealplan_name)
-            this.props.displayQuickAddToMealPlan()
+    async createNewMealPlan() {
+        this.props.displayQuickAddToMealPlan()
+        await this.props.createNewMealplan(this.props.user, this.state.mealplan_name)
+        this.props.fetchGroceriesList(this.props.user)
+        this.props.fetchUserIngredients(this.props.user)
     }
 
     // Stop the propagation to allow removing the AddToMealPlan window when cliking on the parent but not when clicking on the child.
@@ -77,6 +80,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
     return {
         createNewMealplan: (user, mealplan_name) => dispatch(createNewMealplan(user, mealplan_name)),
+        fetchGroceriesList: (user) => dispatch(fetchGroceriesList(user)),
+        fetchUserIngredients: (user) => dispatch(fetchUserIngredients(user)),
     }
 }
 

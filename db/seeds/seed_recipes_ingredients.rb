@@ -98,7 +98,7 @@ def convertToNumber(string)
 end
 
 File.readlines(path_recipes_ingredients).each do |line|
-    
+    sleep(0.05)
 # def parse_ingredient_list
     list = line.split('@@')
     # recipe_id = list[0][0] === "" ? 1 : list[0].to_i

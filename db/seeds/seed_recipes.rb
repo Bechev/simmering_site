@@ -5,6 +5,7 @@ path_recipes = '/mnt/c/Users/bertr/Dev/Projects/simmering_site/db/seeds/recipes_
 puts 'seeding recipes'
 
 File.readlines(path_recipes).each do |line|
+    sleep(0.05)
     rowArray = line.delete('\"').strip.split("@@")
     recipe_name = rowArray[1]
     # recipe_prep_time = rowArray[2]

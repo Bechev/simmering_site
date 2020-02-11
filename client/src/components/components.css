@@ -446,7 +446,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* margin-left: 3vh; */
+    margin-left: 6vh;
 }
 
 .inputField{
