@@ -19,6 +19,7 @@ class Routes extends Component {
         return(
             <React.Fragment>
                 <Route exact path="/" component={Home} />
+                <Route exact path="/blog" component={Blog}/>
                 <LoginSignupRoute exact path="/signup" component={Signup} authed={this.props.user}/>
                 <LoginSignupRoute exact path="/login" component={Login} authed={this.props.user}/>
                 <PrivateRoute exact path="/meal_plan" component={MealPlan} authed={this.props.user}/>

@@ -1,2 +1,0 @@
-class BlogCommentController < ApplicationController
-end
