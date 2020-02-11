@@ -12,24 +12,17 @@ class Recipe extends Component {
     // }
 
     componentDidMount(){
-        console.log('MOUNTING RECIPES')
-        console.log(this.props.user)
         if(this.props.user){
             if(this.props.userParameters.isLoaded === false ){
-                console.log(this.props.userParameters.isLoaded)
                 this.props.fetchUserParameters(this.props.user)
             }
         }
-        console.log('FETCHING RECIPES')
         this.props.fetchRecipe(this.props.match.params.id)
     }
 
     componentDidUpdate(prevProps){
-        console.log('UPDATING RECIPES')
-        console.log(this.props.user)
         if(this.props.user !== prevProps.user){
             if(this.props.userParameters.isLoaded === false ){
-                console.log(this.props.userParameters.isLoaded)
                 this.props.fetchUserParameters(this.props.user)
             }
         }

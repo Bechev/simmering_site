@@ -6,6 +6,7 @@ import {withRouter} from 'react-router-dom';
 
 import Home from '../scenes/Home.js'
 import Blog from '../scenes/Blog.js';
+import BlogPost from '../scenes/BlogPost.js';
 import Signup from '../scenes/Signup.js'
 import Login from '../scenes/Login.js'
 import Browse from '../scenes/Browse.js'
@@ -21,7 +22,7 @@ class Routes extends Component {
             <React.Fragment>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/blog" component={Blog}/>
-                <Route exact path="/blog_article/:slug" component={BlogPost}/>
+                <Route exact path="/blog/:slug" component={BlogPost}/>
                 <LoginSignupRoute exact path="/signup" component={Signup} authed={this.props.user}/>
                 <LoginSignupRoute exact path="/login" component={Login} authed={this.props.user}/>
                 <PrivateRoute exact path="/meal_plan" component={MealPlan} authed={this.props.user}/>

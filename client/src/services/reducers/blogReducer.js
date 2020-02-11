@@ -15,7 +15,7 @@ export default function blogReducer(state = {
             return  {
                 ...state,
                 isLoaded: true,
-                latestPost: action.payload}
+                blogPost: action.payload}
 
         case 'LOAD_BLOG_POST_FAILURE':
             return{
