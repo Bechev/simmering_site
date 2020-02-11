@@ -14,7 +14,6 @@
     width: 100%;
     justify-content: space-between;
     margin: 1vh;
-    margin-left: 0vh;
     /* margin-bottom: 0vh; */
     align-items: center;
     font-size: 3vh;
@@ -23,17 +22,18 @@
 
 .text{
     /* margin-right: 3vh; */
-    margin-left: 4vh;
+    margin-left: 2vh;
 }
 .icon{
-    margin-right: 1.2vh;
+    /* margin-right: 1.2vh; */
 }
 
 .navbar-link {
     display: flex;
     margin-top: 1.2vh;
+    margin-right: 2.5vh;
     /* margin-left: 0vh; */
-    margin-bottom: 0vh;
+    /* margin-bottom: 0vh; */
     align-items: center;
 }
 
@@ -69,6 +69,13 @@
 
     font-size: 2vh;
     background-color: #ffffffff;
+}
+
+.blog_homepage{
+    display: flex;
+    width: 76vh;
+    align-self: center;
+    /* align-items: center; */
 }
 
 .login_signup {

@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import {fetchLatestBlogPosts } from '../services/actions/blog.js'
 import { connect } from 'react-redux'
+import BlogPostsList from '../components/BlogPostsList.js'
 
 
-class Home extends Component {
+class Blog extends Component {
     
     componentDidMount(){
         this.props.fetchLatestBlogPosts()
@@ -13,8 +14,7 @@ class Home extends Component {
 
         return(
             <div className="blog_homepage">
-                {/* <BlogPostList/> */}
-                Blog
+                <BlogPostsList/>
             </div>
             )
         }
@@ -34,4 +34,4 @@ const mapStateToProps = (state) => {
     }
   }
   
-  export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));
+  export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Blog));

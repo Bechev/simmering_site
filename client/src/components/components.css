@@ -872,3 +872,20 @@
     background-color: white;
   
 }
+
+/* CSS for Blog Posts List */
+.blog_posts_list{
+    display: flex;
+    flex-direction: column;
+    justify-items: flex-start;
+}
+
+.blog_post_link{
+    text-decoration: none;
+    color: #268C4F;
+}
+
+.blog_post_information{
+    justify-items: flex-start;
+    text-align: left;
+}
