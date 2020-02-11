@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import authReducer from './authReducer.js';
 import postReducer from './postReducer.js';
+import blogReducer from './blogReducer.js';
 import postsReducer from './postsReducer.js';
 import commentReducer from './commentReducer.js';
 import commentsReducer from './commentsReducer.js';
@@ -16,6 +17,7 @@ import suggestionsReducer from './suggestionsReducer.js'
 
 export default combineReducers({
     auth: authReducer,
+    blog: blogReducer,
     post: postReducer,
     posts: postsReducer,
     recipe: recipeReducer,

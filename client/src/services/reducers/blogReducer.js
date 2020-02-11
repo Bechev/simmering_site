@@ -1,4 +1,4 @@
-export default function postReducer(state = {
+export default function blogReducer(state = {
     isLoaded: false,
     errorMessage: '',
     latestPosts: {},

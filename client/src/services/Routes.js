@@ -5,6 +5,7 @@ import {LoginSignupRoute} from './Routes/LoginSignupRoute.js'
 import {withRouter} from 'react-router-dom';
 
 import Home from '../scenes/Home.js'
+import Blog from '../scenes/Blog.js';
 import Signup from '../scenes/Signup.js'
 import Login from '../scenes/Login.js'
 import Browse from '../scenes/Browse.js'

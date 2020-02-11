@@ -1,16 +1,13 @@
-export function fetch_latest_post(post_id,number_of_likes, history){
+export function fetchLatestBlogPosts(){
     return (dispatch) => {
         dispatch({ type: 'LOAD_BLOG_POST'});    
-        return fetch("http://localhost:3000/api/v1/blog_post/",{
+        return fetch("http://localhost:3000/api/v1/blog_posts/",{
             method: "GET",
             cache: "no-cache",
             credentials: "same-origin",
             headers: {
                 "Content-Type": "application/json; charset=utf-8"
             },
-            body: JSON.stringify({
-                slug: post_slug,
-            })
         })
         .then(response => response.json())
         .then(post => { 
@@ -22,19 +19,16 @@ export function fetch_latest_post(post_id,number_of_likes, history){
     }    
 };
 
-export function share_post(post_id, number_of_shares, history){
+export function fetchBlogPost(post_slug){
     return (dispatch) => {
         dispatch({ type: 'LOAD_LATEST_POSTS' });    
-        return fetch("http://localhost:3000/api/v1/blog_post/" + post_slug ,{
+        return fetch("http://localhost:3000/api/v1/blog_posts/" + post_slug ,{
             method: "GET",
             cache: "no-cache",
             credentials: "same-origin",
             headers: {
                 "Content-Type": "application/json; charset=utf-8"
             },
-            body: JSON.stringify({
-                slug: post_slug,
-            })
         })
         .then(response => response.json())
         .then(post => { 

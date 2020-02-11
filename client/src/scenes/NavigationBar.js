@@ -61,6 +61,12 @@ class NavigationBar extends Component {
                                 exact
                                 style={link}
                                 >Browse</NavLink>
+
+                                <NavLink className="navbar-link"
+                                to="/blog"
+                                exact
+                                style={link}
+                                >Blog</NavLink>
                             </div>
 
                             <div className="right-navbar">
