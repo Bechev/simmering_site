@@ -10,6 +10,7 @@ class LoginSignupForm extends Component {
         super(props);
         this.state = {
             email_value: '',
+            username_value: '',
             password_value: '',
             password_confirmation_value: '',
             user_state: 'Where do you live?',
@@ -29,6 +30,7 @@ class LoginSignupForm extends Component {
         this.setState({
             [event.target.name]: event.target.value,
         });
+        console.log("this.state.username_value" + this.state.username_value)
         if (this.validate(event.target.value)) {
             this.setState({
                 valid_email: true
@@ -47,7 +49,7 @@ class LoginSignupForm extends Component {
                 }else if (this.state.user_state === "Where do you live?"){
                     alert("Woops, you didn't tell us where you live!")
                 }else{
-                    this.props.sign_up(this.state.user_state, this.state.email_value, this.state.password_value, this.state.password_confirmation_value, this.props.history)
+                    this.props.sign_up( this.state.email_value, this.state.username_value, this.state.password_value, this.state.password_confirmation_value, this.state.user_state, this.props.history)
                 }
             }
         } else {
@@ -108,6 +110,9 @@ class LoginSignupForm extends Component {
                     <label className='password_confirmation_input_field'>
                         <input className='input_field password_confirmation_input_field' type="password" name="password_confirmation_value" value={this.state.password_confirmation_value} onChange={this.handleChange} placeholder="Confirm your password" />
                     </label><br></br>
+                    <label className='username_input_field'>
+                        <input className='input_field username_input_field' type="text" name="username_value" value={this.state.username} onChange={this.handleChange} placeholder="Username" />
+                    </label><br></br>
                     <select style={{color:this.state.user_state === "Where do you live?" ? 'grey' : 'black' }} className='input_field' onChange={this.handleStateChange}>
                         {this.renderStateOptions()}
                     </select>
@@ -143,7 +148,7 @@ class LoginSignupForm extends Component {
 const mapDispatchToProps = dispatch => {
     return {
         sign_in: (email, password, history) => dispatch(sign_in(email, password, history)),
-        sign_up: (state, email, password, password_confirmation, history) => dispatch(sign_up(state, email, password, password_confirmation, history)),
+        sign_up: ( email, username, password, password_confirmation,state, history) => dispatch(sign_up( email, username, password, password_confirmation,state, history)),
     }
 }
 

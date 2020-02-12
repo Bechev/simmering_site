@@ -24,16 +24,16 @@ class NavigationBar extends Component {
 
     componentDidMount(){
         if(this.props.user){
-            this.props.fetchGroceriesList(this.props.user)
-            this.props.fetchUserIngredients(this.props.user)
+            this.props.fetchGroceriesList()
+            this.props.fetchUserIngredients()
         }
     }
 
     componentDidUpdate(prevProps){
         if(prevProps.user !== this.props.user || prevProps.groceriesList.ingredients.length !== this.props.groceriesList.ingredients.length ){
             // if(prevProps.groceriesList.ingredients.length !== this.props.groceriesList.ingredients.length){
-                this.props.fetchGroceriesList(this.props.user)
-                this.props.fetchUserIngredients(this.props.user)
+                this.props.fetchGroceriesList()
+                this.props.fetchUserIngredients()
             // }
         }
     }
@@ -89,7 +89,7 @@ class NavigationBar extends Component {
 
                     </React.Fragment>
                 )
-            }else if(!this.props.user){
+            }else{
                 return(
                     <React.Fragment>
                         <div className="left-navbar">
@@ -129,8 +129,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchGroceriesList: (user) => dispatch(fetchGroceriesList(user)),
-        fetchUserIngredients: (user) => dispatch(fetchUserIngredients(user)),
+        fetchGroceriesList: () => dispatch(fetchGroceriesList()),
+        fetchUserIngredients: () => dispatch(fetchUserIngredients()),
 
     }
 }

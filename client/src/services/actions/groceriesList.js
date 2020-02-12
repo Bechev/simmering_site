@@ -1,5 +1,7 @@
-export function fetchGroceriesList(user){
+export function fetchGroceriesList(){
     return (dispatch) => {
+        const strUser = localStorage.getItem('user')
+        let user = JSON.parse(strUser)
         dispatch({ type: 'FETCH_GROCERIES_LIST' });    
         return fetch("http://localhost:3000/api/v1/groceries_list/" ,{
             method: "POST",

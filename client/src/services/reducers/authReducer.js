@@ -47,7 +47,7 @@ export default function authReducer(state = {
         case 'SIGN_OUT_USER_SUCCESS':
             return  {
                 isLoaded: true,
-                user: action.payload}                
+                    }                
 
         case 'SIGN_OUT_USER_FAILURE':
             return{
@@ -64,7 +64,8 @@ export default function authReducer(state = {
         case 'SIGN_UP_USER_SUCCESS':
             return  {
                 isLoaded: true,
-                pendingEmailConfirmation: true}
+                pendingEmailConfirmation: true,
+                user: action.payload}
 
         case 'SIGN_UP_USER_FAILURE':
             return{

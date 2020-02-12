@@ -8,15 +8,15 @@ import {fetchUserIngredients} from '../services/actions/userIngredients.js'
 class Cart extends Component {
 
     componentDidMount(){
-            this.props.fetchGroceriesList(this.props.user)
-            this.props.fetchUserIngredients(this.props.user)
+            this.props.fetchGroceriesList()
+            this.props.fetchUserIngredients()
     }
     
 
     componentDidUpdate(prevProps){
         if(prevProps !== this.props){
-            this.props.fetchGroceriesList(this.props.user)
-            this.props.fetchUserIngredients(this.props.user)
+            this.props.fetchGroceriesList()
+            this.props.fetchUserIngredients()
         }
     }
 
@@ -42,10 +42,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchGroceriesList: (user) => dispatch(fetchGroceriesList(user)),
-        fetchUserIngredients:    (user) => dispatch(fetchUserIngredients(user)),
-
-    }
+        fetchGroceriesList: () => dispatch(fetchGroceriesList()),
+        fetchUserIngredients: () => dispatch(fetchUserIngredients()),
+ }
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Cart));

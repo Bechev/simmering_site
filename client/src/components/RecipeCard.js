@@ -69,7 +69,7 @@ class RecipeCard extends Component {
             // If the recipeCar is rendered in a Mealplan (in opposition to a suggestion or while browsing recipes), 
             // when we increase the number of guests, we update the associated quantities multiplicator 
             if(this.props.isMealPlan){
-                this.props.updateMealMultiplicator(action, this.props.user, this.state.quantities_multiplicator_id)
+                this.props.updateMealMultiplicator(action, this.state.quantities_multiplicator_id)
             }
             if (action === "increment") {
                 increment = 1
@@ -159,9 +159,9 @@ class RecipeCard extends Component {
     }
 
     async removeRecipeFromMeal(){
-        await this.props.addOrRemoveRecipeToMealplan("Remove", this.props.user, this.props.mealplan_id, this.props.day.name ,this.props.meal.name, this.props.recipe.id)
-        this.props.fetchGroceriesList(this.props.user)
-        this.props.fetchUserIngredients(this.props.user)
+        await this.props.addOrRemoveRecipeToMealplan("Remove", this.props.mealplan_id, this.props.day.name ,this.props.meal.name, this.props.recipe.id)
+        this.props.fetchGroceriesList()
+        this.props.fetchUserIngredients()
     }
 
     renderRecipeName(){
@@ -202,10 +202,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addOrRemoveRecipeToMealplan: (action, user, mealplan_id, day_name, meal_name, recipe_id) => dispatch(addOrRemoveRecipeToMealplan(action, user, mealplan_id, day_name, meal_name, recipe_id)),
-        updateMealMultiplicator: (action, user, multiplicator_id) => dispatch(updateMealMultiplicator(action, user, multiplicator_id)),
-        fetchGroceriesList: (user) => dispatch(fetchGroceriesList(user)),
-        fetchUserIngredients:    (user) => dispatch(fetchUserIngredients(user)),
+        addOrRemoveRecipeToMealplan: (action, mealplan_id, day_name, meal_name, recipe_id) => dispatch(addOrRemoveRecipeToMealplan(action, mealplan_id, day_name, meal_name, recipe_id)),
+        updateMealMultiplicator: (action, multiplicator_id) => dispatch(updateMealMultiplicator(action, multiplicator_id)),
+        fetchGroceriesList: () => dispatch(fetchGroceriesList()),
+        fetchUserIngredients: () => dispatch(fetchUserIngredients()),
     }
 }
 

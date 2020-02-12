@@ -9,9 +9,10 @@ class BlogPostPresentation extends Component {
         if(this.props.blogPost){
             return(
                 <React.Fragment>
-                    <h1>{this.props.blogPost.title}</h1>
-                    {/* <h2>this.props.blogPost.summary</h2> */}
-                    <div>{this.props.blogPost.content}</div>
+                    <h1 className="blog_post_title">{this.props.blogPost.title}</h1>
+                    <div className="blog_post_summary">This is a summary</div>
+                    <br></br>
+                    <div className="blog_post_content">{this.props.blogPost.content}</div>
                 </React.Fragment>
             )
         }
@@ -19,9 +20,9 @@ class BlogPostPresentation extends Component {
 
     render() {
         return(
-            <React.Fragment>
+            <div className="blog_post">
                 {this.renderBlogPost()}
-            </React.Fragment>
+            </div>
             )
         }
 

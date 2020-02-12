@@ -1,5 +1,7 @@
-export function fetchUserParameters(user){
+export function fetchUserParameters(){
     return (dispatch) => {
+        const strUser = localStorage.getItem('user')
+        let user = JSON.parse(strUser)
         dispatch({ type: 'GET_USER_PARAMETERS' });    
         return fetch("http://localhost:3000/api/v1/parameters/",{
             headers:{
@@ -19,8 +21,10 @@ export function fetchUserParameters(user){
     }    
 };
 
-export function updateUserParameters(user, parameter_id, settings){
+export function updateUserParameters(parameter_id, settings){
     return (dispatch) => {
+        const strUser = localStorage.getItem('user')
+        let user = JSON.parse(strUser)
         dispatch({ type: 'UPDATE_USER_PARAMETERS' });    
         return fetch("http://localhost:3000/api/v1/parameters/" + parameter_id,{
             method: "PUT",

@@ -50,8 +50,10 @@ export function share_post(post_id, number_of_shares, history){
 };
 
 
-export function submit_new_post(post_message, user, history){
+export function submit_new_post(post_message, history){
     return (dispatch) => {
+        const strUser = localStorage.getItem('user')
+        let user = JSON.parse(strUser)
         dispatch({ type: 'SUBMIT_NEW_POST' });    
         return fetch("http://localhost:3000/api/v1/posts/" ,{
             method: "POST",

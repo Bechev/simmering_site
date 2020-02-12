@@ -28,6 +28,7 @@ module Api
             end
 
             def show
+                debugger
                 if params[:id]
                     @mealplan = Mealplan.find(params[:id])
                     render json: @mealplan, include: "**"

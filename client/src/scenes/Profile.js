@@ -20,9 +20,9 @@ class Profile extends Component {
 
     componentDidMount(){
         if(this.props.userParameters.isLoaded === false ){
-            this.props.fetchUserParameters(this.props.user)
+            this.props.fetchUserParameters()
         }
-        this.props.fetchUserMealPlans(this.props.user)
+        this.props.fetchUserMealPlans()
     }
 
     handleClick(clickValue){
@@ -81,8 +81,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
     return {
         sign_out: (user) => dispatch(sign_out(user)),
-        fetchUserMealPlans: (user) => dispatch(fetchUserMealPlans(user)),
-        fetchUserParameters: (user) => dispatch(fetchUserParameters(user)),
+        fetchUserMealPlans: () => dispatch(fetchUserMealPlans()),
+        fetchUserParameters: () => dispatch(fetchUserParameters()),
     }
 }
 

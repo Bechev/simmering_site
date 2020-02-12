@@ -1,5 +1,7 @@
-export function fetchSuggestions(user){
+export function fetchSuggestions(){
     return (dispatch) => {
+        const strUser = localStorage.getItem('user')
+        let user = JSON.parse(strUser)
         dispatch({ type: 'LOAD_SUGGESTIONS' });    
         return fetch("http://localhost:3000/api/v1/suggestions/" ,{
             method: "GET",

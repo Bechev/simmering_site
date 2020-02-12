@@ -11,7 +11,7 @@ class App extends React.Component{
     componentDidMount(){
         const user = JSON.parse(localStorage.getItem('user'))
         if(user){
-            this.props.verify_credentials(user)
+            this.props.verify_credentials()
         }
     }
 
@@ -37,7 +37,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        verify_credentials: (user) => dispatch(verify_credentials(user)),
+        verify_credentials: () => dispatch(verify_credentials()),
     }
 }
 

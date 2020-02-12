@@ -1,5 +1,7 @@
-export function submit_new_comment(comment_message, post_id, user, history){
+export function submit_new_comment(comment_message, post_id, history){
     return (dispatch) => {
+        const strUser = localStorage.getItem('user')
+        let user = JSON.parse(strUser)
         dispatch({ type: 'SUBMIT_NEW_COMMENT' });    
         return fetch("http://localhost:3000/api/v1/posts/"+post_id+"/comments" ,{
             method: "POST",

@@ -1,5 +1,7 @@
-export function fetchUserMealPlans(user){
+export function fetchUserMealPlans(){
     return (dispatch) => {
+        const strUser = localStorage.getItem('user')
+        let user = JSON.parse(strUser)
         dispatch({ type: 'GET_MEALPLANS' });    
         return fetch("http://localhost:3000/api/v1/mealplans",{
             headers:{
@@ -18,9 +20,10 @@ export function fetchUserMealPlans(user){
     }    
 };
 
-export function fetchPreviousMealplanInfo(user, mealplan_id){
-    console.log(mealplan_id)
+export function fetchPreviousMealplanInfo(mealplan_id){
     return (dispatch) => {
+        const strUser = localStorage.getItem('user')
+        let user = JSON.parse(strUser)
         dispatch({ type: 'GET_PREVIOUS_MEALPLAN' });    
         return fetch("http://localhost:3000/api/v1/mealplans/" + mealplan_id,{
             headers:{

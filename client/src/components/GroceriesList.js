@@ -7,8 +7,8 @@ import {updateUserIngredients} from '../services/actions/userIngredients.js'
 class GroceriesList extends Component {
 
 
-    handleChange(user, ingredient) {
-        this.props.updateUserIngredients(user, ingredient.id);
+    handleChange(ingredient) {
+        this.props.updateUserIngredients(ingredient.id);
     }
 
     fractionize(quantity){
@@ -56,7 +56,7 @@ class GroceriesList extends Component {
                     return (
                         <div className="ingredient_checkbox">
                             <input className="checkbox" type="checkbox"
-                                   onClick={() => this.handleChange(this.props.user, ingredient)} 
+                                   onClick={() => this.handleChange(ingredient)} 
                                    name={ingredient.name} value={ingredient.name}
                                    checked={this.props.user_ingredients.some(user_ingredient => user_ingredient['id'] === ingredient.id ) ?  true : false}></input>
                             <label className="ingredient_label">
@@ -95,7 +95,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        updateUserIngredients: (user, ingredient_id) => dispatch(updateUserIngredients(user, ingredient_id)),
+        updateUserIngredients: (ingredient_id) => dispatch(updateUserIngredients(ingredient_id)),
     }
 }
 

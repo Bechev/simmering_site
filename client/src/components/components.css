@@ -889,3 +889,20 @@
     justify-items: flex-start;
     text-align: left;
 }
+
+/* CSS for Blog Posts Presentation */
+.blog_post{
+    display: flex;
+    flex-direction: column;
+    justify-items: flex-start;
+    text-align: left;
+}
+
+.blog_post_title{
+    color: #268C4F
+}
+
+.blog_post_summary{
+    font-style: italic;
+}
+

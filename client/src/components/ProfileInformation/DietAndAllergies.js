@@ -32,7 +32,7 @@ class DietAndAllergies extends Component {
         var key = dietary_item;
         var updatedUserParameters = {};
         updatedUserParameters[key] = !this.props.dietAndAllergies[dietary_item];
-        this.props.updateUserParameters(this.props.user, this.props.userParameters.id, updatedUserParameters);
+        this.props.updateUserParameters(this.props.userParameters.id, updatedUserParameters);
     }
 
     renderDietAndAllergiesCheckBoxes() {
@@ -83,7 +83,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        updateUserParameters: (user, params_id, params) => dispatch(updateUserParameters(user, params_id, params)),
+        updateUserParameters: (params_id, params) => dispatch(updateUserParameters(params_id, params)),
     }
 }
 

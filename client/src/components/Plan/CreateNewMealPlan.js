@@ -21,9 +21,9 @@ class CreateNewMealPlan extends Component {
 
     async createNewMealPlan() {
         this.props.displayQuickAddToMealPlan()
-        await this.props.createNewMealplan(this.props.user, this.state.mealplan_name)
-        this.props.fetchGroceriesList(this.props.user)
-        this.props.fetchUserIngredients(this.props.user)
+        await this.props.createNewMealplan( this.state.mealplan_name)
+        this.props.fetchGroceriesList()
+        this.props.fetchUserIngredients()
     }
 
     // Stop the propagation to allow removing the AddToMealPlan window when cliking on the parent but not when clicking on the child.
@@ -79,9 +79,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        createNewMealplan: (user, mealplan_name) => dispatch(createNewMealplan(user, mealplan_name)),
-        fetchGroceriesList: (user) => dispatch(fetchGroceriesList(user)),
-        fetchUserIngredients: (user) => dispatch(fetchUserIngredients(user)),
+        createNewMealplan: (mealplan_name) => dispatch(createNewMealplan(mealplan_name)),
+        fetchGroceriesList: () => dispatch(fetchGroceriesList()),
+        fetchUserIngredients: () => dispatch(fetchUserIngredients()),
     }
 }
 

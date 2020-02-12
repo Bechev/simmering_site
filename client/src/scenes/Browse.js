@@ -11,7 +11,7 @@ class Browse extends Component {
         this.props.fetch_categories()
         if(this.props.user){
             if(this.props.userParameters.isLoaded ===  false){
-                this.props.fetchUserParameters(this.props.user)
+                this.props.fetchUserParameters()
             }        
         }
     }
@@ -37,7 +37,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
     return {
         fetch_categories: () => dispatch(fetch_categories()),
-        fetchUserParameters: (user) => dispatch(fetchUserParameters(user)),
+        fetchUserParameters: () => dispatch(fetchUserParameters()),
     }
 }
 

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux'
-import {fetchUserLastMealPlan} from '../services/actions/mealplan.js'
+// import {fetchUserLastMealPlan} from '../services/actions/mealplan.js'
 import {fetchSuggestions} from '../services/actions/suggestions.js'
 import Day from './Plan/Day.js'
 import Suggestions from './Plan/Suggestions.js'
@@ -29,7 +29,7 @@ class Plan extends Component {
         if(this.props !== prevProps){
             this.sort_days_array()
         }
-        this.props.fetchSuggestions(this.props.user)
+        this.props.fetchSuggestions()
     }
 
     define_days_order(){
@@ -124,8 +124,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchUserLastMealPlan: (user) => dispatch(fetchUserLastMealPlan(user)),
-        fetchSuggestions: (user) =>dispatch(fetchSuggestions(user)),
+        // fetchUserLastMealPlan: (user) => dispatch(fetchUserLastMealPlan(user)),
+        fetchSuggestions: () =>dispatch(fetchSuggestions()),
         // fetchMealPlan: (user, mealplan_id) => dispatch(fetchMealPlan(user, mealplan_id)),
     }
 }

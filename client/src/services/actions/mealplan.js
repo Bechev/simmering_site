@@ -1,5 +1,7 @@
-export function fetchUserLastMealPlan(user){
+export function fetchUserLastMealPlan(){
     return (dispatch) => {
+        const strUser = localStorage.getItem('user')
+        let user = JSON.parse(strUser)
         dispatch({ type: 'GET_MEALPLAN' });    
         return fetch("http://localhost:3000/api/v1/mealplan/",{
             headers:{
@@ -19,8 +21,10 @@ export function fetchUserLastMealPlan(user){
     }    
 };
 
-export function createNewMealplan(user, mealplan_name){
+export function createNewMealplan( mealplan_name){
     return (dispatch) => {
+        const strUser = localStorage.getItem('user')
+        let user = JSON.parse(strUser)
         dispatch({ type: 'CREATE_NEW_MEALPLAN' });    
         return fetch("http://localhost:3000/api/v1/mealplans/",{
         method: 'POST',    
@@ -44,8 +48,10 @@ export function createNewMealplan(user, mealplan_name){
     }    
 };
 
-export function updateMealMultiplicator(to_do, user, multiplicator_id){
+export function updateMealMultiplicator(to_do,  multiplicator_id){
     return (dispatch) => {
+        const strUser = localStorage.getItem('user')
+        let user = JSON.parse(strUser)
         dispatch({ type: 'ADD_OR_REMOVE_GUEST_FOR_RECIPE' });    
         return fetch("http://localhost:3000/api/v1/quantities_multiplicator/" + multiplicator_id,{
         method: 'PUT',    
@@ -69,8 +75,10 @@ export function updateMealMultiplicator(to_do, user, multiplicator_id){
     }    
 };
 
-export function addOrRemoveRecipeToMealplan(action, user, mealplan_id, day_name, meal_name, recipe_id, multiplicator){
+export function addOrRemoveRecipeToMealplan(action,  mealplan_id, day_name, meal_name, recipe_id, multiplicator){
     return (dispatch) => {
+        const strUser = localStorage.getItem('user')
+        let user = JSON.parse(strUser)
         dispatch({ type: 'ADD_OR_REMOVE_RECIPE_TO_MEAL' });    
         return fetch("http://localhost:3000/api/v1/mealplans/" + mealplan_id,{
         method: 'PUT',    

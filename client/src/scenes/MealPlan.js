@@ -8,9 +8,9 @@ import Plan from '../components/Plan.js'
 class MealPlan extends Component {
 
     componentDidMount(){
-        this.props.fetchUserLastMealPlan(this.props.user)
+        this.props.fetchUserLastMealPlan()
         if(this.props.userParameters.isLoaded ===  false){
-            this.props.fetchUserParameters(this.props.user)
+            this.props.fetchUserParameters()
         }        
     }
 
@@ -34,8 +34,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchUserLastMealPlan: (user) => dispatch(fetchUserLastMealPlan(user)),
-        fetchUserParameters: (user) => dispatch(fetchUserParameters(user)),
+        fetchUserLastMealPlan: () => dispatch(fetchUserLastMealPlan()),
+        fetchUserParameters: () => dispatch(fetchUserParameters()),
         
     }
 }

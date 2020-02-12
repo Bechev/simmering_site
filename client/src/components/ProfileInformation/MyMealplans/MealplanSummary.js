@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux'
-import {fetchPreviousMealplanInfo} from '../../../services/actions/mealplans.js'
+// import {fetchPreviousMealplanInfo} from '../../../services/actions/mealplans.js'
 import '../../components.css'
 import DaySummary from './DaySummary.js';
 import DownGreenArrow from '../../../assets/downarrow-green-icon.png'
@@ -80,7 +80,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchPreviousMealplanInfo: (user, mealplan_id) => dispatch(fetchPreviousMealplanInfo(user, mealplan_id)),
+        // fetchPreviousMealplanInfo: (mealplan_id) => dispatch(fetchPreviousMealplanInfo(mealplan_id)),
     }
 }
 

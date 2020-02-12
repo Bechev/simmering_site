@@ -28,10 +28,10 @@ class AddToMealPlan extends Component {
         if(this.state.day_name === "Select a day"){
             alert("The day cannot be empty")
         }else{
-            await this.props.addOrRemoveRecipeToMealplan("Add", this.props.user, this.props.mealplan_id, this.state.day_name, this.state.meal_name, this.props.recipe.id, this.props.recipe_feed_count)
+            await this.props.addOrRemoveRecipeToMealplan("Add",this.props.mealplan_id, this.state.day_name, this.state.meal_name, this.props.recipe.id, this.props.recipe_feed_count)
             await this.props.displayQuickAddToMealPlan()
-            this.props.fetchGroceriesList(this.props.user)
-            this.props.fetchUserIngredients(this.props.user)
+            this.props.fetchGroceriesList()
+            this.props.fetchUserIngredients()
         }
     }
 
@@ -127,9 +127,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addOrRemoveRecipeToMealplan: (action, user, mealplan_id, day_date, meal_name, recipe_id, multiplicator) => dispatch(addOrRemoveRecipeToMealplan(action, user, mealplan_id, day_date, meal_name, recipe_id, multiplicator)),
-        fetchGroceriesList: (user) => dispatch(fetchGroceriesList(user)),
-        fetchUserIngredients: (user) => dispatch(fetchUserIngredients(user)),
+        addOrRemoveRecipeToMealplan: (action,  mealplan_id, day_date, meal_name, recipe_id, multiplicator) => dispatch(addOrRemoveRecipeToMealplan(action, mealplan_id, day_date, meal_name, recipe_id, multiplicator)),
+        fetchGroceriesList: () => dispatch(fetchGroceriesList()),
+        fetchUserIngredients: () => dispatch(fetchUserIngredients()),
     }
 }
 

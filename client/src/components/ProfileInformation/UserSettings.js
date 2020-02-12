@@ -23,7 +23,7 @@ class UserSettings extends Component {
             week_starting_day: event.target.value
         })
         let params = this.generateParams(event.target.value, "week_starting_day")
-        this.props.updateUserParameters(this.props.user, this.props.userParameters.id, params)
+        this.props.updateUserParameters( this.props.userParameters.id, params)
     }
 
     handleNumberOfGuestChange(event){
@@ -31,7 +31,7 @@ class UserSettings extends Component {
             default_number_of_guests: event.target.value
         })
         let params = this.generateParams(event.target.value, "number_of_guests")
-        this.props.updateUserParameters(this.props.user, this.props.userParameters.id, params)
+        this.props.updateUserParameters( this.props.userParameters.id, params)
     }
 
     generateParams(value, update){
@@ -110,7 +110,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        updateUserParameters: (user, params_id, params) => dispatch(updateUserParameters(user, params_id, params)),
+        updateUserParameters: (params_id, params) => dispatch(updateUserParameters(params_id, params)),
     }
 }
 
