@@ -1,6 +1,5 @@
 export default function blogReducer(state = {
     isLoaded: false,
-    errorMessage: '',
     latestPosts: {},
     blogPost: {},
     }, action) {
