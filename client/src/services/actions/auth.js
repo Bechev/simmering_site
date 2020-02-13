@@ -72,7 +72,7 @@ export function sign_in(email, password, history){
     }    
 };
 
-export function verify_credentials(user){
+export function verify_credentials(){
     return(dispatch=>{
         const strUser = localStorage.getItem('user')
         let user = JSON.parse(strUser)

@@ -1,4 +1,4 @@
-export function fetchRecipe( recipe_id){
+export function fetchRecipe(recipe_id){
     return (dispatch) => {
         dispatch({ type: 'FETCH_RECIPE' });    
         return fetch("http://localhost:3000/api/v1/recipes/" + recipe_id ,{

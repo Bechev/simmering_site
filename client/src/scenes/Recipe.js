@@ -14,7 +14,7 @@ class Recipe extends Component {
     componentDidMount(){
         if(this.props.user){
             if(this.props.userParameters.isLoaded === false ){
-                this.props.fetchUserParameters(this.props.user)
+                this.props.fetchUserParameters()
             }
         }
         this.props.fetchRecipe(this.props.match.params.id)
@@ -23,7 +23,7 @@ class Recipe extends Component {
     componentDidUpdate(prevProps){
         if(this.props.user !== prevProps.user){
             if(this.props.userParameters.isLoaded === false ){
-                this.props.fetchUserParameters(this.props.user)
+                this.props.fetchUserParameters()
             }
         }
     }
@@ -51,7 +51,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchRecipe: (user, recipe_id) => dispatch(fetchRecipe(user, recipe_id)),
-        fetchUserParameters: (user) => dispatch(fetchUserParameters(user)),
+        fetchUserParameters: () => dispatch(fetchUserParameters()),
     }
 }
 

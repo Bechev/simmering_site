@@ -1,3 +1,8 @@
 class BlogCommentSerializer < ActiveModel::Serializer
-  attributes :id, :content, :user_id, :blog_post_id
+    has_one :user
+    attributes :id, :content, :user, :created_at
+    # attributes (:username) {username(user.username)}
+
+    
+
 end

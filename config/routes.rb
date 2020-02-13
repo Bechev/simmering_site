@@ -23,7 +23,7 @@ Rails.application.routes.draw do
             resources :parameters, only: [:index, :update]
             resources :quantities_multiplicator, only: [:update]
             resources :blog_posts, param: :slug, only: [:index, :show]
-            resources :blog_comments, param: :slug, only: [:index, :show]
+            resources :blog_comments, param: :slug, only: [:index, :show, :create]
 
             resources :posts do
                 resources :comments, only: [:index, :create]

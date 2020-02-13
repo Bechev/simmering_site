@@ -39,3 +39,35 @@ export function fetchBlogPost(post_slug){
         })
     }    
 };
+
+export function postComment(post_id, user_id, content){
+    console.log("content" + content)
+    return (dispatch) => {
+        const strUser = localStorage.getItem('user')
+        let user = JSON.parse(strUser)
+        dispatch({ type: 'POST_BLOG_COMMENT' });    
+        return fetch("http://localhost:3000/api/v1/blog_comments/" ,{
+            method: "POST",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json; charset=utf-8",
+                "uid": user.uid,
+                "client":  user.client,
+                "access-token":  user['access-token']
+            },
+            body: JSON.stringify({
+                content: content,
+                post_id: post_id,
+                user_id: user_id 
+            })
+        })
+        .then(response => response.json())
+        .then(post => { 
+            dispatch({type:'POST_BLOG_COMMENT_SUCCESS', payload: post})
+        })
+        .catch(error =>{
+            dispatch({type:'POST_BLOG_COMMENT_FAILURE', payload: error, error:true})
+        })
+    }    
+};

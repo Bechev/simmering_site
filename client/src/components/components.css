@@ -90,6 +90,8 @@
     border-top-style: solid;
     border-color: rgb(139, 139, 139);
     color: #268C4F;
+    white-space: pre-line;
+    justify-content: flex-start;
 }
 
 .post_control_panel{
@@ -896,6 +898,7 @@
     flex-direction: column;
     justify-items: flex-start;
     text-align: left;
+    width: 100%;
 }
 
 .blog_post_title{
@@ -906,3 +909,57 @@
     font-style: italic;
 }
 
+.blog_post_content{
+    white-space: pre-line;
+}
+
+/* CSS for Blog Comments */
+.blog_post_comments{
+    display: flex;
+    border: 0;
+    background-color: lightgray;
+    padding: 1vh;
+    min-height: 2vh;
+    border-radius: 1vh;
+
+    width:100%;
+    
+    margin-top: 4vh;
+
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.blog_post_comment{
+    margin: 1vh 1vh 1vh 1vh;
+    background-color: white;
+    border-radius: 1vh;
+    width: 72vh;
+    padding: 1vh;
+}
+
+.comment_author{
+    font-size: 1.5vh;
+    font-style: italic;
+    margin-bottom: 2vh;
+}
+
+.blog_comment{
+    white-space: pre-line;
+}
+
+/* CSS for Blog Comment input */
+.blog_post_comment_input{
+    display: flex;
+    justify-content: space-space space-between;
+    margin-left: 1vh;
+    width: 74vh;
+}
+.blog_post_comment_input_field{
+    width: 52vh;
+}
+.post_blog_comment_button{
+    /* display: flex; */
+    width: 22vh;;
+    align-self: flex-end;
+}

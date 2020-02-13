@@ -38,7 +38,30 @@ export default function blogReducer(state = {
                 ...state,
                 isLoaded: true,
                 errorMessage: action.payload.message}
-        
+                       
+        case 'POST_BLOG_COMMENT':
+            return  {
+                    ...state,
+                    isLoaded: false}
+    
+        case 'POST_BLOG_COMMENT_SUCCESS':
+            state.blogPost.blog_comments.map(comment=>{
+                // if(comment.id === action.payload.id){
+
+                // }
+
+            })
+            return{
+                ...state,
+                isLoaded: true,
+                errorMessage: action.payload.message}
+
+        case 'POST_BLOG_COMMENT_FAILURE':
+            return{
+                ...state,
+                isLoaded: true,
+                errorMessage: action.payload.message}
+
         default:
             return state;
     }

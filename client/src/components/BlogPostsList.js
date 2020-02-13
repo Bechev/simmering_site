@@ -16,7 +16,7 @@ class BlogPostsList extends Component {
                             <Link className="blog_post_information blog_post_link" to={`/blog/${post.slug}`}>
                                 <h1>{post.title}</h1>
                             </Link>
-                            <div className="blog_post_information">This is a summary.This is a summary.This is a summary.This is a summary.This is a summary.This is a summary.This is a summary.This is a summary.This is a summary.This is a summary.</div>
+                            <div className="blog_post_information">{post.summary}</div>
                             <br></br>
                         </React.Fragment>
                     )
