@@ -20,7 +20,9 @@ class RecipeIngredients extends Component {
         }else{
             string_integer = integer.toString()
         }
-        let numerator = (quantity - integer) * 100
+        let numerator = (quantity - integer) 
+        numerator = Math.round((numerator + Number.EPSILON) * 100) / 100
+        numerator = numerator *100
         if(numerator > 0){
             let denominator = 100
             let divisor = this.gcd(numerator, denominator)

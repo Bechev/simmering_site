@@ -9,7 +9,6 @@ class RecipeInstructions extends Component {
         // console.log(this.props.instructions)
         return(
             this.props.instructions.split('.').map((i,key) => {
-                console.log(i)
                 if(i!==""){
                     return (
                         <React.Fragment>
