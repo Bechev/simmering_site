@@ -41,7 +41,6 @@ export function fetchBlogPost(post_slug){
 };
 
 export function postComment(post_id, user_id, content){
-    console.log("content" + content)
     return (dispatch) => {
         const strUser = localStorage.getItem('user')
         let user = JSON.parse(strUser)
@@ -64,6 +63,7 @@ export function postComment(post_id, user_id, content){
         })
         .then(response => response.json())
         .then(post => { 
+            console.log(post)
             dispatch({type:'POST_BLOG_COMMENT_SUCCESS', payload: post})
         })
         .catch(error =>{

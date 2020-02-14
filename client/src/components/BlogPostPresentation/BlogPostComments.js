@@ -23,6 +23,8 @@ class BlogPostComments extends Component {
         return month + "/" + day + "/" + year + " at " + hours + ":" + min
     }
 
+    
+
     renderBlogPostComments(){
         if(this.props.comments){
             return(
