@@ -168,7 +168,7 @@ class RecipeCard extends Component {
         if(this.props.recipe){
             return(
                 <React.Fragment>
-                    <Link style={{ textDecoration: 'none', color: `#268C4F`}} to={`recipe/${this.props.recipe.id}`}>{this.props.recipe.name}</Link>
+                    <Link style={{ textDecoration: 'none', color: `#268C4F`}} to={`recipe/${this.props.recipe.slug}`}>{this.props.recipe.name}</Link>
                 </React.Fragment>
             )
         }else{

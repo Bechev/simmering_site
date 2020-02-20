@@ -10,7 +10,7 @@ class SearchResults extends Component{
             this.props.results.map(result => {
             return(
                 <div className="search_result">
-                    <Link to={`/recipe/${result.id}`}>
+                    <Link to={`/recipe/${result.slug}`}>
                         <p>
                             {result.name}
                         </p>

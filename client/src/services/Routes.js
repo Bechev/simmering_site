@@ -29,7 +29,7 @@ class Routes extends Component {
                 <PrivateRoute exact path="/profile" component={Profile} authed={this.props.user}/>
                 <Route exact path="/browse" component={Browse}/>
                 <PrivateRoute exact path="/mycart" component={Cart} authed={this.props.user}/>
-                <Route path="/recipe/:id" component={Recipe}/>
+                <Route path="/recipe/:slug" component={Recipe}/>
             </React.Fragment>
         )
     }

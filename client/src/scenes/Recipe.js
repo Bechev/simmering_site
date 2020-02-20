@@ -17,7 +17,7 @@ class Recipe extends Component {
                 this.props.fetchUserParameters()
             }
         }
-        this.props.fetchRecipe(this.props.match.params.id)
+        this.props.fetchRecipe(this.props.match.params.slug)
     }
 
     componentDidUpdate(prevProps){
@@ -50,7 +50,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchRecipe: (user, recipe_id) => dispatch(fetchRecipe(user, recipe_id)),
+        fetchRecipe: (user, recipe_slug) => dispatch(fetchRecipe(user, recipe_slug)),
         fetchUserParameters: () => dispatch(fetchUserParameters()),
     }
 }

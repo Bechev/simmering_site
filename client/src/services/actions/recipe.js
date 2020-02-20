@@ -1,7 +1,7 @@
-export function fetchRecipe(recipe_id){
+export function fetchRecipe(recipe_slug){
     return (dispatch) => {
         dispatch({ type: 'FETCH_RECIPE' });    
-        return fetch("http://localhost:3000/api/v1/recipes/" + recipe_id ,{
+        return fetch("http://localhost:3000/api/v1/recipes/" + recipe_slug ,{
             method: "GET",
             cache: "no-cache",
             credentials: "same-origin",
@@ -10,8 +10,8 @@ export function fetchRecipe(recipe_id){
             },
         })
         .then(response => response.json())
-        .then(post => { 
-            dispatch({type:'FETCH_RECIPE_SUCCESS', payload: post})
+        .then(recipe => { 
+            dispatch({type:'FETCH_RECIPE_SUCCESS', payload: recipe})
         })
         .catch(error =>{
             dispatch({type:'FETCH_RECIPE_FAILURE', payload: error, error:true})

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
             resources :mealplans, only: [:index, :show, :update, :create]
             resources :days, only: [:index]
             resources :meals, only: [:index, :update]
-            resources :recipes, only: [:index, :show]
+            resources :recipes, param: :slug, only: [:index, :show]
             resources :groceries_list, only: [:create]
             resources :ingredients, only: [:index, :update, :destroy]
             resources :categories, only: [:index]

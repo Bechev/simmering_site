@@ -18,9 +18,14 @@ module Api
             end
 
             def show
-                @recipe = Recipe.find(params[:id])
+                @recipe = Recipe.find_by(slug: params[:slug])
                 render json: @recipe, status: 201
             end
+
+            # def show
+            #     @recipe = Recipe.find(params[:id])
+            #     render json: @recipe, status: 201
+            # end
 
             def search
                 letter = params[:char]
