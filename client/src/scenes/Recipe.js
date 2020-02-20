@@ -50,7 +50,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchRecipe: (user, recipe_slug) => dispatch(fetchRecipe(user, recipe_slug)),
+        fetchRecipe: (recipe_slug) => dispatch(fetchRecipe(recipe_slug)),
         fetchUserParameters: () => dispatch(fetchUserParameters()),
     }
 }

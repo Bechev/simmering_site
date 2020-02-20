@@ -85,32 +85,37 @@ class RecipePresentation extends Component {
     }
 
     render() {
-
-        return(
-            <div className="recipe_presentation" >
-                {this.renderAddToMealPlan()}
-                <div className="recipe_presentation_header">
-                    <div className="recipe_title">
-                        {this.props.recipe.name}
-                        {this.renderAddToMealPlanButton()}
-                        
+        if(this.props.recipe){
+            return(
+                <div className="recipe_presentation" >
+                    {this.renderAddToMealPlan()}
+                    <div className="recipe_presentation_header">
+                        <div className="recipe_title">
+                            {this.props.recipe.name}
+                            {this.renderAddToMealPlanButton()}
+                            
+                        </div>
+                        <RecipeInformations recipe={this.props.recipe} recipe_feed_count= {this.state.recipe_feed_count} changeFeedCount={this.changeFeedCount}/>
                     </div>
-                    <RecipeInformations recipe={this.props.recipe} recipe_feed_count= {this.state.recipe_feed_count} changeFeedCount={this.changeFeedCount}/>
+    
+                    <div className="recipe_presentation_body">
+                        <React.Fragment>
+                            <RecipeIngredients ingredients={this.props.recipe.ingredients} quantities={this.props.recipe.quantities} multiplicator={this.state.recipe_feed_count}/>
+                            {/* <RecipeIngredients ingredients={this.state.ingredients}/> */}
+                        </React.Fragment>
+    
+                        <React.Fragment>
+                            <RecipeInstructions instructions={this.props.recipe.instructions}/>
+                            {/* <RecipeInstructions ingredients={this.state.instructions}/> */}
+                        </React.Fragment>
+                    </div>
                 </div>
-
-                <div className="recipe_presentation_body">
-                    <React.Fragment>
-                        <RecipeIngredients ingredients={this.props.recipe.ingredients} quantities={this.props.recipe.quantities} multiplicator={this.state.recipe_feed_count}/>
-                        {/* <RecipeIngredients ingredients={this.state.ingredients}/> */}
-                    </React.Fragment>
-
-                    <React.Fragment>
-                        <RecipeInstructions instructions={this.props.recipe.instructions}/>
-                        {/* <RecipeInstructions ingredients={this.state.instructions}/> */}
-                    </React.Fragment>
-                </div>
-            </div>
-        )
+            )
+        }else{
+            return(
+                <div>Loading</div>
+            )
+        }
     }
 
 }
