@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_02_11_031747) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "blog_comments", force: :cascade do |t|
     t.text "content"
     t.integer "user_id"
@@ -36,8 +39,8 @@ ActiveRecord::Schema.define(version: 2020_02_11_031747) do
   end
 
   create_table "categories_recipes", id: false, force: :cascade do |t|
-    t.integer "category_id", null: false
-    t.integer "recipe_id", null: false
+    t.bigint "category_id", null: false
+    t.bigint "recipe_id", null: false
     t.index ["category_id", "recipe_id"], name: "index_categories_recipes_on_category_id_and_recipe_id"
   end
 
@@ -58,14 +61,14 @@ ActiveRecord::Schema.define(version: 2020_02_11_031747) do
   end
 
   create_table "days_mealplans", id: false, force: :cascade do |t|
-    t.integer "day_id", null: false
-    t.integer "mealplan_id", null: false
+    t.bigint "day_id", null: false
+    t.bigint "mealplan_id", null: false
     t.index ["day_id", "mealplan_id"], name: "index_days_mealplans_on_day_id_and_mealplan_id"
   end
 
   create_table "days_meals", id: false, force: :cascade do |t|
-    t.integer "day_id", null: false
-    t.integer "meal_id", null: false
+    t.bigint "day_id", null: false
+    t.bigint "meal_id", null: false
     t.index ["day_id", "meal_id"], name: "index_days_meals_on_day_id_and_meal_id"
   end
 
@@ -76,8 +79,8 @@ ActiveRecord::Schema.define(version: 2020_02_11_031747) do
   end
 
   create_table "groceries_lists_ingredients", id: false, force: :cascade do |t|
-    t.integer "groceries_list_id", null: false
-    t.integer "ingredient_id", null: false
+    t.bigint "groceries_list_id", null: false
+    t.bigint "ingredient_id", null: false
     t.index ["groceries_list_id", "ingredient_id"], name: "idx_groceries_ingredients_on_groceries_and_ingredient"
   end
 
@@ -93,20 +96,20 @@ ActiveRecord::Schema.define(version: 2020_02_11_031747) do
   end
 
   create_table "ingredients_recipes", id: false, force: :cascade do |t|
-    t.integer "ingredient_id", null: false
-    t.integer "recipe_id", null: false
+    t.bigint "ingredient_id", null: false
+    t.bigint "recipe_id", null: false
     t.index ["ingredient_id", "recipe_id"], name: "index_ingredients_recipes_on_ingredient_id_and_recipe_id"
   end
 
   create_table "ingredients_seasons", id: false, force: :cascade do |t|
-    t.integer "ingredient_id", null: false
-    t.integer "season_id", null: false
+    t.bigint "ingredient_id", null: false
+    t.bigint "season_id", null: false
     t.index ["ingredient_id", "season_id"], name: "index_ingredients_seasons_on_ingredient_id_and_season_id"
   end
 
   create_table "ingredients_users", id: false, force: :cascade do |t|
-    t.integer "ingredient_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "ingredient_id", null: false
+    t.bigint "user_id", null: false
     t.index ["ingredient_id", "user_id"], name: "index_ingredients_users_on_ingredient_id_and_user_id"
   end
 
@@ -129,8 +132,8 @@ ActiveRecord::Schema.define(version: 2020_02_11_031747) do
   end
 
   create_table "meals_recipes", id: false, force: :cascade do |t|
-    t.integer "meal_id", null: false
-    t.integer "recipe_id", null: false
+    t.bigint "meal_id", null: false
+    t.bigint "recipe_id", null: false
     t.index ["meal_id", "recipe_id"], name: "index_meals_recipes_on_meal_id_and_recipe_id"
   end
 
@@ -176,8 +179,8 @@ ActiveRecord::Schema.define(version: 2020_02_11_031747) do
   end
 
   create_table "quantities_multiplicators_recipes", id: false, force: :cascade do |t|
-    t.integer "quantities_multiplicator_id", null: false
-    t.integer "recipe_id", null: false
+    t.bigint "quantities_multiplicator_id", null: false
+    t.bigint "recipe_id", null: false
     t.index ["quantities_multiplicator_id", "recipe_id"], name: "idx_recipes_quantities_multl_on_quantities_mult_and_recipes"
   end
 
