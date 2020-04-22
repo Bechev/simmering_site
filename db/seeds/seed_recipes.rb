@@ -1,6 +1,6 @@
 require 'pry'
 
-path_recipes = '/mnt/c/Users/bertr/Dev/Projects/simmering_site/db/seeds/recipes_seed.csv'
+path_recipes = File.join(File.dirname(__FILE__),'/recipes_seed.csv')
 
 RECIPES = [
     [1,"Mock Champagne",900,1455,2355,40,"To make Ice ring: Fill a ring-shaped cake pan to 1/2 with ginger ale. Freeze until partially frozen. At this stage you can place edible flowers or pieces of fruit around the ring. Fill pan with ginger ale and freeze until solid. Place in punch bowl just before serving.' 'In a large punch bowl combine 1 bottle ginger ale pineapple juice and white grape juice.",83],
@@ -65,19 +65,20 @@ puts 'seeding recipes'
     
 # end
 
-for recipe in RECIPES do
+File.readlines(path_recipes).each do |line|
     sleep(0.05)
-    recipe_name = recipe[0]
+    rowArray = line.delete('\"').strip.split("","")
+    recipe_name = rowArray[1]
     # recipe_prep_time = rowArray[2]
     # recipe_cook_time = rowArray[3]
     # recipe_total_time = rowArray[4]
     # recipe_calories = rowArray[7]
-    recipe_prep_time = recipe[1]
-    recipe_cook_time = recipe[2]
-    recipe_total_time = recipe[3]
-    recipe_default_servings = recipe[4]
-    recipe_process = recipe[5]
-    recipe_calories = recipe[6]
+    recipe_prep_time = rowArray[2]
+    recipe_cook_time = rowArray[3]
+    recipe_total_time = rowArray[4]
+    recipe_default_servings = rowArray[5]
+    recipe_process = rowArray[6]
+    recipe_calories = rowArray[7]
 
     # binding.pry
     # recipe_categories = rowArray[7].split(";")
