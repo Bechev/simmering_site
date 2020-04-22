@@ -3,7 +3,7 @@ export function fetchUserIngredients(){
         const strUser = localStorage.getItem('user')
         let user = JSON.parse(strUser)
         dispatch({ type: 'FETCH_USER_INGREDIENTS' });    
-        return fetch("http://localhost:3000/api/v1/ingredients" ,{
+        return fetch("https://simmering.herokuapp.com/api/v1/ingredients" ,{
             method: "GET",
             cache: "no-cache",
             credentials: "same-origin",
@@ -29,7 +29,7 @@ export function updateUserIngredients(ingredient_id){
         const strUser = localStorage.getItem('user')
         let user = JSON.parse(strUser)
         dispatch({ type: 'UPDATE_USER_INGREDIENTS' });    
-        return fetch("http://localhost:3000/api/v1/ingredients/" + ingredient_id ,{
+        return fetch("https://simmering.herokuapp.com/api/v1/ingredients/" + ingredient_id ,{
             method: "PUT",
             cache: "no-cache",
             credentials: "same-origin",

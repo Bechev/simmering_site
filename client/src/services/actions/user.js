@@ -3,7 +3,7 @@ export function fetchUserParameters(){
         const strUser = localStorage.getItem('user')
         let user = JSON.parse(strUser)
         dispatch({ type: 'GET_USER_PARAMETERS' });    
-        return fetch("http://localhost:3000/api/v1/parameters/",{
+        return fetch("https://simmering.herokuapp.com/api/v1/parameters/",{
             headers:{
                 "uid": user.uid,
                 "client":  user.client,
@@ -26,7 +26,7 @@ export function updateUserParameters(parameter_id, settings){
         const strUser = localStorage.getItem('user')
         let user = JSON.parse(strUser)
         dispatch({ type: 'UPDATE_USER_PARAMETERS' });    
-        return fetch("http://localhost:3000/api/v1/parameters/" + parameter_id,{
+        return fetch("https://simmering.herokuapp.com/api/v1/parameters/" + parameter_id,{
             method: "PUT",
             cache: "no-cache",
             credentials: "same-origin",    

@@ -3,7 +3,7 @@ export function fetchUserMealPlans(){
         const strUser = localStorage.getItem('user')
         let user = JSON.parse(strUser)
         dispatch({ type: 'GET_MEALPLANS' });    
-        return fetch("http://localhost:3000/api/v1/mealplans",{
+        return fetch("https://simmering.herokuapp.com/api/v1/mealplans",{
             headers:{
                 "uid": user.uid,
                 "client":  user.client,
@@ -25,7 +25,7 @@ export function fetchPreviousMealplanInfo(mealplan_id){
         const strUser = localStorage.getItem('user')
         let user = JSON.parse(strUser)
         dispatch({ type: 'GET_PREVIOUS_MEALPLAN' });    
-        return fetch("http://localhost:3000/api/v1/mealplans/" + mealplan_id,{
+        return fetch("https://simmering.herokuapp.com/api/v1/mealplans/" + mealplan_id,{
             headers:{
                 "uid": user.uid,
                 "client":  user.client,
