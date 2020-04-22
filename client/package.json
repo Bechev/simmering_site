@@ -5,7 +5,7 @@
   "proxy": {
     "/api": {
       "target": "https://localhost:3006"
-    }
+    },
   "dependencies": {
     "prop-types": "^15.7.2",
     "react": "16.8.6",
