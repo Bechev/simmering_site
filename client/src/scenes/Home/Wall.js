@@ -5,6 +5,13 @@ import '../scenes.css';
 
 class Wall extends Component {
 
+
+    // componentDidMount(){
+        // console.log('//////////////////////////////(/////////////////////')
+        // console.log(process.env.REACT_APP_API_URL)
+        // console.log('///////////////////////////////////////////////////')
+
+    // }
   render() {
 
     return(
