@@ -1,6 +1,6 @@
 require 'pry'
 
-path_recipes_ingredients = '/mnt/c/Users/bertr/Dev/Projects/simmering_site/db/seeds/recipes_ingredients_seed.csv'
+path_recipes_ingredients = File.join(File.dirname(__FILE__),'/recipes_ingredients_seed.csv')
 puts 'seeding recipe ingredients'
 # File.readlines(path_recipes_ingredients).each do |line|
 #     rowArray = line.delete('\"').strip.split(",,")
