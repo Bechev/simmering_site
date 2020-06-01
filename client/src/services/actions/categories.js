@@ -1,7 +1,7 @@
 export function fetch_categories(){
     return (dispatch) => {
         dispatch({ type: 'LOAD_CATEGORIES' });    
-        return fetch(process.env.REACT_APP_API_URL+"categories/" ,{
+        return fetch("https://simmering.herokuapp.com/categories/" ,{
             method: "GET",
             cache: "no-cache",
             credentials: "same-origin",

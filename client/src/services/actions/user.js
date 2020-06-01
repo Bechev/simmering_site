@@ -3,7 +3,7 @@ export function fetchUserParameters(){
         const strUser = localStorage.getItem('user')
         let user = JSON.parse(strUser)
         dispatch({ type: 'GET_USER_PARAMETERS' });    
-        return fetch(process.env.REACT_APP_API_URL+"parameters/",{
+        return fetch("https://simmering.herokuapp.com/parameters/",{
             headers:{
                 "uid": user.uid,
                 "client":  user.client,
@@ -26,7 +26,7 @@ export function updateUserParameters(parameter_id, settings){
         const strUser = localStorage.getItem('user')
         let user = JSON.parse(strUser)
         dispatch({ type: 'UPDATE_USER_PARAMETERS' });    
-        return fetch(process.env.REACT_APP_API_URL+"parameters/" + parameter_id,{
+        return fetch("https://simmering.herokuapp.com/parameters/" + parameter_id,{
             method: "PUT",
             cache: "no-cache",
             credentials: "same-origin",    

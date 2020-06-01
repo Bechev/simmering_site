@@ -3,7 +3,7 @@ export function fetchUserLastMealPlan(){
         const strUser = localStorage.getItem('user')
         let user = JSON.parse(strUser)
         dispatch({ type: 'GET_MEALPLAN' });    
-        return fetch(process.env.REACT_APP_API_URL+"mealplan/",{
+        return fetch("https://simmering.herokuapp.com/mealplan/",{
             headers:{
                 "uid": user.uid,
                 "client":  user.client,
@@ -26,7 +26,7 @@ export function createNewMealplan( mealplan_name){
         const strUser = localStorage.getItem('user')
         let user = JSON.parse(strUser)
         dispatch({ type: 'CREATE_NEW_MEALPLAN' });    
-        return fetch(process.env.REACT_APP_API_URL+"mealplans/",{
+        return fetch("https://simmering.herokuapp.com/mealplans/",{
         method: 'POST',    
         headers:{
             "Content-Type": "application/json; charset=utf-8",
@@ -53,7 +53,7 @@ export function updateMealMultiplicator(to_do,  multiplicator_id){
         const strUser = localStorage.getItem('user')
         let user = JSON.parse(strUser)
         dispatch({ type: 'ADD_OR_REMOVE_GUEST_FOR_RECIPE' });    
-        return fetch(process.env.REACT_APP_API_URL+"quantities_multiplicator/" + multiplicator_id,{
+        return fetch("https://simmering.herokuapp.com/quantities_multiplicator/" + multiplicator_id,{
         method: 'PUT',    
         headers:{
             "Content-Type": "application/json; charset=utf-8",
@@ -80,7 +80,7 @@ export function addOrRemoveRecipeToMealplan(action,  mealplan_id, day_name, meal
         const strUser = localStorage.getItem('user')
         let user = JSON.parse(strUser)
         dispatch({ type: 'ADD_OR_REMOVE_RECIPE_TO_MEAL' });    
-        return fetch(process.env.REACT_APP_API_URL+"mealplans/" + mealplan_id,{
+        return fetch("https://simmering.herokuapp.com/mealplans/" + mealplan_id,{
         method: 'PUT',    
         headers:{
             "Content-Type": "application/json; charset=utf-8",
