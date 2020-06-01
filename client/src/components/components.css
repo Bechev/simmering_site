@@ -157,8 +157,10 @@
 .recipe_card{
     /* display: flex;
     flex-direction: row; */
-    width: 30vh;
-    height: 25vh;
+    max-width: 30vh;
+    width: 30%;
+    /* max-height: 25vh;
+    height: 100%; */
     border: 0.3vh;
     border-color:  #268C4F ;
     border-style: solid;
@@ -167,6 +169,12 @@
     margin: 2vh;
     background-color: white;
 }
+
+.recipe_card:after {
+    content: "";
+    /* display: block; */
+    padding-bottom: 100%;
+  }
 .recipe_card_header{
     display: flex;
     align-items: stretch;
@@ -301,13 +309,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    --scene-width: 80vh;
+    /* --scene-width: 80vh; */
+    width: 100%;
 }
 
 .mealplan_header{
     display: flex;
     margin-top: 5vh;
-    width: var(--scene-width);
+    width: 90%;
     justify-content: space-between;
 }
 
@@ -315,13 +324,18 @@
     font-size: 3vh;
     color: #268C4F;
     font-weight: bold;
+    align-self: flex-start;
+}
+
+.create_mealplan_button{
+    align-self: flex-end;
 }
 
 
 .day{
     display: flex;
     min-height: 10vh;
-    width: var(--scene-width);
+    width: 90%;
     background-color: lightgray;
     margin: 3vh;
     padding: 2vh;
@@ -408,7 +422,10 @@
 
 /* CSS for Suggestions  */
 .suggestions{
-    width: var(--scene-width);
+    max-height: 40vh;
+    height: 50%;
+    max-width: 95vh;
+    width: 80%;
     background-color: white;
     padding: 0 0 2vh 0 ;
     bottom:0;

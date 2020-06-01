@@ -101,7 +101,7 @@ class Plan extends Component {
         <div className="plan">
             <div className="mealplan_header">
                 <div className="mealplan_title title">{this.props.mealplan.name}</div>
-                <button className="button" onClick={this.displayQuickAddToMealPlan}>Create new Mealplan</button>
+                <button className="button create_mealplan_button" onClick={this.displayQuickAddToMealPlan}>Create new Mealplan</button>
             </div>
             {this.renderMealPlan()}
             <Suggestions/>

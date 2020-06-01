@@ -12,4 +12,8 @@ class Recipe < ApplicationRecord
         slug = name.split(" " ).join("-")
         self.slug = slug
     end 
+
+    def suggestions
+        self.all.last(10).reverse
+    end
 end

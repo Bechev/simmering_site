@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {withRouter, Link, Redirect} from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
 import { connect } from 'react-redux'
 import {fetchRecipe } from '../../services/actions/recipe.js'
 import "../components.css"

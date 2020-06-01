@@ -31,19 +31,19 @@ development:
     database: simmering_development
     pool: 5
     timeout: 5000
-    username: postgres
-    password: aalr615v
-    host: 127.0.0.1
+    username: simmering
+    password: simmering
+    host: localhost
   
-test: &TEST
-    adapter: postgres
-    encoding: utf8
-    database: project_test
-    pool: 5
+# test: &TEST
+#     adapter: postgres
+#     encoding: utf8
+#     database: project_test
+#     pool: 5
   
-production: &default
-    adapter: postgresql
-    encoding: utf8
-    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-    database: production
-    pool: 5
+# production: &default
+#     adapter: postgresql
+#     encoding: utf8
+#     pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#     database: production
+#     pool: 5
