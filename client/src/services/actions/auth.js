@@ -1,7 +1,7 @@
 export function sign_in(email, password, history){
     return (dispatch) => {
         dispatch({ type: 'SIGNING_IN_USER' });    
-        return fetch("https://simmering.herokuapp.com/auth/sign_in" ,{
+        return fetch(process.env.REACT_APP_API_URL+"auth/sign_in" ,{
             method: "POST", 
             cache: "no-cache",
             credentials: "same-origin",
@@ -82,7 +82,7 @@ export function verify_credentials(){
         // const client = localStorage.getItem('client');
         dispatch({type: "CREDENTIAL_VERIFICATION"})
         console.log("user " + user)
-        return fetch("https://simmering.herokuapp.com/auth/validate_token", {
+        return fetch(process.env.REACT_APP_API_URL+"auth/validate_token", {
             headers:{
                 "uid": user.uid,
                 "client": user.client,
@@ -107,7 +107,7 @@ export function sign_out(){
         let user = localStorage.getItem('user')
         user = JSON.parse(user)
         dispatch({type: "SIGNING_OUT_USER", payload: user})
-        return fetch("https://simmering.herokuapp.com/auth/sign_out", {
+        return fetch(process.env.REACT_APP_API_URL+"auth/sign_out", {
         method: 'DELETE',
         headers:{
             "uid": user['uid'],
@@ -130,7 +130,7 @@ export function sign_out(){
 export function sign_up( email, username, password, password_confirmation, state,history){
     return (dispatch) => {
         dispatch({ type: 'SIGNING_UP_USER' });    
-        return fetch("https://simmering.herokuapp.com/auth/" ,{
+        return fetch(process.env.REACT_APP_API_URL+"auth/" ,{
             method: "POST",
             cache: "no-cache",
             credentials: "same-origin",

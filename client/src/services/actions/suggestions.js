@@ -3,7 +3,7 @@ export function fetchSuggestions(){
         const strUser = localStorage.getItem('user')
         let user = JSON.parse(strUser)
         dispatch({ type: 'LOAD_SUGGESTIONS' });    
-        return fetch("https://simmering.herokuapp.com/suggestions/" ,{
+        return fetch(process.env.REACT_APP_API_URL+"suggestions/" ,{
             method: "GET",
             cache: "no-cache",
             credentials: "same-origin",

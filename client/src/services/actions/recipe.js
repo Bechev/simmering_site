@@ -1,7 +1,7 @@
 export function fetchRecipe(recipe_slug){
     return (dispatch) => {
         dispatch({ type: 'FETCH_RECIPE' });    
-        return fetch("https://simmering.herokuapp.com/recipes/" + recipe_slug ,{
+        return fetch(process.env.REACT_APP_API_URL+"recipes/" + recipe_slug ,{
             method: "GET",
             cache: "no-cache",
             credentials: "same-origin",
@@ -23,7 +23,7 @@ export function fetchRecipe(recipe_slug){
 // export function fetchRecipe(user, recipe_id){
 //     return (dispatch) => {
 //         dispatch({ type: 'FETCH_RECIPE' });    
-//         return fetch("https://simmering.herokuapp.com/recipes/" + recipe_id ,{
+//         return fetch(process.env.REACT_APP_API_URL+"recipes/" + recipe_id ,{
 //             method: "GET",
 //             cache: "no-cache",
 //             credentials: "same-origin",

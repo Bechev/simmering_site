@@ -1,7 +1,7 @@
 export function like_post(post_id,number_of_likes, history){
     return (dispatch) => {
         dispatch({ type: 'LIKE_POST' });    
-        return fetch("https://simmering.herokuapp.com/posts/" + post_id ,{
+        return fetch(process.env.REACT_APP_API_URL+"posts/" + post_id ,{
             method: "PUT",
             cache: "no-cache",
             credentials: "same-origin",
@@ -26,7 +26,7 @@ export function like_post(post_id,number_of_likes, history){
 export function share_post(post_id, number_of_shares, history){
     return (dispatch) => {
         dispatch({ type: 'SHARE_POST' });    
-        return fetch("https://simmering.herokuapp.com/posts/" + post_id ,{
+        return fetch(process.env.REACT_APP_API_URL+"posts/" + post_id ,{
             method: "PUT",
             cache: "no-cache",
             credentials: "same-origin",
@@ -55,7 +55,7 @@ export function submit_new_post(post_message, history){
         const strUser = localStorage.getItem('user')
         let user = JSON.parse(strUser)
         dispatch({ type: 'SUBMIT_NEW_POST' });    
-        return fetch("https://simmering.herokuapp.com/posts/" ,{
+        return fetch(process.env.REACT_APP_API_URL+"posts/" ,{
             method: "POST",
             cache: "no-cache",
             credentials: "same-origin",

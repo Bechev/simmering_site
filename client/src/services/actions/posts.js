@@ -1,7 +1,7 @@
 export function fetchLastPublicPosts(history){
     return (dispatch) => {
         dispatch({ type: 'GET_LAST_PUBLIC_POSTS' });    
-        return fetch("https://simmering.herokuapp.com/posts")
+        return fetch(process.env.REACT_APP_API_URL+"posts")
         .then(response => response.json())
         .then(posts_list => {
             dispatch({type:'LOAD_LAST_PUBLIC_POSTS_SUCCESS', payload: posts_list})
@@ -16,7 +16,7 @@ export function fetchLastPublicPosts(history){
 // export function addToFavoriteRecipes(recipeId, userId, history){
 //     return (dispatch) => {
 //         dispatch({ type: 'START_ADDING_RECIPE_TO_FAVORITES' });    
-//         return fetch("https://simmering.herokuapp.com//add_to_favorite/" + recipeId,{
+//         return fetch(process.env.REACT_APP_API_URL+"/add_to_favorite/" + recipeId,{
 //             method: "POST",
 //             cache: "no-cache",
 //             credentials: "same-origin",
@@ -39,7 +39,7 @@ export function fetchLastPublicPosts(history){
 // export function removeFromFavoriteRecipes(recipeId, userId, history){
 //     return (dispatch) => {
 //         dispatch({ type: 'START_REMOVING_RECIPE_FROM_FAVORITES' });    
-//         return fetch("https://simmering.herokuapp.com//remove_from_favorites/" + recipeId,{
+//         return fetch(process.env.REACT_APP_API_URL+"/remove_from_favorites/" + recipeId,{
 //             method: "POST",
 //             cache: "no-cache",
 //             credentials: "same-origin",

@@ -157,7 +157,7 @@
 .recipe_card{
     display: flex;
     flex-direction: column;
-    align-content: space-between;
+    justify-content: space-between;
     max-width: 30vh;
     width: 30%;
     max-height: 25vh;
@@ -249,16 +249,18 @@
 }
 
 .recipe_card_information{
-    margin-top: 25%;
+    display: flex;
+    margin-top: 5%;
+    height: calc(10vh + 0.5vw);
     align-self: flex-end;
     justify-self: flex-end;
     width: 100%;
+    justify-content: space-between;
 }
 
 .recipe_card_information_element{
     display: flex;
     width: 10vh;
-
     /* This is for the people counter as it is composed of other divs */
     /* justify-content: flex-end; */
     /* This is for the calories and time as it is just text */

@@ -3,7 +3,7 @@ export function submit_new_comment(comment_message, post_id, history){
         const strUser = localStorage.getItem('user')
         let user = JSON.parse(strUser)
         dispatch({ type: 'SUBMIT_NEW_COMMENT' });    
-        return fetch("https://simmering.herokuapp.com/posts/"+post_id+"/comments" ,{
+        return fetch(process.env.REACT_APP_API_URL+"posts/"+post_id+"/comments" ,{
             method: "POST",
             cache: "no-cache",
             credentials: "same-origin",
