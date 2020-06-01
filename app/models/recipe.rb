@@ -13,7 +13,7 @@ class Recipe < ApplicationRecord
         self.slug = slug
     end 
 
-    def suggestions
+    def self.suggestions
         self.all.last(10).reverse
     end
 end

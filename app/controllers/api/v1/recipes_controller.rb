@@ -34,6 +34,9 @@ module Api
             end
         
             def suggestions
+                # @recipes = Recipe.all.last(10).reverse
+                # render json: @recipes
+
                 @recipes = Recipe.suggestions
                 render json: @recipes
             end
