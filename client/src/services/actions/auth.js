@@ -2,7 +2,7 @@ export function sign_in(email, password, history){
     return (dispatch) => {
         dispatch({ type: 'SIGNING_IN_USER' });    
         return fetch(process.env.REACT_APP_API_URL+"auth/sign_in" ,{
-            method: "POST",
+            method: "POST", 
             cache: "no-cache",
             credentials: "same-origin",
             headers: {
