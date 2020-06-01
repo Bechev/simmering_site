@@ -1,7 +1,7 @@
 export function fetchLatestBlogPosts(){
     return (dispatch) => {
         dispatch({ type: 'LOAD_LATEST_POSTS'});    
-        return fetch("https://simmering.herokuapp.com/api/v1/blog_posts/",{
+        return fetch(process.env.REACT_APP_API_URL+"blog_posts/",{
             method: "GET",
             cache: "no-cache",
             credentials: "same-origin",
@@ -22,7 +22,7 @@ export function fetchLatestBlogPosts(){
 export function fetchBlogPost(post_slug){
     return (dispatch) => {
         dispatch({ type: 'LOAD_BLOG_POST' });    
-        return fetch("https://simmering.herokuapp.com/api/v1/blog_posts/" + post_slug ,{
+        return fetch(process.env.REACT_APP_API_URL+"blog_posts/" + post_slug ,{
             method: "GET",
             cache: "no-cache",
             credentials: "same-origin",
@@ -45,7 +45,7 @@ export function postComment(post_id, user_id, content){
         const strUser = localStorage.getItem('user')
         let user = JSON.parse(strUser)
         dispatch({ type: 'POST_BLOG_COMMENT' });    
-        return fetch("https://simmering.herokuapp.com/api/v1/blog_comments/" ,{
+        return fetch(process.env.REACT_APP_API_URL+"blog_comments/" ,{
             method: "POST",
             cache: "no-cache",
             credentials: "same-origin",

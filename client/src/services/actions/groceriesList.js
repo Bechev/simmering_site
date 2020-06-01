@@ -3,7 +3,7 @@ export function fetchGroceriesList(){
         const strUser = localStorage.getItem('user')
         let user = JSON.parse(strUser)
         dispatch({ type: 'FETCH_GROCERIES_LIST' });    
-        return fetch("https://simmering.herokuapp.com/api/v1/groceries_list/" ,{
+        return fetch(process.env.REACT_APP_API_URL+"groceries_list/" ,{
             method: "POST",
             cache: "no-cache",
             credentials: "same-origin",
