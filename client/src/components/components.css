@@ -155,12 +155,13 @@
 
 /* CSS for Recipe cards */
 .recipe_card{
-    /* display: flex;
-    flex-direction: row; */
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
     max-width: 30vh;
     width: 30%;
-    /* max-height: 25vh;
-    height: 100%; */
+    max-height: 25vh;
+    /* height: 100%; */
     border: 0.3vh;
     border-color:  #268C4F ;
     border-style: solid;
@@ -170,11 +171,11 @@
     background-color: white;
 }
 
-.recipe_card:after {
+/* .recipe_card:after {
     content: "";
-    /* display: block; */
     padding-bottom: 100%;
-  }
+} */
+  
 .recipe_card_header{
     display: flex;
     align-items: stretch;
@@ -185,9 +186,10 @@
 
 .recipe_card_title{
     color: #268C4F;
-    font-size: 2vh;
+    font-size:calc(0.2vh + 1vw);
     text-align: left;
     font-weight: bold;
+    width: 55%;
 
 }
 
@@ -209,8 +211,12 @@
 }
 
 .recipe_card_button{
-    width: 9vh;
+    width: 40%;
     height: 5vh;
+    font-size:calc(3px + 0.75vw);
+    align-content: center;
+    /* flex-basis: 0;
+    flex-shrink: auto; */
 }
 
 .meal_plan_controls{
@@ -244,18 +250,21 @@
 
 .recipe_card_information{
     margin-top: 25%;
+    align-self: flex-end;
+    justify-self: flex-end;
+    width: 100%;
 }
 
 .recipe_card_information_element{
     display: flex;
     width: 10vh;
-    align-self: flex-end;
+
     /* This is for the people counter as it is composed of other divs */
     /* justify-content: flex-end; */
     /* This is for the calories and time as it is just text */
     text-align: right;
     justify-content: space-between;
-    margin: 0.5%;
+    /* margin: 0.5%; */
     font-size: 2vh;
 }
 
